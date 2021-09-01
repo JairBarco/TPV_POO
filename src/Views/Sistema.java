@@ -6,6 +6,11 @@
 package Views;
 
 import Library.Objetos;
+import java.awt.Color;
+import ViewModels.ClientesVM;
+import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -192,6 +197,8 @@ public class Sistema extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        Label_ImagenCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label_ImagenCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar_imagen.png"))); // NOI18N
         Label_ImagenCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Label_ImagenCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Label_ImagenCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -213,7 +220,7 @@ public class Sistema extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Label_ImagenCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(Label_ImagenCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -444,7 +451,7 @@ public class Sistema extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ButtonCliente_Cancelar)
                     .addComponent(ButtonCliente_Agregar))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TabbedPaneCliente.addTab("Registro de Clientes", jPanel7);
@@ -545,10 +552,30 @@ public class Sistema extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-        // <editor-fold defaultstate="collapsed" desc="CODIGO DE CLIENTE">                          
+        
+        // <editor-fold defaultstate="collapsed" desc="CODIGO DE CLIENTE"> 
+    private ClientesVM cliente;
+    
     private void ButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonClientesActionPerformed
         // TODO add your handling code here:
+        ArrayList<JLabel> label = new ArrayList();
+        label.add(LabelCliente_NoId);
+        label.add(LabelCliente_Nombre);
+        label.add(LabelCliente_Apellido);
+        label.add(LabelCliente_Email);
+        label.add(LabelCliente_Telefono);
+        label.add(LabelCliente_Direccion);
+        
+        ArrayList<JTextField> textField = new ArrayList();
+        textField.add(TextFieldCliente_NoId);
+        textField.add(TextFieldCliente_Nombre);
+        textField.add(TextFieldCliente_Apellido);
+        textField.add(TextFieldCliente_Email);
+        textField.add(TextFieldCliente_Telefono);
+        textField.add(TextFieldCliente_Direccion);
+        
+        Object[] objects = {};
+        cliente = new ClientesVM(objects ,label, textField);
         TabbedPanePrincipal.setSelectedIndex(1);
     }//GEN-LAST:event_ButtonClientesActionPerformed
 
@@ -582,6 +609,7 @@ public class Sistema extends javax.swing.JFrame {
 
     private void ButtonCliente_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_AgregarActionPerformed
         // TODO add your handling code here:
+        cliente.RegistrarCliente();
     }//GEN-LAST:event_ButtonCliente_AgregarActionPerformed
 
     private void ButtonCliente_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_CancelarActionPerformed
@@ -595,42 +623,83 @@ public class Sistema extends javax.swing.JFrame {
 
     private void TextFieldCliente_NoIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyReleased
         // TODO add your handling code here:
+        if(TextFieldCliente_NoId.getText().equals("")){
+            LabelCliente_NoId.setForeground(new Color(102,102,102));
+        }else{
+            LabelCliente_NoId.setText("No. Id");
+            LabelCliente_NoId.setForeground(new Color(0,153,51));
+        }
     }//GEN-LAST:event_TextFieldCliente_NoIdKeyReleased
 
     private void TextFieldCliente_NoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyTyped
         // TODO add your handling code here:
+        Objetos.eventos.numberKeyPress(evt);
+        
     }//GEN-LAST:event_TextFieldCliente_NoIdKeyTyped
 
     private void TextFieldCliente_NombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NombreKeyReleased
         // TODO add your handling code here:
+        if(TextFieldCliente_Nombre.getText().equals("")){
+            LabelCliente_Nombre.setForeground(new Color(102,102,102));
+        }else{
+            LabelCliente_Nombre.setText("Nombre");
+            LabelCliente_Nombre.setForeground(new Color(0,153,51));
+        }
     }//GEN-LAST:event_TextFieldCliente_NombreKeyReleased
 
     private void TextFieldCliente_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NombreKeyTyped
         // TODO add your handling code here:
+        Objetos.eventos.textKeyPress(evt);
     }//GEN-LAST:event_TextFieldCliente_NombreKeyTyped
 
     private void TextFieldCliente_ApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_ApellidoKeyReleased
         // TODO add your handling code here:
+        if(TextFieldCliente_Apellido.getText().equals("")){
+            LabelCliente_Apellido.setForeground(new Color(102,102,102));
+        }else{
+            LabelCliente_Apellido.setText("Apellido");
+            LabelCliente_Apellido.setForeground(new Color(0,153,51));
+        }
     }//GEN-LAST:event_TextFieldCliente_ApellidoKeyReleased
 
     private void TextFieldCliente_ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_ApellidoKeyTyped
         // TODO add your handling code here:
+        Objetos.eventos.textKeyPress(evt);
     }//GEN-LAST:event_TextFieldCliente_ApellidoKeyTyped
 
     private void TextFieldCliente_EmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_EmailKeyReleased
         // TODO add your handling code here:
+        if(TextFieldCliente_Email.getText().equals("")){
+            LabelCliente_Email.setForeground(new Color(102,102,102));
+        }else{
+            LabelCliente_Email.setText("Email");
+            LabelCliente_Email.setForeground(new Color(0,153,51));
+        }
     }//GEN-LAST:event_TextFieldCliente_EmailKeyReleased
 
     private void TextFieldCliente_TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_TelefonoKeyReleased
         // TODO add your handling code here:
+        if(TextFieldCliente_Telefono.getText().equals("")){
+            LabelCliente_Telefono.setForeground(new Color(102,102,102));
+        }else{
+            LabelCliente_Telefono.setText("Telefono");
+            LabelCliente_Telefono.setForeground(new Color(0,153,51));
+        }
     }//GEN-LAST:event_TextFieldCliente_TelefonoKeyReleased
 
     private void TextFieldCliente_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_TelefonoKeyTyped
         // TODO add your handling code here:
+        Objetos.eventos.numberKeyPress(evt);
     }//GEN-LAST:event_TextFieldCliente_TelefonoKeyTyped
 
     private void TextFieldCliente_DireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_DireccionKeyReleased
         // TODO add your handling code here:
+        if(TextFieldCliente_Direccion.getText().equals("")){
+            LabelCliente_Direccion.setForeground(new Color(102,102,102));
+        }else{
+            LabelCliente_Direccion.setText("Direccion");
+            LabelCliente_Direccion.setForeground(new Color(0,153,51));
+        }
     }//GEN-LAST:event_TextFieldCliente_DireccionKeyReleased
     // </editor-fold>
     
