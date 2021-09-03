@@ -1,7 +1,12 @@
 package Library;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -32,5 +37,22 @@ public class UploadImage extends javax.swing.JFrame {
             imageByte = new byte[(int) archivo.length()];
         }
 
+    }
+    
+    public byte[] getTransFoto(JLabel label){
+        ByteArrayOutputStream baos = null;
+        
+        try{
+            Icon ico = label.getIcon();
+            //Create buffered image
+            BufferedImage bufferedImage = new BufferedImage(ico.getIconWidth(), ico.getIconHeight(),
+            BufferedImage.TYPE_INT_RGB);
+            
+            baos = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "png", baos);
+        }catch (IOException e){
+            
+        }
+        return baos.toByteArray();
     }
 }

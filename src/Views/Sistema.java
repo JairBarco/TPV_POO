@@ -65,6 +65,7 @@ public class Sistema extends javax.swing.JFrame {
         LabelCliente_Direccion = new javax.swing.JLabel();
         ButtonCliente_Agregar = new javax.swing.JButton();
         ButtonCliente_Cancelar = new javax.swing.JButton();
+        CheckBoxCliente_Credito = new javax.swing.JCheckBox();
         jPanel8 = new javax.swing.JPanel();
         ButtonClientes = new javax.swing.JButton();
 
@@ -360,6 +361,8 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
 
+        CheckBoxCliente_Credito.setText("Crédito");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -410,7 +413,10 @@ public class Sistema extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TextFieldCliente_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelCliente_Email))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(CheckBoxCliente_Credito)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,7 +453,9 @@ public class Sistema extends javax.swing.JFrame {
                         .addComponent(LabelCliente_Direccion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TextFieldCliente_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
+                .addGap(10, 10, 10)
+                .addComponent(CheckBoxCliente_Credito)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ButtonCliente_Cancelar)
                     .addComponent(ButtonCliente_Agregar))
@@ -565,6 +573,7 @@ public class Sistema extends javax.swing.JFrame {
         label.add(LabelCliente_Email);
         label.add(LabelCliente_Telefono);
         label.add(LabelCliente_Direccion);
+        label.add(Label_ImagenCliente);
         
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldCliente_NoId);
@@ -574,7 +583,9 @@ public class Sistema extends javax.swing.JFrame {
         textField.add(TextFieldCliente_Telefono);
         textField.add(TextFieldCliente_Direccion);
         
-        Object[] objects = {};
+        Object[] objects = {
+            CheckBoxCliente_Credito
+        };
         cliente = new ClientesVM(objects ,label, textField);
         TabbedPanePrincipal.setSelectedIndex(1);
     }//GEN-LAST:event_ButtonClientesActionPerformed
@@ -742,6 +753,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JButton ButtonCliente_Agregar;
     private javax.swing.JButton ButtonCliente_Cancelar;
     private javax.swing.JButton ButtonClientes;
+    private javax.swing.JCheckBox CheckBoxCliente_Credito;
     private javax.swing.JLabel LabelCliente_Apellido;
     private javax.swing.JLabel LabelCliente_Direccion;
     private javax.swing.JLabel LabelCliente_Email;
