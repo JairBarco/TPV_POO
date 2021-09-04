@@ -34,7 +34,14 @@ public class UploadImage extends javax.swing.JFrame {
             Image foto = getToolkit().getImage(urlOrigen);
             foto = foto.getScaledInstance(160, 136, 1);
             label.setIcon(new ImageIcon(foto));
-            imageByte = new byte[(int) archivo.length()];
+            try {
+                BufferedImage bImage = ImageIO.read(archivo);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                ImageIO.write(bImage, "png", bos);
+                imageByte = bos.toByteArray();
+            } catch (IOException ex) {
+                
+            }
         }
 
     }

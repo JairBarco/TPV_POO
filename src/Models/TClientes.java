@@ -7,7 +7,7 @@ package Models;
 public class TClientes {
 
     private int ID;
-    private String NoId;
+    private String Nid;
     private String Nombre;
     private String Apellido;
     private String Direccion;
@@ -28,12 +28,12 @@ public class TClientes {
         this.ID = ID;
     }
 
-    public String getNoId() {
-        return NoId;
+    public String getNid() {
+        return Nid;
     }
 
-    public void setNoId(String NoId) {
-        this.NoId = NoId;
+    public void setNid(String Nid) {
+        this.Nid = Nid;
     }
 
     public String getNombre() {
