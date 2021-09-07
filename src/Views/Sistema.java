@@ -71,7 +71,11 @@ public class Sistema extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Table_Clientes = Table_Clientes = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false; //Disallow the editing of any cell
+            }
+        };
         jPanel12 = new javax.swing.JPanel();
         LabelCliente_Nombre1 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
@@ -79,7 +83,7 @@ public class Sistema extends javax.swing.JFrame {
         ButtonClientes2 = new javax.swing.JButton();
         ButtonClientes3 = new javax.swing.JButton();
         ButtonClientes4 = new javax.swing.JButton();
-        LabelCliente_Nombre2 = new javax.swing.JLabel();
+        LabelCliente_Paginas = new javax.swing.JLabel();
         ButtonClientes = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -517,18 +521,18 @@ public class Sistema extends javax.swing.JFrame {
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Table_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Table_Clientes);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -568,7 +572,7 @@ public class Sistema extends javax.swing.JFrame {
 
         ButtonClientes1.setBackground(new java.awt.Color(255, 102, 51));
         ButtonClientes1.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonClientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/group.png"))); // NOI18N
+        ButtonClientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso_rapido.png"))); // NOI18N
         ButtonClientes1.setToolTipText("");
         ButtonClientes1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ButtonClientes1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -580,7 +584,7 @@ public class Sistema extends javax.swing.JFrame {
 
         ButtonClientes2.setBackground(new java.awt.Color(255, 102, 51));
         ButtonClientes2.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonClientes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/group.png"))); // NOI18N
+        ButtonClientes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso.png"))); // NOI18N
         ButtonClientes2.setToolTipText("");
         ButtonClientes2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ButtonClientes2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -592,7 +596,7 @@ public class Sistema extends javax.swing.JFrame {
 
         ButtonClientes3.setBackground(new java.awt.Color(255, 102, 51));
         ButtonClientes3.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonClientes3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/group.png"))); // NOI18N
+        ButtonClientes3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance.png"))); // NOI18N
         ButtonClientes3.setToolTipText("");
         ButtonClientes3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ButtonClientes3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -604,7 +608,7 @@ public class Sistema extends javax.swing.JFrame {
 
         ButtonClientes4.setBackground(new java.awt.Color(255, 102, 51));
         ButtonClientes4.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonClientes4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/group.png"))); // NOI18N
+        ButtonClientes4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance-rapido.png"))); // NOI18N
         ButtonClientes4.setToolTipText("");
         ButtonClientes4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ButtonClientes4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -614,11 +618,11 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
 
-        LabelCliente_Nombre2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        LabelCliente_Nombre2.setForeground(new java.awt.Color(0, 0, 0));
-        LabelCliente_Nombre2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelCliente_Nombre2.setText("Paginas");
-        LabelCliente_Nombre2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        LabelCliente_Paginas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelCliente_Paginas.setForeground(new java.awt.Color(0, 0, 0));
+        LabelCliente_Paginas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelCliente_Paginas.setText("Paginas");
+        LabelCliente_Paginas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -642,7 +646,7 @@ public class Sistema extends javax.swing.JFrame {
                                 .addComponent(ButtonClientes3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ButtonClientes4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(LabelCliente_Nombre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(LabelCliente_Paginas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(308, 308, 308)))
                 .addContainerGap())
         );
@@ -656,7 +660,7 @@ public class Sistema extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelCliente_Nombre1)
-                            .addComponent(LabelCliente_Nombre2))
+                            .addComponent(LabelCliente_Paginas))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -752,6 +756,7 @@ public class Sistema extends javax.swing.JFrame {
         label.add(LabelCliente_Telefono);
         label.add(LabelCliente_Direccion);
         label.add(Label_ImagenCliente);
+        label.add(LabelCliente_Paginas);
         
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldCliente_NoId);
@@ -762,7 +767,8 @@ public class Sistema extends javax.swing.JFrame {
         textField.add(TextFieldCliente_Direccion);
         
         Object[] objects = {
-            CheckBoxCliente_Credito
+            CheckBoxCliente_Credito,
+            Table_Clientes,
         };
         cliente = new ClientesVM(objects ,label, textField);
         TabbedPanePrincipal.setSelectedIndex(1);
@@ -959,11 +965,12 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCliente_NoId;
     private javax.swing.JLabel LabelCliente_Nombre;
     private javax.swing.JLabel LabelCliente_Nombre1;
-    private javax.swing.JLabel LabelCliente_Nombre2;
+    private javax.swing.JLabel LabelCliente_Paginas;
     private javax.swing.JLabel LabelCliente_Telefono;
     private javax.swing.JLabel Label_ImagenCliente;
     private javax.swing.JTabbedPane TabbedPaneCliente;
     private javax.swing.JTabbedPane TabbedPanePrincipal;
+    private javax.swing.JTable Table_Clientes;
     private javax.swing.JTextField TextFieldCliente_Apellido;
     private javax.swing.JTextField TextFieldCliente_Direccion;
     private javax.swing.JTextField TextFieldCliente_Email;
@@ -991,7 +998,6 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     public void setExtendedState(int i, int i0) {
