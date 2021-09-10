@@ -2,9 +2,12 @@ package Library;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -61,5 +64,19 @@ public class UploadImage extends javax.swing.JFrame {
             
         }
         return baos.toByteArray();
+    }
+    
+    public void byteImage(JLabel label, byte[] imgFoto){
+        try{
+            Image foto;
+            BufferedImage image;
+            ByteArrayInputStream bis = new ByteArrayInputStream(imgFoto);
+            image = ImageIO.read(bis);
+            foto = new ImageIcon(image).getImage();
+            foto = foto.getScaledInstance(160, 136, 1);
+            label.setIcon(new ImageIcon(foto));
+        } catch (IOException ex) {
+            Logger.getLogger(UploadImage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

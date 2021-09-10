@@ -4,7 +4,7 @@ package Models;
  *
  * @author jair_
  */
-public class TClientes {
+public class TClientes{
 
     private int ID;
     private String Nid;

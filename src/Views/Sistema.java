@@ -44,9 +44,9 @@ public class Sistema extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        TextField_BuscarCliente = new javax.swing.JTextField();
+        TextField_BuscarCliente1 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        TabbedPaneCliente = new javax.swing.JTabbedPane();
+        TabbedPaneCliente1 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -65,10 +65,28 @@ public class Sistema extends javax.swing.JFrame {
         LabelCliente_Direccion = new javax.swing.JLabel();
         CheckBoxCliente_Credito = new javax.swing.JCheckBox();
         jPanel8 = new javax.swing.JPanel();
+        LabelCliente_Nombre2 = new javax.swing.JLabel();
+        LabelCliente_Nombre3 = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        LabelCliente_Nombre4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        LabelCliente_Nombre5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        LabelCliente_Nombre6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        LabelCliente_Nombre7 = new javax.swing.JLabel();
+        LabelCliente_FechaPago = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        LabelCliente_Nombre8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        LabelCliente_Ticket = new javax.swing.JLabel();
+        labelReport_Pagos = new javax.swing.JLabel();
+        TextFieldCliente_Pagos = new javax.swing.JTextField();
         ButtonCliente_Agregar = new javax.swing.JButton();
         ButtonCliente_Cancelar = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        TabbedPaneCliente2 = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table_Clientes = Table_Clientes = new javax.swing.JTable(){
@@ -77,12 +95,18 @@ public class Sistema extends javax.swing.JFrame {
             }
         };
         jPanel12 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TableCliente_Report = TableCliente_Report = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false; //Disallow the editing of any cell
+            }
+        };
         LabelCliente_Nombre1 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        ButtonClientes1 = new javax.swing.JButton();
-        ButtonClientes2 = new javax.swing.JButton();
-        ButtonClientes3 = new javax.swing.JButton();
-        ButtonClientes4 = new javax.swing.JButton();
+        SpinnerPaginas_Clientes = new javax.swing.JSpinner();
+        ButtonCliente_Paginas1 = new javax.swing.JButton();
+        ButtonCliente_Paginas2 = new javax.swing.JButton();
+        ButtonCliente_Paginas3 = new javax.swing.JButton();
+        ButtonCliente_Paginas4 = new javax.swing.JButton();
         LabelCliente_Paginas = new javax.swing.JLabel();
         ButtonClientes = new javax.swing.JButton();
 
@@ -168,11 +192,11 @@ public class Sistema extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(70, 106, 124));
         jLabel4.setText("Buscar");
 
-        TextField_BuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
-        TextField_BuscarCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        TextField_BuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+        TextField_BuscarCliente1.setBackground(new java.awt.Color(255, 255, 255));
+        TextField_BuscarCliente1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TextField_BuscarCliente1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField_BuscarClienteActionPerformed(evt);
+                TextField_BuscarCliente1ActionPerformed(evt);
             }
         });
 
@@ -186,7 +210,7 @@ public class Sistema extends javax.swing.JFrame {
                 .addGap(150, 150, 150)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextField_BuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextField_BuscarCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -196,17 +220,22 @@ public class Sistema extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4)
-                    .addComponent(TextField_BuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextField_BuscarCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
 
-        TabbedPaneCliente.setBackground(new java.awt.Color(255, 102, 51));
-        TabbedPaneCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TabbedPaneCliente.setForeground(new java.awt.Color(0, 0, 0));
-        TabbedPaneCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TabbedPaneCliente1.setBackground(new java.awt.Color(255, 102, 51));
+        TabbedPaneCliente1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TabbedPaneCliente1.setForeground(new java.awt.Color(0, 0, 0));
+        TabbedPaneCliente1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TabbedPaneCliente1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TabbedPaneCliente1StateChanged(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(70, 106, 124));
@@ -369,7 +398,7 @@ public class Sistema extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelCliente_Telefono)
                             .addComponent(TextFieldCliente_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelCliente_Direccion)
                             .addComponent(TextFieldCliente_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -450,20 +479,206 @@ public class Sistema extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        TabbedPaneCliente.addTab("Registro de Clientes", jPanel7);
+        TabbedPaneCliente1.addTab("Registro de Clientes", jPanel7);
+
+        LabelCliente_Nombre2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelCliente_Nombre2.setForeground(new java.awt.Color(0, 0, 0));
+        LabelCliente_Nombre2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelCliente_Nombre2.setText("Reportes de Pago");
+
+        LabelCliente_Nombre3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelCliente_Nombre3.setForeground(new java.awt.Color(0, 0, 0));
+        LabelCliente_Nombre3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelCliente_Nombre3.setText("Nombre del Cliente");
+
+        jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        LabelCliente_Nombre4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelCliente_Nombre4.setForeground(new java.awt.Color(0, 0, 0));
+        LabelCliente_Nombre4.setText("Deuda del Cliente");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(70, 106, 124));
+        jLabel6.setText("0.00");
+
+        LabelCliente_Nombre5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelCliente_Nombre5.setForeground(new java.awt.Color(0, 0, 0));
+        LabelCliente_Nombre5.setText("Fecha de la deuda");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(70, 106, 124));
+        jLabel7.setText("--/--/--");
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LabelCliente_Nombre4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliente_Nombre5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelCliente_Nombre4)
+                    .addComponent(LabelCliente_Nombre5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        LabelCliente_Nombre6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelCliente_Nombre6.setForeground(new java.awt.Color(0, 0, 0));
+        LabelCliente_Nombre6.setText("Último Pago");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(70, 106, 124));
+        jLabel8.setText("0.00");
+
+        LabelCliente_Nombre7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelCliente_Nombre7.setForeground(new java.awt.Color(0, 0, 0));
+        LabelCliente_Nombre7.setText("Fecha de Pago");
+
+        LabelCliente_FechaPago.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelCliente_FechaPago.setForeground(new java.awt.Color(70, 106, 124));
+        LabelCliente_FechaPago.setText("--/--/--");
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LabelCliente_Nombre6, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelCliente_FechaPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliente_Nombre7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelCliente_Nombre6)
+                    .addComponent(LabelCliente_Nombre7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(LabelCliente_FechaPago))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        LabelCliente_Nombre8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelCliente_Nombre8.setForeground(new java.awt.Color(0, 0, 0));
+        LabelCliente_Nombre8.setText("Número del Último Ticket");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(70, 106, 124));
+        jLabel9.setText("Ticket:");
+
+        LabelCliente_Ticket.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelCliente_Ticket.setForeground(new java.awt.Color(70, 106, 124));
+        LabelCliente_Ticket.setText("0000000000");
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelCliente_Ticket, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LabelCliente_Nombre8))
+                .addContainerGap(184, Short.MAX_VALUE))
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LabelCliente_Nombre8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(LabelCliente_Ticket))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        labelReport_Pagos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelReport_Pagos.setForeground(new java.awt.Color(70, 106, 124));
+        labelReport_Pagos.setText("Pagos");
+
+        TextFieldCliente_Pagos.setBackground(new java.awt.Color(255, 255, 255));
+        TextFieldCliente_Pagos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TextFieldCliente_Pagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextFieldCliente_PagosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelCliente_Nombre3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LabelCliente_Nombre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelReport_Pagos)
+                            .addComponent(TextFieldCliente_Pagos, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LabelCliente_Nombre2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelCliente_Nombre3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelReport_Pagos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextFieldCliente_Pagos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        TabbedPaneCliente.addTab("Pagos", jPanel8);
+        TabbedPaneCliente1.addTab("Pagos y Reportes", jPanel8);
 
         ButtonCliente_Agregar.setBackground(new java.awt.Color(255, 102, 51));
         ButtonCliente_Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar-usuario.png"))); // NOI18N
@@ -493,7 +708,7 @@ public class Sistema extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TabbedPaneCliente)
+                .addComponent(TabbedPaneCliente1)
                 .addContainerGap())
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(103, 103, 103)
@@ -506,7 +721,7 @@ public class Sistema extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TabbedPaneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TabbedPaneCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ButtonCliente_Agregar)
@@ -517,9 +732,14 @@ public class Sistema extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 102, 51));
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
+        TabbedPaneCliente2.setBackground(new java.awt.Color(255, 102, 51));
+        TabbedPaneCliente2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TabbedPaneCliente2.setForeground(new java.awt.Color(0, 0, 0));
+        TabbedPaneCliente2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TabbedPaneCliente2StateChanged(evt);
+            }
+        });
 
         Table_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -532,6 +752,16 @@ public class Sistema extends javax.swing.JFrame {
 
             }
         ));
+        Table_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Table_ClientesMouseClicked(evt);
+            }
+        });
+        Table_Clientes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Table_ClientesKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(Table_Clientes);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -540,7 +770,7 @@ public class Sistema extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -551,70 +781,105 @@ public class Sistema extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Lista de clientes", jPanel11);
+        TabbedPaneCliente2.addTab("Lista de clientes", jPanel11);
+
+        TableCliente_Report.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        TableCliente_Report.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableCliente_ReportMouseClicked(evt);
+            }
+        });
+        TableCliente_Report.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TableCliente_ReportKeyReleased(evt);
+            }
+        });
+        jScrollPane2.setViewportView(TableCliente_Report);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 938, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Pagos y reportes", jPanel12);
+        TabbedPaneCliente2.addTab("Pagos y reportes", jPanel12);
 
         LabelCliente_Nombre1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LabelCliente_Nombre1.setForeground(new java.awt.Color(0, 0, 0));
         LabelCliente_Nombre1.setText("Registros por páginas");
 
-        ButtonClientes1.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonClientes1.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonClientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso_rapido.png"))); // NOI18N
-        ButtonClientes1.setToolTipText("");
-        ButtonClientes1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonClientes1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonClientes1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonClientes1ActionPerformed(evt);
+        SpinnerPaginas_Clientes.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                SpinnerPaginas_ClientesStateChanged(evt);
             }
         });
 
-        ButtonClientes2.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonClientes2.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonClientes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso.png"))); // NOI18N
-        ButtonClientes2.setToolTipText("");
-        ButtonClientes2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonClientes2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonClientes2.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCliente_Paginas1.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonCliente_Paginas1.setForeground(new java.awt.Color(255, 102, 0));
+        ButtonCliente_Paginas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso_rapido.png"))); // NOI18N
+        ButtonCliente_Paginas1.setToolTipText("");
+        ButtonCliente_Paginas1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonCliente_Paginas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonCliente_Paginas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonClientes2ActionPerformed(evt);
+                ButtonCliente_Paginas1ActionPerformed(evt);
             }
         });
 
-        ButtonClientes3.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonClientes3.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonClientes3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance.png"))); // NOI18N
-        ButtonClientes3.setToolTipText("");
-        ButtonClientes3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonClientes3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonClientes3.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCliente_Paginas2.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonCliente_Paginas2.setForeground(new java.awt.Color(255, 102, 0));
+        ButtonCliente_Paginas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso.png"))); // NOI18N
+        ButtonCliente_Paginas2.setToolTipText("");
+        ButtonCliente_Paginas2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonCliente_Paginas2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonCliente_Paginas2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonClientes3ActionPerformed(evt);
+                ButtonCliente_Paginas2ActionPerformed(evt);
             }
         });
 
-        ButtonClientes4.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonClientes4.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonClientes4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance-rapido.png"))); // NOI18N
-        ButtonClientes4.setToolTipText("");
-        ButtonClientes4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonClientes4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonClientes4.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCliente_Paginas3.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonCliente_Paginas3.setForeground(new java.awt.Color(255, 102, 0));
+        ButtonCliente_Paginas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance.png"))); // NOI18N
+        ButtonCliente_Paginas3.setToolTipText("");
+        ButtonCliente_Paginas3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonCliente_Paginas3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonCliente_Paginas3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonClientes4ActionPerformed(evt);
+                ButtonCliente_Paginas3ActionPerformed(evt);
+            }
+        });
+
+        ButtonCliente_Paginas4.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonCliente_Paginas4.setForeground(new java.awt.Color(255, 102, 0));
+        ButtonCliente_Paginas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance-rapido.png"))); // NOI18N
+        ButtonCliente_Paginas4.setToolTipText("");
+        ButtonCliente_Paginas4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonCliente_Paginas4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonCliente_Paginas4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCliente_Paginas4ActionPerformed(evt);
             }
         });
 
@@ -631,21 +896,21 @@ public class Sistema extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1)
+                    .addComponent(TabbedPaneCliente2)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelCliente_Nombre1)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SpinnerPaginas_Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(188, 188, 188)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(ButtonClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ButtonCliente_Paginas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonClientes2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ButtonCliente_Paginas2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonClientes3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ButtonCliente_Paginas3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonClientes4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(ButtonCliente_Paginas4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(LabelCliente_Paginas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(308, 308, 308)))
                 .addContainerGap())
@@ -654,7 +919,7 @@ public class Sistema extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TabbedPaneCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
@@ -665,12 +930,12 @@ public class Sistema extends javax.swing.JFrame {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ButtonClientes1, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addComponent(ButtonClientes2, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(ButtonClientes3)))
-                    .addComponent(ButtonClientes4))
-                .addContainerGap(33, Short.MAX_VALUE))
+                                    .addComponent(SpinnerPaginas_Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ButtonCliente_Paginas1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(ButtonCliente_Paginas2, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(ButtonCliente_Paginas3)))
+                    .addComponent(ButtonCliente_Paginas4))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -742,10 +1007,10 @@ public class Sistema extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-        
-        // <editor-fold defaultstate="collapsed" desc="CODIGO DE CLIENTE"> 
+
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE CLIENTE"> 
     private ClientesVM cliente;
-    
+
     private void ButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonClientesActionPerformed
         // TODO add your handling code here:
         ArrayList<JLabel> label = new ArrayList();
@@ -757,7 +1022,7 @@ public class Sistema extends javax.swing.JFrame {
         label.add(LabelCliente_Direccion);
         label.add(Label_ImagenCliente);
         label.add(LabelCliente_Paginas);
-        
+
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldCliente_NoId);
         textField.add(TextFieldCliente_Nombre);
@@ -765,18 +1030,18 @@ public class Sistema extends javax.swing.JFrame {
         textField.add(TextFieldCliente_Email);
         textField.add(TextFieldCliente_Telefono);
         textField.add(TextFieldCliente_Direccion);
-        
+
         Object[] objects = {
             CheckBoxCliente_Credito,
             Table_Clientes,
-        };
-        cliente = new ClientesVM(objects ,label, textField);
+            SpinnerPaginas_Clientes};
+        cliente = new ClientesVM(objects, label, textField);
         TabbedPanePrincipal.setSelectedIndex(1);
     }//GEN-LAST:event_ButtonClientesActionPerformed
 
-    private void TextField_BuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_BuscarClienteActionPerformed
+    private void TextFieldCliente_PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_PagosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_BuscarClienteActionPerformed
+    }//GEN-LAST:event_TextFieldCliente_PagosActionPerformed
 
     private void TextFieldCliente_NoIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdActionPerformed
         // TODO add your handling code here:
@@ -819,27 +1084,26 @@ public class Sistema extends javax.swing.JFrame {
 
     private void TextFieldCliente_NoIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyReleased
         // TODO add your handling code here:
-        if(TextFieldCliente_NoId.getText().equals("")){
-            LabelCliente_NoId.setForeground(new Color(102,102,102));
-        }else{
+        if (TextFieldCliente_NoId.getText().equals("")) {
+            LabelCliente_NoId.setForeground(new Color(102, 102, 102));
+        } else {
             LabelCliente_NoId.setText("No. Id");
-            LabelCliente_NoId.setForeground(new Color(0,153,51));
+            LabelCliente_NoId.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldCliente_NoIdKeyReleased
 
     private void TextFieldCliente_NoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyTyped
         // TODO add your handling code here:
         Objetos.eventos.numberKeyPress(evt);
-        
     }//GEN-LAST:event_TextFieldCliente_NoIdKeyTyped
 
     private void TextFieldCliente_NombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NombreKeyReleased
         // TODO add your handling code here:
-        if(TextFieldCliente_Nombre.getText().equals("")){
-            LabelCliente_Nombre.setForeground(new Color(102,102,102));
-        }else{
+        if (TextFieldCliente_Nombre.getText().equals("")) {
+            LabelCliente_Nombre.setForeground(new Color(102, 102, 102));
+        } else {
             LabelCliente_Nombre.setText("Nombre");
-            LabelCliente_Nombre.setForeground(new Color(0,153,51));
+            LabelCliente_Nombre.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldCliente_NombreKeyReleased
 
@@ -850,11 +1114,11 @@ public class Sistema extends javax.swing.JFrame {
 
     private void TextFieldCliente_ApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_ApellidoKeyReleased
         // TODO add your handling code here:
-        if(TextFieldCliente_Apellido.getText().equals("")){
-            LabelCliente_Apellido.setForeground(new Color(102,102,102));
-        }else{
+        if (TextFieldCliente_Apellido.getText().equals("")) {
+            LabelCliente_Apellido.setForeground(new Color(102, 102, 102));
+        } else {
             LabelCliente_Apellido.setText("Apellido");
-            LabelCliente_Apellido.setForeground(new Color(0,153,51));
+            LabelCliente_Apellido.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldCliente_ApellidoKeyReleased
 
@@ -865,21 +1129,21 @@ public class Sistema extends javax.swing.JFrame {
 
     private void TextFieldCliente_EmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_EmailKeyReleased
         // TODO add your handling code here:
-        if(TextFieldCliente_Email.getText().equals("")){
-            LabelCliente_Email.setForeground(new Color(102,102,102));
-        }else{
+        if (TextFieldCliente_Email.getText().equals("")) {
+            LabelCliente_Email.setForeground(new Color(102, 102, 102));
+        } else {
             LabelCliente_Email.setText("Email");
-            LabelCliente_Email.setForeground(new Color(0,153,51));
+            LabelCliente_Email.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldCliente_EmailKeyReleased
 
     private void TextFieldCliente_TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_TelefonoKeyReleased
         // TODO add your handling code here:
-        if(TextFieldCliente_Telefono.getText().equals("")){
-            LabelCliente_Telefono.setForeground(new Color(102,102,102));
-        }else{
+        if (TextFieldCliente_Telefono.getText().equals("")) {
+            LabelCliente_Telefono.setForeground(new Color(102, 102, 102));
+        } else {
             LabelCliente_Telefono.setText("Telefono");
-            LabelCliente_Telefono.setForeground(new Color(0,153,51));
+            LabelCliente_Telefono.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldCliente_TelefonoKeyReleased
 
@@ -890,31 +1154,91 @@ public class Sistema extends javax.swing.JFrame {
 
     private void TextFieldCliente_DireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_DireccionKeyReleased
         // TODO add your handling code here:
-        if(TextFieldCliente_Direccion.getText().equals("")){
-            LabelCliente_Direccion.setForeground(new Color(102,102,102));
-        }else{
+        if (TextFieldCliente_Direccion.getText().equals("")) {
+            LabelCliente_Direccion.setForeground(new Color(102, 102, 102));
+        } else {
             LabelCliente_Direccion.setText("Direccion");
-            LabelCliente_Direccion.setForeground(new Color(0,153,51));
+            LabelCliente_Direccion.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldCliente_DireccionKeyReleased
 
-    private void ButtonClientes4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonClientes4ActionPerformed
+    private void ButtonCliente_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonClientes4ActionPerformed
+        cliente.Paginador("Ultimo");
 
-    private void ButtonClientes3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonClientes3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonClientes3ActionPerformed
+    }//GEN-LAST:event_ButtonCliente_Paginas4ActionPerformed
 
-    private void ButtonClientes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonClientes2ActionPerformed
+    private void ButtonCliente_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonClientes2ActionPerformed
+        cliente.Paginador("Siguiente");
 
-    private void ButtonClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonClientes1ActionPerformed
+    }//GEN-LAST:event_ButtonCliente_Paginas3ActionPerformed
+
+    private void ButtonCliente_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonClientes1ActionPerformed
+        cliente.Paginador("Anterior");
+
+    }//GEN-LAST:event_ButtonCliente_Paginas2ActionPerformed
+
+    private void ButtonCliente_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas1ActionPerformed
+        // TODO add your handling code here:
+        cliente.Paginador("Primero");
+    }//GEN-LAST:event_ButtonCliente_Paginas1ActionPerformed
+
+    private void SpinnerPaginas_ClientesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_ClientesStateChanged
+        // TODO add your handling code here:
+        cliente.Registro_Paginas();
+    }//GEN-LAST:event_SpinnerPaginas_ClientesStateChanged
+
+    private void Table_ClientesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_ClientesKeyReleased
+        // TODO add your handling code here:
+        if (Table_Clientes.getSelectedRows().length > 0) {
+            cliente.getCliente();
+        }
+    }//GEN-LAST:event_Table_ClientesKeyReleased
+
+    private void Table_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ClientesMouseClicked
+        // TODO add your handling code here:
+        if (Table_Clientes.getSelectedRows().length > 0) {
+            cliente.getCliente();
+        }
+    }//GEN-LAST:event_Table_ClientesMouseClicked
+
+    private void TabbedPaneCliente1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente1StateChanged
+        // TODO add your handling code here:
+        if (TabbedPaneCliente1.getSelectedIndex() == 0) {
+            if (TabbedPaneCliente2.getSelectedIndex() > 0) {
+                TabbedPaneCliente2.setSelectedIndex(0);
+            }
+        } else {
+            TabbedPaneCliente2.setSelectedIndex(1);
+        }
+    }//GEN-LAST:event_TabbedPaneCliente1StateChanged
+
+    private void TabbedPaneCliente2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente2StateChanged
+        // TODO add your handling code here:
+        if (TabbedPaneCliente2.getSelectedIndex() == 0) {
+            if (TabbedPaneCliente1.getSelectedIndex() > 0) {
+                TabbedPaneCliente1.setSelectedIndex(0);
+            }
+        } else {
+            TabbedPaneCliente1.setSelectedIndex(1);
+        }
+    }//GEN-LAST:event_TabbedPaneCliente2StateChanged
+
+    private void TextField_BuscarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_BuscarCliente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_BuscarCliente1ActionPerformed
+
+    private void TableCliente_ReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_ReportMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TableCliente_ReportMouseClicked
+
+    private void TableCliente_ReportKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_ReportKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TableCliente_ReportKeyReleased
     // </editor-fold>
-    
+
     /**
      * @param args the command line arguments
      */
@@ -953,40 +1277,60 @@ public class Sistema extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCliente_Agregar;
     private javax.swing.JButton ButtonCliente_Cancelar;
+    private javax.swing.JButton ButtonCliente_Paginas1;
+    private javax.swing.JButton ButtonCliente_Paginas2;
+    private javax.swing.JButton ButtonCliente_Paginas3;
+    private javax.swing.JButton ButtonCliente_Paginas4;
     private javax.swing.JButton ButtonClientes;
-    private javax.swing.JButton ButtonClientes1;
-    private javax.swing.JButton ButtonClientes2;
-    private javax.swing.JButton ButtonClientes3;
-    private javax.swing.JButton ButtonClientes4;
     private javax.swing.JCheckBox CheckBoxCliente_Credito;
     private javax.swing.JLabel LabelCliente_Apellido;
     private javax.swing.JLabel LabelCliente_Direccion;
     private javax.swing.JLabel LabelCliente_Email;
+    private javax.swing.JLabel LabelCliente_FechaPago;
     private javax.swing.JLabel LabelCliente_NoId;
     private javax.swing.JLabel LabelCliente_Nombre;
     private javax.swing.JLabel LabelCliente_Nombre1;
+    private javax.swing.JLabel LabelCliente_Nombre2;
+    private javax.swing.JLabel LabelCliente_Nombre3;
+    private javax.swing.JLabel LabelCliente_Nombre4;
+    private javax.swing.JLabel LabelCliente_Nombre5;
+    private javax.swing.JLabel LabelCliente_Nombre6;
+    private javax.swing.JLabel LabelCliente_Nombre7;
+    private javax.swing.JLabel LabelCliente_Nombre8;
     private javax.swing.JLabel LabelCliente_Paginas;
     private javax.swing.JLabel LabelCliente_Telefono;
+    private javax.swing.JLabel LabelCliente_Ticket;
     private javax.swing.JLabel Label_ImagenCliente;
-    private javax.swing.JTabbedPane TabbedPaneCliente;
+    private javax.swing.JSpinner SpinnerPaginas_Clientes;
+    private javax.swing.JTabbedPane TabbedPaneCliente1;
+    private javax.swing.JTabbedPane TabbedPaneCliente2;
     private javax.swing.JTabbedPane TabbedPanePrincipal;
+    private javax.swing.JTable TableCliente_Report;
     private javax.swing.JTable Table_Clientes;
     private javax.swing.JTextField TextFieldCliente_Apellido;
     private javax.swing.JTextField TextFieldCliente_Direccion;
     private javax.swing.JTextField TextFieldCliente_Email;
     private javax.swing.JTextField TextFieldCliente_NoId;
     private javax.swing.JTextField TextFieldCliente_Nombre;
+    private javax.swing.JTextField TextFieldCliente_Pagos;
     private javax.swing.JTextField TextFieldCliente_Telefono;
-    private javax.swing.JTextField TextField_BuscarCliente;
+    private javax.swing.JTextField TextField_BuscarCliente1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -996,8 +1340,8 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelReport_Pagos;
     // End of variables declaration//GEN-END:variables
 
     public void setExtendedState(int i, int i0) {

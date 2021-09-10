@@ -3,6 +3,7 @@ package ViewModels;
 import Conexion.Consult;
 import Library.*;
 import Models.TClientes;
+import Models.TReportes_clientes;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,8 @@ public class ClientesVM extends Consult {
     private final JCheckBox _checkBoxCredito;
     private final JTable _tableCliente;
     private DefaultTableModel modelo1;
+    private DefaultTableModel modelo2;
+    private JSpinner _spinnerPaginas;
     private int _idCliente = 0;
     private int _reg_por_pagina = 10, _num_pagina = 1;
     private int seccion;
@@ -31,10 +34,22 @@ public class ClientesVM extends Consult {
         _textField = textField;
         _checkBoxCredito = (JCheckBox) objects[0];
         _tableCliente = (JTable) objects[1];
+        _spinnerPaginas = (JSpinner) objects[2];
         restablecer();
+        reportesClientes();
     }
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE REGISTRAR CLIENTE"> 
+    
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE PAGOS Y REPORTES"> 
+    public void SearchReportes(String valor){
+        String[] titulos ={"ID","Nombre","Apellido","Deuda Actual", "Fecha Deuda", "Ultimo Pago","Fecha Pago", "Ticket", "Fecha Limite"};
+        modelo2 = new DefaultTableModel(null, titulos);
+        int inicio = (_num_pagina - 1 ) * _reg_por_pagina;
+        List<TReportes_clientes> reportFilter;
+    }
+    // </editor-fold>
+
     public void RegistrarCliente() {
         if (_textField.get(0).getText().equals("")) {
             _label.get(0).setText("Ingrese el No. Id");
@@ -80,27 +95,69 @@ public class ClientesVM extends Consult {
                                             filter(u -> u.getNid().equals(_textField.get(3).getText())).
                                             collect(Collectors.toList());
                                     count += listNoId.size();
-                                    switch (_accion) {
-                                        case "insert":
-                                            try {
-                                            if (count == 0) {
-                                                Insert();
-                                            } else {
-                                                if (!listEmail.isEmpty()) {
-                                                    _label.get(3).setText("El Email ya está registrado");
-                                                    _label.get(3).setForeground(Color.RED);
-                                                    _label.get(3).requestFocus();
+                                    try {
+                                        switch (_accion) {
+                                            case "insert":
+                                                if (count == 0) {
+                                                    SaveData();
+                                                } else {
+                                                    if (!listEmail.isEmpty()) {
+                                                        _label.get(3).setText("El Email ya está registrado");
+                                                        _label.get(3).setForeground(Color.RED);
+                                                        _label.get(3).requestFocus();
+                                                    }
+                                                    if (!listNoId.isEmpty()) {
+                                                        _label.get(0).setText("El NoId ya está registrado");
+                                                        _label.get(0).setForeground(Color.RED);
+                                                        _label.get(0).requestFocus();
+                                                    }
                                                 }
-                                                if (!listNoId.isEmpty()) {
-                                                    _label.get(0).setText("El NoId ya está registrado");
-                                                    _label.get(0).setForeground(Color.RED);
-                                                    _label.get(0).requestFocus();
+                                                break;
+                                            case "update":
+                                                if (count == 2) {
+                                                    if (listEmail.get(0).getID() == _idCliente && listNoId.get(0).getID() == _idCliente) {
+                                                        SaveData();
+                                                    } else {
+                                                        if (listNoId.get(0).getID() != _idCliente) {
+                                                            _label.get(0).setText("El NoId ya está registrado");
+                                                            _label.get(0).setForeground(Color.RED);
+                                                            _label.get(0).requestFocus();
+                                                        }
+                                                        if (listEmail.get(3).getID() != _idCliente) {
+                                                            _label.get(3).setText("El Email ya está registrado");
+                                                            _label.get(3).setForeground(Color.RED);
+                                                            _label.get(3).requestFocus();
+                                                        }
+                                                    }
+                                                } else {
+                                                    if (count == 0) {
+                                                        SaveData();
+                                                    } else {
+                                                        if (!listNoId.isEmpty()) {
+                                                            if (listNoId.get(0).getID() == _idCliente) {
+                                                                SaveData();
+                                                            } else {
+                                                                _label.get(0).setText("El NoId ya está registrado");
+                                                                _label.get(0).setForeground(Color.RED);
+                                                                _label.get(0).requestFocus();
+                                                            }
+                                                        }
+                                                        if (!listEmail.isEmpty()) {
+                                                            if (listEmail.get(0).getID() == _idCliente) {
+                                                                SaveData();
+                                                            } else {
+                                                                _label.get(3).setText("El Email ya está registrado");
+                                                                _label.get(3).setForeground(Color.RED);
+                                                                _label.get(3).requestFocus();
+                                                            }
+                                                        }
+                                                    }
                                                 }
-                                            }
-                                        } catch (SQLException ex) {
-                                            JOptionPane.showMessageDialog(null, ex);
+                                                break;
                                         }
-                                        break;
+                                    } catch (SQLException ex) {
+                                        JOptionPane.showMessageDialog(null, ex);
+
                                     }
                                 }
                             }
@@ -111,7 +168,7 @@ public class ClientesVM extends Consult {
         }
     }
 
-    private void Insert() throws SQLException {
+    private void SaveData() throws SQLException {
         try {
             final QueryRunner qr = new QueryRunner(true);
             getConn().setAutoCommit(false);
@@ -120,33 +177,51 @@ public class ClientesVM extends Consult {
             if (image == null) {
                 image = Objetos.uploadImage.getTransFoto(_label.get(6));
             }
-            String sqlCliente = "INSERT INTO tclientes(Nid,Nombre, Apellido,Email,"
-                    + " Telefono,Direccion,Credito,Fecha,Imagen) VALUES (?,?,?,?,?,?,?,?,?)";
-            Object[] dataCliente = {
-                _textField.get(0).getText(),
-                _textField.get(1).getText(),
-                _textField.get(2).getText(),
-                _textField.get(3).getText(),
-                _textField.get(4).getText(),
-                _textField.get(5).getText(),
-                _checkBoxCredito.isSelected(), //tinyInt
-                new Calendario().getFecha(),
-                image,};
+            switch (_accion) {
+                case "insert":
+                    String sqlCliente1 = "INSERT INTO tclientes(Nid,Nombre, Apellido,Email,"
+                            + " Telefono,Direccion,Credito,Fecha,Imagen) VALUES (?,?,?,?,?,?,?,?,?)";
+                    Object[] dataCliente1 = {
+                        _textField.get(0).getText(),
+                        _textField.get(1).getText(),
+                        _textField.get(2).getText(),
+                        _textField.get(3).getText(),
+                        _textField.get(4).getText(),
+                        _textField.get(5).getText(),
+                        _checkBoxCredito.isSelected(), //tinyInt
+                        new Calendario().getFecha(),
+                        image,};
 
-            qr.insert(getConn(), sqlCliente, new ColumnListHandler(), dataCliente);
-            String sqlReport = "INSERT INTO Treportes_clientes (DeudaActual,FechaDeuda,"
-                    + " UltimoPago,FechaPago,Ticket,FechaLimite,IdCliente)"
-                    + " VALUES (?,?,?,?,?,?,?)";
-            List<TClientes> cliente = clientes();
-            Object[] dataReport = {
-                0,
-                "--/--/--",
-                0,
-                "--/--/--",
-                "0000000000",
-                "--/--/--",
-                cliente.get(cliente.size() - 1).getID(),};
-            qr.insert(getConn(), sqlReport, new ColumnListHandler(), dataReport);
+                    qr.insert(getConn(), sqlCliente1, new ColumnListHandler(), dataCliente1);
+                    String sqlReport = "INSERT INTO Treportes_clientes (DeudaActual,FechaDeuda,"
+                            + " UltimoPago,FechaPago,Ticket,FechaLimite,IdCliente)"
+                            + " VALUES (?,?,?,?,?,?,?)";
+                    List<TClientes> cliente = clientes();
+                    Object[] dataReport = {
+                        0,
+                        "--/--/--",
+                        0,
+                        "--/--/--",
+                        "0000000000",
+                        "--/--/--",
+                        cliente.get(cliente.size() - 1).getID(),};
+                    qr.insert(getConn(), sqlReport, new ColumnListHandler(), dataReport);
+                    break;
+                case "update":
+                    Object[] dataCliente2 = {
+                        _textField.get(0).getText(),
+                        _textField.get(1).getText(),
+                        _textField.get(2).getText(),
+                        _textField.get(3).getText(),
+                        _textField.get(4).getText(),
+                        _textField.get(5).getText(),
+                        _checkBoxCredito.isSelected(),
+                        image,};
+                    String sqlCliente2 = "UPDATE tclientes SET Nid = ?,Nombre = ?, Apellido = ?,Email = ?,"
+                            + " Telefono = ?,Direccion = ?,Credito = ?,Imagen = ? WHERE ID =" + _idCliente;
+                    qr.update(getConn(), sqlCliente2, dataCliente2);
+                    break;
+            }
             getConn().commit();
             restablecer();
         } catch (SQLException ex) {
@@ -198,6 +273,20 @@ public class ClientesVM extends Consult {
         _tableCliente.getColumnModel().getColumn(7).setCellRenderer(new Render_CheckBox());
     }
 
+    public void getCliente() {
+        _accion = "update";
+        int filas = _tableCliente.getSelectedRow();
+        _idCliente = (Integer) modelo1.getValueAt(filas, 0);
+        _textField.get(0).setText((String) modelo1.getValueAt(filas, 1));
+        _textField.get(1).setText((String) modelo1.getValueAt(filas, 2));
+        _textField.get(2).setText((String) modelo1.getValueAt(filas, 3));
+        _textField.get(3).setText((String) modelo1.getValueAt(filas, 4));
+        _textField.get(4).setText((String) modelo1.getValueAt(filas, 5));
+        _textField.get(5).setText((String) modelo1.getValueAt(filas, 6));
+        _checkBoxCredito.setSelected((Boolean) modelo1.getValueAt(filas, 7));
+        Objetos.uploadImage.byteImage(_label.get(6), (byte[]) modelo1.getValueAt(filas, 8));
+    }
+
     public final void restablecer() {
         seccion = 1;
         _accion = "insert";
@@ -223,19 +312,76 @@ public class ClientesVM extends Consult {
         _label.get(5).setForeground(new Color(102, 102, 102));
         _label.get(6).setIcon(new ImageIcon(getClass().getClassLoader()
                 .getResource("Resources/agregar_imagen.png")));
-        _paginadorClientes = new Paginador<TClientes>(clientes(), _label.get(7), _reg_por_pagina);
+        listClientes = clientes();
+        if (!listClientes.isEmpty()) {
+            _paginadorClientes = new Paginador<>(listClientes, _label.get(7), _reg_por_pagina);
+
+        }
+        SpinnerNumberModel model = new SpinnerNumberModel(
+                new Integer(10), // Dato visualizado al inicio en el spinner 
+                new Integer(1), // Límite inferior 
+                new Integer(100), // Límite superior 
+                new Integer(1) // incremento-decremento 
+        );
+        _spinnerPaginas.setModel(model);
         SearchClientes("");
     }
 // </editor-fold>
-    
-    public void Paginador(String metodo){
-        switch(metodo){
+    private List<TClientes> listClientes;
+
+    public void Paginador(String metodo) {
+        switch (metodo) {
             case "Primero":
-                    switch(seccion){
-                        case 1: 
+                switch (seccion) {
+                    case 1:
+                        if (!listClientes.isEmpty()) {
                             _num_pagina = _paginadorClientes.primero();
-                    }
+                        }
+                        break;
+                }
                 break;
+            case "Anterior":
+                switch (seccion) {
+                    case 1:
+                        if (!listClientes.isEmpty()) {
+                            _num_pagina = _paginadorClientes.anterior();
+                        }
+                        break;
+                }
+                break;
+            case "Siguiente":
+                switch (seccion) {
+                    case 1:
+                        if (!listClientes.isEmpty()) {
+                            _num_pagina = _paginadorClientes.siguiente();
+                        }
+                        break;
+                }
+                break;
+            case "Ultimo":
+                switch (seccion) {
+                    case 1:
+                        if (!listClientes.isEmpty()) {
+                            _num_pagina = _paginadorClientes.ultimo();
+                        }
+                        break;
+                }
+                break;
+        }
+        switch (seccion) {
+            case 1:
+                SearchClientes("");
+                break;
+        }
+    }
+
+    public void Registro_Paginas() {
+        _num_pagina = 1;
+        Number caja = (Number) _spinnerPaginas.getValue();
+        _reg_por_pagina = caja.intValue();
+        if (!listClientes.isEmpty()) {
+            _paginadorClientes = new Paginador<>(listClientes, _label.get(7), _reg_por_pagina);
+            SearchClientes("");
         }
     }
 }
