@@ -16,18 +16,21 @@ import org.apache.commons.dbutils.handlers.ColumnListHandler;
 
 public class ClientesVM extends Consult {
 
-    private String _accion = "insert";
+    private String _accion = "insert", _mony;
     private final ArrayList<JLabel> _label;
     private final ArrayList<JTextField> _textField;
     private final JCheckBox _checkBoxCredito;
     private final JTable _tableCliente;
+    private final JTable _tableReporte;
     private DefaultTableModel modelo1;
     private DefaultTableModel modelo2;
     private JSpinner _spinnerPaginas;
     private int _idCliente = 0;
     private int _reg_por_pagina = 10, _num_pagina = 1;
-    private int seccion;
+    public int seccion;
+    private final FormatDecimal _format;
     private Paginador<TClientes> _paginadorClientes;
+    private Paginador<TReportes_clientes> _paginadorReportes;
 
     public ClientesVM(Object[] objects, ArrayList<JLabel> label, ArrayList<JTextField> textField) {
         _label = label;
@@ -35,21 +38,13 @@ public class ClientesVM extends Consult {
         _checkBoxCredito = (JCheckBox) objects[0];
         _tableCliente = (JTable) objects[1];
         _spinnerPaginas = (JSpinner) objects[2];
+        _tableReporte = (JTable) objects[3];
+        _format = new FormatDecimal();
         restablecer();
-        reportesClientes();
+        restablecerReport();
     }
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE REGISTRAR CLIENTE"> 
-    
-    // <editor-fold defaultstate="collapsed" desc="CODIGO DE PAGOS Y REPORTES"> 
-    public void SearchReportes(String valor){
-        String[] titulos ={"ID","Nombre","Apellido","Deuda Actual", "Fecha Deuda", "Ultimo Pago","Fecha Pago", "Ticket", "Fecha Limite"};
-        modelo2 = new DefaultTableModel(null, titulos);
-        int inicio = (_num_pagina - 1 ) * _reg_por_pagina;
-        List<TReportes_clientes> reportFilter;
-    }
-    // </editor-fold>
-
     public void RegistrarCliente() {
         if (_textField.get(0).getText().equals("")) {
             _label.get(0).setText("Ingrese el No. Id");
@@ -327,7 +322,73 @@ public class ClientesVM extends Consult {
         SearchClientes("");
     }
 // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE PAGOS Y REPORTES"> 
+    public void SearchReportes(String valor) {
+        String[] titulos = {"ID", "No. ID", "Nombre", "Apellido", "Deuda Actual", "Fecha Deuda", "Ultimo Pago", "Fecha Pago", "Ticket", "Fecha Limite"};
+        modelo2 = new DefaultTableModel(null, titulos);
+        int inicio = (_num_pagina - 1) * _reg_por_pagina;
+        List<TReportes_clientes> reportFilter;
+        if (valor.equals("")) {
+            reportFilter = reportesClientes().stream()
+                    .skip(inicio).limit(_reg_por_pagina)
+                    .collect(Collectors.toList());
+        } else {
+            reportFilter = reportesClientes().stream().filter(C -> C.getNid()
+                    .startsWith(valor) || C.getNombre().startsWith(valor)
+                    || C.getApellido().startsWith(valor))
+                    .skip(inicio).limit(_reg_por_pagina)
+                    .collect(Collectors.toList());
+        }
+        if (!reportFilter.isEmpty()) {
+            reportFilter.forEach(item -> {
+                Object[] registros = {
+                    item.getIdReporte(),
+                    item.getNid(),
+                    item.getNombre(),
+                    item.getApellido(),
+                    item.getDeudaActual(),
+                    item.getFechaDeuda(),
+                    item.getUltimoPago(),
+                    item.getFechaPago(),
+                    item.getTicket(),
+                    item.getFechaLimite(),};
+                modelo2.addRow(registros);
+            });
+        }
+        _tableReporte.setModel(modelo2);
+        _tableReporte.setRowHeight(30);
+        _tableReporte.getColumnModel().getColumn(0).setMaxWidth(0);
+        _tableReporte.getColumnModel().getColumn(0).setMinWidth(0);
+        _tableReporte.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+
+    public void getReportCliente() {
+        int filas = _tableReporte.getSelectedRow();
+        _idCliente = (Integer) modelo2.getValueAt(filas, 0);
+        String nombre = (String) modelo2.getValueAt(filas, 2);
+        String apellido = (String) modelo2.getValueAt(filas, 3);
+        
+        _label.get(8).setText(nombre + " " + apellido);
+        _label.get(9).setText(_mony + _format.decimal((Double) modelo2.getValueAt(filas, 4)));
+        _label.get(10).setText(((String) modelo2.getValueAt(filas, 5)));
+        _label.get(11).setText(_mony + _format.decimal((Double) modelo2.getValueAt(filas, 6)));
+        _label.get(12).setText(((String) modelo2.getValueAt(filas, 7)));
+        _label.get(13).setText(((String) modelo2.getValueAt(filas, 8)));
+    }
+
+    public final void restablecerReport() {
+        listReportes = reportesClientes();
+        if (!listReportes.isEmpty()) {
+            _paginadorReportes = new Paginador<>(listReportes,
+                    _label.get(7), _reg_por_pagina);
+        }
+        SearchReportes("");
+    }
+// </editor-fold>
+
     private List<TClientes> listClientes;
+    private List<TReportes_clientes> listReportes;
 
     public void Paginador(String metodo) {
         switch (metodo) {
@@ -338,6 +399,12 @@ public class ClientesVM extends Consult {
                             _num_pagina = _paginadorClientes.primero();
                         }
                         break;
+                    case 2:
+                        if (!listReportes.isEmpty()) {
+                            _num_pagina = _paginadorReportes.primero();
+                        }
+                        break;
+
                 }
                 break;
             case "Anterior":
@@ -345,6 +412,11 @@ public class ClientesVM extends Consult {
                     case 1:
                         if (!listClientes.isEmpty()) {
                             _num_pagina = _paginadorClientes.anterior();
+                        }
+                        break;
+                    case 2:
+                        if (!listReportes.isEmpty()) {
+                            _num_pagina = _paginadorReportes.anterior();
                         }
                         break;
                 }
@@ -356,6 +428,11 @@ public class ClientesVM extends Consult {
                             _num_pagina = _paginadorClientes.siguiente();
                         }
                         break;
+                    case 2:
+                        if (!listReportes.isEmpty()) {
+                            _num_pagina = _paginadorReportes.siguiente();
+                        }
+                        break;
                 }
                 break;
             case "Ultimo":
@@ -365,12 +442,20 @@ public class ClientesVM extends Consult {
                             _num_pagina = _paginadorClientes.ultimo();
                         }
                         break;
+                    case 2:
+                        if (!listReportes.isEmpty()) {
+                            _num_pagina = _paginadorReportes.ultimo();
+                        }
+                        break;
                 }
                 break;
         }
         switch (seccion) {
             case 1:
                 SearchClientes("");
+                break;
+            case 2:
+                SearchReportes("");
                 break;
         }
     }
@@ -379,9 +464,19 @@ public class ClientesVM extends Consult {
         _num_pagina = 1;
         Number caja = (Number) _spinnerPaginas.getValue();
         _reg_por_pagina = caja.intValue();
-        if (!listClientes.isEmpty()) {
-            _paginadorClientes = new Paginador<>(listClientes, _label.get(7), _reg_por_pagina);
-            SearchClientes("");
+        switch (seccion) {
+            case 1:
+                if (!listClientes.isEmpty()) {
+                    _paginadorClientes = new Paginador<>(listClientes, _label.get(7), _reg_por_pagina);
+                }
+                SearchClientes("");
+                break;
+            case 2:
+                if (!listReportes.isEmpty()) {
+                    _paginadorReportes = new Paginador<>(listReportes, _label.get(7), _reg_por_pagina);
+                }
+                SearchReportes("");
+                break;
         }
     }
 }
