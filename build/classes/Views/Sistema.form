@@ -359,8 +359,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="TabbedPaneCliente1" min="-2" pref="435" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TabbedPaneCliente1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="ButtonCliente_Agregar" min="-2" max="-2" attributes="0"/>
                               <Component id="ButtonCliente_Cancelar" min="-2" max="-2" attributes="0"/>
@@ -519,7 +519,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="CheckBoxCliente_Credito" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                                  <EmptySpace pref="23" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -767,21 +767,20 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jPanel13" alignment="1" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="LabelReporte_Nombre" max="32767" attributes="0"/>
-                                              <Component id="LabelReporte_Titulo" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jPanel14" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jPanel15" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jPanel14" alignment="1" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="LabelCliente_Pagos" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="TextFieldCliente_Pagos" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                                              <Component id="LabelReporte_Nombre" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="LabelCliente_Pagos" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="TextFieldCliente_Pagos" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -791,11 +790,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="LabelReporte_Titulo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="LabelReporte_Nombre" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jPanel13" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -804,24 +801,12 @@
                                   <Component id="LabelCliente_Pagos" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="TextFieldCliente_Pagos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="LabelReporte_Titulo">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="14" style="1"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="Reportes de Pago"/>
-                          </Properties>
-                        </Component>
                         <Component class="javax.swing.JLabel" name="LabelReporte_Nombre">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -846,16 +831,35 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="LabelCliente_Nombre4" max="32767" attributes="0"/>
-                                          <Component id="LabelCliente_Deuda" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="LabelCliente_FechaDeuda" alignment="1" min="-2" pref="118" max="-2" attributes="0"/>
-                                          <Component id="LabelCliente_Nombre5" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_Deuda" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="LabelCliente_Nombre4" max="32767" attributes="0"/>
+                                          <Component id="LabelCliente_Nombre7" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="LabelCliente_FechaPago" min="-2" pref="137" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="LabelCliente_CuotasMes" min="-2" pref="118" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="LabelCliente_Nombre9" alignment="0" pref="110" max="32767" attributes="0"/>
+                                                  <Component id="LabelCliente_Nombre6" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="LabelCliente_Pago" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="LabelCliente_Ticket" max="32767" attributes="0"/>
+                                                  <Component id="jLabel9" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -867,12 +871,24 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="LabelCliente_Nombre4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelCliente_Nombre5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_Nombre6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="LabelCliente_Pago" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_Ticket" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="LabelCliente_Deuda" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelCliente_FechaDeuda" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="LabelCliente_Nombre7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_Nombre9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="LabelCliente_FechaPago" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_CuotasMes" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -888,10 +904,10 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="Deuda del Cliente"/>
+                                <Property name="text" type="java.lang.String" value="Deuda"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="LabelCliente_Deuda">
+                            <Component class="javax.swing.JLabel" name="LabelCliente_CuotasMes">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Segoe UI" size="18" style="1"/>
@@ -902,76 +918,6 @@
                                 <Property name="text" type="java.lang.String" value="0.00"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="LabelCliente_Nombre5">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Segoe UI" size="14" style="1"/>
-                                </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="0" green="0" red="0" type="rgb"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Fecha de la deuda"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="LabelCliente_FechaDeuda">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Segoe UI" size="18" style="1"/>
-                                </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="7c" green="6a" red="46" type="rgb"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="--/--/--"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel14">
-                          <Properties>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                <BevelBorder/>
-                              </Border>
-                            </Property>
-                          </Properties>
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="LabelCliente_Nombre6" alignment="0" pref="118" max="32767" attributes="0"/>
-                                          <Component id="LabelCliente_Pago" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="LabelCliente_FechaPago" alignment="1" min="-2" pref="118" max="-2" attributes="0"/>
-                                          <Component id="LabelCliente_Nombre7" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="LabelCliente_Nombre6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelCliente_Nombre7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="LabelCliente_Pago" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelCliente_FechaPago" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                          <SubComponents>
                             <Component class="javax.swing.JLabel" name="LabelCliente_Nombre6">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -980,7 +926,7 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="&#xda;ltimo Pago"/>
+                                <Property name="text" type="java.lang.String" value="Pago"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="LabelCliente_Pago">
@@ -992,6 +938,29 @@
                                   <Color blue="7c" green="6a" red="46" type="rgb"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="0.00"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel9">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="horizontalAlignment" type="int" value="0"/>
+                                <Property name="text" type="java.lang.String" value="Ticket"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_Ticket">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="18" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="7c" green="6a" red="46" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="0000000000"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="LabelCliente_Nombre7">
@@ -1016,6 +985,180 @@
                                 <Property name="text" type="java.lang.String" value="--/--/--"/>
                               </Properties>
                             </Component>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_Nombre9">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Cuotas por mes"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_Deuda">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="18" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="7c" green="6a" red="46" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="0.00"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel14">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                                <BevelBorder/>
+                              </Border>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="LabelCliente_Nombre10" alignment="0" pref="137" max="32767" attributes="0"/>
+                                          <Component id="LabelCliente_Intereses" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="LabelCliente_Nombre5" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="LabelCliente_FechaDeuda" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="LabelCliente_Nombre12" min="-2" pref="118" max="-2" attributes="0"/>
+                                          <Component id="TextFieldCliente_Pagos1" min="-2" pref="118" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_Cuotas" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_Nombre11" min="-2" pref="118" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="LabelCliente_Nombre10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_Nombre11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="LabelCliente_Intereses" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_Cuotas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="LabelCliente_Nombre5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_Nombre12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="TextFieldCliente_Pagos1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="LabelCliente_FechaDeuda" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_Nombre5">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Fecha del pago"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_Nombre10">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Intereses"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_Intereses">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="18" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="7c" green="6a" red="46" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="0.00"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_Nombre11">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Cuotas"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_Cuotas">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="18" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="7c" green="6a" red="46" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="0.00"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_FechaDeuda">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="18" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="7c" green="6a" red="46" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="--/--/--"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="LabelCliente_Nombre12">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Total Intereses"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="TextFieldCliente_Pagos1">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="0"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextFieldCliente_Pagos1ActionPerformed"/>
+                              </Events>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="jPanel15">
@@ -1032,15 +1175,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="LabelCliente_Ticket" min="-2" pref="118" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="LabelCliente_Nombre8" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="184" max="32767" attributes="0"/>
+                                      <Component id="LabelCliente_Nombre8" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1049,11 +1185,6 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="LabelCliente_Nombre8" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelCliente_Ticket" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1069,28 +1200,6 @@
                                   <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="N&#xfa;mero del &#xda;ltimo Ticket"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel9">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Segoe UI" size="18" style="1"/>
-                                </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="7c" green="6a" red="46" type="rgb"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="Ticket:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="LabelCliente_Ticket">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Segoe UI" size="18" style="1"/>
-                                </Property>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="7c" green="6a" red="46" type="rgb"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="0000000000"/>
                               </Properties>
                             </Component>
                           </SubComponents>

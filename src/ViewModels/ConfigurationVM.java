@@ -20,12 +20,10 @@ public class ConfigurationVM extends Consult {
     private static List<JRadioButton> _radio;
 
     public ConfigurationVM() {
-        this.sqlConfig = "INSERT INTO tconfiguration(TypeMoney) VALUES(?)";
         TypeMoney();
     }
 
     public ConfigurationVM(List<JRadioButton> radio) {
-        this.sqlConfig = "INSERT INTO tconfiguration(TypeMoney) VALUES(?)";
         _radio = radio;
         RadioEvent();
         TypeMoney();
@@ -40,9 +38,11 @@ public class ConfigurationVM extends Consult {
             TypeMoney("USD.", _radio.get(1).isSelected());
         });
     }
-   private String sqlConfig;
+    private String sqlConfig;
 
     public void TypeMoney() {
+        sqlConfig = "INSERT INTO tconfiguration(TypeMoney) VALUES(?)";
+
         List<TConfiguration> config = config();
         final QueryRunner qr = new QueryRunner(true);
 
@@ -55,9 +55,7 @@ public class ConfigurationVM extends Consult {
 
             }
         } else {
-            int count = config.size();
-            count--;
-            TConfiguration data = config.get(count);
+            TConfiguration data = config.get(0);
             Money = data.getTypeMoney();
             switch (Money) {
                 case "MXN.":
@@ -77,19 +75,21 @@ public class ConfigurationVM extends Consult {
             try {
                 List<TConfiguration> config = config();
                 if (config.isEmpty()) {
+                    
+                    sqlConfig = "INSERT INTO tconfiguration(TypeMoney) VALUES(?)";
                     Money = typeMoney;
                     Object[] dataConfig = {Money};
                     qr.insert(getConn(), sqlConfig, new ColumnListHandler(), dataConfig);
+                    
                 } else {
-                    int count = config.size();
-                    count--;
-                    TConfiguration data = config.get(count);
+                    TConfiguration data = config.get(0);
+                    sqlConfig = "UPDATE tconfiguration SET TypeMoney = ? WHERE ID ="+data.getID();
                     if (data.getTypeMoney().equals(typeMoney)) {
                         Money = typeMoney;
                     } else {
                         Money = typeMoney;
                         Object[] dataConfig = {Money};
-                        qr.insert(getConn(), sqlConfig, new ColumnListHandler(), dataConfig);
+                        qr.update(getConn(), sqlConfig, dataConfig);
                     }
                 }
             } catch (SQLException e) {

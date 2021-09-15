@@ -227,7 +227,7 @@ public class ClientesVM extends Consult {
 
     public void SearchClientes(String campo) {
         List<TClientes> clienteFilter;
-        String[] titulos = {"Id", "NoId", "Nombre", "Apellido", "Email", "Direccion", "Telefono", "Credito", "Imagen"};
+        String[] titulos = {"Id", "NoId", "Nombre", "Apellido", "Email", "Telefono", "Direccion", "Credito", "Imagen"};
         modelo1 = new DefaultTableModel(null, titulos);
         int inicio = (_num_pagina - 1) * _reg_por_pagina;
         if (campo.equals("")) {
@@ -249,8 +249,8 @@ public class ClientesVM extends Consult {
                     item.getNombre(),
                     item.getApellido(),
                     item.getEmail(),
-                    item.getDireccion(),
                     item.getTelefono(),
+                    item.getDireccion(),
                     item.isCredito(),
                     item.getImagen()
                 };
@@ -325,34 +325,32 @@ public class ClientesVM extends Consult {
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE PAGOS Y REPORTES"> 
     public void SearchReportes(String valor) {
-        String[] titulos = {"ID", "No. ID", "Nombre", "Apellido", "Deuda Actual", "Fecha Deuda", "Ultimo Pago", "Fecha Pago", "Ticket", "Fecha Limite"};
+        List<TClientes> clienteFilter;
+        String[] titulos = {"Id", "NoId", "Nombre", "Apellido", "Email", "Telefono", "Direccion"};
         modelo2 = new DefaultTableModel(null, titulos);
         int inicio = (_num_pagina - 1) * _reg_por_pagina;
-        List<TReportes_clientes> reportFilter;
         if (valor.equals("")) {
-            reportFilter = reportesClientes().stream()
+            clienteFilter = clientes().stream()
                     .skip(inicio).limit(_reg_por_pagina)
                     .collect(Collectors.toList());
         } else {
-            reportFilter = reportesClientes().stream().filter(C -> C.getNid()
-                    .startsWith(valor) || C.getNombre().startsWith(valor)
+            clienteFilter = clientes().stream()
+                    .filter(C -> C.getNid().startsWith(valor) || C.getNombre().startsWith(valor)
                     || C.getApellido().startsWith(valor))
                     .skip(inicio).limit(_reg_por_pagina)
                     .collect(Collectors.toList());
         }
-        if (!reportFilter.isEmpty()) {
-            reportFilter.forEach(item -> {
+        if (!clienteFilter.isEmpty()) {
+            clienteFilter.forEach(item -> {
                 Object[] registros = {
-                    item.getIdReporte(),
+                    item.getID(),
                     item.getNid(),
                     item.getNombre(),
                     item.getApellido(),
-                    item.getDeudaActual(),
-                    item.getFechaDeuda(),
-                    item.getUltimoPago(),
-                    item.getFechaPago(),
-                    item.getTicket(),
-                    item.getFechaLimite(),};
+                    item.getEmail(),
+                    item.getTelefono(),
+                    item.getDireccion(),
+                };
                 modelo2.addRow(registros);
             });
         }
