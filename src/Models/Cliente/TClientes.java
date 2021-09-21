@@ -1,10 +1,10 @@
-package Models;
+package Models.Cliente;
 
 /**
  *
  * @author jair_
  */
-public class TClientes{
+public class TClientes extends TReportes_intereses_clientes{
 
     private int ID;
     private String Nid;

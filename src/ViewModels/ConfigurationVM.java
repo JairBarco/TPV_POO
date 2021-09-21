@@ -16,7 +16,7 @@ import java.sql.SQLException;
  */
 public class ConfigurationVM extends Consult {
 
-    private static String Money;
+    public static String Money;
     private static List<JRadioButton> _radio;
 
     public ConfigurationVM() {

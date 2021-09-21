@@ -1,12 +1,18 @@
-package Models;
+package Models.Cliente;
+
+import Models.Cliente.TClientes;
 
 /**
  *
  * @author jair_
  */
-public class TReportes_clientes extends TClientes{
+public class TReportes_clientes extends TClientes {
+
     private int IdReporte;
     private double DeudaActual;
+    private double Deuda;
+    private double Mensual;
+    private double Cambio;
     private String FechaDeuda;
     private double UltimoPago;
     private String FechaPago;
@@ -31,6 +37,32 @@ public class TReportes_clientes extends TClientes{
 
     public void setDeudaActual(double DeudaActual) {
         this.DeudaActual = DeudaActual;
+    }
+
+    public double getDeuda() {
+        return Deuda;
+    }
+
+    public void setDeuda(double Deuda) {
+        this.Deuda = Deuda;
+    }
+
+    public double getMensual() {
+        return Mensual;
+    }
+
+    public void setMensual(double Mensual) {
+        this.Mensual = Mensual;
+    }
+
+    @Override
+    public double getCambio() {
+        return Cambio;
+    }
+    
+    @Override
+    public void setCambio(double Cambio) {
+        this.Cambio = Cambio;
     }
 
     public String getFechaDeuda() {
