@@ -1190,6 +1190,8 @@
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextFieldCliente_CuotasActionPerformed"/>
+                                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_CuotasKeyReleased"/>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_CuotasKeyTyped"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel10">
@@ -1261,6 +1263,8 @@
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextFieldCliente_PagosActionPerformed"/>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_PagosKeyReleased"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TextFieldCliente_PagosKeyTyped"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="RadioButtonCliente_Cuotas">

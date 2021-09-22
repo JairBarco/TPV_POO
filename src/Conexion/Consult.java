@@ -75,4 +75,17 @@ public class Consult extends Conexion {
         }
         return intereses;
     }
+
+    public List<TReportes_clientes> ReporteCliente() {
+        List<TReportes_clientes> reporte = new ArrayList();
+        
+        try {
+            reporte = (List<TReportes_clientes>) QR.query(getConn(), "SELECT * FROM treportes_clientes",
+                    new BeanListHandler(TReportes_clientes.class));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        
+        return reporte;
+    }
 }

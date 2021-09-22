@@ -648,6 +648,14 @@ public class Sistema extends javax.swing.JFrame {
                 TextFieldCliente_CuotasActionPerformed(evt);
             }
         });
+        TextFieldCliente_Cuotas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextFieldCliente_CuotasKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TextFieldCliente_CuotasKeyTyped(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -735,6 +743,14 @@ public class Sistema extends javax.swing.JFrame {
         TextFieldCliente_Pagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextFieldCliente_PagosActionPerformed(evt);
+            }
+        });
+        TextFieldCliente_Pagos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextFieldCliente_PagosKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TextFieldCliente_PagosKeyTyped(evt);
             }
         });
 
@@ -1470,6 +1486,7 @@ public class Sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (TableCliente_Report.getSelectedRows().length > 0) {
             cliente.getReportCliente();
+            cliente.CuotasIntereses();
         }
     }//GEN-LAST:event_TableCliente_ReportKeyReleased
 
@@ -1505,6 +1522,9 @@ public class Sistema extends javax.swing.JFrame {
         textField.add(TextFieldCliente_Email);
         textField.add(TextFieldCliente_Telefono);
         textField.add(TextFieldCliente_Direccion);
+        
+        textField.add(TextFieldCliente_Pagos);
+        textField.add(TextFieldCliente_Cuotas);
 
         Object[] objects = {
             CheckBoxCliente_Credito,
@@ -1539,14 +1559,34 @@ public class Sistema extends javax.swing.JFrame {
     private void RadioButtonCliente_CuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonCliente_CuotasActionPerformed
         // TODO add your handling code here:
         TextFieldCliente_Cuotas.setEnabled(false);
-        //cliente.CuotasIntereses();
+        cliente.CuotasIntereses();
     }//GEN-LAST:event_RadioButtonCliente_CuotasActionPerformed
 
     private void RadioButtonCliente_InteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonCliente_InteresesActionPerformed
         // TODO add your handling code here:
         TextFieldCliente_Cuotas.setEnabled(true);
-        //cliente.CuotasIntereses();
+        cliente.CuotasIntereses();
     }//GEN-LAST:event_RadioButtonCliente_InteresesActionPerformed
+
+    private void TextFieldCliente_PagosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_PagosKeyReleased
+        // TODO add your handling code here:
+        cliente.CuotasIntereses();
+    }//GEN-LAST:event_TextFieldCliente_PagosKeyReleased
+
+    private void TextFieldCliente_PagosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_PagosKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.numberDecimalKeyPress(evt, TextFieldCliente_Pagos);
+    }//GEN-LAST:event_TextFieldCliente_PagosKeyTyped
+
+    private void TextFieldCliente_CuotasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_CuotasKeyReleased
+        // TODO add your handling code here:
+        cliente.CuotasIntereses();
+    }//GEN-LAST:event_TextFieldCliente_CuotasKeyReleased
+
+    private void TextFieldCliente_CuotasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_CuotasKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.numberKeyPress(evt);
+    }//GEN-LAST:event_TextFieldCliente_CuotasKeyTyped
     // </editor-fold>
 
     /**
