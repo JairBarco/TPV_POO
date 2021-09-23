@@ -40,7 +40,10 @@ public class ClientesVM extends Consult {
     private int _interesCuotas = 0, _idReport;
     private double _intereses = 0.0, _deudaActual = 0.0, _interesPago = 0.0;
     private double _interesPagos = 0.0, _cambio = 0.0, _interesesCliente = 0.0;
-    private double _pago = 0.0, _mensual = 0.0;
+    private double _pago = 0.0, _mensual = 0.0, _deudaActualCliente = 0.0;
+    private String _ticketCuota;
+    
+    private final Codigos _codigos;
 
     public ClientesVM(Object[] objects, ArrayList<JLabel> label, ArrayList<JTextField> textField) {
         _label = label;
@@ -53,6 +56,8 @@ public class ClientesVM extends Consult {
         _radioInteres = (JRadioButton) objects[5];
         _format = new FormatDecimal();
         _money = ConfigurationVM.Money;
+        _codigos = new Codigos();
+        
         restablecer();
         restablecerReport();
     }
@@ -401,7 +406,8 @@ public class ClientesVM extends Consult {
             _deudaActual = (Double) cliente.getDeudaActual();
             _label.get(9).setText(_money + _format.decimal(_deudaActual));
             _label.get(10).setText(_money + _format.decimal((double) cliente.getUltimoPago()));
-            _label.get(11).setText(cliente.getTicket());
+            _ticketCuota = cliente.getTicket();
+            _label.get(11).setText(_ticketCuota);
             _label.get(12).setText(cliente.getFechaPago());
             _label.get(13).setText(_money + _format.decimal((double) cliente.getMensual()));
             _listIntereses = InteresesCliente().stream()
@@ -409,15 +415,15 @@ public class ClientesVM extends Consult {
                     .collect(Collectors.toList());
             if (_listIntereses.isEmpty()) {
                 _label.get(14).setText(_money + "0.00");
+                _label.get(12).setText("--/--/--");
                 _label.get(15).setText("0");
                 _label.get(16).setText("0000000000");
                 _label.get(17).setText("--/--/--");
             } else {
-                _interesCuotas = 0;
+                _interesCuotas = cliente.getCuotas();
                 _intereses = 0.0;
                 _listIntereses.forEach(item -> {
                     _intereses += item.getIntereses();
-                    _interesCuotas++;
                 });
                 _label.get(14).setText(_money + _format.decimal(_intereses));
                 _label.get(15).setText(String.valueOf(_interesCuotas));
@@ -439,13 +445,13 @@ public class ClientesVM extends Consult {
                         if (cantCuotas <= _interesCuotas) {
                             if (!_textField.get(6).getText().isEmpty()) {
                                 _interesPago = _format.reconstruir(_textField.get(6).getText());
-                                if (_interesPago >= _interesPagos) {
-                                    _cambio = _interesPago - _interesPagos;
+                                if (_interesPagos >= _interesPago) {
+                                    _cambio = _interesPagos - _interesPago;
                                     _label.get(19).setText("Cambio para el cliente " + _money + _format.decimal(_cambio));
                                     _interesesCliente = _intereses - _interesPagos;
                                     _label.get(14).setText(_money + _format.decimal(_interesesCliente));
                                 } else {
-                                    _label.get(9).setText(_money + _format.decimal(_interesesCliente));
+                                    _label.get(19).setText(_money + _format.decimal(_interesPagos));
                                     _interesesCliente = _intereses - _interesPagos;
                                     _label.get(14).setText(_money + _format.decimal(_interesesCliente));
                                 }
@@ -463,10 +469,20 @@ public class ClientesVM extends Consult {
                         TReportes_clientes dataReport = ReporteCliente().stream().filter(u -> u.getIdReporte() == _idReport).collect(Collectors.toList()).get(0);
                         _mensual = dataReport.getMensual();
                         if (_pago > _mensual) {
-                            if (Objects.equals(_pago, _mensual) || _pago > _deudaActual) {
-                                
-                            } else if (Objects.equals(_pago, _mensual)) {
+                            if (Objects.equals(_pago, _deudaActual) || _pago > _deudaActual) {
+                                _cambio = _pago - _deudaActual;
+                                _label.get(19).setText("Cambio para el cliente " + _money + _format.decimal(_cambio));
+                                _label.get(9).setText(_money + "0.00");
+                                _deudaActual = 0.0;
+                            } else {
+                                _cambio = _pago - _mensual;
+                                _label.get(19).setText("Cambio para el cliente " + _money + _format.decimal(_cambio));
+                                _deudaActualCliente = _deudaActual - _mensual;
+                                _label.get(9).setText(_money + _format.decimal(_deudaActualCliente));
                             }
+                        } else if (Objects.equals(_pago, _mensual)) {
+                            _deudaActualCliente = _deudaActual - _mensual;
+                            _label.get(9).setText(_money + _format.decimal(_deudaActualCliente));
                         }
                     }
                 }
@@ -483,36 +499,70 @@ public class ClientesVM extends Consult {
         if (_idReport == 0) {
             _label.get(19).setText("Seleccione un cliente");
         } else {
-            _label.get(19).setText("Ingrese el pago");
-            if (null != _textField.get(7)) {
-                if (_textField.get(7).getText().isEmpty()) {
-                    _label.get(14).setText(_money + _format.decimal(_intereses));
-                    _label.get(15).setText(String.valueOf(_interesCuotas));
-                    _label.get(18).setText(_money + "0.00");
-                    _label.get(19).setText("Ingrese el Pago");
-                } else {
-                    _label.get(18).setText(_money + "0.00");
-                    int cantCuotas = Integer.valueOf(_textField.get(7).getText());
-                    if (cantCuotas <= _interesCuotas) {
+            if (_deudaActual > 0 || _intereses > 0) {
+                _label.get(19).setText("Ingrese el pago");
+                if (null != _textField.get(7)) {
+                    if (_textField.get(7).getText().isEmpty()) {
+                        _label.get(14).setText(_money + _format.decimal(_intereses));
+                        _label.get(15).setText(String.valueOf(_interesCuotas));
+                        _label.get(18).setText(_money + "0.00");
                         _label.get(19).setText("Ingrese el Pago");
-                        if (!_listIntereses.isEmpty()) {
-                            _interesPagos = 0.0;
-                            for (int i = 0; i < cantCuotas; i++) {
-                                _interesPagos += _listIntereses.get(i).getIntereses();
-                            }
-                            int cuotas = _interesCuotas - cantCuotas;
-                            double intereses = _intereses - _interesPagos;
-                            _label.get(14).setText(_money + _format.decimal(intereses));
-                            _label.get(15).setText(String.valueOf(cuotas));
-                            _label.get(14).setText(_money + _format.decimal(_interesPagos));
-                        }
                     } else {
-                        _label.get(19).setText("Cuotas invalidas");
-                        _textField.get(7).requestFocus();
+                        _label.get(18).setText(_money + "0.00");
+                        int cantCuotas = Integer.valueOf(_textField.get(7).getText());
+                        if (cantCuotas <= _interesCuotas) {
+                            _label.get(19).setText("Ingrese el Pago");
+                            if (!_listIntereses.isEmpty()) {
+                                _interesPagos = 0.0;
+                                for (int i = 0; i < cantCuotas; i++) {
+                                    _interesPagos += _listIntereses.get(i).getIntereses();
+                                }
+                                int cuotas = _interesCuotas - cantCuotas;
+                                double intereses = _intereses - _interesPagos;
+                                _label.get(14).setText(_money + _format.decimal(intereses));
+                                _label.get(15).setText(String.valueOf(cuotas));
+                                _label.get(14).setText(_money + _format.decimal(_interesPagos));
+                            }
+                        } else {
+                            _label.get(19).setText("Cuotas invalidas");
+                            _textField.get(7).requestFocus();
+                        }
                     }
                 }
+                Pagos();
+            } else {
+                _label.get(19).setText("El cliente no tiene deuda");
             }
-            Pagos();
+        }
+    }
+
+    public void EjecutarPago() throws SQLException {
+        final QueryRunner qr = new QueryRunner(true);
+        if (Objects.equals(_idReport, 0)) {
+            _label.get(19).setText("Seleccione un cliente");
+        } else {
+            if (_textField.get(6).getText().isEmpty()) {
+                _label.get(19).setText("Seleccione un cliente");
+                _textField.get(6).requestFocus();
+            } else {
+                String fecha = new Calendario().getFecha();
+                //Consulta usuario que inicia sesión
+                if(_radioCuotas.isSelected()){
+                    if(_pago >= _mensual){
+                        try{
+                            getConn().setAutoCommit(false);
+                            String dateNow = new Calendario().addMes(1);
+                            String _fechalimit = Objects.equals(_deudaActual, 0) ? "--/--/--" : dateNow;
+                            String ticket = _codigos.codesTickets(_ticketCuota);
+                        } catch(Exception e){
+                            getConn().rollback();
+                            JOptionPane.showMessageDialog(null, e);
+                        }
+                    }
+                } else if (_radioInteres.isSelected()){
+                    
+                }
+            }
         }
     }
 
@@ -527,12 +577,16 @@ public class ClientesVM extends Consult {
         _interesesCliente = 0.0;
         _pago = 0.0;
         _mensual = 0.0;
+        _deudaActualCliente = 0.0;
+        _ticketCuota = "0000000000";
 
         _label.get(14).setText(_money + "0.00");
         _label.get(15).setText("0");
         _label.get(16).setText("0000000000");
         _label.get(17).setText("--/--/--");
         _label.get(19).setText("Ingrese el pago");
+        _textField.get(6).setText("");
+        _textField.get(7).setText("");
 
         listClientesReportes = clientes();
         if (!listClientesReportes.isEmpty()) {

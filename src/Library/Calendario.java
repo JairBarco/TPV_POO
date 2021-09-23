@@ -24,10 +24,12 @@ public class Calendario {
 
     public Calendario() {
         switch (c.get(Calendar.AM_PM)) {
-            case 0 -> am_pm = "am";
-            case 1 -> am_pm = "pm";
+            case 0 ->
+                am_pm = "am";
+            case 1 ->
+                am_pm = "pm";
         }
-        
+
         dateFormat = new SimpleDateFormat("dd");
         Dia = dateFormat.format(date);
         dateFormat = new SimpleDateFormat("MM");
@@ -38,7 +40,7 @@ public class Calendario {
         Fecha = dateFormat.format(date);
         dateFormat = new SimpleDateFormat("hh:mm:ss");
         Hora = dateFormat.format(date) + " " + am_pm;
-        
+
     }
 
     public String getFecha() {
@@ -60,5 +62,12 @@ public class Calendario {
     public String getHora() {
         return Hora;
     }
-    
+
+    public String addMes(int mes) {
+        c.setTime(date);
+        c.add(Calendar.MONTH, mes);
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(c.getTime());
+    }
+
 }
