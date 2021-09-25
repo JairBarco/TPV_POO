@@ -40,9 +40,9 @@ public class ClientesVM extends Consult {
     private int _interesCuotas = 0, _idReport;
     private double _intereses = 0.0, _deudaActual = 0.0, _interesPago = 0.0;
     private double _interesPagos = 0.0, _cambio = 0.0, _interesesCliente = 0.0;
-    private double _pago = 0.0, _mensual = 0.0, _deudaActualCliente = 0.0;
-    private String _ticketCuota;
-    
+    private double _pago = 0.0, _mensual = 0.0, _deudaActualCliente = 0.0, _deuda;
+    private String _ticketCuota, nameCliente;
+
     private final Codigos _codigos;
 
     public ClientesVM(Object[] objects, ArrayList<JLabel> label, ArrayList<JTextField> textField) {
@@ -57,7 +57,7 @@ public class ClientesVM extends Consult {
         _format = new FormatDecimal();
         _money = ConfigurationVM.Money;
         _codigos = new Codigos();
-        
+
         restablecer();
         restablecerReport();
     }
@@ -402,8 +402,11 @@ public class ClientesVM extends Consult {
         if (!clienteFilter.isEmpty()) {
             TReportes_clientes cliente = clienteFilter.get(0);
             _idReport = cliente.getIdReporte();
-            _label.get(8).setText(cliente.getNombre() + " " + cliente.getApellido());
+            nameCliente = cliente.getNombre() + " " + cliente.getApellido();
+
+            _label.get(8).setText(nameCliente);
             _deudaActual = (Double) cliente.getDeudaActual();
+            _deuda = (Double) cliente.getDeuda();
             _label.get(9).setText(_money + _format.decimal(_deudaActual));
             _label.get(10).setText(_money + _format.decimal((double) cliente.getUltimoPago()));
             _ticketCuota = cliente.getTicket();
@@ -547,20 +550,46 @@ public class ClientesVM extends Consult {
             } else {
                 String fecha = new Calendario().getFecha();
                 //Consulta usuario que inicia sesión
-                if(_radioCuotas.isSelected()){
-                    if(_pago >= _mensual){
-                        try{
+                if (_radioCuotas.isSelected()) {
+                    if (_pago >= _mensual) {
+                        try {
                             getConn().setAutoCommit(false);
                             String dateNow = new Calendario().addMes(1);
                             String _fechalimit = Objects.equals(_deudaActual, 0) ? "--/--/--" : dateNow;
                             String ticket = _codigos.codesTickets(_ticketCuota);
-                        } catch(Exception e){
+                            Ticket Ticket1 = new Ticket();
+
+                            Ticket1.TextoCentro("Sistema de ventas");
+                            Ticket1.TextoIzquierda("Dirección");
+                            Ticket1.TextoIzquierda("Monterrey, Nuevo León");
+                            Ticket1.TextoIzquierda("Tel. 5522001025");
+                            Ticket1.LineasGuion();
+                            Ticket1.TextoCentro("Factura");
+                            Ticket1.LineasGuion();
+                            Ticket1.TextoIzquierda("Factura: " + ticket);
+                            Ticket1.TextoIzquierda("Cliente: " + nameCliente);
+                            Ticket1.TextoIzquierda("Fecha: " + fecha);
+                            //Ticket1.TextoIzquierda("Usuario:usuario");
+                            Ticket1.LineasGuion();
+                            Ticket1.TextoCentro("Su credito: " + _money + _format.decimal(_deuda));
+                            Ticket1.TextoExtremo("Cuotas por 12 meses: ", _money + _format.decimal(_mensual));
+                            Ticket1.TextoExtremo("Deuda anteror", _money + _format.decimal(_deudaActual));
+                            Ticket1.TextoExtremo("Pago:", _money + _format.decimal(_pago));
+                            Ticket1.TextoExtremo("Cambio:", _money + _format.decimal(_cambio));
+                            Ticket1.TextoExtremo("Deuda Actual:", _money + _format.decimal(_deudaActualCliente));
+                            Ticket1.TextoExtremo("Proximo Pago:", _fechalimit);
+                            Ticket1.TextoCentro("TPOO");
+                            Ticket1.print();
+                            getConn().commit();
+                            restablecerReport();
+                            
+                        } catch (Exception e) {
                             getConn().rollback();
                             JOptionPane.showMessageDialog(null, e);
                         }
                     }
-                } else if (_radioInteres.isSelected()){
-                    
+                } else if (_radioInteres.isSelected()) {
+
                 }
             }
         }
