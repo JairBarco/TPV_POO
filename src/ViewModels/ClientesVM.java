@@ -37,11 +37,11 @@ public class ClientesVM extends Consult {
     private List<TClientes> listClientesReportes;
     private List<TReportes_clientes> listReportes;
     private List<TIntereses_clientes> _listIntereses;
-    private int _interesCuotas = 0, _idReport;
-    private double _intereses = 0.0, _deudaActual = 0.0, _interesPago = 0.0;
-    private double _interesPagos = 0.0, _cambio = 0.0, _interesesCliente = 0.0;
-    private double _pago = 0.0, _mensual = 0.0, _deudaActualCliente = 0.0, _deuda;
-    private String _ticketCuota, nameCliente;
+    private int _interesCuotas = 0, _idReport, idClienteReport, _idReportIntereses;
+    private Double _intereses = 0.0, _deudaActual = 0.0, _interesPago = 0.0;
+    private Double _interesPagos = 0.0, _cambio = 0.0, _interesesCliente = 0.0;
+    private Double _pago = 0.0, _mensual = 0.0, _deudaActualCliente = 0.0, _deuda;
+    private String _ticketCuota, nameCliente, _ticketIntereses;
 
     private final Codigos _codigos;
 
@@ -397,11 +397,12 @@ public class ClientesVM extends Consult {
 
     public void getReportCliente() {
         int filas = _tableReporte.getSelectedRow();
-        int idCliente = (Integer) modelo2.getValueAt(filas, 0);
-        List<TReportes_clientes> clienteFilter = reportesClientes(idCliente);
+        idClienteReport = (Integer) modelo2.getValueAt(filas, 0);
+        List<TReportes_clientes> clienteFilter = reportesClientes(idClienteReport);
         if (!clienteFilter.isEmpty()) {
             TReportes_clientes cliente = clienteFilter.get(0);
             _idReport = cliente.getIdReporte();
+            _idReportIntereses = cliente.getID();
             nameCliente = cliente.getNombre() + " " + cliente.getApellido();
 
             _label.get(8).setText(nameCliente);
@@ -414,7 +415,8 @@ public class ClientesVM extends Consult {
             _label.get(12).setText(cliente.getFechaPago());
             _label.get(13).setText(_money + _format.decimal((double) cliente.getMensual()));
             _listIntereses = InteresesCliente().stream()
-                    .filter(u -> u.getIdCliente() == idCliente)
+                    .filter(u -> u.getIdCliente() == idClienteReport
+                    && u.getCancelado() == false)
                     .collect(Collectors.toList());
             if (_listIntereses.isEmpty()) {
                 _label.get(14).setText(_money + "0.00");
@@ -430,7 +432,8 @@ public class ClientesVM extends Consult {
                 });
                 _label.get(14).setText(_money + _format.decimal(_intereses));
                 _label.get(15).setText(String.valueOf(_interesCuotas));
-                _label.get(16).setText(cliente.getTicketIntereses());
+                _ticketIntereses = cliente.getTicketIntereses();
+                _label.get(16).setText(_ticketIntereses);
                 _label.get(17).setText(cliente.getInteresFecha());
             }
         }
@@ -448,8 +451,8 @@ public class ClientesVM extends Consult {
                         if (cantCuotas <= _interesCuotas) {
                             if (!_textField.get(6).getText().isEmpty()) {
                                 _interesPago = _format.reconstruir(_textField.get(6).getText());
-                                if (_interesPagos >= _interesPago) {
-                                    _cambio = _interesPagos - _interesPago;
+                                if (_interesPago >= _interesPagos) {
+                                    _cambio = _interesPago - _interesPagos;
                                     _label.get(19).setText("Cambio para el cliente " + _money + _format.decimal(_cambio));
                                     _interesesCliente = _intereses - _interesPagos;
                                     _label.get(14).setText(_money + _format.decimal(_interesesCliente));
@@ -464,7 +467,7 @@ public class ClientesVM extends Consult {
                         }
                     } else {
                         _label.get(19).setText("Ingrese el número de cuotas");
-                        _textField.get(7).requestFocus();
+//                        _textField.get(7).requestFocus();
                     }
                 } else if (_radioCuotas.isSelected()) {
                     if (!_textField.get(6).getText().isEmpty()) {
@@ -528,7 +531,7 @@ public class ClientesVM extends Consult {
                             }
                         } else {
                             _label.get(19).setText("Cuotas invalidas");
-                            _textField.get(7).requestFocus();
+//                            _textField.get(7).requestFocus();
                         }
                     }
                 }
@@ -551,45 +554,141 @@ public class ClientesVM extends Consult {
                 String fecha = new Calendario().getFecha();
                 //Consulta usuario que inicia sesión
                 if (_radioCuotas.isSelected()) {
-                    if (_pago >= _mensual) {
-                        try {
-                            getConn().setAutoCommit(false);
-                            String dateNow = new Calendario().addMes(1);
-                            String _fechalimit = Objects.equals(_deudaActual, 0) ? "--/--/--" : dateNow;
-                            String ticket = _codigos.codesTickets(_ticketCuota);
-                            Ticket Ticket1 = new Ticket();
+                    if (!_deuda.equals(0) || !_deuda.equals(0.0)) {
+                        if (_pago >= _mensual) {
+                            try {
+                                getConn().setAutoCommit(false);
+                                String dateNow = new Calendario().addMes(1);
+                                String _fechalimit = Objects.equals(_deudaActual, 0) ? "--/--/--" : dateNow;
+                                String ticket = _codigos.codesTickets(_ticketCuota);
 
-                            Ticket1.TextoCentro("Sistema de ventas");
-                            Ticket1.TextoIzquierda("Dirección");
-                            Ticket1.TextoIzquierda("Monterrey, Nuevo León");
-                            Ticket1.TextoIzquierda("Tel. 5522001025");
-                            Ticket1.LineasGuion();
-                            Ticket1.TextoCentro("Factura");
-                            Ticket1.LineasGuion();
-                            Ticket1.TextoIzquierda("Factura: " + ticket);
-                            Ticket1.TextoIzquierda("Cliente: " + nameCliente);
-                            Ticket1.TextoIzquierda("Fecha: " + fecha);
-                            //Ticket1.TextoIzquierda("Usuario:usuario");
-                            Ticket1.LineasGuion();
-                            Ticket1.TextoCentro("Su credito: " + _money + _format.decimal(_deuda));
-                            Ticket1.TextoExtremo("Cuotas por 12 meses: ", _money + _format.decimal(_mensual));
-                            Ticket1.TextoExtremo("Deuda anteror", _money + _format.decimal(_deudaActual));
-                            Ticket1.TextoExtremo("Pago:", _money + _format.decimal(_pago));
-                            Ticket1.TextoExtremo("Cambio:", _money + _format.decimal(_cambio));
-                            Ticket1.TextoExtremo("Deuda Actual:", _money + _format.decimal(_deudaActualCliente));
-                            Ticket1.TextoExtremo("Proximo Pago:", _fechalimit);
-                            Ticket1.TextoCentro("TPOO");
-                            Ticket1.print();
-                            getConn().commit();
-                            restablecerReport();
-                            
-                        } catch (Exception e) {
-                            getConn().rollback();
-                            JOptionPane.showMessageDialog(null, e);
+                                String query1 = "INSERT INTO tpagos_clientes(Deuda,Saldo, Pago,Cambio,"
+                                        + "Fecha,FechaLimite,Ticket,IdUsuario,Usuario,IdCliente) VALUES (?,?,?,?,?,?,?,?,?,?)";
+
+                                Object[] data1 = {
+                                    _deuda, _deudaActual, _pago, _cambio, fecha,
+                                    _fechalimit, ticket, 1, "Jair", idClienteReport
+                                };
+
+                                qr.insert(getConn(), query1, new ColumnListHandler(), data1);
+
+                                String query2 = "UPDATE treportes_clientes SET DeudaActual = ?,FechaDeuda = ?,"
+                                        + "UltimoPago = ?,Cambio = ?,FechaPago = ?,Ticket = ?,"
+                                        + "FechaLimite = ? WHERE IdReporte =" + _idReport;
+
+                                Object[] data2 = {
+                                    _deudaActualCliente, fecha, _pago,
+                                    _cambio, fecha, ticket, _fechalimit,};
+
+                                qr.update(getConn(), query2, data2);
+
+                                Ticket Ticket1 = new Ticket();
+
+                                Ticket1.TextoCentro("Sistema de ventas");
+                                Ticket1.TextoIzquierda("Dirección");
+                                Ticket1.TextoIzquierda("Monterrey, Nuevo León");
+                                Ticket1.TextoIzquierda("Tel. 5522001025");
+                                Ticket1.LineasGuion();
+                                Ticket1.TextoCentro("Factura");
+                                Ticket1.LineasGuion();
+                                Ticket1.TextoIzquierda("Factura: " + ticket);
+                                Ticket1.TextoIzquierda("Cliente: " + nameCliente);
+                                Ticket1.TextoIzquierda("Fecha: " + fecha);
+                                //Ticket1.TextoIzquierda("Usuario:usuario");
+                                Ticket1.LineasGuion();
+                                Ticket1.TextoCentro("Su credito: " + _money + _format.decimal(_deuda));
+                                Ticket1.TextoExtremo("Cuotas por 12 meses: ", _money + _format.decimal(_mensual));
+                                Ticket1.TextoExtremo("Deuda anteror", _money + _format.decimal(_deudaActual));
+                                Ticket1.TextoExtremo("Pago:", _money + _format.decimal(_pago));
+                                Ticket1.TextoExtremo("Cambio:", _money + _format.decimal(_cambio));
+                                Ticket1.TextoExtremo("Deuda Actual:", _money + _format.decimal(_deudaActualCliente));
+                                Ticket1.TextoExtremo("Proximo Pago:", _fechalimit);
+                                Ticket1.TextoCentro("TPOO");
+                                Ticket1.print();
+                                getConn().commit();
+                                restablecerReport();
+
+                            } catch (Exception e) {
+                                getConn().rollback();
+                                JOptionPane.showMessageDialog(null, e);
+                            }
                         }
+                    } else {
+                        _label.get(19).setText("El cliente no tiene deuda");
                     }
                 } else if (_radioInteres.isSelected()) {
+                    if (!_intereses.equals(0)) {
+                        if (!_textField.get(7).getText().equals("")) {
+                            try {
+                                Integer cantCuotas = Integer.valueOf(_textField.get(7).getText());
+                                if (cantCuotas <= _interesCuotas) {
+                                    if (_interesPago >= _interesPagos) {
+                                        getConn().setAutoCommit(false);
+                                        if (!_listIntereses.isEmpty()) {
+                                            Object[] data1 = {true};
+                                            
+                                            for (int i = 0; i < cantCuotas; i++) {    
+                                                String query1 = "UPDATE tintereses_clientes SET Cancelado = ?"
+                                                        + " WHERE id=" + _listIntereses.get(i).getId() + " AND "
+                                                        + " IdCliente=" + idClienteReport;
+                                                qr.update(getConn(), query1, data1);
+                                            }
 
+                                            String ticket = _codigos.codesTickets(_ticketIntereses);
+                                            String query2 = "INSERT INTO tpagos_reportes_intereses_cliente(Intereses,Pago, Cambio,Cuotas,"
+                                                    + "Fecha,Ticket,IdUsuario,Usuario,IdCliente) VALUES(?,?,?,?,?,?,?,?,?)";
+                                            Object[] data2 = {
+                                                _intereses, _interesPago, _cambio, cantCuotas, fecha, ticket, 7, "Jair", idClienteReport
+                                            };
+                                            qr.insert(getConn(), query2, new ColumnListHandler(), data2);
+
+                                            String query3 = "UPDATE treportes_intereses_clientes SET Intereses = ?,"
+                                                    + "Pago = ?,Cambio = ?,Cuotas = ?,InteresFecha = ? ,TicketIntereses = ?"
+                                                    + " WHERE Id = " + _idReportIntereses + " AND "
+                                                    + " IdCliente=" + idClienteReport;
+                                            Object[] data3 = {_interesesCliente, _interesPago, _cambio, cantCuotas, fecha, ticket};
+                                            qr.update(getConn(), query3, data3);
+
+                                            Ticket Ticket1 = new Ticket();
+                                            Ticket1.TextoCentro("Sistema de Ventas");
+                                            Ticket1.TextoIzquierda("Dirección");
+                                            Ticket1.TextoIzquierda("Monterrey");
+                                            Ticket1.TextoIzquierda("Tel 5510122060");
+                                            Ticket1.LineasGuion();
+                                            Ticket1.TextoCentro("Factura de Pagos Intereses");
+                                            Ticket1.LineasGuion();
+                                            Ticket1.TextoIzquierda("Factura: " + ticket);
+                                            Ticket1.TextoIzquierda("Cliente: " + nameCliente);
+                                            Ticket1.TextoIzquierda("Fecha: " + fecha);
+                                            //usuario
+                                            Ticket1.LineasGuion();
+                                            Ticket1.TextoCentro("Intereses " + _money + _format.decimal(_intereses));
+                                            Ticket1.TextoExtremo("Cuotas: ", cantCuotas.toString());
+                                            Ticket1.TextoExtremo("Pago: ", _money + _format.decimal(_interesPago));
+                                            Ticket1.TextoExtremo("Cambio: ", _money + _format.decimal(_cambio));
+                                            Ticket1.TextoCentro("TPOO");
+                                            Ticket1.print();
+                                            getConn().commit();
+                                            restablecerReport();
+                                        }
+                                    } else {
+                                        _label.get(19).setText("El pago debe de ser: " + _money + _format.decimal(_interesPagos));
+                                    }
+
+                                } else {
+                                    _label.get(19).setText("Cuotas no válidas");
+                                }
+                            } catch (Exception e) {
+                                getConn().rollback();
+                                JOptionPane.showMessageDialog(null, e);
+                            }
+                        } else {
+                            _label.get(19).setText("Ingrese el numero de cuotas");
+                        }
+
+                    } else {
+                        _label.get(19).setText("El cliente no tiene deuda");
+                    }
                 }
             }
         }
@@ -606,9 +705,18 @@ public class ClientesVM extends Consult {
         _interesesCliente = 0.0;
         _pago = 0.0;
         _mensual = 0.0;
+        idClienteReport = 0;
+        _idReportIntereses = 0;
+        _ticketIntereses = "0000000000";
         _deudaActualCliente = 0.0;
         _ticketCuota = "0000000000";
 
+        _label.get(8).setText("Nombre del cliente");
+        _label.get(9).setText(_money + "0.00");
+        _label.get(10).setText(_money + "0.00");
+        _label.get(11).setText("0000000000");
+        _label.get(12).setText("--/--/--");
+        _label.get(13).setText(_money + "0.00");
         _label.get(14).setText(_money + "0.00");
         _label.get(15).setText("0");
         _label.get(16).setText("0000000000");

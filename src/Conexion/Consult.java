@@ -34,7 +34,7 @@ public class Consult extends Conexion {
         String condicion1 = " tclientes.ID = treportes_clientes.IdCliente ";
         String condicion2 = " tclientes.ID = treportes_intereses_clientes.IdCliente ";
 
-        String campos = " tclientes.ID,tclientes.Nid,tclientes.Nombre,tclientes.Apellido,"
+        String campos = " tclientes.Nid,tclientes.Nombre,tclientes.Apellido,"
                 + "treportes_clientes.IdReporte,treportes_clientes.DeudaActual,"
                 + "treportes_clientes.FechaDeuda,treportes_clientes.UltimoPago,"
                 + "treportes_clientes.FechaPago, treportes_clientes.Ticket,"
@@ -42,7 +42,7 @@ public class Consult extends Conexion {
                 + "treportes_clientes.Cambio,treportes_intereses_clientes.Intereses,"
                 + "treportes_intereses_clientes.Pago,treportes_intereses_clientes.Cambio,"
                 + "treportes_intereses_clientes.Cuotas,treportes_intereses_clientes.InteresFecha,"
-                + "treportes_intereses_clientes.TicketIntereses";
+                + "treportes_intereses_clientes.TicketIntereses,treportes_intereses_clientes.Id";
         try {
             reportes = (List<TReportes_clientes>) QR.query(getConn(),
                     "SELECT" + campos + " FROM tclientes Inner Join treportes_clientes ON"

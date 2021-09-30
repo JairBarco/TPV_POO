@@ -145,7 +145,7 @@ public class Ticket {
     }
 
     public void AgregarArticulo(String articulo, Integer cant, Double precio, Double importe) {
-        if (cant.toString().length() <= 5 && precio.toString().length() <= 7 && importe.toString().toString().length() <= 8) {
+        if (cant.toString().length() <= 5 && precio.toString().length() <= 7 && importe.toString().length() <= 8) {
             String elemento = "", espacios = "";
             boolean bandera = false;
             int numEspacios = 0;
