@@ -88,4 +88,27 @@ public class Consult extends Conexion {
         
         return reporte;
     }
+    
+    public List<TReportes_clientes> Reportes_Clientes(){
+        String where = "";
+        List<TReportes_clientes> reportes = new ArrayList();
+        String condicion1 = " tclientes.ID = treportes_clientes.IdCliente ";
+        String campos = " tclientes.ID,tclientes.Nid,tclientes.Nombre,tclientes.Apellido,"
+                + "tclientes.Telefono,tclientes.Email,tclientes.Direccion,"
+                + "treportes_clientes.IdReporte,treportes_clientes.DeudaActual,"
+                + "treportes_clientes.FechaDeuda,treportes_clientes.UltimoPago,"
+                + "treportes_clientes.FechaPago, treportes_clientes.Ticket,"
+                + "treportes_clientes.Deuda,treportes_clientes.Mensual,treportes_clientes.Cambio,"
+                + "treportes_clientes.FechaLimite";
+        try{
+            reportes = (List<TReportes_clientes>) QR.query(getConn(),
+            "SELECT" + campos + " FROM tclientes Inner Join treportes_clientes ON"
+                    + condicion1 + where, new BeanListHandler(TReportes_clientes.class));
+            
+        } catch (SQLException e){
+            System.out.println("Error: " + e);
+        }
+        
+        return reportes;
+    }
 }

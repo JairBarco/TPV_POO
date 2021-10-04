@@ -3,29 +3,42 @@ package ViewModels;
 import Conexion.Consult;
 import Library.*;
 import Models.Cliente.*;
+import datechooser.beans.DateChooserCombo;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.*;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ColumnListHandler;
 
 public class ClientesVM extends Consult {
 
-    private String _accion = "insert", _money;
+    // <editor-fold defaultstate="collapsed" desc="VARIABLES GLOBALES">
+    private String _accion = "insert";
+    private final String _money;
     private final ArrayList<JLabel> _label;
     private final ArrayList<JTextField> _textField;
-    private final JCheckBox _checkBoxCredito;
+    private final JCheckBox _checkBoxCredito, _checkBox_Dia;
     private final JTable _tableCliente;
     private final JTable _tableReporte;
+    private final JTable _tableReporteDeuda;
     private DefaultTableModel modelo1;
     private DefaultTableModel modelo2;
-    private JSpinner _spinnerPaginas;
-    private JRadioButton _radioCuotas, _radioInteres;
+    private DefaultTableModel modelo3;
+    private final JSpinner _spinnerPaginas;
+    private final JRadioButton _radioCuotas;
+    private final JRadioButton _radioInteres;
     private int _idCliente = 0;
     private int _reg_por_pagina = 10, _num_pagina = 1;
     public int seccion;
@@ -44,6 +57,13 @@ public class ClientesVM extends Consult {
     private String _ticketCuota, nameCliente, _ticketIntereses;
 
     private final Codigos _codigos;
+    private final SimpleDateFormat formateador;
+
+    private long diasMoras;
+    private DefaultTableModel _selectedCliente;
+    private Date _fechaLimite;
+    private final DateChooserCombo _dateChooser;
+    // </editor-fold>
 
     public ClientesVM(Object[] objects, ArrayList<JLabel> label, ArrayList<JTextField> textField) {
         _label = label;
@@ -54,12 +74,16 @@ public class ClientesVM extends Consult {
         _tableReporte = (JTable) objects[3];
         _radioCuotas = (JRadioButton) objects[4];
         _radioInteres = (JRadioButton) objects[5];
+        _tableReporteDeuda = (JTable) objects[6];
+        _dateChooser = (DateChooserCombo) objects[7];
+        _checkBox_Dia = (JCheckBox) objects[8];
         _format = new FormatDecimal();
         _money = ConfigurationVM.Money;
         _codigos = new Codigos();
-
+        formateador = new SimpleDateFormat("dd/MM/yyyy");
         restablecer();
         restablecerReport();
+        ResetReportDeudas();
     }
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE REGISTRAR CLIENTE"> 
@@ -626,8 +650,8 @@ public class ClientesVM extends Consult {
                                         getConn().setAutoCommit(false);
                                         if (!_listIntereses.isEmpty()) {
                                             Object[] data1 = {true};
-                                            
-                                            for (int i = 0; i < cantCuotas; i++) {    
+
+                                            for (int i = 0; i < cantCuotas; i++) {
                                                 String query1 = "UPDATE tintereses_clientes SET Cancelado = ?"
                                                         + " WHERE id=" + _listIntereses.get(i).getId() + " AND "
                                                         + " IdCliente=" + idClienteReport;
@@ -734,6 +758,144 @@ public class ClientesVM extends Consult {
     }
 // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE DEUDAS Y REPORTES"> 
+    public void GetReportesDeudas(String valor) {
+        String[] titulos = {"Id", "NoID", "Nombre", "Apellido",
+            "Email", "Telefono", "IdReporte", "Fecha Limite"};
+        modelo3 = new DefaultTableModel(null, titulos);
+        var inicio = (_num_pagina - 1) * _reg_por_pagina;
+        List<TReportes_clientes> list = new ArrayList<>();
+
+        if (valor.equals("")) {
+            list = Reportes_Clientes().stream().skip(inicio).limit(_reg_por_pagina).collect(Collectors.toList());
+            if (!list.isEmpty()) {
+
+                list.forEach(item -> {
+                    if (!item.getFechaLimite().equals("--/--/--")) {
+                        try {
+                            Date date1 = formateador.parse(item.getFechaLimite());
+                            Date date2 = formateador.parse(new Calendario().getFecha());
+                            long time = date1.getTime() - date2.getTime();
+                            long days = time / (1000 * 60 * 60 * 24);
+                            if (3 >= days) {
+                                Object[] registros = {
+                                    item.getID(),
+                                    item.getNid(),
+                                    item.getNombre(),
+                                    item.getApellido(),
+                                    item.getEmail(),
+                                    item.getTelefono(),
+                                    item.getIdReporte(),
+                                    item.getFechaLimite()
+                                };
+                                modelo3.addRow(registros);
+                            }
+                        } catch (ParseException ex) {
+                            System.out.println("Error Date (Parse): " + ex);
+                        }
+                    }
+                });
+
+            }
+        } else {
+            list = Reportes_Clientes().stream().filter(C -> C.getNid().startsWith(valor)
+                    || C.getNombre().startsWith(valor) || C.getApellido().startsWith(valor))
+                    .skip(inicio).limit(_reg_por_pagina).collect(Collectors.toList());
+            if (!list.isEmpty()) {
+
+                list.forEach(item -> {
+                    if (!item.getFechaLimite().equals("--/--/--")) {
+                        try {
+                            Date date1 = formateador.parse(item.getFechaLimite());
+                            Date date2 = formateador.parse(new Calendario().getFecha());
+                            long time = date1.getTime() - date2.getTime();
+                            long days = time / (1000 * 60 * 60 * 24);
+                            if (3 >= days) {
+                                Object[] registros = {
+                                    item.getID(),
+                                    item.getNid(),
+                                    item.getNombre(),
+                                    item.getApellido(),
+                                    item.getEmail(),
+                                    item.getTelefono(),
+                                    item.getIdReporte(),
+                                    item.getFechaLimite()
+                                };
+                                modelo3.addRow(registros);
+                            }
+                        } catch (ParseException ex) {
+                            System.out.println("Error Date (Parse): " + ex);
+                        }
+                    }
+                });
+
+            }
+        }
+        _tableReporteDeuda.setModel(modelo3);
+        _tableReporteDeuda.setRowHeight(30);
+        _tableReporteDeuda.getColumnModel().getColumn(0).setMaxWidth(0);
+        _tableReporteDeuda.getColumnModel().getColumn(0).setMinWidth(0);
+        _tableReporteDeuda.getColumnModel().getColumn(0).setPreferredWidth(0);
+        _tableReporteDeuda.getColumnModel().getColumn(6).setMaxWidth(0);
+        _tableReporteDeuda.getColumnModel().getColumn(6).setMinWidth(0);
+        _tableReporteDeuda.getColumnModel().getColumn(6).setPreferredWidth(0);
+    }
+
+    public void GetReporteDeuda(DefaultTableModel selected, int fila) {
+        if (selected != null) {
+            Calendar calendar = Calendar.getInstance();
+            try {
+                var nombre = (String) selected.getValueAt(fila, 2);
+                var apellido = (String) selected.getValueAt(fila, 3);
+                _label.get(20).setText(nombre + " " + apellido);
+                _fechaLimite = formateador.parse((String) selected.getValueAt(fila, 7));
+                calendar.setTime(_fechaLimite);
+                _dateChooser.setSelectedDate(calendar);
+                Date date = formateador.parse(new Calendario().getFecha());
+                long time = _fechaLimite.getTime() - date.getTime();
+                diasMoras = time / (1000 * 60 * 60 * 24);
+
+                if (0 < diasMoras) {
+                    _label.get(21).setText(diasMoras + " días restantes");
+                } else {
+                    _label.get(21).setText("Se ha sobrepasado " + Math.abs(diasMoras) + " días");
+                }
+                _selectedCliente = selected;
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+    public void ExtenderDias() {
+        if (_selectedCliente != null) {
+            if( 0 <= diasMoras){
+                if(_checkBox_Dia.isSelected()){
+                    
+                } else {
+                    JOptionPane.showConfirmDialog(null, "Seleccione la casilla para verificar \n" + "que extenderá los días de pago al cliente", "Extender días",
+                    JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showConfirmDialog(null, "No se le pueden extender los días al cliente seleccionado", "Extender días",
+                    JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE);
+            }
+        } else {
+            JOptionPane.showConfirmDialog(null, "Seleccione un cliente de la lista", "Extender días",
+                    JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE);
+        }
+    }
+
+    private void ResetReportDeudas() {
+        _label.get(20).setText("Cliente");
+        _label.get(21).setText("Días");
+        Calendar c = new GregorianCalendar();
+        _dateChooser.setSelectedDate(c);
+        GetReportesDeudas("");
+    }
+
+// </editor-fold>    
+    // <editor-fold defaultstate="collapsed" desc="PAGINADOR"> 
     public void Paginador(String metodo) {
         switch (metodo) {
             case "Primero":
@@ -823,4 +985,5 @@ public class ClientesVM extends Consult {
                 break;
         }
     }
+    // </editor-fold>
 }

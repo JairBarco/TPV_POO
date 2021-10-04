@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -108,14 +109,14 @@ public class Sistema extends javax.swing.JFrame {
         RadioButtonCliente_Intereses = new javax.swing.JRadioButton();
         jPanel15 = new javax.swing.JPanel();
         LabelReporte_Nombre1 = new javax.swing.JLabel();
-        LabelReporte_Nombre2 = new javax.swing.JLabel();
+        LabelReporteDeuda_Nombre = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         LabelCliente_Nombre8 = new javax.swing.JLabel();
         LabelCliente_Nombre14 = new javax.swing.JLabel();
-        LabelCliente_Nombre15 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        LabelCliente_DiasReport = new javax.swing.JLabel();
+        CheckBoxCliente_ExtenderDia = new javax.swing.JCheckBox();
         LabelCliente_Nombre16 = new javax.swing.JLabel();
-        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
+        dateChooserCliente_FechaLimite = new datechooser.beans.DateChooserCombo();
         ButtonCliente_Agregar = new javax.swing.JButton();
         ButtonCliente_Cancelar = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
@@ -840,10 +841,10 @@ public class Sistema extends javax.swing.JFrame {
         LabelReporte_Nombre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelReporte_Nombre1.setText("Reporte de Pagos");
 
-        LabelReporte_Nombre2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        LabelReporte_Nombre2.setForeground(new java.awt.Color(0, 0, 0));
-        LabelReporte_Nombre2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelReporte_Nombre2.setText("Cliente");
+        LabelReporteDeuda_Nombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelReporteDeuda_Nombre.setForeground(new java.awt.Color(0, 0, 0));
+        LabelReporteDeuda_Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelReporteDeuda_Nombre.setText("Cliente");
 
         jPanel20.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -855,13 +856,13 @@ public class Sistema extends javax.swing.JFrame {
         LabelCliente_Nombre14.setForeground(new java.awt.Color(0, 0, 0));
         LabelCliente_Nombre14.setText("Días Restantes");
 
-        LabelCliente_Nombre15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        LabelCliente_Nombre15.setForeground(new java.awt.Color(0, 0, 0));
-        LabelCliente_Nombre15.setText("Días");
+        LabelCliente_DiasReport.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelCliente_DiasReport.setForeground(new java.awt.Color(0, 0, 0));
+        LabelCliente_DiasReport.setText("Días");
 
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        CheckBoxCliente_ExtenderDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                CheckBoxCliente_ExtenderDiaActionPerformed(evt);
             }
         });
 
@@ -869,7 +870,7 @@ public class Sistema extends javax.swing.JFrame {
         LabelCliente_Nombre16.setForeground(new java.awt.Color(0, 0, 0));
         LabelCliente_Nombre16.setText("Extender días");
 
-        dateChooserCombo1.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
+        dateChooserCliente_FechaLimite.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
             new datechooser.view.appearance.ViewAppearance("custom",
                 new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
                     new java.awt.Color(187, 187, 187),
@@ -910,7 +911,7 @@ public class Sistema extends javax.swing.JFrame {
                 (datechooser.view.BackRenderer)null,
                 false,
                 true)));
-    dateChooserCombo1.setLocale(new java.util.Locale("es", "", ""));
+    dateChooserCliente_FechaLimite.setLocale(new java.util.Locale("es", "", ""));
 
     javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
     jPanel20.setLayout(jPanel20Layout);
@@ -926,12 +927,12 @@ public class Sistema extends javax.swing.JFrame {
                 .addGroup(jPanel20Layout.createSequentialGroup()
                     .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(LabelCliente_Nombre8)
-                        .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dateChooserCliente_FechaLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE))
                 .addGroup(jPanel20Layout.createSequentialGroup()
-                    .addComponent(LabelCliente_Nombre15)
+                    .addComponent(LabelCliente_DiasReport)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox1)))
+                    .addComponent(CheckBoxCliente_ExtenderDia)))
             .addContainerGap())
     );
     jPanel20Layout.setVerticalGroup(
@@ -940,15 +941,15 @@ public class Sistema extends javax.swing.JFrame {
             .addContainerGap()
             .addComponent(LabelCliente_Nombre8)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(dateChooserCliente_FechaLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(LabelCliente_Nombre16)
                 .addComponent(LabelCliente_Nombre14, javax.swing.GroupLayout.Alignment.TRAILING))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jCheckBox1)
-                .addComponent(LabelCliente_Nombre15))
+                .addComponent(CheckBoxCliente_ExtenderDia)
+                .addComponent(LabelCliente_DiasReport))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
@@ -961,7 +962,7 @@ public class Sistema extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LabelReporte_Nombre1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
-                .addComponent(LabelReporte_Nombre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(LabelReporteDeuda_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addContainerGap())
     );
     jPanel15Layout.setVerticalGroup(
@@ -970,7 +971,7 @@ public class Sistema extends javax.swing.JFrame {
             .addContainerGap()
             .addComponent(LabelReporte_Nombre1)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(LabelReporte_Nombre2)
+            .addComponent(LabelReporteDeuda_Nombre)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(251, Short.MAX_VALUE))
@@ -1515,7 +1516,9 @@ public class Sistema extends javax.swing.JFrame {
 
             }
             break;
-
+            case 2:
+                cliente.ExtenderDias();
+            break;
         }
 
     }//GEN-LAST:event_ButtonCliente_AgregarActionPerformed
@@ -1742,6 +1745,9 @@ public class Sistema extends javax.swing.JFrame {
         label.add(LabelCliente_InteresesPago);
         label.add(LabelReport_Pagos);
 //19
+        label.add(LabelReporteDeuda_Nombre);
+        label.add(LabelCliente_DiasReport);
+//21      
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldCliente_NoId);
         textField.add(TextFieldCliente_Nombre);
@@ -1759,7 +1765,10 @@ public class Sistema extends javax.swing.JFrame {
             SpinnerPaginas_Clientes,
             TableCliente_Report,
             RadioButtonCliente_Cuotas,
-            RadioButtonCliente_Intereses
+            RadioButtonCliente_Intereses,
+            TableCliente_ReportDeuda,
+            dateChooserCliente_FechaLimite,
+            CheckBoxCliente_ExtenderDia
         };
         cliente = new ClientesVM(objects, label, textField);
         TabbedPanePrincipal.setSelectedIndex(1);
@@ -1817,15 +1826,25 @@ public class Sistema extends javax.swing.JFrame {
 
     private void TableCliente_ReportDeudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_ReportDeudaMouseClicked
         // TODO add your handling code here:
+        if (TableCliente_ReportDeuda.getSelectedRows().length > 0) {
+            var fila = TableCliente_ReportDeuda.getSelectedRow();
+            var modelo = (DefaultTableModel) TableCliente_ReportDeuda.getModel();
+            cliente.GetReporteDeuda(modelo, fila);
+        }
     }//GEN-LAST:event_TableCliente_ReportDeudaMouseClicked
 
     private void TableCliente_ReportDeudaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_ReportDeudaKeyReleased
         // TODO add your handling code here:
+        if (TableCliente_ReportDeuda.getSelectedRows().length > 0) {
+            var fila = TableCliente_ReportDeuda.getSelectedRow();
+            var modelo = (DefaultTableModel) TableCliente_ReportDeuda.getModel();
+            cliente.GetReporteDeuda(modelo, fila);
+        }
     }//GEN-LAST:event_TableCliente_ReportDeudaKeyReleased
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void CheckBoxCliente_ExtenderDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCliente_ExtenderDiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_CheckBoxCliente_ExtenderDiaActionPerformed
     // </editor-fold>
 
     /**
@@ -1874,10 +1893,12 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JButton ButtonConfiguracion;
     private javax.swing.JButton ButtonVentas;
     private javax.swing.JCheckBox CheckBoxCliente_Credito;
+    private javax.swing.JCheckBox CheckBoxCliente_ExtenderDia;
     private javax.swing.JLabel LabelCliente_Apellido;
     private javax.swing.JLabel LabelCliente_Cuotas;
     private javax.swing.JLabel LabelCliente_CuotasMes;
     private javax.swing.JLabel LabelCliente_Deuda;
+    private javax.swing.JLabel LabelCliente_DiasReport;
     private javax.swing.JLabel LabelCliente_Direccion;
     private javax.swing.JLabel LabelCliente_Email;
     private javax.swing.JLabel LabelCliente_FechaIntereses;
@@ -1892,7 +1913,6 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCliente_Nombre12;
     private javax.swing.JLabel LabelCliente_Nombre13;
     private javax.swing.JLabel LabelCliente_Nombre14;
-    private javax.swing.JLabel LabelCliente_Nombre15;
     private javax.swing.JLabel LabelCliente_Nombre16;
     private javax.swing.JLabel LabelCliente_Nombre4;
     private javax.swing.JLabel LabelCliente_Nombre5;
@@ -1906,9 +1926,9 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCliente_Ticket;
     private javax.swing.JLabel LabelCliente_TicketIntereses;
     private javax.swing.JLabel LabelReport_Pagos;
+    private javax.swing.JLabel LabelReporteDeuda_Nombre;
     private javax.swing.JLabel LabelReporte_Nombre;
     private javax.swing.JLabel LabelReporte_Nombre1;
-    private javax.swing.JLabel LabelReporte_Nombre2;
     private javax.swing.JLabel Label_ImagenCliente;
     private javax.swing.JRadioButton RadioButtonCliente_Cuotas;
     private javax.swing.JRadioButton RadioButtonCliente_Intereses;
@@ -1931,8 +1951,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldCliente_Telefono;
     private javax.swing.JTextField TextField_BuscarCliente1;
     private javax.swing.ButtonGroup buttonGroup1;
-    private datechooser.beans.DateChooserCombo dateChooserCombo1;
-    private javax.swing.JCheckBox jCheckBox1;
+    private datechooser.beans.DateChooserCombo dateChooserCliente_FechaLimite;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
