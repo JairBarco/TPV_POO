@@ -63,6 +63,7 @@ public class ClientesVM extends Consult {
     private DefaultTableModel _selectedCliente;
     private Date _fechaLimite;
     private final DateChooserCombo _dateChooser;
+    private Integer _idReporte;
     // </editor-fold>
 
     public ClientesVM(Object[] objects, ArrayList<JLabel> label, ArrayList<JTextField> textField) {
@@ -848,6 +849,7 @@ public class ClientesVM extends Consult {
                 var nombre = (String) selected.getValueAt(fila, 2);
                 var apellido = (String) selected.getValueAt(fila, 3);
                 _label.get(20).setText(nombre + " " + apellido);
+                _idReporte = (Integer) selected.getValueAt(fila, 6);
                 _fechaLimite = formateador.parse((String) selected.getValueAt(fila, 7));
                 calendar.setTime(_fechaLimite);
                 _dateChooser.setSelectedDate(calendar);
@@ -869,16 +871,35 @@ public class ClientesVM extends Consult {
 
     public void ExtenderDias() {
         if (_selectedCliente != null) {
-            if( 0 <= diasMoras){
-                if(_checkBox_Dia.isSelected()){
-                    
+            if (0 <= diasMoras) {
+                if (_checkBox_Dia.isSelected()) {
+                    try {
+                        _dateChooser.setFormat(3);
+                        var date1 = formateador.parse(new Calendario().getFecha());
+                        var date2 = _dateChooser.getSelectedDate().getTime();
+                        if (date1.before(date2) && _fechaLimite.before(date2)) {
+                            final QueryRunner qr = new QueryRunner(true);
+                            String query = "UPDATE treportes_clientes SET FechaLimite = ?"
+                                    + " WHERE IdReporte = " + _idReporte;
+                            Object[] data = {formateador.format(date2)};
+
+                            qr.update(getConn(), query, data);
+                            ResetReportDeudas();
+                        } else {
+                            var fechaLimite = !date1.before(date2) ? new Calendario().getFecha() : formateador.format(_fechaLimite);
+                            JOptionPane.showConfirmDialog(null, "Seleccione una fecha mayor a la fecha: " + fechaLimite + "\npara extender los días de pago al cliente", "Fecha para extender días",
+                                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        }
+                        _dateChooser.setFormat(0);
+                    } catch (Exception e) {
+                    }
                 } else {
                     JOptionPane.showConfirmDialog(null, "Seleccione la casilla para verificar \n" + "que extenderá los días de pago al cliente", "Extender días",
-                    JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE);
+                            JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE);
                 }
             } else {
                 JOptionPane.showConfirmDialog(null, "No se le pueden extender los días al cliente seleccionado", "Extender días",
-                    JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE);
             }
         } else {
             JOptionPane.showConfirmDialog(null, "Seleccione un cliente de la lista", "Extender días",
@@ -887,6 +908,7 @@ public class ClientesVM extends Consult {
     }
 
     private void ResetReportDeudas() {
+        diasMoras = 0;
         _label.get(20).setText("Cliente");
         _label.get(21).setText("Días");
         Calendar c = new GregorianCalendar();

@@ -33,8 +33,8 @@ public class Sistema extends javax.swing.JFrame {
         _radio = new ArrayList();
         _radio.add(RadioButton_MXN);
         _radio.add(RadioButton_USD);
+        _radio.add(RadioButtonConfig_Intereses);
         config = new ConfigurationVM(_radio);
-
     }
 
     /**
@@ -152,10 +152,19 @@ public class Sistema extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel21 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         RadioButton_MXN = new javax.swing.JRadioButton();
         RadioButton_USD = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
+        jPanel22 = new javax.swing.JPanel();
+        jPanel23 = new javax.swing.JPanel();
+        TextFieldConfig_Intereses = new javax.swing.JTextField();
+        ButtonConfig_AddIntereses = new javax.swing.JButton();
+        LabelConfig_MsjIntereses = new javax.swing.JLabel();
+        RadioButtonConfig_Intereses = new javax.swing.JRadioButton();
+        LabelConfig_Intereses = new javax.swing.JLabel();
         ButtonClientes = new javax.swing.JButton();
         ButtonVentas = new javax.swing.JButton();
         ButtonConfiguracion = new javax.swing.JButton();
@@ -1334,6 +1343,8 @@ public class Sistema extends javax.swing.JFrame {
             .addContainerGap())
     );
 
+    jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
     jPanel18.setBackground(new java.awt.Color(255, 255, 255));
     jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
@@ -1379,6 +1390,112 @@ public class Sistema extends javax.swing.JFrame {
             .addContainerGap(212, Short.MAX_VALUE))
     );
 
+    javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+    jPanel21.setLayout(jPanel21Layout);
+    jPanel21Layout.setHorizontalGroup(
+        jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel21Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(952, Short.MAX_VALUE))
+    );
+    jPanel21Layout.setVerticalGroup(
+        jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel21Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(195, Short.MAX_VALUE))
+    );
+
+    jTabbedPane1.addTab("Tipo de Monedas", jPanel21);
+
+    jPanel23.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+    TextFieldConfig_Intereses.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldConfig_Intereses.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldConfig_Intereses.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldConfig_InteresesActionPerformed(evt);
+        }
+    });
+    TextFieldConfig_Intereses.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            TextFieldConfig_InteresesKeyTyped(evt);
+        }
+    });
+
+    ButtonConfig_AddIntereses.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonConfig_AddIntereses.setForeground(new java.awt.Color(255, 255, 255));
+    ButtonConfig_AddIntereses.setText("Agregar");
+    ButtonConfig_AddIntereses.setToolTipText("");
+    ButtonConfig_AddIntereses.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonConfig_AddIntereses.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonConfig_AddIntereses.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonConfig_AddInteresesActionPerformed(evt);
+        }
+    });
+
+    LabelConfig_MsjIntereses.setForeground(new java.awt.Color(0, 0, 0));
+    LabelConfig_MsjIntereses.setText("Mensaje");
+
+    RadioButtonConfig_Intereses.setForeground(new java.awt.Color(0, 0, 0));
+    RadioButtonConfig_Intereses.setText("Intereses");
+
+    LabelConfig_Intereses.setForeground(new java.awt.Color(0, 0, 0));
+    LabelConfig_Intereses.setText("Intereses");
+
+    javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+    jPanel23.setLayout(jPanel23Layout);
+    jPanel23Layout.setHorizontalGroup(
+        jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel23Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(RadioButtonConfig_Intereses, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                .addComponent(LabelConfig_MsjIntereses, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelConfig_Intereses, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TextFieldConfig_Intereses, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(ButtonConfig_AddIntereses, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(423, Short.MAX_VALUE))
+    );
+    jPanel23Layout.setVerticalGroup(
+        jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel23Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(ButtonConfig_AddIntereses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TextFieldConfig_Intereses))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelConfig_MsjIntereses)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(RadioButtonConfig_Intereses)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelConfig_Intereses)
+            .addContainerGap(320, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+    jPanel22.setLayout(jPanel22Layout);
+    jPanel22Layout.setHorizontalGroup(
+        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel22Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(607, Short.MAX_VALUE))
+    );
+    jPanel22Layout.setVerticalGroup(
+        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel22Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(71, Short.MAX_VALUE))
+    );
+
+    jTabbedPane1.addTab("Registro Intereses", jPanel22);
+
     javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
     jPanel16.setLayout(jPanel16Layout);
     jPanel16Layout.setHorizontalGroup(
@@ -1387,9 +1504,7 @@ public class Sistema extends javax.swing.JFrame {
             .addContainerGap()
             .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel16Layout.createSequentialGroup()
-                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 960, Short.MAX_VALUE)))
+                .addComponent(jTabbedPane1))
             .addContainerGap())
     );
     jPanel16Layout.setVerticalGroup(
@@ -1398,8 +1513,8 @@ public class Sistema extends javax.swing.JFrame {
             .addContainerGap()
             .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(242, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
+            .addContainerGap())
     );
 
     TabbedPanePrincipal.addTab("Configuración", jPanel16);
@@ -1785,7 +1900,12 @@ public class Sistema extends javax.swing.JFrame {
         TabbedPanePrincipal.setSelectedIndex(2);
         ButtonClientes.setEnabled(true);
         ButtonConfiguracion.setEnabled(false);
-        config = new ConfigurationVM(_radio);
+        ArrayList<JTextField> textField = new ArrayList();
+        textField.add(TextFieldConfig_Intereses);
+        ArrayList<JLabel> label = new ArrayList();
+        label.add(LabelConfig_MsjIntereses);
+        label.add(LabelConfig_Intereses);
+        config = new ConfigurationVM(_radio, textField, label);
     }//GEN-LAST:event_ButtonConfiguracionActionPerformed
 
     private void TextFieldCliente_CuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_CuotasActionPerformed
@@ -1845,6 +1965,20 @@ public class Sistema extends javax.swing.JFrame {
     private void CheckBoxCliente_ExtenderDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCliente_ExtenderDiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckBoxCliente_ExtenderDiaActionPerformed
+
+    private void TextFieldConfig_InteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldConfig_InteresesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldConfig_InteresesActionPerformed
+
+    private void ButtonConfig_AddInteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConfig_AddInteresesActionPerformed
+        // TODO add your handling code here:
+        config.RegistrarIntereses();
+    }//GEN-LAST:event_ButtonConfig_AddInteresesActionPerformed
+
+    private void TextFieldConfig_InteresesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldConfig_InteresesKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.numberDecimalKeyPress(evt, TextFieldConfig_Intereses);
+    }//GEN-LAST:event_TextFieldConfig_InteresesKeyTyped
     // </editor-fold>
 
     /**
@@ -1890,6 +2024,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JButton ButtonCliente_Paginas3;
     private javax.swing.JButton ButtonCliente_Paginas4;
     private javax.swing.JButton ButtonClientes;
+    private javax.swing.JButton ButtonConfig_AddIntereses;
     private javax.swing.JButton ButtonConfiguracion;
     private javax.swing.JButton ButtonVentas;
     private javax.swing.JCheckBox CheckBoxCliente_Credito;
@@ -1925,6 +2060,8 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCliente_Telefono;
     private javax.swing.JLabel LabelCliente_Ticket;
     private javax.swing.JLabel LabelCliente_TicketIntereses;
+    private javax.swing.JLabel LabelConfig_Intereses;
+    private javax.swing.JLabel LabelConfig_MsjIntereses;
     private javax.swing.JLabel LabelReport_Pagos;
     private javax.swing.JLabel LabelReporteDeuda_Nombre;
     private javax.swing.JLabel LabelReporte_Nombre;
@@ -1932,6 +2069,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel Label_ImagenCliente;
     private javax.swing.JRadioButton RadioButtonCliente_Cuotas;
     private javax.swing.JRadioButton RadioButtonCliente_Intereses;
+    private javax.swing.JRadioButton RadioButtonConfig_Intereses;
     private javax.swing.JRadioButton RadioButton_MXN;
     private javax.swing.JRadioButton RadioButton_USD;
     private javax.swing.JSpinner SpinnerPaginas_Clientes;
@@ -1949,6 +2087,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldCliente_Nombre;
     private javax.swing.JTextField TextFieldCliente_Pagos;
     private javax.swing.JTextField TextFieldCliente_Telefono;
+    private javax.swing.JTextField TextFieldConfig_Intereses;
     private javax.swing.JTextField TextField_BuscarCliente1;
     private javax.swing.ButtonGroup buttonGroup1;
     private datechooser.beans.DateChooserCombo dateChooserCliente_FechaLimite;
@@ -1974,6 +2113,9 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1984,6 +2126,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
     public void setExtendedState(int i, int i0) {
