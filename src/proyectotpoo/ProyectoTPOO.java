@@ -1,6 +1,6 @@
 package proyectotpoo;
 
-import Views.Sistema;
+import Views.*;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -17,8 +17,8 @@ public class ProyectoTPOO {
         }catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
 
         }
-        Sistema sistema = new Sistema();
-        sistema.setExtendedState(MAXIMIZED_BOTH);
+        Login sistema = new Login();
+        //sistema.setExtendedState(MAXIMIZED_BOTH);
         sistema.setVisible(true);
     }
     

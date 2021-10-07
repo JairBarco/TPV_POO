@@ -69,5 +69,11 @@ public class Calendario {
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(c.getTime());
     }
-
+    
+    public String addDay(Date date, int day){
+        c.setTime(date);
+        c.add(Calendar.DAY_OF_WEEK, day);
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(c.getTime());
+    }
 }

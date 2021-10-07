@@ -2,6 +2,8 @@ package Conexion;
 
 import Models.*;
 import Models.Cliente.*;
+import Models.Ordenador.TOrdenadores;
+import Models.Usuario.TUsuarios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,18 +80,18 @@ public class Consult extends Conexion {
 
     public List<TReportes_clientes> ReporteCliente() {
         List<TReportes_clientes> reporte = new ArrayList();
-        
+
         try {
             reporte = (List<TReportes_clientes>) QR.query(getConn(), "SELECT * FROM treportes_clientes",
                     new BeanListHandler(TReportes_clientes.class));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
-        
+
         return reporte;
     }
-    
-    public List<TReportes_clientes> Reportes_Clientes(){
+
+    public List<TReportes_clientes> Reportes_Clientes() {
         String where = "";
         List<TReportes_clientes> reportes = new ArrayList();
         String condicion1 = " tclientes.ID = treportes_clientes.IdCliente ";
@@ -100,15 +102,37 @@ public class Consult extends Conexion {
                 + "treportes_clientes.FechaPago, treportes_clientes.Ticket,"
                 + "treportes_clientes.Deuda,treportes_clientes.Mensual,treportes_clientes.Cambio,"
                 + "treportes_clientes.FechaLimite";
-        try{
+        try {
             reportes = (List<TReportes_clientes>) QR.query(getConn(),
-            "SELECT" + campos + " FROM tclientes Inner Join treportes_clientes ON"
+                    "SELECT" + campos + " FROM tclientes Inner Join treportes_clientes ON"
                     + condicion1 + where, new BeanListHandler(TReportes_clientes.class));
-            
-        } catch (SQLException e){
+
+        } catch (SQLException e) {
             System.out.println("Error: " + e);
         }
-        
+
         return reportes;
+    }
+
+    public List<TUsuarios> Usuarios() {
+        List<TUsuarios> usuarios = new ArrayList();
+        try {
+            usuarios = (List<TUsuarios>) QR.query(getConn(), "SELECT * FROM tusuarios",
+                    new BeanListHandler(TUsuarios.class));
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return usuarios;
+    }
+
+    public List<TOrdenadores> Ordenadores() {
+        List<TOrdenadores> ordenadores = new ArrayList();
+        try {
+            ordenadores = (List<TOrdenadores>) QR.query(getConn(), "SELECT * FROM tordenadores",
+                    new BeanListHandler(TUsuarios.class));
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return ordenadores;
     }
 }

@@ -1420,6 +1420,9 @@ public class Sistema extends javax.swing.JFrame {
         }
     });
     TextFieldConfig_Intereses.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldConfig_InteresesKeyReleased(evt);
+        }
         public void keyTyped(java.awt.event.KeyEvent evt) {
             TextFieldConfig_InteresesKeyTyped(evt);
         }
@@ -1442,6 +1445,11 @@ public class Sistema extends javax.swing.JFrame {
 
     RadioButtonConfig_Intereses.setForeground(new java.awt.Color(0, 0, 0));
     RadioButtonConfig_Intereses.setText("Intereses");
+    RadioButtonConfig_Intereses.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            RadioButtonConfig_InteresesActionPerformed(evt);
+        }
+    });
 
     LabelConfig_Intereses.setForeground(new java.awt.Color(0, 0, 0));
     LabelConfig_Intereses.setText("Intereses");
@@ -1979,6 +1987,16 @@ public class Sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
         Objetos.eventos.numberDecimalKeyPress(evt, TextFieldConfig_Intereses);
     }//GEN-LAST:event_TextFieldConfig_InteresesKeyTyped
+
+    private void TextFieldConfig_InteresesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldConfig_InteresesKeyReleased
+        // TODO add your handling code here:
+        LabelConfig_MsjIntereses.setText("");
+    }//GEN-LAST:event_TextFieldConfig_InteresesKeyReleased
+
+    private void RadioButtonConfig_InteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonConfig_InteresesActionPerformed
+        // TODO add your handling code here:
+        LabelConfig_MsjIntereses.setText("");
+    }//GEN-LAST:event_RadioButtonConfig_InteresesActionPerformed
     // </editor-fold>
 
     /**

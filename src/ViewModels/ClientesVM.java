@@ -787,9 +787,15 @@ public class ClientesVM extends Consult {
                                     item.getEmail(),
                                     item.getTelefono(),
                                     item.getIdReporte(),
-                                    item.getFechaLimite()
+                                    item.getFechaLimite(),
+                                    item.getFechaPago(),
+                                    item.getMensual(),
+                                    item.getDeuda()
                                 };
                                 modelo3.addRow(registros);
+                                if (0 > days) {
+                                    InteresMora(registros, days);
+                                }
                             }
                         } catch (ParseException ex) {
                             System.out.println("Error Date (Parse): " + ex);
@@ -820,7 +826,10 @@ public class ClientesVM extends Consult {
                                     item.getEmail(),
                                     item.getTelefono(),
                                     item.getIdReporte(),
-                                    item.getFechaLimite()
+                                    item.getFechaLimite(),
+                                    item.getFechaPago(),
+                                    item.getMensual(),
+                                    item.getDeuda()
                                 };
                                 modelo3.addRow(registros);
                             }
@@ -904,6 +913,62 @@ public class ClientesVM extends Consult {
         } else {
             JOptionPane.showConfirmDialog(null, "Seleccione un cliente de la lista", "Extender días",
                     JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE);
+        }
+    }
+
+    private void InteresMora(Object[] cliente, long days) {
+        var interests = ConfigurationVM.Interests;
+        var id = (Integer) cliente[0];
+        var fechaPago = (String) cliente[8];
+        var mensual = (Double) cliente[9];
+        if (!interests.equals(0.0)) {
+            var clientesInteres = InteresesCliente().stream()
+                    .filter(i -> i.getIdCliente() == id && i.getFechaInicial().equals(fechaPago) && i.getCancelado() == false)
+                    .collect(Collectors.toList());
+
+            long dias = Math.abs(days);
+            Double porcentaje = interests / 100;
+            Double moratorioMensual = mensual * porcentaje;
+            Double moratorioDia = moratorioMensual / 30;
+            //Double interes = moratorioDia * dias;
+            int count = clientesInteres.size();
+            int pos = count;
+            pos--;
+            if (count==0) {
+                for (int i = 1; i <= dias; i++) {
+                    Double interes = moratorioDia * i;
+                    insert(cliente, new TIntereses_clientes(), i, false, interes);
+                }
+            } else {
+                if (count <= dias) {
+                    long interesDias = dias - count;
+                    for (int i = 1; i <= interesDias; i++) {
+                        Double interes = moratorioDia * i;
+                        insert(cliente, clientesInteres.get(pos), i, true, interes);
+                    }
+                }
+            }
+        }
+    }
+
+    private void insert(Object[] cliente, TIntereses_clientes clientesInteres, int day, boolean value, Double interes) {
+        Date fecha = null;
+        final QueryRunner qr = new QueryRunner(true);
+        var id = (Integer) cliente[0];
+        var fechaLimite = (String) cliente[7];
+        var fechaPago = (String) cliente[8];
+        var mensual = (Double) cliente[9];
+        var deuda = (Double) cliente[10];
+
+        try {
+            if (value) {
+                fecha = formateador.parse(clientesInteres.getFecha());
+            } else {
+                fecha = formateador.parse(fechaLimite);
+            }
+            var datenNow = new Calendario().addDay(fecha, day);
+        } catch (Exception e) {
+
         }
     }
 
