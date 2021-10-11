@@ -1,7 +1,10 @@
 package proyectotpoo;
 
+import Models.Usuario.TUsuarios;
+import ViewModels.LoginVM;
 import Views.*;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.util.List;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -10,16 +13,26 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Jair Barco
  */
 public class ProyectoTPOO {
-    
+
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-        }catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
         }
-        Login sistema = new Login();
-        //sistema.setExtendedState(MAXIMIZED_BOTH);
-        sistema.setVisible(true);
+        
+        var login = new LoginVM();
+        Object[] objects = login.Verificar();
+        var listUsuario = (List<TUsuarios>) objects[0];
+
+        if (!listUsuario.isEmpty()) {
+            Sistema sys = new Sistema(listUsuario.get(0));
+            sys.setVisible(true);
+            sys.setExtendedState(MAXIMIZED_BOTH);
+        } else {
+            Login sistema = new Login();
+            //sistema.setExtendedState(MAXIMIZED_BOTH);
+            sistema.setVisible(true);
+        }
+        
     }
-    
 }

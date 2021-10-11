@@ -3,6 +3,7 @@ package Conexion;
 import Models.*;
 import Models.Cliente.*;
 import Models.Ordenador.TOrdenadores;
+import Models.Usuario.TRoles;
 import Models.Usuario.TUsuarios;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -119,7 +120,7 @@ public class Consult extends Conexion {
         try {
             usuarios = (List<TUsuarios>) QR.query(getConn(), "SELECT * FROM tusuarios",
                     new BeanListHandler(TUsuarios.class));
-        } catch (SQLException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
         return usuarios;
@@ -129,10 +130,21 @@ public class Consult extends Conexion {
         List<TOrdenadores> ordenadores = new ArrayList();
         try {
             ordenadores = (List<TOrdenadores>) QR.query(getConn(), "SELECT * FROM tordenadores",
-                    new BeanListHandler(TUsuarios.class));
-        } catch (SQLException e) {
+                    new BeanListHandler(TOrdenadores.class));
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
         return ordenadores;
+    }
+
+    public List<TRoles> Roles() {
+        List<TRoles> rol = new ArrayList();
+        try {
+            rol = (List<TRoles>) QR.query(getConn(), "SELECT * FROM troles",
+                    new BeanListHandler(TClientes.class));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex);
+        }
+        return rol;
     }
 }

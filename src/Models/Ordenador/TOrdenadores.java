@@ -6,6 +6,7 @@ public class TOrdenadores {
     public int IdOrdenador;
     public String Ordenador;
     public boolean Is_active;
+    public String Usuario;
     public Date InFecha;
     public Date OutFecha;
     public int IdUsuario;
@@ -35,6 +36,14 @@ public class TOrdenadores {
 
     public void setIs_active(boolean Is_active) {
         this.Is_active = Is_active;
+    }
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
     }
 
     public Date getInFecha() {

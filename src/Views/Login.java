@@ -5,9 +5,12 @@
  */
 package Views;
 
+import Models.Usuario.TUsuarios;
 import ViewModels.LoginVM;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -183,37 +186,48 @@ public class Login extends javax.swing.JFrame {
     private LoginVM login;
     
     private void ButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonIniciarActionPerformed
-        // TODO add your handling code here:
-        var label = new ArrayList<JLabel>();
-        label.add(labelUsuario);
-        label.add(labelPassword);
-        
-        var textField = new ArrayList<JTextField>();
-        textField.add(TextFieldUsuario);
-        textField.add(PasswordField);
-        
-        login = new LoginVM(label, textField);
-        Object[] objects = login.Login();
+        try {
+            // TODO add your handling code here:
+            var label = new ArrayList<JLabel>();
+            label.add(labelUsuario);
+            label.add(labelPassword);
+            
+            var textField = new ArrayList<JTextField>();
+            textField.add(TextFieldUsuario);
+            textField.add(PasswordField);
+            
+            login = new LoginVM(label, textField);
+            Object[] objects = login.Login();
+            var listUsuario = (List<TUsuarios>) objects[0];
+            if (!listUsuario.isEmpty()) {
+                Sistema sys = new Sistema(listUsuario.get(0));
+                sys.setVisible(true);
+                sys.setExtendedState(MAXIMIZED_BOTH);
+                this.setVisible(false);
+            }
+        } catch (SQLException ex) {
+            
+        }
     }//GEN-LAST:event_ButtonIniciarActionPerformed
 
     private void TextFieldUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuarioKeyReleased
         // TODO add your handling code here:
-        if(TextFieldUsuario.getText().equals("")){
-            labelUsuario.setForeground(new Color(102,102,102));
+        if (TextFieldUsuario.getText().equals("")) {
+            labelUsuario.setForeground(new Color(102, 102, 102));
         } else {
             labelUsuario.setText("Usuario");
-            labelUsuario.setForeground(new Color(0,153,51));
+            labelUsuario.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldUsuarioKeyReleased
 
     private void PasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PasswordFieldKeyReleased
         // TODO add your handling code here:
         String pass = new String(PasswordField.getPassword());
-        if(pass.equals("")){
-            labelPassword.setForeground(new Color(102,102,102));
+        if (pass.equals("")) {
+            labelPassword.setForeground(new Color(102, 102, 102));
         } else {
             labelPassword.setText("Contraseña");
-            labelPassword.setForeground(new Color(0,153,51));
+            labelPassword.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_PasswordFieldKeyReleased
 

@@ -3,6 +3,7 @@ package ViewModels;
 import Conexion.Consult;
 import Library.*;
 import Models.Cliente.*;
+import Models.Usuario.TUsuarios;
 import datechooser.beans.DateChooserCombo;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -26,23 +27,23 @@ public class ClientesVM extends Consult {
 
     // <editor-fold defaultstate="collapsed" desc="VARIABLES GLOBALES">
     private String _accion = "insert";
-    private final String _money;
-    private final ArrayList<JLabel> _label;
-    private final ArrayList<JTextField> _textField;
-    private final JCheckBox _checkBoxCredito, _checkBox_Dia;
-    private final JTable _tableCliente;
-    private final JTable _tableReporte;
-    private final JTable _tableReporteDeuda;
+    private String _money;
+    private ArrayList<JLabel> _label;
+    private ArrayList<JTextField> _textField;
+    private JCheckBox _checkBoxCredito, _checkBox_Dia;
+    private JTable _tableCliente;
+    private JTable _tableReporte;
+    private JTable _tableReporteDeuda;
     private DefaultTableModel modelo1;
     private DefaultTableModel modelo2;
     private DefaultTableModel modelo3;
-    private final JSpinner _spinnerPaginas;
-    private final JRadioButton _radioCuotas;
-    private final JRadioButton _radioInteres;
+    private JSpinner _spinnerPaginas;
+    private JRadioButton _radioCuotas;
+    private JRadioButton _radioInteres;
     private int _idCliente = 0;
     private int _reg_por_pagina = 10, _num_pagina = 1;
     public int seccion;
-    private final FormatDecimal _format;
+    private FormatDecimal _format;
     private Paginador<TClientes> _paginadorClientes;
     private Paginador<TClientes> _paginadorReportes;
 
@@ -56,15 +57,25 @@ public class ClientesVM extends Consult {
     private Double _pago = 0.0, _mensual = 0.0, _deudaActualCliente = 0.0, _deuda;
     private String _ticketCuota, nameCliente, _ticketIntereses;
 
-    private final Codigos _codigos;
-    private final SimpleDateFormat formateador;
+    private Codigos _codigos;
+    private SimpleDateFormat formateador;
 
     private long diasMoras;
     private DefaultTableModel _selectedCliente;
     private Date _fechaLimite;
-    private final DateChooserCombo _dateChooser;
+    private DateChooserCombo _dateChooser;
     private Integer _idReporte;
+
+    private static TUsuarios _dataUsuario;
     // </editor-fold>
+
+    public ClientesVM() {
+
+    }
+
+    public ClientesVM(TUsuarios dataUsuario) {
+        _dataUsuario = dataUsuario;
+    }
 
     public ClientesVM(Object[] objects, ArrayList<JLabel> label, ArrayList<JTextField> textField) {
         _label = label;
@@ -578,6 +589,7 @@ public class ClientesVM extends Consult {
             } else {
                 String fecha = new Calendario().getFecha();
                 //Consulta usuario que inicia sesión
+                var usuario = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
                 if (_radioCuotas.isSelected()) {
                     if (!_deuda.equals(0) || !_deuda.equals(0.0)) {
                         if (_pago >= _mensual) {
@@ -592,7 +604,7 @@ public class ClientesVM extends Consult {
 
                                 Object[] data1 = {
                                     _deuda, _deudaActual, _pago, _cambio, fecha,
-                                    _fechalimit, ticket, 1, "Jair", idClienteReport
+                                    _fechalimit, ticket, _dataUsuario.getIdUsuario(), usuario, idClienteReport
                                 };
 
                                 qr.insert(getConn(), query1, new ColumnListHandler(), data1);
@@ -619,7 +631,7 @@ public class ClientesVM extends Consult {
                                 Ticket1.TextoIzquierda("Factura: " + ticket);
                                 Ticket1.TextoIzquierda("Cliente: " + nameCliente);
                                 Ticket1.TextoIzquierda("Fecha: " + fecha);
-                                //Ticket1.TextoIzquierda("Usuario:usuario");
+                                Ticket1.TextoIzquierda("Usuario: " + usuario);
                                 Ticket1.LineasGuion();
                                 Ticket1.TextoCentro("Su credito: " + _money + _format.decimal(_deuda));
                                 Ticket1.TextoExtremo("Cuotas por 12 meses: ", _money + _format.decimal(_mensual));
@@ -663,7 +675,7 @@ public class ClientesVM extends Consult {
                                             String query2 = "INSERT INTO tpagos_reportes_intereses_cliente(Intereses,Pago, Cambio,Cuotas,"
                                                     + "Fecha,Ticket,IdUsuario,Usuario,IdCliente) VALUES(?,?,?,?,?,?,?,?,?)";
                                             Object[] data2 = {
-                                                _intereses, _interesPago, _cambio, cantCuotas, fecha, ticket, 7, "Jair", idClienteReport
+                                                _intereses, _interesPago, _cambio, cantCuotas, fecha, ticket, _dataUsuario.getIdUsuario(), usuario, idClienteReport
                                             };
                                             qr.insert(getConn(), query2, new ColumnListHandler(), data2);
 
@@ -685,7 +697,7 @@ public class ClientesVM extends Consult {
                                             Ticket1.TextoIzquierda("Factura: " + ticket);
                                             Ticket1.TextoIzquierda("Cliente: " + nameCliente);
                                             Ticket1.TextoIzquierda("Fecha: " + fecha);
-                                            //usuario
+                                            Ticket1.TextoIzquierda("Usuario: " + usuario);
                                             Ticket1.LineasGuion();
                                             Ticket1.TextoCentro("Intereses " + _money + _format.decimal(_intereses));
                                             Ticket1.TextoExtremo("Cuotas: ", cantCuotas.toString());
@@ -934,7 +946,7 @@ public class ClientesVM extends Consult {
             int count = clientesInteres.size();
             int pos = count;
             pos--;
-            if (count==0) {
+            if (count == 0) {
                 for (int i = 1; i <= dias; i++) {
                     Double interes = moratorioDia * i;
                     insert(cliente, new TIntereses_clientes(), i, false, interes);
