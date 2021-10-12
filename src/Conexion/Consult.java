@@ -141,7 +141,7 @@ public class Consult extends Conexion {
         List<TRoles> rol = new ArrayList();
         try {
             rol = (List<TRoles>) QR.query(getConn(), "SELECT * FROM troles",
-                    new BeanListHandler(TClientes.class));
+                    new BeanListHandler(TRoles.class));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex);
         }

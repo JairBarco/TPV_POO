@@ -126,7 +126,7 @@ public class LoginVM extends Consult {
             qr.update(getConn(), sql1, usuarios);
             
             Object[] ordenadores = {false, date};
-            String sql2 = "UPDATE tordenadores SET Is_active = ?," + "InFecha = ? WHERE IdOrdenador = " + dataOrdenador.get(0).getIdOrdenador();
+            String sql2 = "UPDATE tordenadores SET Is_active = ?," + "OutFecha = ? WHERE IdOrdenador = " + dataOrdenador.get(0).getIdOrdenador();
             qr.update(getConn(), sql2, ordenadores);
             getConn().commit();
         } catch (Exception e) {

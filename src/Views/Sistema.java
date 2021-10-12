@@ -2737,6 +2737,7 @@ public class Sistema extends javax.swing.JFrame {
         label.add(LabelUsuario_Direccion);
         label.add(LabelUsuario_Usuario);
         label.add(LabelUsuario_Password);
+        
         //label.add(Label_ImagenUsuario);
         label.add(LabelUsuarios_Paginas);
 

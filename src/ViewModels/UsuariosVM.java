@@ -1,23 +1,22 @@
 package ViewModels;
 
-import Library.Objetos;
-import Library.UploadImage;
-import Models.Usuario.TUsuarios;
+import Conexion.Consult;
+import Library.*;
+import Models.Usuario.*;
 import java.awt.Color;
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JSpinner;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import java.util.stream.Collectors;
+import javax.swing.*;
+import java.sql.SQLException;
+import java.util.Date;
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.ColumnListHandler;
 
 /**
  *
  * @author jair_
  */
-public class UsuariosVM {
+public class UsuariosVM extends Consult {
 
     private static TUsuarios _dataUsuario;
     private static JLabel _nombrePerfil;
@@ -26,7 +25,7 @@ public class UsuariosVM {
     private List<JTextField> _textField;
     private List<JLabel> _label;
     private JCheckBox _checkBoxState;
-    private JComboBox _comboBoxRole;
+    private JComboBox _comboBoxRoles;
     private JTable _tableUser;
     private JSpinner _spinnerPaginas;
     private String _accion = "insert";
@@ -46,7 +45,8 @@ public class UsuariosVM {
         _checkBoxState = (JCheckBox) objects[1];
         _tableUser = (JTable) objects[2];
         _spinnerPaginas = (JSpinner) objects[3];
-        _comboBoxRole = (JComboBox) objects[4];
+        _comboBoxRoles = (JComboBox) objects[4];
+        Reset();
     }
 
     private void Perfil() {
@@ -103,7 +103,34 @@ public class UsuariosVM {
                                             _label.get(7).setForeground(Color.RED);
                                             _textField.get(7).requestFocus();
                                         } else {
+                                            int count;
+                                            var listEmail = Usuarios().stream().filter(u -> u.getEmail().equals(_textField.get(3).getText())).collect(Collectors.toList());
+                                            count = listEmail.size();
+                                            var listNoId = Usuarios().stream().filter(u -> u.getNoId().equals(_textField.get(0).getText())).collect(Collectors.toList());
+                                            count += listNoId.size();
+                                            try {
+                                                switch (_accion) {
+                                                    case "insert":
+                                                        if (count == 0) {
+                                                            SaveData();
+                                                        } else {
+                                                            if (!listEmail.isEmpty()) {
+                                                                _label.get(3).setText("El Email ya está registrado");
+                                                                _label.get(3).setForeground(Color.RED);
+                                                                _label.get(3).requestFocus();
+                                                            }
 
+                                                            if (!listNoId.isEmpty()) {
+                                                                _label.get(0).setText("El No. Id ya está registrado");
+                                                                _label.get(0).setForeground(Color.RED);
+                                                                _label.get(0).requestFocus();
+                                                            }
+                                                        }
+                                                        break;
+                                                }
+                                            } catch (Exception e) {
+                                                JOptionPane.showMessageDialog(null, e);
+                                            }
                                         }
                                     }
                                 }
@@ -115,21 +142,69 @@ public class UsuariosVM {
         }
     }
 
+    private void SaveData() throws SQLException {
+        try {
+            final QueryRunner qr = new QueryRunner(true);
+            getConn().setAutoCommit(false);
+            byte[] image = UploadImage.getImageByte();
+            if (image == null) {
+                image = Objetos.uploadImage.getTransFoto(_imagePicture);
+            }
+
+            switch (_accion) {
+                case "insert":
+                    String sqlUsuario1 = "INSERT INTO tusuarios(NoId,Nombre,Apellido,Direccion,Email" + ",Telefono,Usuario,Password,Role,Imagen,Is_active" +",State,Fecha) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    var rol = (TRoles) _comboBoxRoles.getSelectedItem();
+                    Object[] dataUsuario1 = {
+                        _textField.get(0).getText(),
+                        _textField.get(1).getText(),
+                        _textField.get(2).getText(),
+                        _textField.get(3).getText(),
+                        _textField.get(4).getText(),
+                        _textField.get(5).getText(),
+                        _textField.get(6).getText(),
+                        Encriptar.encrypt(_textField.get(7).getText()),
+                        rol.getRol(),
+                        image,
+                        true,
+                        _checkBoxState.isSelected(),
+                        new Date()
+                    };
+                    qr.insert(getConn(), sqlUsuario1, new ColumnListHandler(), dataUsuario1);
+                    break;
+            }
+            getConn().commit();
+            Reset();
+        } catch (Exception e) {
+            getConn().rollback();
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
     public void Reset() {
         String reset[] = {"No. Id", "Nombre", "Apellido", "Email", "Teléfono", "Dirección", "Usuario", "Contraseña"};
-
+        _accion = "insert";
         _textField.forEach(item -> {
             item.setText("");
         });
 
-        for (int i = 0; i < _label.size(); i++) {
+        for (int i = 0; i < _label.size() - 1; i++) {
             _label.get(i).setText(reset[i]);
-            _label.get(i).setForeground(new Color(0,0,0));
+            _label.get(i).setForeground(new Color(0, 0, 0));
         }
-        
+
         _checkBoxState.setSelected(false);
-        _checkBoxState.setForeground(new Color(0,0,0));
-        _imagePicture.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Resources/agregar-imagen.png")));
+        _checkBoxState.setForeground(new Color(0, 0, 0));
+        _imagePicture.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Resources/agregar_imagen.png")));
+        getRoles();
+    }
+
+    public void getRoles() {
+        var model = new DefaultComboBoxModel();
+        Roles().forEach(item -> {
+            model.addElement(item);
+        });
+        _comboBoxRoles.setModel(model);
     }
     // </editor-fold>
 }

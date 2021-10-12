@@ -26,4 +26,9 @@ public class TRoles {
     public void setRol(String Rol) {
         this.Rol = Rol;
     }
+
+    @Override
+    public String toString() {
+        return Rol;
+    }
 }

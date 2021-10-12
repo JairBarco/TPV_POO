@@ -3,8 +3,9 @@ package Models.Usuario;
 import java.util.Date;
 
 public class TUsuarios {
-    
+
     public int IdUsuario;
+    public String NoId;
     public String Nombre;
     public String Apellido;
     public String Telefono;
@@ -27,6 +28,14 @@ public class TUsuarios {
 
     public void setIdUsuario(int IdUsuario) {
         this.IdUsuario = IdUsuario;
+    }
+
+    public String getNoId() {
+        return NoId;
+    }
+
+    public void setNoId(String NoId) {
+        this.NoId = NoId;
     }
 
     public String getNombre() {
