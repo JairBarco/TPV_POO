@@ -9,6 +9,8 @@ import Library.Objetos;
 import Models.Usuario.TUsuarios;
 import java.awt.Color;
 import ViewModels.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +51,17 @@ public class Sistema extends javax.swing.JFrame {
         usuarios = new UsuariosVM(dataUsuario, perfil);
 
         cliente = new ClientesVM(dataUsuario);
+        
+        timer1.start();
     }
+    
+    Timer timer1 = new Timer(1000, new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            cliente.GetReportesDeudas("");
+        }
+        
+    });
 
     private void EnabeledButton(JButton button) {
         ButtonClientes.setEnabled(true);
@@ -348,6 +360,11 @@ public class Sistema extends javax.swing.JFrame {
                 TextField_BuscarCliente1ActionPerformed(evt);
             }
         });
+        TextField_BuscarCliente1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextField_BuscarCliente1KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -416,7 +433,7 @@ public class Sistema extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Label_ImagenCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Label_ImagenCliente)
                 .addContainerGap())
         );
 
@@ -1425,6 +1442,11 @@ public class Sistema extends javax.swing.JFrame {
             TextField_BuscarUsuariosActionPerformed(evt);
         }
     });
+    TextField_BuscarUsuarios.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextField_BuscarUsuariosKeyReleased(evt);
+        }
+    });
 
     javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
     jPanel25.setLayout(jPanel25Layout);
@@ -1490,7 +1512,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(Label_ImagenUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Label_ImagenUsuario)
             .addContainerGap())
     );
 
@@ -2737,7 +2759,7 @@ public class Sistema extends javax.swing.JFrame {
         label.add(LabelUsuario_Direccion);
         label.add(LabelUsuario_Usuario);
         label.add(LabelUsuario_Password);
-        
+
         //label.add(Label_ImagenUsuario);
         label.add(LabelUsuarios_Paginas);
 
@@ -2928,22 +2950,29 @@ public class Sistema extends javax.swing.JFrame {
 
     private void SpinnerPaginas_UsuariosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_UsuariosStateChanged
         // TODO add your handling code here:
+        usuarios.Registro_Paginas();
     }//GEN-LAST:event_SpinnerPaginas_UsuariosStateChanged
 
     private void ButtonUsuarios_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_Paginas1ActionPerformed
         // TODO add your handling code here:
+        usuarios.Paginador("Primero");
+
     }//GEN-LAST:event_ButtonUsuarios_Paginas1ActionPerformed
 
     private void ButtonUsuarios_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_Paginas2ActionPerformed
         // TODO add your handling code here:
+        usuarios.Paginador("Anterior");
     }//GEN-LAST:event_ButtonUsuarios_Paginas2ActionPerformed
 
     private void ButtonUsuarios_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_Paginas3ActionPerformed
         // TODO add your handling code here:
+        usuarios.Paginador("Siguiente");
+
     }//GEN-LAST:event_ButtonUsuarios_Paginas3ActionPerformed
 
     private void ButtonUsuarios_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_Paginas4ActionPerformed
         // TODO add your handling code here:
+        usuarios.Paginador("Ultimo");
     }//GEN-LAST:event_ButtonUsuarios_Paginas4ActionPerformed
 
     private void TabbedPaneCliente4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente4StateChanged
@@ -2952,11 +2981,30 @@ public class Sistema extends javax.swing.JFrame {
 
     private void Table_UsuariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_UsuariosKeyReleased
         // TODO add your handling code here:
+        if (Table_Usuarios.getSelectedRows().length > 0) {
+            usuarios.GetUsuarios();
+        }
     }//GEN-LAST:event_Table_UsuariosKeyReleased
 
     private void Table_UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_UsuariosMouseClicked
         // TODO add your handling code here:
+        if (Table_Usuarios.getSelectedRows().length > 0) {
+            usuarios.GetUsuarios();
+        }
     }//GEN-LAST:event_Table_UsuariosMouseClicked
+
+    private void TextField_BuscarUsuariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_BuscarUsuariosKeyReleased
+        // TODO add your handling code here:
+        usuarios.Paginador("Primero");
+        usuarios.SearchUsuarios(TextField_BuscarUsuarios.getText());
+        
+    }//GEN-LAST:event_TextField_BuscarUsuariosKeyReleased
+
+    private void TextField_BuscarCliente1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_BuscarCliente1KeyReleased
+        // TODO add your handling code here:
+        cliente.Paginador("Primero");
+        cliente.SearchClientes(TextField_BuscarUsuarios.getText());
+    }//GEN-LAST:event_TextField_BuscarCliente1KeyReleased
     // </editor-fold>
 
     /**

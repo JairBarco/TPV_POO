@@ -17,6 +17,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ColumnListHandler;
@@ -73,6 +75,7 @@ public class ClientesVM extends Consult {
 
     public ClientesVM(TUsuarios dataUsuario) {
         _dataUsuario = dataUsuario;
+        formateador = new SimpleDateFormat("dd/MM/yyyy");
     }
 
     public ClientesVM(Object[] objects, ArrayList<JLabel> label, ArrayList<JTextField> textField) {
@@ -382,11 +385,10 @@ public class ClientesVM extends Consult {
 
         }
         SpinnerNumberModel model = new SpinnerNumberModel(
-                new Integer(10), // Dato visualizado al inicio en el spinner 
-                new Integer(1), // Límite inferior 
-                new Integer(100), // Límite superior 
-                new Integer(1) // incremento-decremento 
-        );
+                10.0, //Dato visualizado al inicio del Spinner
+                1.0, //Límite inferior
+                100.0, //Límite superior
+                1.0); //Incremento - Decremento
         _spinnerPaginas.setModel(model);
         SearchClientes("");
     }
@@ -607,12 +609,12 @@ public class ClientesVM extends Consult {
 
                                 qr.insert(getConn(), query1, new ColumnListHandler(), data1);
 
-                                String query2 = "UPDATE treportes_clientes SET DeudaActual = ?,FechaDeuda = ?,"
+                                String query2 = "UPDATE treportes_clientes SET DeudaActual = ?,"
                                         + "UltimoPago = ?,Cambio = ?,FechaPago = ?,Ticket = ?,"
                                         + "FechaLimite = ? WHERE IdReporte =" + _idReport;
 
                                 Object[] data2 = {
-                                    _deudaActualCliente, fecha, _pago,
+                                    _deudaActualCliente, _pago,
                                     _cambio, fecha, ticket, _fechalimit,};
 
                                 qr.update(getConn(), query2, data2);
@@ -851,14 +853,16 @@ public class ClientesVM extends Consult {
 
             }
         }
-        _tableReporteDeuda.setModel(modelo3);
-        _tableReporteDeuda.setRowHeight(30);
-        _tableReporteDeuda.getColumnModel().getColumn(0).setMaxWidth(0);
-        _tableReporteDeuda.getColumnModel().getColumn(0).setMinWidth(0);
-        _tableReporteDeuda.getColumnModel().getColumn(0).setPreferredWidth(0);
-        _tableReporteDeuda.getColumnModel().getColumn(6).setMaxWidth(0);
-        _tableReporteDeuda.getColumnModel().getColumn(6).setMinWidth(0);
-        _tableReporteDeuda.getColumnModel().getColumn(6).setPreferredWidth(0);
+        if (_tableReporteDeuda != null) {
+            _tableReporteDeuda.setModel(modelo3);
+            _tableReporteDeuda.setRowHeight(30);
+            _tableReporteDeuda.getColumnModel().getColumn(0).setMaxWidth(0);
+            _tableReporteDeuda.getColumnModel().getColumn(0).setMinWidth(0);
+            _tableReporteDeuda.getColumnModel().getColumn(0).setPreferredWidth(0);
+            _tableReporteDeuda.getColumnModel().getColumn(6).setMaxWidth(0);
+            _tableReporteDeuda.getColumnModel().getColumn(6).setMinWidth(0);
+            _tableReporteDeuda.getColumnModel().getColumn(6).setPreferredWidth(0);
+        }
     }
 
     public void GetReporteDeuda(DefaultTableModel selected, int fila) {
@@ -932,30 +936,37 @@ public class ClientesVM extends Consult {
         var fechaPago = (String) cliente[8];
         var mensual = (Double) cliente[9];
         if (!interests.equals(0.0)) {
-            var clientesInteres = InteresesCliente().stream()
+            var clientesInteres1 = InteresesCliente().stream()
+                    .filter(i -> i.getIdCliente() == id && i.getFechaInicial().equals(fechaPago))
+                    .collect(Collectors.toList());
+
+            int count1 = clientesInteres1.size();
+
+            var clientesInteres2 = InteresesCliente().stream()
                     .filter(i -> i.getIdCliente() == id && i.getFechaInicial().equals(fechaPago) && i.getCancelado() == false)
                     .collect(Collectors.toList());
 
             long dias = Math.abs(days);
             Double porcentaje = interests / 100;
-            Double moratorioMensual = mensual * porcentaje;
-            Double moratorioDia = moratorioMensual / 30;
+            Double moratorio = mensual * porcentaje;
+            //Double moratorioDia = moratorioMensual / 30;
             //Double interes = moratorioDia * dias;
-            int count = clientesInteres.size();
-            int pos = count;
+            int count2 = clientesInteres2.size();
+            int pos = count2;
             pos--;
-            if (count == 0) {
+            if (count2 == 0) {
                 for (int i = 1; i <= dias; i++) {
-                    Double interes = moratorioDia * i;
-                    insert(cliente, new TIntereses_clientes(), i, false, interes);
+                    insert(cliente, new TIntereses_clientes(), i, false, moratorio);
                 }
             } else {
-                if (count <= dias) {
-                    long interesDias = dias - count;
-                    for (int i = 1; i <= interesDias; i++) {
-                        Double interes = moratorioDia * i;
-                        insert(cliente, clientesInteres.get(pos), i, true, interes);
+                if (count1 < dias) {
+                    if (count2 <= dias) {
+                        long interesDias = dias - count1;
+                        for (int i = 1; i <= interesDias; i++) {
+                            insert(cliente, clientesInteres2.get(pos), i, true, moratorio);
+                        }
                     }
+
                 }
             }
         }
@@ -971,14 +982,30 @@ public class ClientesVM extends Consult {
         var deuda = (Double) cliente[10];
 
         try {
+            getConn().setAutoCommit(false);
             if (value) {
                 fecha = formateador.parse(clientesInteres.getFecha());
             } else {
                 fecha = formateador.parse(fechaLimite);
             }
-            var datenNow = new Calendario().addDay(fecha, day);
+            var dateNow = new Calendario().addDay(fecha, day);
+            String query = "INSERT INTO tintereses_clientes(IdCliente,FechaInicial, Deuda,Mensual,Intereses,Cancelado,Fecha) VALUES(?,?,?,?,?,?,?)";
+            Object[] data = {
+                id,
+                fechaPago,
+                deuda,
+                mensual,
+                interes,
+                false,
+                dateNow,};
+            qr.insert(getConn(), query, new ColumnListHandler(), data);
+            getConn().commit();
         } catch (Exception e) {
+            try {
+                getConn().rollback();
+            } catch (SQLException ex) {
 
+            }
         }
     }
 
@@ -991,7 +1018,7 @@ public class ClientesVM extends Consult {
         GetReportesDeudas("");
     }
 
-// </editor-fold>    
+// </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="PAGINADOR"> 
     public void Paginador(String metodo) {
         switch (metodo) {

@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ColumnListHandler;
 
@@ -30,6 +31,12 @@ public class UsuariosVM extends Consult {
     private JSpinner _spinnerPaginas;
     private String _accion = "insert";
     private UploadImage _uploadImage = new UploadImage();
+
+    private DefaultTableModel modelo1;
+    private int _reg_por_pagina = 10;
+    private int _num_pagina = 1;
+    private int _seccion = 1;
+    private Paginador<TUsuarios> _paginadorUsuarios;
 
     public UsuariosVM(TUsuarios dataUsuario, Object[] perfil) {
         _dataUsuario = dataUsuario;
@@ -127,6 +134,48 @@ public class UsuariosVM extends Consult {
                                                             }
                                                         }
                                                         break;
+
+                                                    case "update":
+                                                        if (count == 2) {
+                                                            if (listEmail.get(0).getIdUsuario() == _idUsuario && listNoId.get(0).getIdUsuario() == _idUsuario) {
+                                                                SaveData();
+                                                            } else {
+                                                                if (listNoId.get(0).getIdUsuario() != _idUsuario) {
+                                                                    _label.get(0).setText("El No. Id ya está registrado");
+                                                                    _label.get(0).setForeground(Color.RED);
+                                                                    _label.get(0).requestFocus();
+                                                                }
+                                                                if (listEmail.get(3).getIdUsuario() != _idUsuario) {
+                                                                    _label.get(3).setText("El Email ya está registrado");
+                                                                    _label.get(3).setForeground(Color.RED);
+                                                                    _label.get(3).requestFocus();
+                                                                }
+                                                            }
+                                                        } else {
+                                                            if (count == 0) {
+                                                                SaveData();
+                                                            } else {
+                                                                if (!listNoId.isEmpty()) {
+                                                                    if (listNoId.get(0).getIdUsuario() == _idUsuario) {
+                                                                        SaveData();
+                                                                    } else {
+                                                                        _label.get(0).setText("El No. Id ya está registrado");
+                                                                        _label.get(0).setForeground(Color.RED);
+                                                                        _label.get(0).requestFocus();
+                                                                    }
+                                                                }
+                                                                if (!listEmail.isEmpty()) {
+                                                                    if (listEmail.get(0).getIdUsuario() == _idUsuario) {
+                                                                        SaveData();
+                                                                    } else {
+                                                                        _label.get(3).setText("El Email ya está registrado");
+                                                                        _label.get(3).setForeground(Color.RED);
+                                                                        _label.get(3).requestFocus();
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        break;
                                                 }
                                             } catch (Exception e) {
                                                 JOptionPane.showMessageDialog(null, e);
@@ -143,6 +192,7 @@ public class UsuariosVM extends Consult {
     }
 
     private void SaveData() throws SQLException {
+        var rol = (TRoles) _comboBoxRoles.getSelectedItem();
         try {
             final QueryRunner qr = new QueryRunner(true);
             getConn().setAutoCommit(false);
@@ -153,8 +203,7 @@ public class UsuariosVM extends Consult {
 
             switch (_accion) {
                 case "insert":
-                    String sqlUsuario1 = "INSERT INTO tusuarios(NoId,Nombre,Apellido,Direccion,Email" + ",Telefono,Usuario,Password,Role,Imagen,Is_active" +",State,Fecha) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                    var rol = (TRoles) _comboBoxRoles.getSelectedItem();
+                    String sqlUsuario1 = "INSERT INTO tusuarios(NoId,Nombre,Apellido,Email" + ",Telefono,Direccion,Usuario,Password,Role,Imagen,Is_active" + ",State,Fecha) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     Object[] dataUsuario1 = {
                         _textField.get(0).getText(),
                         _textField.get(1).getText(),
@@ -172,16 +221,105 @@ public class UsuariosVM extends Consult {
                     };
                     qr.insert(getConn(), sqlUsuario1, new ColumnListHandler(), dataUsuario1);
                     break;
+
+                case "update":
+                    Object[] dataCliente2 = {
+                        _textField.get(0).getText(),
+                        _textField.get(1).getText(),
+                        _textField.get(2).getText(),
+                        _textField.get(3).getText(),
+                        _textField.get(4).getText(),
+                        _textField.get(5).getText(),
+                        _textField.get(6).getText(),
+                        _checkBoxState.isSelected(),
+                        rol.getRol(),
+                        image,};
+                    String sqlUsuario2 = "UPDATE tusuarios SET NoId = ?,Nombre = ?, Apellido = ?,Email = ?,"
+                            + " Telefono = ?,Direccion = ?,Usuario = ?,State = ?, Role = ?,Imagen = ? WHERE IdUsuario = " + _idUsuario;
+                    qr.update(getConn(), sqlUsuario2, dataCliente2);
+                    break;
             }
             getConn().commit();
             Reset();
         } catch (Exception e) {
             getConn().rollback();
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void SearchUsuarios(String campo) {
+        List<TUsuarios> usuariosFilter;
+        String[] titulos = {"ID", "No. ID", "Nombre", "Apellido", "Email", "Telefono", "Direccion", "Usuario", "Rol", "Estado", "Image"};
+        modelo1 = new DefaultTableModel(null, titulos);
+        int inicio = (_num_pagina - 1) * _reg_por_pagina;
+        if (campo.equals("")) {
+            usuariosFilter = Usuarios().stream().skip(inicio).limit(_reg_por_pagina).collect(Collectors.toList());
+        } else {
+            usuariosFilter = Usuarios().stream().filter(c -> c.getNoId().startsWith(campo) || c.getNombre().startsWith(campo) || c.getApellido().startsWith(campo))
+                    .skip(inicio).limit(_reg_por_pagina).collect(Collectors.toList());
+        }
+        if (!usuariosFilter.isEmpty()) {
+            usuariosFilter.forEach(item -> {
+                Object[] registros = {
+                    item.getIdUsuario(),
+                    item.getNoId(),
+                    item.getNombre(),
+                    item.getApellido(),
+                    item.getEmail(),
+                    item.getTelefono(),
+                    item.getDireccion(),
+                    item.getUsuario(),
+                    item.getRole(),
+                    item.isState(),
+                    item.getImagen(),};
+                modelo1.addRow(registros);
+            });
+        }
+        _tableUser.setModel(modelo1);
+        _tableUser.setRowHeight(30);
+        _tableUser.getColumnModel().getColumn(0).setMaxWidth(0);
+        _tableUser.getColumnModel().getColumn(0).setMinWidth(0);
+        _tableUser.getColumnModel().getColumn(0).setPreferredWidth(0);
+        _tableUser.getColumnModel().getColumn(10).setMaxWidth(0);
+        _tableUser.getColumnModel().getColumn(10).setMinWidth(0);
+        _tableUser.getColumnModel().getColumn(10).setPreferredWidth(0);
+        _tableUser.getColumnModel().getColumn(9).setCellRenderer(new Render_CheckBox());
+    }
+    private int _idUsuario = 0;
+
+    public void GetUsuarios() {
+        _accion = "update";
+        int filas = _tableUser.getSelectedRow();
+        _idUsuario = (Integer) modelo1.getValueAt(filas, 0);
+        _textField.get(0).setText((String) modelo1.getValueAt(filas, 1));
+        _textField.get(1).setText((String) modelo1.getValueAt(filas, 2));
+        _textField.get(2).setText((String) modelo1.getValueAt(filas, 3));
+        _textField.get(3).setText((String) modelo1.getValueAt(filas, 4));
+        _textField.get(4).setText((String) modelo1.getValueAt(filas, 5));
+        _textField.get(5).setText((String) modelo1.getValueAt(filas, 6));
+        _textField.get(6).setText((String) modelo1.getValueAt(filas, 7));
+        _textField.get(7).setText("**********");
+        _textField.get(7).setEnabled(false);
+        var model = new DefaultComboBoxModel();
+        var roles = new TRoles();
+        var rol = (String) modelo1.getValueAt(filas, 8);
+        roles.setRol(rol);
+
+        Roles().forEach(item -> {
+            if (!rol.equals(item.getRol())) {
+                model.addElement(item);
+            }
+        });
+        _comboBoxRoles.setModel(model);
+        _checkBoxState.setSelected((Boolean) modelo1.getValueAt(filas, 9));
+        byte[] image = (byte[]) modelo1.getValueAt(filas, 10);
+        if (image != null) {
+            Objetos.uploadImage.byteImage(_imagePicture, image);
         }
     }
 
     public void Reset() {
+        _seccion = 1;
         String reset[] = {"No. Id", "Nombre", "Apellido", "Email", "Teléfono", "Dirección", "Usuario", "Contraseña"};
         _accion = "insert";
         _textField.forEach(item -> {
@@ -197,6 +335,17 @@ public class UsuariosVM extends Consult {
         _checkBoxState.setForeground(new Color(0, 0, 0));
         _imagePicture.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Resources/agregar_imagen.png")));
         getRoles();
+        listUsuarios = Usuarios();
+        if (!listUsuarios.isEmpty()) {
+            _paginadorUsuarios = new Paginador<>(listUsuarios, _label.get(8), _reg_por_pagina);
+        }
+        SearchUsuarios("");
+        SpinnerNumberModel model = new SpinnerNumberModel(
+                10.0, //Dato visualizado al inicio del Spinner
+                1.0, //Límite inferior
+                100.0, //Límite superior
+                1.0); //Incremento - Decremento
+        _spinnerPaginas.setModel(model);
     }
 
     public void getRoles() {
@@ -205,6 +354,69 @@ public class UsuariosVM extends Consult {
             model.addElement(item);
         });
         _comboBoxRoles.setModel(model);
+    }
+    private List<TUsuarios> listUsuarios;
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="PAGINADOR">    
+    public void Paginador(String metodo) {
+        switch (metodo) {
+            case "Primero":
+                switch (_seccion) {
+                    case 1:
+                        if (!listUsuarios.isEmpty()) {
+                            _num_pagina = _paginadorUsuarios.primero();
+                        }
+                        break;
+                }
+                break;
+            case "Anterior":
+                switch (_seccion) {
+                    case 1:
+                        if (!listUsuarios.isEmpty()) {
+                            _num_pagina = _paginadorUsuarios.anterior();
+                        }
+                        break;
+                }
+                break;
+            case "Siguiente":
+                switch (_seccion) {
+                    case 1:
+                        if (!listUsuarios.isEmpty()) {
+                            _num_pagina = _paginadorUsuarios.siguiente();
+                        }
+                        break;
+                }
+                break;
+            case "Ultimo":
+                switch (_seccion) {
+                    case 1:
+                        if (!listUsuarios.isEmpty()) {
+                            _num_pagina = _paginadorUsuarios.ultimo();
+                        }
+                        break;
+                }
+                break;
+        }
+        switch (_seccion) {
+            case 1:
+                SearchUsuarios("");
+                break;
+        }
+    }
+
+    public void Registro_Paginas() {
+        _num_pagina = 1;
+        Number value = (Number) _spinnerPaginas.getValue();
+        _reg_por_pagina = value.intValue();
+        switch (_seccion) {
+            case 1:
+                if (!listUsuarios.isEmpty()) {
+                    _paginadorUsuarios = new Paginador<>(listUsuarios, _label.get(8), _reg_por_pagina);
+                }
+                SearchUsuarios("");
+                break;
+        }
     }
     // </editor-fold>
 }
