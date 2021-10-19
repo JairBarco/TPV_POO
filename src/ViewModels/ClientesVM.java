@@ -31,12 +31,8 @@ public class ClientesVM extends Consult {
     private ArrayList<JLabel> _label;
     private ArrayList<JTextField> _textField;
     private JCheckBox _checkBoxCredito, _checkBox_Dia;
-    private JTable _tableCliente;
-    private JTable _tableReporte;
-    private JTable _tableReporteDeuda;
-    private DefaultTableModel modelo1;
-    private DefaultTableModel modelo2;
-    private DefaultTableModel modelo3;
+    private JTable _tableCliente, _tableReporte, _tableReporteDeuda, _tablePagosCuotas;
+    private DefaultTableModel modelo1, modelo2, modelo3, modelo4;
     private JSpinner _spinnerPaginas;
     private JRadioButton _radioCuotas;
     private JRadioButton _radioInteres;
@@ -46,10 +42,10 @@ public class ClientesVM extends Consult {
     private FormatDecimal _format;
     private Paginador<TClientes> _paginadorClientes;
     private Paginador<TClientes> _paginadorReportes;
+    private Paginador<TReportes_clientes> _paginadorReportesDeuda;
 
     private List<TClientes> listClientes;
-    private List<TClientes> listClientesReportes;
-    private List<TReportes_clientes> listReportes;
+    private List<TClientes> listReportesDeuda;
     private List<TIntereses_clientes> _listIntereses;
     private int _interesCuotas = 0, _idReport, idClienteReport, _idReportIntereses;
     private Double _intereses = 0.0, _deudaActual = 0.0, _interesPago = 0.0;
@@ -63,10 +59,16 @@ public class ClientesVM extends Consult {
     private long diasMoras;
     private DefaultTableModel _selectedCliente;
     private Date _fechaLimite;
-    private DateChooserCombo _dateChooser;
+    private DateChooserCombo _dateChooser, _dateChooser1, _dateChooser2;
     private Integer _idReporte;
 
     private static TUsuarios _dataUsuario;
+    private int cuotas;
+    private int _idHistorial;
+    Ticket Ticket1 = new Ticket();
+    public int _seccion1;
+
+    private List<TReportes_clientes> _list = new ArrayList<>();
     // </editor-fold>
 
     public ClientesVM() {
@@ -90,6 +92,9 @@ public class ClientesVM extends Consult {
         _tableReporteDeuda = (JTable) objects[6];
         _dateChooser = (DateChooserCombo) objects[7];
         _checkBox_Dia = (JCheckBox) objects[8];
+        _dateChooser1 = (DateChooserCombo) objects[9];
+        _dateChooser2 = (DateChooserCombo) objects[10];
+        _tablePagosCuotas = (JTable) objects[11];
         _format = new FormatDecimal();
         _money = ConfigurationVM.Money;
         _codigos = new Codigos();
@@ -472,6 +477,7 @@ public class ClientesVM extends Consult {
                 _label.get(16).setText(_ticketIntereses);
                 _label.get(17).setText(cliente.getInteresFecha());
             }
+            historialPagos(false);
         }
     }
 
@@ -510,12 +516,13 @@ public class ClientesVM extends Consult {
                         _pago = _format.reconstruir(_textField.get(6).getText());
                         TReportes_clientes dataReport = ReporteCliente().stream().filter(u -> u.getIdReporte() == _idReport).collect(Collectors.toList()).get(0);
                         _mensual = dataReport.getMensual();
-                        if (_pago > _mensual) {
+                        if (_pago >= _mensual) {
                             if (Objects.equals(_pago, _deudaActual) || _pago > _deudaActual) {
                                 _cambio = _pago - _deudaActual;
                                 _label.get(19).setText("Cambio para el cliente " + _money + _format.decimal(_cambio));
-                                _label.get(9).setText(_money + "0.00");
+                                _label.get(9).setText(_money + _cambio);
                                 _deudaActual = 0.0;
+                                _deudaActualCliente = 0.0;
                             } else {
                                 _cambio = _pago - _mensual;
                                 _label.get(19).setText("Cambio para el cliente " + _money + _format.decimal(_cambio));
@@ -559,7 +566,7 @@ public class ClientesVM extends Consult {
                                 for (int i = 0; i < cantCuotas; i++) {
                                     _interesPagos += _listIntereses.get(i).getIntereses();
                                 }
-                                int cuotas = _interesCuotas - cantCuotas;
+                                cuotas = _interesCuotas - cantCuotas;
                                 double intereses = _intereses - _interesPagos;
                                 _label.get(14).setText(_money + _format.decimal(intereses));
                                 _label.get(15).setText(String.valueOf(cuotas));
@@ -584,7 +591,7 @@ public class ClientesVM extends Consult {
             _label.get(19).setText("Seleccione un cliente");
         } else {
             if (_textField.get(6).getText().isEmpty()) {
-                _label.get(19).setText("Seleccione un cliente");
+                _label.get(19).setText("Ingrese el pago");
                 _textField.get(6).requestFocus();
             } else {
                 String fecha = new Calendario().getFecha();
@@ -596,30 +603,60 @@ public class ClientesVM extends Consult {
                             try {
                                 getConn().setAutoCommit(false);
                                 String dateNow = new Calendario().addMes(1);
-                                String _fechalimit = Objects.equals(_deudaActual, 0) ? "--/--/--" : dateNow;
+                                String _fechalimit = Objects.equals(_deudaActual, 0) ? new Calendario().getFecha() : dateNow;
                                 String ticket = _codigos.codesTickets(_ticketCuota);
 
                                 String query1 = "INSERT INTO tpagos_clientes(Deuda,Saldo, Pago,Cambio,"
-                                        + "Fecha,FechaLimite,Ticket,IdUsuario,Usuario,IdCliente) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                                        + "Fecha,FechaLimite,Ticket,IdUsuario,Usuario,IdCliente,FechaDeuda,Mensual) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                                var dataReport = ReporteCliente().stream()
+                                        .filter(u -> u.getIdCliente() == idClienteReport)
+                                        .collect(Collectors.toList()).get(0);
 
                                 Object[] data1 = {
-                                    _deuda, _deudaActual, _pago, _cambio, fecha,
-                                    _fechalimit, ticket, _dataUsuario.getIdUsuario(), usuario, idClienteReport
+                                    _deuda,
+                                    _deudaActualCliente,
+                                    _pago,
+                                    _cambio,
+                                    formateador.parse(fecha),
+                                    formateador.parse(_fechalimit),
+                                    ticket,
+                                    _dataUsuario.getIdUsuario(),
+                                    usuario,
+                                    idClienteReport,
+                                    formateador.parse(dataReport.getFechaDeuda()),
+                                    dataReport.getMensual()
                                 };
 
                                 qr.insert(getConn(), query1, new ColumnListHandler(), data1);
 
-                                String query2 = "UPDATE treportes_clientes SET DeudaActual = ?,"
-                                        + "UltimoPago = ?,Cambio = ?,FechaPago = ?,Ticket = ?,"
-                                        + "FechaLimite = ? WHERE IdReporte =" + _idReport;
+                                if (_deudaActualCliente.equals(0.0)) {
+                                    String query2 = "UPDATE treportes_clientes SET Deuda = ?,"
+                                            + "Mensual = ?,FechaDeuda = ?,DeudaActual = ?,UltimoPago = ?,"
+                                            + "Cambio = ?,FechaPago = ?,Ticket = ?,FechaLimite = ? WHERE IdReporte =" + _idReport;
 
-                                Object[] data2 = {
-                                    _deudaActualCliente, _pago,
-                                    _cambio, fecha, ticket, _fechalimit,};
+                                    Object[] data2 = {
+                                        0.0,
+                                        0.0,
+                                        "--/--/--",
+                                        0.0,
+                                        0.0,
+                                        0.0,
+                                        "--/--/--",
+                                        "0000000000",
+                                        "--/--/--",};
+                                    qr.update(getConn(), query2, data2);
+                                } else {
+                                    String query2 = "UPDATE treportes_clientes SET DeudaActual = ?,"
+                                            + "UltimoPago = ?,Cambio = ?,FechaPago = ?,Ticket = ?,"
+                                            + "FechaLimite = ? WHERE IdReporte =" + _idReport;
 
-                                qr.update(getConn(), query2, data2);
+                                    Object[] data2 = {
+                                        _deudaActualCliente, _pago,
+                                        _cambio, fecha, ticket, _fechalimit,};
 
-                                Ticket Ticket1 = new Ticket();
+                                    qr.update(getConn(), query2, data2);
+                                }
 
                                 Ticket1.TextoCentro("Sistema de ventas");
                                 Ticket1.TextoIzquierda("Dirección");
@@ -683,10 +720,22 @@ public class ClientesVM extends Consult {
                                                     + "Pago = ?,Cambio = ?,Cuotas = ?,InteresFecha = ? ,TicketIntereses = ?"
                                                     + " WHERE Id = " + _idReportIntereses + " AND "
                                                     + " IdCliente=" + idClienteReport;
-                                            Object[] data3 = {_interesesCliente, _interesPago, _cambio, cantCuotas, fecha, ticket};
-                                            qr.update(getConn(), query3, data3);
 
-                                            Ticket Ticket1 = new Ticket();
+                                            if (cuotas == 0) {
+                                                Object[] data3 = {
+                                                    0.0,
+                                                    0.0,
+                                                    0.0,
+                                                    0,
+                                                    fecha,
+                                                    "0000000000"
+                                                };
+                                                qr.update(getConn(), query3, data3);
+                                            } else {
+                                                Object[] data3 = {_interesesCliente, _interesPago, _cambio, cantCuotas, fecha, ticket};
+                                                qr.update(getConn(), query3, data3);
+                                            }
+
                                             Ticket1.TextoCentro("Sistema de Ventas");
                                             Ticket1.TextoIzquierda("Dirección");
                                             Ticket1.TextoIzquierda("Monterrey");
@@ -731,6 +780,157 @@ public class ClientesVM extends Consult {
         }
     }
 
+    public void historialPagos(boolean filtrar) {
+        try {
+            String[] titulos = {"Id", "Deuda", "Saldo", "Pago", "Cambio", "Fecha", "Ticket", "FechaDeuda", "Mensual", "Fecha Límite"};
+            modelo4 = new DefaultTableModel(null, titulos);
+            var date1 = formateador.parse(_dateChooser1.getSelectedPeriodSet().toString());
+            var date2 = formateador.parse(_dateChooser2.getSelectedPeriodSet().toString());
+            var cal = new Calendario();
+            if (filtrar) {
+                if (date2.after(date1) || date1.equals(date2)) {
+                    var listPagos1 = new ArrayList<TPagos_clientes>();
+                    var pagos = Pagos_clientes().stream().filter(u -> u.getIdCliente() == idClienteReport).collect(Collectors.toList());
+                    formateador = new SimpleDateFormat("yyyy/MM/dd");
+                    _dateChooser1.setFormat(3);
+                    var date3 = _dateChooser1.getCurrent();
+                    var date4 = formateador.parse(cal.getFecha(date3));
+
+                    for (TPagos_clientes pago : pagos) {
+                        var data = pago.getFecha().toString().replace('-', '/');
+                        var date5 = formateador.parse(data);
+                        if (date4.equals(date5) || date4.before(date5)) {
+                            listPagos1.add(pago);
+                        }
+                    }
+                    _dateChooser2.setFormat(3);
+                    var date6 = _dateChooser2.getCurrent();
+                    var date7 = formateador.parse(cal.getFecha(date6));
+
+                    for (TPagos_clientes pago : listPagos1) {
+                        var data = pago.getFecha().toString().replace('-', '/');
+                        var date8 = formateador.parse(data);
+
+                        if (date7.equals(date8) || date7.after(date8)) {
+                            Object[] registros = {
+                                pago.getId(),
+                                _format.decimal(pago.getDeuda()),
+                                _format.decimal(pago.getSaldo()),
+                                _format.decimal(pago.getPago()),
+                                _format.decimal(pago.getCambio()),
+                                pago.getFecha(),
+                                pago.getTicket(),
+                                pago.getFechaDeuda(),
+                                _format.decimal(pago.getMensual()),
+                                pago.getFechaLimite()
+                            };
+                            modelo4.addRow(registros);
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "La fecha debe ser mayor a la fecha inicial");
+                }
+            } else {
+                var pagos = Pagos_clientes().stream().filter(u -> u.getIdCliente() == idClienteReport).collect(Collectors.toList());
+                for (TPagos_clientes pago : pagos) {
+                    Object[] registros = {
+                        pago.getId(),
+                        _format.decimal(pago.getDeuda()),
+                        _format.decimal(pago.getSaldo()),
+                        _format.decimal(pago.getPago()),
+                        _format.decimal(pago.getCambio()),
+                        pago.getFecha(),
+                        pago.getTicket(),
+                        pago.getFechaDeuda(),
+                        _format.decimal(pago.getMensual()),
+                        pago.getFechaLimite()
+                    };
+                    modelo4.addRow(registros);
+                }
+            }
+        } catch (ParseException ex) {
+            var data = ex.getMessage();
+        }
+        _tablePagosCuotas.setModel(modelo4);
+        _tablePagosCuotas.setRowHeight(30);
+        _tablePagosCuotas.getColumnModel().getColumn(0).setMaxWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(0).setMinWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(0).setPreferredWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(7).setMaxWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(7).setMinWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(7).setPreferredWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(8).setMaxWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(8).setMinWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(8).setPreferredWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(9).setMaxWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(9).setMinWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(9).setPreferredWidth(0);
+    }
+
+    public void getHistorialPagos() {
+        formateador = new SimpleDateFormat("dd/MM/yyyy");
+        int filas = _tablePagosCuotas.getSelectedRow();
+        _idHistorial = (Integer) modelo4.getValueAt(filas, 0);
+        var deuda = _money + (String) modelo4.getValueAt(filas, 1);
+        _label.get(22).setText(deuda);
+        var saldo = _money + (String) modelo4.getValueAt(filas, 2);
+        _label.get(23).setText(saldo);
+        var fechaDeuda = (Date) modelo4.getValueAt(filas, 7);
+        _label.get(24).setText(fechaDeuda.toString());
+
+        var ticket = (String) modelo4.getValueAt(filas, 6);
+        _label.get(25).setText(ticket);
+        var pago = _money + (String) modelo4.getValueAt(filas, 3);
+        _label.get(26).setText(pago);
+        var mensual = _money + (String) modelo4.getValueAt(filas, 8);
+        _label.get(27).setText(mensual);
+        var fechaPago = (Date) modelo4.getValueAt(filas, 5);
+        _label.get(28).setText(fechaPago.toString());
+        var fechaLimite = (Date) modelo4.getValueAt(filas, 9);
+        _label.get(29).setText(fechaLimite.toString());
+        var cambio = _money + (String) modelo4.getValueAt(filas, 4);
+        var usuario = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
+
+        Ticket1.TextoCentro("Sistema de Ventas");
+        Ticket1.TextoIzquierda("Dirección");
+        Ticket1.TextoIzquierda("Monterrey");
+        Ticket1.TextoIzquierda("Tel 5510122060");
+        Ticket1.LineasGuion();
+        Ticket1.TextoCentro("Factura");
+        Ticket1.LineasGuion();
+        Ticket1.TextoIzquierda("Factura: " + ticket);
+        Ticket1.TextoIzquierda("Cliente: " + nameCliente);
+        Ticket1.TextoIzquierda("Fecha: " + fechaPago);
+        Ticket1.TextoIzquierda("Usuario: " + usuario);
+        Ticket1.LineasGuion();
+        Ticket1.TextoCentro("Crédito: " + deuda);
+        Ticket1.TextoCentro("Cuotas mensuales: " + mensual);
+        Ticket1.TextoExtremo("Pago: ", _money + _format.decimal(_interesPago));
+        Ticket1.TextoExtremo("Cambio: ", cambio);
+        Ticket1.TextoExtremo("Deuda Actual: ", saldo);
+        Ticket1.TextoExtremo("Proximo Pago: ", fechaLimite.toString());
+        Ticket1.TextoCentro("TPOO");
+    }
+
+    public void TicketDeuda() {
+        switch (_seccion1) {
+            case 1:
+                if (_idHistorial == 0) {
+                    JOptionPane.showMessageDialog(null, "Seleccione un historial de pago");
+                } else {
+                    Ticket1.print();
+                }
+                break;
+            case 2:
+                if (_idHistorial == 1) {
+
+                } else {
+
+                }
+                break;
+        }
+    }
+
     public final void restablecerReport() {
         _idReport = 0;
         _interesCuotas = 0;
@@ -762,9 +962,9 @@ public class ClientesVM extends Consult {
         _textField.get(6).setText("");
         _textField.get(7).setText("");
 
-        listClientesReportes = clientes();
-        if (!listClientesReportes.isEmpty()) {
-            _paginadorReportes = new Paginador<>(listClientesReportes,
+        listReportesDeuda = clientes();
+        if (!listReportesDeuda.isEmpty()) {
+            _paginadorReportes = new Paginador<>(listReportesDeuda,
                     _label.get(7), _reg_por_pagina);
         }
         SearchReportes("");
@@ -773,6 +973,7 @@ public class ClientesVM extends Consult {
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE DEUDAS Y REPORTES"> 
     public void GetReportesDeudas(String valor) {
+        _list = new ArrayList<>();
         String[] titulos = {"Id", "NoID", "Nombre", "Apellido",
             "Email", "Telefono", "IdReporte", "Fecha Limite"};
         modelo3 = new DefaultTableModel(null, titulos);
@@ -808,6 +1009,7 @@ public class ClientesVM extends Consult {
                                 if (0 > days) {
                                     InteresMora(registros, days);
                                 }
+                                _list.add(item);
                             }
                         } catch (ParseException ex) {
                             System.out.println("Error Date (Parse): " + ex);
@@ -844,6 +1046,7 @@ public class ClientesVM extends Consult {
                                     item.getDeuda()
                                 };
                                 modelo3.addRow(registros);
+                                _list.add(item);
                             }
                         } catch (ParseException ex) {
                             System.out.println("Error Date (Parse): " + ex);
@@ -1016,6 +1219,10 @@ public class ClientesVM extends Consult {
         Calendar c = new GregorianCalendar();
         _dateChooser.setSelectedDate(c);
         GetReportesDeudas("");
+        GetReportesDeudas("");
+        if (_list.isEmpty()) {
+            _paginadorReportesDeuda = new Paginador<>(_list, _label.get(7), _reg_por_pagina);
+        }
     }
 
 // </editor-fold>
@@ -1030,8 +1237,17 @@ public class ClientesVM extends Consult {
                         }
                         break;
                     case 2:
-                        if (!listClientesReportes.isEmpty()) {
-                            _num_pagina = _paginadorReportes.primero();
+                        switch (_seccion1) {
+                            case 0:
+                                if (!listReportesDeuda.isEmpty()) {
+                                    _num_pagina = _paginadorReportes.primero();
+                                }
+                                break;
+                        }
+                        break;
+                    case 3:
+                        if (!_list.isEmpty()) {
+                            _num_pagina = _paginadorReportesDeuda.primero();
                         }
                         break;
 
@@ -1045,8 +1261,17 @@ public class ClientesVM extends Consult {
                         }
                         break;
                     case 2:
-                        if (!listClientesReportes.isEmpty()) {
-                            _num_pagina = _paginadorReportes.anterior();
+                        switch (_seccion1) {
+                            case 0:
+                                if (!listReportesDeuda.isEmpty()) {
+                                    _num_pagina = _paginadorReportes.anterior();
+                                }
+                                break;
+                        }
+                        break;
+                    case 3:
+                        if (!_list.isEmpty()) {
+                            _num_pagina = _paginadorReportesDeuda.anterior();
                         }
                         break;
                 }
@@ -1059,8 +1284,17 @@ public class ClientesVM extends Consult {
                         }
                         break;
                     case 2:
-                        if (!listClientesReportes.isEmpty()) {
-                            _num_pagina = _paginadorReportes.siguiente();
+                        switch (_seccion1) {
+                            case 0:
+                                if (!listReportesDeuda.isEmpty()) {
+                                    _num_pagina = _paginadorReportes.siguiente();
+                                }
+                                break;
+                        }
+                        break;
+                    case 3:
+                        if (!_list.isEmpty()) {
+                            _num_pagina = _paginadorReportesDeuda.siguiente();
                         }
                         break;
                 }
@@ -1073,8 +1307,17 @@ public class ClientesVM extends Consult {
                         }
                         break;
                     case 2:
-                        if (!listClientesReportes.isEmpty()) {
-                            _num_pagina = _paginadorReportes.ultimo();
+                        switch (_seccion1) {
+                            case 0:
+                                if (!listReportesDeuda.isEmpty()) {
+                                    _num_pagina = _paginadorReportes.ultimo();
+                                }
+                                break;
+                        }
+                        break;
+                    case 3:
+                        if (!_list.isEmpty()) {
+                            _num_pagina = _paginadorReportesDeuda.ultimo();
                         }
                         break;
                 }
@@ -1085,7 +1328,14 @@ public class ClientesVM extends Consult {
                 SearchClientes("");
                 break;
             case 2:
-                SearchReportes("");
+                switch (_seccion1) {
+                    case 0:
+                        SearchReportes("");
+                        break;
+                }
+                break;
+            case 3:
+                GetReportesDeudas("");
                 break;
         }
     }
@@ -1102,10 +1352,19 @@ public class ClientesVM extends Consult {
                 SearchClientes("");
                 break;
             case 2:
-                if (!listClientesReportes.isEmpty()) {
-                    _paginadorReportes = new Paginador<>(listClientesReportes, _label.get(7), _reg_por_pagina);
+                switch (_seccion1) {
+                    case 0:
+                        if (!listReportesDeuda.isEmpty()) {
+                            _paginadorReportes = new Paginador<>(listReportesDeuda, _label.get(7), _reg_por_pagina);
+                        }
+                        break;
                 }
-                SearchReportes("");
+                break;
+            case 3:
+                if (!_list.isEmpty()) {
+                    _paginadorReportesDeuda = new Paginador<>(_list, _label.get(7), _reg_por_pagina);
+                }
+                GetReportesDeudas("");
                 break;
         }
     }

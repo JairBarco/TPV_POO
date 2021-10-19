@@ -81,7 +81,6 @@ public class Consult extends Conexion {
 
     public List<TReportes_clientes> ReporteCliente() {
         List<TReportes_clientes> reporte = new ArrayList();
-
         try {
             reporte = (List<TReportes_clientes>) QR.query(getConn(), "SELECT * FROM treportes_clientes",
                     new BeanListHandler(TReportes_clientes.class));
@@ -146,5 +145,16 @@ public class Consult extends Conexion {
             JOptionPane.showMessageDialog(null, "Error: " + ex);
         }
         return rol;
+    }
+    
+    public List<TPagos_clientes> Pagos_clientes(){
+        List<TPagos_clientes> pagos = new ArrayList();
+        try {
+            pagos = (List<TPagos_clientes>) QR.query(getConn(), "SELECT * FROM tpagos_clientes",
+                    new BeanListHandler(TPagos_clientes.class));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex);
+        }
+        return pagos;
     }
 }

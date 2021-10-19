@@ -76,4 +76,12 @@ public class Calendario {
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(c.getTime());
     }
+    
+    public String getFecha(Calendar date){
+        var dia = date.get(Calendar.DAY_OF_MONTH);
+        var mes = 1 + date.get(Calendar.MONTH);
+        var year = date.get(Calendar.YEAR);
+        var value = String.valueOf(year + "/" + mes + "/" + dia);
+        return value;
+    }
 }

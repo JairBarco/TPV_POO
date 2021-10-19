@@ -1,5 +1,7 @@
 package Models.Cliente;
 
+import java.util.Date;
+
 /**
  *
  * @author jair_
@@ -11,11 +13,13 @@ public class TPagos_clientes {
     public Double Saldo;
     public Double Pago;
     public Double Cambio;
-    public String Fecha;
-    public String FechaLimite;
+    public Date Fecha;
+    public Date FechaLimite;
     public String Ticket;
     public int IdUsuario;
     public String Usuario;
+    public Date FechaDeuda;
+    public Double Mensual;
 
     public TPagos_clientes() {
     }
@@ -68,19 +72,19 @@ public class TPagos_clientes {
         this.Cambio = Cambio;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return Fecha;
     }
 
-    public void setFecha(String Fecha) {
+    public void setFecha(Date Fecha) {
         this.Fecha = Fecha;
     }
 
-    public String getFechaLimite() {
+    public Date getFechaLimite() {
         return FechaLimite;
     }
 
-    public void setFechaLimite(String FechaLimite) {
+    public void setFechaLimite(Date FechaLimite) {
         this.FechaLimite = FechaLimite;
     }
 
@@ -106,5 +110,21 @@ public class TPagos_clientes {
 
     public void setUsuario(String Usuario) {
         this.Usuario = Usuario;
+    }
+
+    public Date getFechaDeuda() {
+        return FechaDeuda;
+    }
+
+    public void setFechaDeuda(Date FechaDeuda) {
+        this.FechaDeuda = FechaDeuda;
+    }
+
+    public Double getMensual() {
+        return Mensual;
+    }
+
+    public void setMensual(Double Mensual) {
+        this.Mensual = Mensual;
     }
 }
