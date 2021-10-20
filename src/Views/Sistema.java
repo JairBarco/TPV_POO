@@ -207,6 +207,19 @@ public class Sistema extends javax.swing.JFrame {
                 return false; //Disallow the editing of any cell
             }
         };
+        jPanel37 = new javax.swing.JPanel();
+        LabelCliente_Nombre26 = new javax.swing.JLabel();
+        LabelClient_Intereses = new javax.swing.JLabel();
+        LabelCliente_Nombre27 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        LabelClient_TicketIntereses = new javax.swing.JLabel();
+        LabelClient_FechaIntereses = new javax.swing.JLabel();
+        LabelCliente_Nombre29 = new javax.swing.JLabel();
+        LabelClient_PagoIntereses = new javax.swing.JLabel();
+        LabelCliente_Nombre30 = new javax.swing.JLabel();
+        LabelClient_CuotasIntereses = new javax.swing.JLabel();
+        LabelCliente_Nombre40 = new javax.swing.JLabel();
+        LabelClient_CambioIntereses = new javax.swing.JLabel();
         LabelCliente_Nombre15 = new javax.swing.JLabel();
         LabelCliente_Nombre17 = new javax.swing.JLabel();
         dateChooserCliente_Deuda1 = new datechooser.beans.DateChooserCombo();
@@ -461,6 +474,8 @@ public class Sistema extends javax.swing.JFrame {
         Label_ImagenCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar_imagen.png"))); // NOI18N
         Label_ImagenCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Label_ImagenCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_ImagenCliente.setRequestFocusEnabled(false);
+        Label_ImagenCliente.setVerifyInputWhenFocusTarget(false);
         Label_ImagenCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Label_ImagenClienteMouseClicked(evt);
@@ -1438,31 +1453,37 @@ public class Sistema extends javax.swing.JFrame {
         .addGroup(jPanel36Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(LabelClient_FechaDeuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelClient_Deuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelClient_DeudaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel36Layout.createSequentialGroup()
-                    .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(LabelCliente_Nombre18)
-                        .addComponent(LabelCliente_Nombre19, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                        .addComponent(LabelCliente_Nombre19, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(LabelCliente_Nombre22, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabelClient_FechaDeuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelClient_Deuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelClient_DeudaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(38, 38, 38)
+                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LabelCliente_Nombre24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LabelClient_PagosFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGap(0, 46, Short.MAX_VALUE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel36Layout.createSequentialGroup()
                     .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelClient_Saldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LabelCliente_Nombre21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LabelCliente_Nombre23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelClient_MesCuotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelClient_TicketDeuda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(LabelCliente_Nombre25, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                    .addGap(15, 15, 15))
                 .addGroup(jPanel36Layout.createSequentialGroup()
-                    .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(LabelCliente_Nombre24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelClient_PagosFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(38, 38, 38)
-                    .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(LabelCliente_Nombre25, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                        .addComponent(LabelClient_FechaLimite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGap(3, 3, 3))
+                    .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(LabelClient_TicketDeuda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelClient_Saldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
+                    .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(LabelClient_FechaLimite, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelClient_MesCuotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())))
     );
     jPanel36Layout.setVerticalGroup(
         jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1512,10 +1533,10 @@ public class Sistema extends javax.swing.JFrame {
         jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel34Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(3, 3, 3))
+            .addContainerGap())
     );
     jPanel34Layout.setVerticalGroup(
         jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1554,20 +1575,141 @@ public class Sistema extends javax.swing.JFrame {
     });
     jScrollPane6.setViewportView(TableCliente_PagosIntereses);
 
+    jPanel37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    jPanel37.setForeground(new java.awt.Color(0, 0, 0));
+
+    LabelCliente_Nombre26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre26.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre26.setText("Intereses");
+
+    LabelClient_Intereses.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelClient_Intereses.setForeground(new java.awt.Color(70, 106, 124));
+    LabelClient_Intereses.setText("0.00");
+
+    LabelCliente_Nombre27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre27.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre27.setText("Fecha");
+
+    jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+    jLabel13.setText("Ticket");
+
+    LabelClient_TicketIntereses.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelClient_TicketIntereses.setForeground(new java.awt.Color(70, 106, 124));
+    LabelClient_TicketIntereses.setText("0000000000");
+
+    LabelClient_FechaIntereses.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelClient_FechaIntereses.setForeground(new java.awt.Color(70, 106, 124));
+    LabelClient_FechaIntereses.setText("--/--/--");
+
+    LabelCliente_Nombre29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre29.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre29.setText("Pago");
+
+    LabelClient_PagoIntereses.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelClient_PagoIntereses.setForeground(new java.awt.Color(70, 106, 124));
+    LabelClient_PagoIntereses.setText("0.00");
+
+    LabelCliente_Nombre30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre30.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre30.setText("Cuotas");
+
+    LabelClient_CuotasIntereses.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelClient_CuotasIntereses.setForeground(new java.awt.Color(70, 106, 124));
+    LabelClient_CuotasIntereses.setText("0.00");
+
+    LabelCliente_Nombre40.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre40.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre40.setText("Cambio");
+
+    LabelClient_CambioIntereses.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelClient_CambioIntereses.setForeground(new java.awt.Color(70, 106, 124));
+    LabelClient_CambioIntereses.setText("0.00");
+
+    javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
+    jPanel37.setLayout(jPanel37Layout);
+    jPanel37Layout.setHorizontalGroup(
+        jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel37Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
+                    .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(LabelCliente_Nombre29, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                        .addComponent(LabelClient_PagoIntereses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelCliente_Nombre30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelClient_CuotasIntereses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel37Layout.createSequentialGroup()
+                    .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel37Layout.createSequentialGroup()
+                            .addComponent(LabelCliente_Nombre27, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(46, 46, 46))
+                        .addGroup(jPanel37Layout.createSequentialGroup()
+                            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LabelClient_Intereses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel37Layout.createSequentialGroup()
+                                    .addComponent(LabelCliente_Nombre26)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(LabelClient_FechaIntereses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(LabelClient_CambioIntereses, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCliente_Nombre40, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelClient_TicketIntereses, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addContainerGap())
+    );
+    jPanel37Layout.setVerticalGroup(
+        jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel37Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCliente_Nombre26)
+                .addComponent(jLabel13))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelClient_Intereses)
+                .addComponent(LabelClient_TicketIntereses))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel37Layout.createSequentialGroup()
+                    .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabelCliente_Nombre27)
+                        .addComponent(LabelCliente_Nombre40))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(LabelClient_FechaIntereses))
+                .addComponent(LabelClient_CambioIntereses))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCliente_Nombre29)
+                .addComponent(LabelCliente_Nombre30))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelClient_PagoIntereses)
+                .addComponent(LabelClient_CuotasIntereses))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
     javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
     jPanel35.setLayout(jPanel35Layout);
     jPanel35Layout.setHorizontalGroup(
         jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
+        .addGroup(jPanel35Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
     jPanel35Layout.setVerticalGroup(
         jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel35Layout.createSequentialGroup()
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+            .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addContainerGap())
     );
 
@@ -3121,6 +3263,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         label.add(LabelClient_PagosFecha);
         label.add(LabelClient_FechaLimite);
 //29        
+        label.add(LabelClient_Intereses);
+        label.add(LabelClient_TicketIntereses);
+        label.add(LabelClient_FechaIntereses);
+        label.add(LabelClient_CambioIntereses);
+        label.add(LabelClient_PagoIntereses);
+        label.add(LabelClient_CuotasIntereses);
+//35        
+
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldCliente_NoId);
         textField.add(TextFieldCliente_Nombre);
@@ -3144,7 +3294,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             CheckBoxCliente_ExtenderDia,
             dateChooserCliente_Deuda1,
             dateChooserCliente_Deuda2,
-            TableCliente_PagosCuotas
+            TableCliente_PagosCuotas,
+            TableCliente_PagosIntereses,
         };
         cliente = new ClientesVM(objects, label, textField);
         TabbedPanePrincipal.setSelectedIndex(1);
@@ -3544,9 +3695,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void TabbedPaneCliente4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente4StateChanged
         // TODO add your handling code here:
-        switch(TabbedPaneCliente4.getSelectedIndex()){
+        switch (TabbedPaneCliente4.getSelectedIndex()) {
             case 0:
-                cliente._seccion1 = 0;
+                if (cliente != null) {
+                    cliente._seccion1 = 0;
+                }
                 break;
             case 1:
                 TabbedPaneCliente3.setSelectedIndex(0);
@@ -3561,35 +3714,43 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void TableCliente_PagosCuotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_PagosCuotasMouseClicked
         // TODO add your handling code here:
-        if(TableCliente_PagosCuotas.getSelectedRows().length > 0){
+        if (TableCliente_PagosCuotas.getSelectedRows().length > 0) {
             cliente.getHistorialPagos();
         }
     }//GEN-LAST:event_TableCliente_PagosCuotasMouseClicked
 
     private void TableCliente_PagosCuotasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_PagosCuotasKeyReleased
         // TODO add your handling code here:
-        if(TableCliente_PagosCuotas.getSelectedRows().length > 0){
+        if (TableCliente_PagosCuotas.getSelectedRows().length > 0) {
             cliente.getHistorialPagos();
         }
     }//GEN-LAST:event_TableCliente_PagosCuotasKeyReleased
 
-    private void TableCliente_PagosInteresesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_PagosInteresesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TableCliente_PagosInteresesMouseClicked
-
-    private void TableCliente_PagosInteresesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_PagosInteresesKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TableCliente_PagosInteresesKeyReleased
-
     private void ButtonCliente_BuscarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_BuscarPagosActionPerformed
         // TODO add your handling code here:
-        cliente.historialPagos(true);
+        switch (TabbedPaneCliente4.getSelectedIndex()) {
+            case 1:
+                cliente.historialPagos(true);
+                break;
+            case 2:
+                cliente.historialIntereses(true);
+                break;
+        }
+
     }//GEN-LAST:event_ButtonCliente_BuscarPagosActionPerformed
 
     private void ButtonCliente_TicketDeudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_TicketDeudaActionPerformed
         // TODO add your handling code here:
         cliente.TicketDeuda();
     }//GEN-LAST:event_ButtonCliente_TicketDeudaActionPerformed
+
+    private void TableCliente_PagosInteresesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_PagosInteresesKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TableCliente_PagosInteresesKeyReleased
+
+    private void TableCliente_PagosInteresesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_PagosInteresesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TableCliente_PagosInteresesMouseClicked
     // </editor-fold>
 
     /**
@@ -3651,14 +3812,20 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JCheckBox CheckBoxCliente_ExtenderDia;
     private javax.swing.JCheckBox CheckBoxUsuario_State;
     private javax.swing.JComboBox<String> ComboBoxUsuario_Rol;
+    private javax.swing.JLabel LabelClient_CambioIntereses;
+    private javax.swing.JLabel LabelClient_CuotasIntereses;
     private javax.swing.JLabel LabelClient_Deuda;
     private javax.swing.JLabel LabelClient_DeudaPago;
     private javax.swing.JLabel LabelClient_FechaDeuda;
+    private javax.swing.JLabel LabelClient_FechaIntereses;
     private javax.swing.JLabel LabelClient_FechaLimite;
+    private javax.swing.JLabel LabelClient_Intereses;
     private javax.swing.JLabel LabelClient_MesCuotas;
+    private javax.swing.JLabel LabelClient_PagoIntereses;
     private javax.swing.JLabel LabelClient_PagosFecha;
     private javax.swing.JLabel LabelClient_Saldo;
     private javax.swing.JLabel LabelClient_TicketDeuda;
+    private javax.swing.JLabel LabelClient_TicketIntereses;
     private javax.swing.JLabel LabelCliente_Apellido;
     private javax.swing.JLabel LabelCliente_Cuotas;
     private javax.swing.JLabel LabelCliente_CuotasMes;
@@ -3689,7 +3856,12 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCliente_Nombre23;
     private javax.swing.JLabel LabelCliente_Nombre24;
     private javax.swing.JLabel LabelCliente_Nombre25;
+    private javax.swing.JLabel LabelCliente_Nombre26;
+    private javax.swing.JLabel LabelCliente_Nombre27;
+    private javax.swing.JLabel LabelCliente_Nombre29;
+    private javax.swing.JLabel LabelCliente_Nombre30;
     private javax.swing.JLabel LabelCliente_Nombre4;
+    private javax.swing.JLabel LabelCliente_Nombre40;
     private javax.swing.JLabel LabelCliente_Nombre5;
     private javax.swing.JLabel LabelCliente_Nombre6;
     private javax.swing.JLabel LabelCliente_Nombre7;
@@ -3768,6 +3940,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -3806,6 +3979,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
+    private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

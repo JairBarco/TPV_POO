@@ -157,4 +157,14 @@ public class Consult extends Conexion {
         }
         return pagos;
     }
+    public List<TPagos_reportes_intereses_clientes> Pagos_reportes_intereses_clientes(){
+        List<TPagos_reportes_intereses_clientes> pagos = new ArrayList();
+        try {
+            pagos = (List<TPagos_reportes_intereses_clientes>) QR.query(getConn(), "SELECT * FROM tpagos_reportes_intereses_cliente",
+                    new BeanListHandler(TPagos_reportes_intereses_clientes.class));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex);
+        }
+        return pagos;
+    }
 }
