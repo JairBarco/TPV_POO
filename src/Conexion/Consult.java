@@ -3,6 +3,7 @@ package Conexion;
 import Models.*;
 import Models.Cliente.*;
 import Models.Ordenador.TOrdenadores;
+import Models.Proveedor.*;
 import Models.Usuario.TRoles;
 import Models.Usuario.TUsuarios;
 import java.sql.SQLException;
@@ -146,8 +147,8 @@ public class Consult extends Conexion {
         }
         return rol;
     }
-    
-    public List<TPagos_clientes> Pagos_clientes(){
+
+    public List<TPagos_clientes> Pagos_clientes() {
         List<TPagos_clientes> pagos = new ArrayList();
         try {
             pagos = (List<TPagos_clientes>) QR.query(getConn(), "SELECT * FROM tpagos_clientes",
@@ -157,7 +158,8 @@ public class Consult extends Conexion {
         }
         return pagos;
     }
-    public List<TPagos_reportes_intereses_clientes> Pagos_reportes_intereses_clientes(){
+
+    public List<TPagos_reportes_intereses_clientes> Pagos_reportes_intereses_clientes() {
         List<TPagos_reportes_intereses_clientes> pagos = new ArrayList();
         try {
             pagos = (List<TPagos_reportes_intereses_clientes>) QR.query(getConn(), "SELECT * FROM tpagos_reportes_intereses_cliente",
@@ -166,5 +168,52 @@ public class Consult extends Conexion {
             JOptionPane.showMessageDialog(null, "Error: " + ex);
         }
         return pagos;
+    }
+
+    public List<TProveedor> proveedores() {
+        List<TProveedor> proveedor = new ArrayList();
+        try {
+            proveedor = (List<TProveedor>) QR.query(getConn(), "SELECT * FROM tproveedor",
+                    new BeanListHandler(TProveedor.class));
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+        return proveedor;
+    }
+    
+    public List<TReportes_proveedor> ReporteProveedor() {
+        List<TReportes_proveedor> reporte = new ArrayList();
+        try {
+            reporte = (List<TReportes_proveedor>) QR.query(getConn(), "SELECT * FROM treportes_proveedor",
+                    new BeanListHandler(TReportes_proveedor.class));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+
+        return reporte;
+    }
+    
+    
+    public List<TReportes_proveedor> Reportes_Proveedores(int idProveedor){
+        String where = " WHERE tproveedor.ID =" + idProveedor;
+        List<TReportes_proveedor> reportes = new ArrayList();
+        String condicion1 = " tproveedor.ID = treportes_proveedor.IdProveedor ";
+        
+        String campos = " tproveedor.ID,tproveedor.Proveedor,"
+                + "treportes_proveedor.IdReporte,treportes_proveedor.Deuda,"
+                + "treportes_proveedor.Mensual,treportes_proveedor.Cambio,"
+                + "treportes_proveedor.UltimoPago,treportes_proveedor.FechaPago,"
+                + "treportes_proveedor.DeudaActual, treportes_proveedor.FechaDeuda,"
+                + "treportes_proveedor.Ticket";
+        try {
+            reportes = (List<TReportes_proveedor>) QR.query(getConn(),
+                    "SELECT" + campos + " FROM tproveedor Inner Join treportes_proveedor ON"
+                    + condicion1 + where, new BeanListHandler(TReportes_proveedor.class));
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+
+        return reportes;
     }
 }

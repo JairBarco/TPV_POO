@@ -18,8 +18,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ColumnListHandler;
@@ -938,9 +936,10 @@ public class ClientesVM extends Consult {
                 break;
             case 2:
                 if (_idHistorial == 1) {
+                    JOptionPane.showMessageDialog(null, "Seleccione un historial de pago");
 
                 } else {
-
+                    Ticket1.print();
                 }
                 break;
         }
@@ -1025,6 +1024,42 @@ public class ClientesVM extends Consult {
         _tablePagosIntereses.getColumnModel().getColumn(0).setMaxWidth(0);
         _tablePagosIntereses.getColumnModel().getColumn(0).setMinWidth(0);
         _tablePagosIntereses.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+
+    private int _idHistorial1;
+
+    public void getHistorialIntereses() {
+        int filas = _tablePagosIntereses.getSelectedRow();
+        _idHistorial1 = (Integer) modelo5.getValueAt(filas, 0);
+        var intereses = _money + (String) modelo5.getValueAt(filas, 1);
+        _label.get(30).setText(intereses);
+        var ticket = (String) modelo5.getValueAt(filas, 6);
+        _label.get(31).setText(ticket);
+        var fecha = (String) modelo5.getValueAt(filas, 5);
+        _label.get(32).setText(fecha);
+        var cambio = _money + (String) modelo5.getValueAt(filas, 3);
+        _label.get(33).setText(cambio);
+        var pago = _money + (String) modelo5.getValueAt(filas, 2);
+        _label.get(34).setText(pago);
+
+        var usuario = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
+        Ticket1.TextoCentro("Sistema de Ventas");
+        Ticket1.TextoIzquierda("Dirección");
+        Ticket1.TextoIzquierda("Monterrey");
+        Ticket1.TextoIzquierda("Tel 5510122060");
+        Ticket1.LineasGuion();
+        Ticket1.TextoCentro("Factura");
+        Ticket1.LineasGuion();
+        Ticket1.TextoIzquierda("Factura: " + ticket);
+        Ticket1.TextoIzquierda("Cliente: " + nameCliente);
+        Ticket1.TextoIzquierda("Fecha: " + fecha);
+        Ticket1.TextoIzquierda("Usuario: " + usuario);
+        Ticket1.LineasGuion();
+        Ticket1.TextoCentro("Intereses: " + intereses);
+        Ticket1.TextoCentro("Cuotas: " + cuotas);
+        Ticket1.TextoExtremo("Pago: ", pago);
+        Ticket1.TextoExtremo("Cambio: ", cambio);
+        Ticket1.TextoCentro("TPOO");
     }
 
     public final void restablecerReport() {
@@ -1322,6 +1357,7 @@ public class ClientesVM extends Consult {
     }
 
 // </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc="PAGINADOR"> 
     public void Paginador(String metodo) {
         switch (metodo) {

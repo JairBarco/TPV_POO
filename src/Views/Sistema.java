@@ -52,6 +52,8 @@ public class Sistema extends javax.swing.JFrame {
 
         cliente = new ClientesVM(dataUsuario);
 
+        proveedor = new ProveedorVM(dataUsuario);
+
         timer1.start();
     }
 
@@ -67,6 +69,7 @@ public class Sistema extends javax.swing.JFrame {
         ButtonClientes.setEnabled(true);
         ButtonConfiguracion.setEnabled(true);
         ButtonUsuario.setEnabled(true);
+        ButtonProveedor.setEnabled(true);
         button.setEnabled(false);
     }
 
@@ -97,7 +100,6 @@ public class Sistema extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         TabbedPaneCliente1 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         Label_ImagenCliente = new javax.swing.JLabel();
         LabelCliente_NoId = new javax.swing.JLabel();
@@ -240,6 +242,98 @@ public class Sistema extends javax.swing.JFrame {
         ButtonCliente_Paginas3 = new javax.swing.JButton();
         ButtonCliente_Paginas4 = new javax.swing.JButton();
         LabelCliente_Paginas = new javax.swing.JLabel();
+        jPanel38 = new javax.swing.JPanel();
+        jPanel39 = new javax.swing.JPanel();
+        TabbedPaneProveedor1 = new javax.swing.JTabbedPane();
+        jPanel40 = new javax.swing.JPanel();
+        jPanel41 = new javax.swing.JPanel();
+        Label_ImagenProveedor = new javax.swing.JLabel();
+        LabelProveedor_Proveedor = new javax.swing.JLabel();
+        TextFieldProveedor_Proveedor = new javax.swing.JTextField();
+        TextFieldProveedor_Email = new javax.swing.JTextField();
+        LabelProveedor_Email = new javax.swing.JLabel();
+        TextFieldProveedor_Telefono = new javax.swing.JTextField();
+        LabelProveedor_Telefono = new javax.swing.JLabel();
+        TextFieldProveedor_Direccion = new javax.swing.JTextField();
+        LabelProveedor_Direccion = new javax.swing.JLabel();
+        jPanel42 = new javax.swing.JPanel();
+        LabelProveedorReport_Nombre = new javax.swing.JLabel();
+        LabelProveedorReport_Pagos = new javax.swing.JLabel();
+        TextFieldProveedor_Pagos = new javax.swing.JTextField();
+        TabbedPaneCliente6 = new javax.swing.JTabbedPane();
+        jPanel43 = new javax.swing.JPanel();
+        jPanel44 = new javax.swing.JPanel();
+        LabelCliente_Nombre28 = new javax.swing.JLabel();
+        LabelProveedor_CuotasMes = new javax.swing.JLabel();
+        LabelCliente_Nombre31 = new javax.swing.JLabel();
+        LabelProveedor_Pago = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        LabelProveedor_Ticket = new javax.swing.JLabel();
+        LabelCliente_Nombre32 = new javax.swing.JLabel();
+        LabelProveedor_FechaPago = new javax.swing.JLabel();
+        LabelCliente_Nombre33 = new javax.swing.JLabel();
+        LabelProveedor_Deuda = new javax.swing.JLabel();
+        ButtonProveedor_Agregar = new javax.swing.JButton();
+        ButtonProveedor_Cancelar = new javax.swing.JButton();
+        jPanel49 = new javax.swing.JPanel();
+        TabbedPaneProveedor2 = new javax.swing.JTabbedPane();
+        jPanel50 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        Table_Proveedores = Table_Proveedores = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false; //Disallow the editing of any cell
+            }
+        };
+        jPanel51 = new javax.swing.JPanel();
+        TabbedPaneProveedor3 = new javax.swing.JTabbedPane();
+        jPanel52 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        TableProveedores_Report = TableProveedores_Report = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false; //Disallow the editing of any cell
+            }
+        };
+        jPanel53 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        TableProveedores_PagosCuotas = TableProveedores_PagosCuotas = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false; //Disallow the editing of any cell
+            }
+        };
+        jPanel54 = new javax.swing.JPanel();
+        LabelCliente_Nombre43 = new javax.swing.JLabel();
+        LabelProveedor_Deuda1 = new javax.swing.JLabel();
+        LabelCliente_Nombre44 = new javax.swing.JLabel();
+        LabelCliente_Nombre45 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        LabelProveedor_TicketDeuda = new javax.swing.JLabel();
+        LabelProveedor_FechaDeuda = new javax.swing.JLabel();
+        LabelProveedor_Saldo = new javax.swing.JLabel();
+        LabelCliente_Nombre46 = new javax.swing.JLabel();
+        LabelProveedor_DeudaPago = new javax.swing.JLabel();
+        LabelCliente_Nombre47 = new javax.swing.JLabel();
+        LabelProveedor_MesCuotas = new javax.swing.JLabel();
+        LabelProveedor_PagosFecha = new javax.swing.JLabel();
+        LabelCliente_Nombre48 = new javax.swing.JLabel();
+        LabelCliente_Nombre49 = new javax.swing.JLabel();
+        LabelProveedor_FechaLimite = new javax.swing.JLabel();
+        LabelCliente_Nombre55 = new javax.swing.JLabel();
+        LabelCliente_Nombre56 = new javax.swing.JLabel();
+        dateChooserProveedor_Deuda1 = new datechooser.beans.DateChooserCombo();
+        dateChooserProveedor_Deuda2 = new datechooser.beans.DateChooserCombo();
+        ButtonProveedor_BuscarPagos = new javax.swing.JButton();
+        ButtonProveedor_TicketDeuda = new javax.swing.JButton();
+        LabelCliente_Nombre3 = new javax.swing.JLabel();
+        SpinnerPaginas_Proveedores = new javax.swing.JSpinner();
+        ButtonProveedor_Paginas1 = new javax.swing.JButton();
+        ButtonProveedor_Paginas2 = new javax.swing.JButton();
+        ButtonProveedor_Paginas3 = new javax.swing.JButton();
+        ButtonProveedor_Paginas4 = new javax.swing.JButton();
+        LabelProveedor_Paginas = new javax.swing.JLabel();
+        jPanel58 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        TextField_BuscarProveedor = new javax.swing.JTextField();
         jPanel24 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -307,6 +401,7 @@ public class Sistema extends javax.swing.JFrame {
         ButtonVentas = new javax.swing.JButton();
         ButtonConfiguracion = new javax.swing.JButton();
         ButtonUsuario = new javax.swing.JButton();
+        ButtonProveedor = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -462,10 +557,6 @@ public class Sistema extends javax.swing.JFrame {
                 TabbedPaneCliente1StateChanged(evt);
             }
         });
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(70, 106, 124));
-        jLabel5.setText("Información del Cliente");
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -659,17 +750,11 @@ public class Sistema extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(100, 100, 100))))
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jLabel5)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(32, 32, 32)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -701,7 +786,7 @@ public class Sistema extends javax.swing.JFrame {
                         .addComponent(TextFieldCliente_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addComponent(CheckBoxCliente_Credito)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         TabbedPaneCliente1.addTab("Registro de Clientes", jPanel7);
@@ -2065,6 +2150,1080 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     TabbedPanePrincipal.addTab("Clientes", jPanel4);
 
+    jPanel38.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+    jPanel39.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
+    jPanel39.setForeground(new java.awt.Color(255, 255, 255));
+
+    TabbedPaneProveedor1.setBackground(new java.awt.Color(255, 102, 51));
+    TabbedPaneProveedor1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    TabbedPaneProveedor1.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneProveedor1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    TabbedPaneProveedor1.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            TabbedPaneProveedor1StateChanged(evt);
+        }
+    });
+
+    jPanel41.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel41.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+    Label_ImagenProveedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    Label_ImagenProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar_imagen.png"))); // NOI18N
+    Label_ImagenProveedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    Label_ImagenProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    Label_ImagenProveedor.setRequestFocusEnabled(false);
+    Label_ImagenProveedor.setVerifyInputWhenFocusTarget(false);
+    Label_ImagenProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            Label_ImagenProveedorMouseClicked(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
+    jPanel41.setLayout(jPanel41Layout);
+    jPanel41Layout.setHorizontalGroup(
+        jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel41Layout.createSequentialGroup()
+            .addGap(18, 18, 18)
+            .addComponent(Label_ImagenProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(20, Short.MAX_VALUE))
+    );
+    jPanel41Layout.setVerticalGroup(
+        jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel41Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(Label_ImagenProveedor)
+            .addContainerGap())
+    );
+
+    LabelProveedor_Proveedor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_Proveedor.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_Proveedor.setText("Proveedor");
+
+    TextFieldProveedor_Proveedor.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldProveedor_Proveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldProveedor_Proveedor.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldProveedor_ProveedorActionPerformed(evt);
+        }
+    });
+    TextFieldProveedor_Proveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_ProveedorKeyReleased(evt);
+        }
+    });
+
+    TextFieldProveedor_Email.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldProveedor_Email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldProveedor_Email.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldProveedor_EmailActionPerformed(evt);
+        }
+    });
+    TextFieldProveedor_Email.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_EmailKeyReleased(evt);
+        }
+    });
+
+    LabelProveedor_Email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_Email.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_Email.setText("Email");
+
+    TextFieldProveedor_Telefono.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldProveedor_Telefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldProveedor_Telefono.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldProveedor_TelefonoActionPerformed(evt);
+        }
+    });
+    TextFieldProveedor_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_TelefonoKeyReleased(evt);
+        }
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_TelefonoKeyTyped(evt);
+        }
+    });
+
+    LabelProveedor_Telefono.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_Telefono.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_Telefono.setText("Teléfono");
+
+    TextFieldProveedor_Direccion.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldProveedor_Direccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldProveedor_Direccion.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldProveedor_DireccionActionPerformed(evt);
+        }
+    });
+    TextFieldProveedor_Direccion.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_DireccionKeyReleased(evt);
+        }
+    });
+
+    LabelProveedor_Direccion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_Direccion.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_Direccion.setText("Dirección");
+
+    javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
+    jPanel40.setLayout(jPanel40Layout);
+    jPanel40Layout.setHorizontalGroup(
+        jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel40Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel40Layout.createSequentialGroup()
+                    .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel40Layout.createSequentialGroup()
+                            .addComponent(TextFieldProveedor_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE))
+                        .addGroup(jPanel40Layout.createSequentialGroup()
+                            .addComponent(LabelProveedor_Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(77, 77, 77)))
+                    .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TextFieldProveedor_Direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(LabelProveedor_Direccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel40Layout.createSequentialGroup()
+                    .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TextFieldProveedor_Proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(LabelProveedor_Proveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TextFieldProveedor_Email)
+                        .addComponent(LabelProveedor_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addContainerGap())
+        .addGroup(jPanel40Layout.createSequentialGroup()
+            .addGap(92, 92, 92)
+            .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
+    );
+    jPanel40Layout.setVerticalGroup(
+        jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel40Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(32, 32, 32)
+            .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel40Layout.createSequentialGroup()
+                    .addComponent(LabelProveedor_Proveedor)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(TextFieldProveedor_Proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel40Layout.createSequentialGroup()
+                    .addComponent(LabelProveedor_Email)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(TextFieldProveedor_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel40Layout.createSequentialGroup()
+                    .addComponent(LabelProveedor_Telefono)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(TextFieldProveedor_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel40Layout.createSequentialGroup()
+                    .addComponent(LabelProveedor_Direccion)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(TextFieldProveedor_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(133, Short.MAX_VALUE))
+    );
+
+    TabbedPaneProveedor1.addTab("Registro de Proveedor", jPanel40);
+
+    LabelProveedorReport_Nombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedorReport_Nombre.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedorReport_Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    LabelProveedorReport_Nombre.setText("Nombre del Proveedor");
+
+    LabelProveedorReport_Pagos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedorReport_Pagos.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedorReport_Pagos.setText("Ingrese el Pago");
+
+    TextFieldProveedor_Pagos.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldProveedor_Pagos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldProveedor_Pagos.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldProveedor_PagosActionPerformed(evt);
+        }
+    });
+    TextFieldProveedor_Pagos.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_PagosKeyReleased(evt);
+        }
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_PagosKeyTyped(evt);
+        }
+    });
+
+    TabbedPaneCliente6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    TabbedPaneCliente6.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneCliente6.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            TabbedPaneCliente6StateChanged(evt);
+        }
+    });
+
+    jPanel43.setForeground(new java.awt.Color(0, 0, 0));
+
+    jPanel44.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+    LabelCliente_Nombre28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre28.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre28.setText("Deuda");
+
+    LabelProveedor_CuotasMes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_CuotasMes.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_CuotasMes.setText("0.00");
+
+    LabelCliente_Nombre31.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre31.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre31.setText("Pago");
+
+    LabelProveedor_Pago.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Pago.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Pago.setText("0.00");
+
+    jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+    jLabel15.setText("Ticket");
+
+    LabelProveedor_Ticket.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Ticket.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Ticket.setText("0000000000");
+
+    LabelCliente_Nombre32.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre32.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre32.setText("Fecha de Pago");
+
+    LabelProveedor_FechaPago.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_FechaPago.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_FechaPago.setText("--/--/--");
+
+    LabelCliente_Nombre33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre33.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre33.setText("Cuotas por mes");
+
+    LabelProveedor_Deuda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Deuda.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Deuda.setText("0.00");
+
+    javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
+    jPanel44.setLayout(jPanel44Layout);
+    jPanel44Layout.setHorizontalGroup(
+        jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel44Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel44Layout.createSequentialGroup()
+                    .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelProveedor_Deuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCliente_Nombre28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCliente_Nombre32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel44Layout.createSequentialGroup()
+                            .addComponent(LabelProveedor_FechaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(90, 90, 90)
+                    .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelProveedor_CuotasMes, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel44Layout.createSequentialGroup()
+                            .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(LabelCliente_Nombre33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LabelCliente_Nombre31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LabelProveedor_Pago, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(14, 14, 14)))
+                    .addGap(14, 14, 14))
+                .addGroup(jPanel44Layout.createSequentialGroup()
+                    .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabelProveedor_Ticket))
+                    .addGap(0, 0, Short.MAX_VALUE))))
+    );
+    jPanel44Layout.setVerticalGroup(
+        jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel44Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCliente_Nombre28)
+                .addComponent(LabelCliente_Nombre31))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelProveedor_Pago)
+                .addComponent(LabelProveedor_Deuda))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCliente_Nombre32)
+                .addComponent(LabelCliente_Nombre33))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelProveedor_FechaPago)
+                .addComponent(LabelProveedor_CuotasMes))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel15)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelProveedor_Ticket)
+            .addContainerGap(46, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout jPanel43Layout = new javax.swing.GroupLayout(jPanel43);
+    jPanel43.setLayout(jPanel43Layout);
+    jPanel43Layout.setHorizontalGroup(
+        jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel43Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, 361, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+    jPanel43Layout.setVerticalGroup(
+        jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel43Layout.createSequentialGroup()
+            .addComponent(jPanel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+
+    TabbedPaneCliente6.addTab("Pagos de cuotas", jPanel43);
+
+    javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
+    jPanel42.setLayout(jPanel42Layout);
+    jPanel42Layout.setHorizontalGroup(
+        jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel42Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(TabbedPaneCliente6, javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(LabelProveedorReport_Nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel42Layout.createSequentialGroup()
+                    .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelProveedorReport_Pagos)
+                        .addComponent(TextFieldProveedor_Pagos, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+    jPanel42Layout.setVerticalGroup(
+        jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel42Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(LabelProveedorReport_Nombre)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TabbedPaneCliente6)
+            .addGap(60, 60, 60)
+            .addComponent(LabelProveedorReport_Pagos)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TextFieldProveedor_Pagos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(12, 12, 12))
+    );
+
+    TabbedPaneProveedor1.addTab("Pagos", jPanel42);
+
+    ButtonProveedor_Agregar.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar.png"))); // NOI18N
+    ButtonProveedor_Agregar.setToolTipText("");
+    ButtonProveedor_Agregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Agregar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_AgregarActionPerformed(evt);
+        }
+    });
+
+    ButtonProveedor_Cancelar.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/eliminar.png"))); // NOI18N
+    ButtonProveedor_Cancelar.setToolTipText("");
+    ButtonProveedor_Cancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_CancelarActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
+    jPanel39.setLayout(jPanel39Layout);
+    jPanel39Layout.setHorizontalGroup(
+        jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel39Layout.createSequentialGroup()
+            .addGap(103, 103, 103)
+            .addComponent(ButtonProveedor_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(ButtonProveedor_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(jPanel39Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(TabbedPaneProveedor1)
+            .addContainerGap())
+    );
+    jPanel39Layout.setVerticalGroup(
+        jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel39Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(TabbedPaneProveedor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(ButtonProveedor_Agregar)
+                .addComponent(ButtonProveedor_Cancelar))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    jPanel49.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel49.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+    TabbedPaneProveedor2.setBackground(new java.awt.Color(255, 102, 51));
+    TabbedPaneProveedor2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    TabbedPaneProveedor2.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneProveedor2.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            TabbedPaneProveedor2StateChanged(evt);
+        }
+    });
+
+    Table_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {},
+            {},
+            {},
+            {}
+        },
+        new String [] {
+
+        }
+    ));
+    Table_Proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            Table_ProveedoresMouseClicked(evt);
+        }
+    });
+    Table_Proveedores.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            Table_ProveedoresKeyReleased(evt);
+        }
+    });
+    jScrollPane7.setViewportView(Table_Proveedores);
+
+    javax.swing.GroupLayout jPanel50Layout = new javax.swing.GroupLayout(jPanel50);
+    jPanel50.setLayout(jPanel50Layout);
+    jPanel50Layout.setHorizontalGroup(
+        jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel50Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+    jPanel50Layout.setVerticalGroup(
+        jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel50Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(10, Short.MAX_VALUE))
+    );
+
+    TabbedPaneProveedor2.addTab("Lista de proveedores", jPanel50);
+
+    TabbedPaneProveedor3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    TabbedPaneProveedor3.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneProveedor3.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            TabbedPaneProveedor3StateChanged(evt);
+        }
+    });
+
+    jPanel52.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    jPanel52.setForeground(new java.awt.Color(0, 0, 0));
+
+    TableProveedores_Report.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {},
+            {},
+            {},
+            {}
+        },
+        new String [] {
+
+        }
+    ));
+    TableProveedores_Report.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            TableProveedores_ReportMouseClicked(evt);
+        }
+    });
+    TableProveedores_Report.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TableProveedores_ReportKeyReleased(evt);
+        }
+    });
+    jScrollPane8.setViewportView(TableProveedores_Report);
+
+    javax.swing.GroupLayout jPanel52Layout = new javax.swing.GroupLayout(jPanel52);
+    jPanel52.setLayout(jPanel52Layout);
+    jPanel52Layout.setHorizontalGroup(
+        jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel52Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+    jPanel52Layout.setVerticalGroup(
+        jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel52Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+
+    TabbedPaneProveedor3.addTab("Lista de proveedores", jPanel52);
+
+    jPanel53.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    jPanel53.setForeground(new java.awt.Color(0, 0, 0));
+
+    TableProveedores_PagosCuotas.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {},
+            {},
+            {},
+            {}
+        },
+        new String [] {
+
+        }
+    ));
+    TableProveedores_PagosCuotas.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            TableProveedores_PagosCuotasMouseClicked(evt);
+        }
+    });
+    TableProveedores_PagosCuotas.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TableProveedores_PagosCuotasKeyReleased(evt);
+        }
+    });
+    jScrollPane9.setViewportView(TableProveedores_PagosCuotas);
+
+    jPanel54.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    jPanel54.setForeground(new java.awt.Color(0, 0, 0));
+
+    LabelCliente_Nombre43.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre43.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre43.setText("Deuda");
+
+    LabelProveedor_Deuda1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Deuda1.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Deuda1.setText("0.00");
+
+    LabelCliente_Nombre44.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre44.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre44.setText("Fecha deuda");
+
+    LabelCliente_Nombre45.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre45.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre45.setText("Saldo");
+
+    jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+    jLabel17.setText("Ticket");
+
+    LabelProveedor_TicketDeuda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_TicketDeuda.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_TicketDeuda.setText("0000000000");
+
+    LabelProveedor_FechaDeuda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_FechaDeuda.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_FechaDeuda.setText("--/--/--");
+
+    LabelProveedor_Saldo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Saldo.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Saldo.setText("0.00");
+
+    LabelCliente_Nombre46.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre46.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre46.setText("Pago");
+
+    LabelProveedor_DeudaPago.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_DeudaPago.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_DeudaPago.setText("0.00");
+
+    LabelCliente_Nombre47.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre47.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre47.setText("Cuotas");
+
+    LabelProveedor_MesCuotas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_MesCuotas.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_MesCuotas.setText("0.00");
+
+    LabelProveedor_PagosFecha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_PagosFecha.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_PagosFecha.setText("--/--/--");
+
+    LabelCliente_Nombre48.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre48.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre48.setText("Fecha del pago");
+
+    LabelCliente_Nombre49.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre49.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre49.setText("Próximo pago");
+
+    LabelProveedor_FechaLimite.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_FechaLimite.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_FechaLimite.setText("--/--/--");
+
+    javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
+    jPanel54.setLayout(jPanel54Layout);
+    jPanel54Layout.setHorizontalGroup(
+        jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel54Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(LabelProveedor_FechaDeuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelProveedor_Deuda1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelProveedor_DeudaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel54Layout.createSequentialGroup()
+                    .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelCliente_Nombre43)
+                        .addComponent(LabelCliente_Nombre44, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabelCliente_Nombre46, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LabelCliente_Nombre48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LabelProveedor_PagosFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGap(0, 46, Short.MAX_VALUE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel54Layout.createSequentialGroup()
+                    .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCliente_Nombre45, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCliente_Nombre47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCliente_Nombre49, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                    .addGap(15, 15, 15))
+                .addGroup(jPanel54Layout.createSequentialGroup()
+                    .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(LabelProveedor_TicketDeuda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelProveedor_Saldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel54Layout.createSequentialGroup()
+                    .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(LabelProveedor_FechaLimite, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelProveedor_MesCuotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())))
+    );
+    jPanel54Layout.setVerticalGroup(
+        jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel54Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCliente_Nombre43)
+                .addComponent(LabelCliente_Nombre45))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelProveedor_Deuda1)
+                .addComponent(LabelProveedor_Saldo))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCliente_Nombre44)
+                .addComponent(jLabel17))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelProveedor_FechaDeuda)
+                .addComponent(LabelProveedor_TicketDeuda))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel54Layout.createSequentialGroup()
+                    .addComponent(LabelCliente_Nombre46)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(LabelProveedor_DeudaPago))
+                .addGroup(jPanel54Layout.createSequentialGroup()
+                    .addComponent(LabelCliente_Nombre47)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(LabelProveedor_MesCuotas)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel54Layout.createSequentialGroup()
+                    .addComponent(LabelCliente_Nombre48)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(LabelProveedor_PagosFecha))
+                .addGroup(jPanel54Layout.createSequentialGroup()
+                    .addComponent(LabelCliente_Nombre49)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(LabelProveedor_FechaLimite)))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout jPanel53Layout = new javax.swing.GroupLayout(jPanel53);
+    jPanel53.setLayout(jPanel53Layout);
+    jPanel53Layout.setHorizontalGroup(
+        jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel53Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
+    );
+    jPanel53Layout.setVerticalGroup(
+        jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel53Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap())
+    );
+
+    TabbedPaneProveedor3.addTab("Pagos de cuotas", jPanel53);
+
+    LabelCliente_Nombre55.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre55.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre55.setText("Fecha de inicio");
+
+    LabelCliente_Nombre56.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre56.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre56.setText("Fecha final");
+
+    dateChooserProveedor_Deuda1.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
+        new datechooser.view.appearance.ViewAppearance("custom",
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(187, 187, 187),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(187, 187, 187),
+                new java.awt.Color(0, 0, 255),
+                true,
+                true,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(0, 0, 255),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(128, 128, 128),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.LabelPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(187, 187, 187),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.LabelPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(187, 187, 187),
+                new java.awt.Color(255, 0, 0),
+                false,
+                false,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            (datechooser.view.BackRenderer)null,
+            false,
+            true)));
+dateChooserProveedor_Deuda1.setLocale(new java.util.Locale("es", "", ""));
+
+dateChooserProveedor_Deuda2.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
+    new datechooser.view.appearance.ViewAppearance("custom",
+        new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+            new java.awt.Color(187, 187, 187),
+            new java.awt.Color(0, 0, 255),
+            false,
+            true,
+            new datechooser.view.appearance.swing.ButtonPainter()),
+        new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+            new java.awt.Color(187, 187, 187),
+            new java.awt.Color(0, 0, 255),
+            true,
+            true,
+            new datechooser.view.appearance.swing.ButtonPainter()),
+        new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+            new java.awt.Color(0, 0, 255),
+            new java.awt.Color(0, 0, 255),
+            false,
+            true,
+            new datechooser.view.appearance.swing.ButtonPainter()),
+        new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+            new java.awt.Color(128, 128, 128),
+            new java.awt.Color(0, 0, 255),
+            false,
+            true,
+            new datechooser.view.appearance.swing.LabelPainter()),
+        new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+            new java.awt.Color(187, 187, 187),
+            new java.awt.Color(0, 0, 255),
+            false,
+            true,
+            new datechooser.view.appearance.swing.LabelPainter()),
+        new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 12),
+            new java.awt.Color(187, 187, 187),
+            new java.awt.Color(255, 0, 0),
+            false,
+            false,
+            new datechooser.view.appearance.swing.ButtonPainter()),
+        (datechooser.view.BackRenderer)null,
+        false,
+        true)));
+dateChooserProveedor_Deuda2.setLocale(new java.util.Locale("es", "", ""));
+
+ButtonProveedor_BuscarPagos.setBackground(new java.awt.Color(255, 102, 51));
+ButtonProveedor_BuscarPagos.setForeground(new java.awt.Color(0, 0, 0));
+ButtonProveedor_BuscarPagos.setText("Buscar");
+ButtonProveedor_BuscarPagos.setToolTipText("");
+ButtonProveedor_BuscarPagos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+ButtonProveedor_BuscarPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+ButtonProveedor_BuscarPagos.addActionListener(new java.awt.event.ActionListener() {
+public void actionPerformed(java.awt.event.ActionEvent evt) {
+    ButtonProveedor_BuscarPagosActionPerformed(evt);
+    }
+    });
+
+    ButtonProveedor_TicketDeuda.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_TicketDeuda.setForeground(new java.awt.Color(0, 0, 0));
+    ButtonProveedor_TicketDeuda.setText("Ticket");
+    ButtonProveedor_TicketDeuda.setToolTipText("");
+    ButtonProveedor_TicketDeuda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_TicketDeuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_TicketDeuda.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_TicketDeudaActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel51Layout = new javax.swing.GroupLayout(jPanel51);
+    jPanel51.setLayout(jPanel51Layout);
+    jPanel51Layout.setHorizontalGroup(
+        jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel51Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(TabbedPaneProveedor3)
+                .addGroup(jPanel51Layout.createSequentialGroup()
+                    .addGroup(jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelCliente_Nombre55)
+                        .addComponent(dateChooserProveedor_Deuda1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(116, 116, 116)
+                    .addGroup(jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelCliente_Nombre56)
+                        .addGroup(jPanel51Layout.createSequentialGroup()
+                            .addComponent(dateChooserProveedor_Deuda2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(47, 47, 47)
+                            .addComponent(ButtonProveedor_BuscarPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonProveedor_TicketDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+    jPanel51Layout.setVerticalGroup(
+        jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel51Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCliente_Nombre55)
+                .addComponent(LabelCliente_Nombre56))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel51Layout.createSequentialGroup()
+                    .addGroup(jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dateChooserProveedor_Deuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dateChooserProveedor_Deuda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(TabbedPaneProveedor3))
+                .addGroup(jPanel51Layout.createSequentialGroup()
+                    .addGroup(jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ButtonProveedor_BuscarPagos)
+                        .addComponent(ButtonProveedor_TicketDeuda))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+
+    TabbedPaneProveedor2.addTab("Pagos", jPanel51);
+
+    LabelCliente_Nombre3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre3.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre3.setText("Registros por páginas");
+
+    SpinnerPaginas_Proveedores.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            SpinnerPaginas_ProveedoresStateChanged(evt);
+        }
+    });
+
+    ButtonProveedor_Paginas1.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Paginas1.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonProveedor_Paginas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso_rapido.png"))); // NOI18N
+    ButtonProveedor_Paginas1.setToolTipText("");
+    ButtonProveedor_Paginas1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Paginas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Paginas1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_Paginas1ActionPerformed(evt);
+        }
+    });
+
+    ButtonProveedor_Paginas2.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Paginas2.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonProveedor_Paginas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso.png"))); // NOI18N
+    ButtonProveedor_Paginas2.setToolTipText("");
+    ButtonProveedor_Paginas2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Paginas2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Paginas2.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_Paginas2ActionPerformed(evt);
+        }
+    });
+
+    ButtonProveedor_Paginas3.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Paginas3.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonProveedor_Paginas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance.png"))); // NOI18N
+    ButtonProveedor_Paginas3.setToolTipText("");
+    ButtonProveedor_Paginas3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Paginas3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Paginas3.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_Paginas3ActionPerformed(evt);
+        }
+    });
+
+    ButtonProveedor_Paginas4.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Paginas4.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonProveedor_Paginas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance-rapido.png"))); // NOI18N
+    ButtonProveedor_Paginas4.setToolTipText("");
+    ButtonProveedor_Paginas4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Paginas4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Paginas4.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_Paginas4ActionPerformed(evt);
+        }
+    });
+
+    LabelProveedor_Paginas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_Paginas.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_Paginas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    LabelProveedor_Paginas.setText("Páginas");
+    LabelProveedor_Paginas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+    javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
+    jPanel49.setLayout(jPanel49Layout);
+    jPanel49Layout.setHorizontalGroup(
+        jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel49Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(TabbedPaneProveedor2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel49Layout.createSequentialGroup()
+                    .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelCliente_Nombre3)
+                        .addComponent(SpinnerPaginas_Proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(188, 188, 188)
+                    .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel49Layout.createSequentialGroup()
+                            .addComponent(ButtonProveedor_Paginas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonProveedor_Paginas2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonProveedor_Paginas3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonProveedor_Paginas4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(LabelProveedor_Paginas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(308, 308, 308)))
+            .addContainerGap())
+    );
+    jPanel49Layout.setVerticalGroup(
+        jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel49Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(TabbedPaneProveedor2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel49Layout.createSequentialGroup()
+                    .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabelCliente_Nombre3)
+                        .addComponent(LabelProveedor_Paginas))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(SpinnerPaginas_Proveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ButtonProveedor_Paginas1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(ButtonProveedor_Paginas2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(ButtonProveedor_Paginas3)))
+                .addComponent(ButtonProveedor_Paginas4))
+            .addContainerGap(40, Short.MAX_VALUE))
+    );
+
+    jPanel58.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel58.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+
+    jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+    jLabel19.setForeground(new java.awt.Color(70, 106, 124));
+    jLabel19.setText("Proveedor");
+
+    jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    jLabel20.setForeground(new java.awt.Color(70, 106, 124));
+    jLabel20.setText("Buscar");
+
+    TextField_BuscarProveedor.setBackground(new java.awt.Color(255, 255, 255));
+    TextField_BuscarProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextField_BuscarProveedor.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextField_BuscarProveedorActionPerformed(evt);
+        }
+    });
+    TextField_BuscarProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextField_BuscarProveedorKeyReleased(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel58Layout = new javax.swing.GroupLayout(jPanel58);
+    jPanel58.setLayout(jPanel58Layout);
+    jPanel58Layout.setHorizontalGroup(
+        jPanel58Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel58Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jLabel19)
+            .addGap(150, 150, 150)
+            .addComponent(jLabel20)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TextField_BuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    jPanel58Layout.setVerticalGroup(
+        jPanel58Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel58Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel58Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel20)
+                .addComponent(TextField_BuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap())
+    );
+
+    javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
+    jPanel38.setLayout(jPanel38Layout);
+    jPanel38Layout.setHorizontalGroup(
+        jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel38Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel38Layout.createSequentialGroup()
+                    .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+    jPanel38Layout.setVerticalGroup(
+        jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel38Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap())
+    );
+
+    TabbedPanePrincipal.addTab("Proveedor", jPanel38);
+
     jPanel24.setBackground(new java.awt.Color(255, 255, 255));
     jPanel24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
     jPanel24.setForeground(new java.awt.Color(255, 255, 255));
@@ -2933,6 +4092,18 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         }
     });
 
+    ButtonProveedor.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/proveedor.png"))); // NOI18N
+    ButtonProveedor.setToolTipText("");
+    ButtonProveedor.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedorActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -2947,6 +4118,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     .addComponent(ButtonVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(ButtonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(ButtonProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(ButtonUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2964,7 +4137,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addComponent(ButtonClientes)
                 .addComponent(ButtonVentas)
                 .addComponent(ButtonConfiguracion)
-                .addComponent(ButtonUsuario))
+                .addComponent(ButtonUsuario)
+                .addComponent(ButtonProveedor))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(TabbedPanePrincipal)
             .addContainerGap())
@@ -2975,34 +4149,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE CLIENTE"> 
     private ClientesVM cliente;
-
-    private void TextFieldCliente_PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_PagosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldCliente_PagosActionPerformed
-
-    private void TextFieldCliente_NoIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldCliente_NoIdActionPerformed
-
-    private void TextFieldCliente_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_EmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldCliente_EmailActionPerformed
-
-    private void TextFieldCliente_ApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_ApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldCliente_ApellidoActionPerformed
-
-    private void TextFieldCliente_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_NombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldCliente_NombreActionPerformed
-
-    private void TextFieldCliente_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_TelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldCliente_TelefonoActionPerformed
-
-    private void TextFieldCliente_DireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_DireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldCliente_DireccionActionPerformed
 
     private void ButtonCliente_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_AgregarActionPerformed
         // TODO add your handling code here:
@@ -3032,91 +4178,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         cliente.restablecer();
     }//GEN-LAST:event_ButtonCliente_CancelarActionPerformed
-
-    private void Label_ImagenClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ImagenClienteMouseClicked
-        // TODO add your handling code here:
-        Objetos.uploadImage.cargarImagen(Label_ImagenCliente);
-    }//GEN-LAST:event_Label_ImagenClienteMouseClicked
-
-    private void TextFieldCliente_NoIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyReleased
-        // TODO add your handling code here:
-        if (TextFieldCliente_NoId.getText().equals("")) {
-            LabelCliente_NoId.setForeground(new Color(102, 102, 102));
-        } else {
-            LabelCliente_NoId.setText("No. Id");
-            LabelCliente_NoId.setForeground(new Color(0, 153, 51));
-        }
-    }//GEN-LAST:event_TextFieldCliente_NoIdKeyReleased
-
-    private void TextFieldCliente_NoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyTyped
-        // TODO add your handling code here:
-        Objetos.eventos.numberKeyPress(evt);
-    }//GEN-LAST:event_TextFieldCliente_NoIdKeyTyped
-
-    private void TextFieldCliente_NombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NombreKeyReleased
-        // TODO add your handling code here:
-        if (TextFieldCliente_Nombre.getText().equals("")) {
-            LabelCliente_Nombre.setForeground(new Color(102, 102, 102));
-        } else {
-            LabelCliente_Nombre.setText("Nombre");
-            LabelCliente_Nombre.setForeground(new Color(0, 153, 51));
-        }
-    }//GEN-LAST:event_TextFieldCliente_NombreKeyReleased
-
-    private void TextFieldCliente_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NombreKeyTyped
-        // TODO add your handling code here:
-        Objetos.eventos.textKeyPress(evt);
-    }//GEN-LAST:event_TextFieldCliente_NombreKeyTyped
-
-    private void TextFieldCliente_ApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_ApellidoKeyReleased
-        // TODO add your handling code here:
-        if (TextFieldCliente_Apellido.getText().equals("")) {
-            LabelCliente_Apellido.setForeground(new Color(102, 102, 102));
-        } else {
-            LabelCliente_Apellido.setText("Apellido");
-            LabelCliente_Apellido.setForeground(new Color(0, 153, 51));
-        }
-    }//GEN-LAST:event_TextFieldCliente_ApellidoKeyReleased
-
-    private void TextFieldCliente_ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_ApellidoKeyTyped
-        // TODO add your handling code here:
-        Objetos.eventos.textKeyPress(evt);
-    }//GEN-LAST:event_TextFieldCliente_ApellidoKeyTyped
-
-    private void TextFieldCliente_EmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_EmailKeyReleased
-        // TODO add your handling code here:
-        if (TextFieldCliente_Email.getText().equals("")) {
-            LabelCliente_Email.setForeground(new Color(102, 102, 102));
-        } else {
-            LabelCliente_Email.setText("Email");
-            LabelCliente_Email.setForeground(new Color(0, 153, 51));
-        }
-    }//GEN-LAST:event_TextFieldCliente_EmailKeyReleased
-
-    private void TextFieldCliente_TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_TelefonoKeyReleased
-        // TODO add your handling code here:
-        if (TextFieldCliente_Telefono.getText().equals("")) {
-            LabelCliente_Telefono.setForeground(new Color(102, 102, 102));
-        } else {
-            LabelCliente_Telefono.setText("Telefono");
-            LabelCliente_Telefono.setForeground(new Color(0, 153, 51));
-        }
-    }//GEN-LAST:event_TextFieldCliente_TelefonoKeyReleased
-
-    private void TextFieldCliente_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_TelefonoKeyTyped
-        // TODO add your handling code here:
-        Objetos.eventos.numberKeyPress(evt);
-    }//GEN-LAST:event_TextFieldCliente_TelefonoKeyTyped
-
-    private void TextFieldCliente_DireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_DireccionKeyReleased
-        // TODO add your handling code here:
-        if (TextFieldCliente_Direccion.getText().equals("")) {
-            LabelCliente_Direccion.setForeground(new Color(102, 102, 102));
-        } else {
-            LabelCliente_Direccion.setText("Direccion");
-            LabelCliente_Direccion.setForeground(new Color(0, 153, 51));
-        }
-    }//GEN-LAST:event_TextFieldCliente_DireccionKeyReleased
 
     private void ButtonCliente_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas4ActionPerformed
         // TODO add your handling code here:
@@ -3159,29 +4220,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             cliente.getCliente();
         }
     }//GEN-LAST:event_Table_ClientesMouseClicked
-
-    private void TabbedPaneCliente1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente1StateChanged
-        // TODO add your handling code here:
-        switch (TabbedPaneCliente1.getSelectedIndex()) {
-            case 0:
-                if (TabbedPaneCliente2.getSelectedIndex() > 0) {
-                    TabbedPaneCliente2.setSelectedIndex(0);
-                    cliente.seccion = 1;
-                    cliente.Registro_Paginas();
-                }
-                break;
-            case 1:
-                cliente.seccion = 2;
-                TabbedPaneCliente2.setSelectedIndex(1);
-                cliente.Registro_Paginas();
-                break;
-            case 2:
-                cliente.seccion = 3;
-                TabbedPaneCliente2.setSelectedIndex(2);
-                //cliente.Registro_Paginas();
-                break;
-        }
-    }//GEN-LAST:event_TabbedPaneCliente1StateChanged
 
     private void TabbedPaneCliente2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente2StateChanged
         // TODO add your handling code here:
@@ -3295,8 +4333,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             dateChooserCliente_Deuda1,
             dateChooserCliente_Deuda2,
             TableCliente_PagosCuotas,
-            TableCliente_PagosIntereses,
-        };
+            TableCliente_PagosIntereses,};
         cliente = new ClientesVM(objects, label, textField);
         TabbedPanePrincipal.setSelectedIndex(1);
         EnabeledButton(ButtonClientes);
@@ -3308,7 +4345,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void ButtonConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConfiguracionActionPerformed
         // TODO add your handling code here:
-        TabbedPanePrincipal.setSelectedIndex(3);
+        TabbedPanePrincipal.setSelectedIndex(4);
         EnabeledButton(ButtonConfiguracion);
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldConfig_Intereses);
@@ -3317,64 +4354,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         label.add(LabelConfig_Intereses);
         config = new ConfigurationVM(_radio, textField, label);
     }//GEN-LAST:event_ButtonConfiguracionActionPerformed
-
-    private void TextFieldCliente_CuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_CuotasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldCliente_CuotasActionPerformed
-
-    private void RadioButtonCliente_CuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonCliente_CuotasActionPerformed
-        // TODO add your handling code here:
-        TextFieldCliente_Cuotas.setEnabled(false);
-        cliente.CuotasIntereses();
-    }//GEN-LAST:event_RadioButtonCliente_CuotasActionPerformed
-
-    private void RadioButtonCliente_InteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonCliente_InteresesActionPerformed
-        // TODO add your handling code here:
-        TextFieldCliente_Cuotas.setEnabled(true);
-        cliente.CuotasIntereses();
-    }//GEN-LAST:event_RadioButtonCliente_InteresesActionPerformed
-
-    private void TextFieldCliente_PagosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_PagosKeyReleased
-        // TODO add your handling code here:
-        cliente.CuotasIntereses();
-    }//GEN-LAST:event_TextFieldCliente_PagosKeyReleased
-
-    private void TextFieldCliente_PagosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_PagosKeyTyped
-        // TODO add your handling code here:
-        Objetos.eventos.numberDecimalKeyPress(evt, TextFieldCliente_Pagos);
-    }//GEN-LAST:event_TextFieldCliente_PagosKeyTyped
-
-    private void TextFieldCliente_CuotasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_CuotasKeyReleased
-        // TODO add your handling code here:
-        cliente.CuotasIntereses();
-    }//GEN-LAST:event_TextFieldCliente_CuotasKeyReleased
-
-    private void TextFieldCliente_CuotasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_CuotasKeyTyped
-        // TODO add your handling code here:
-        Objetos.eventos.numberKeyPress(evt);
-    }//GEN-LAST:event_TextFieldCliente_CuotasKeyTyped
-
-    private void TableCliente_ReportDeudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_ReportDeudaMouseClicked
-        // TODO add your handling code here:
-        if (TableCliente_ReportDeuda.getSelectedRows().length > 0) {
-            var fila = TableCliente_ReportDeuda.getSelectedRow();
-            var modelo = (DefaultTableModel) TableCliente_ReportDeuda.getModel();
-            cliente.GetReporteDeuda(modelo, fila);
-        }
-    }//GEN-LAST:event_TableCliente_ReportDeudaMouseClicked
-
-    private void TableCliente_ReportDeudaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_ReportDeudaKeyReleased
-        // TODO add your handling code here:
-        if (TableCliente_ReportDeuda.getSelectedRows().length > 0) {
-            var fila = TableCliente_ReportDeuda.getSelectedRow();
-            var modelo = (DefaultTableModel) TableCliente_ReportDeuda.getModel();
-            cliente.GetReporteDeuda(modelo, fila);
-        }
-    }//GEN-LAST:event_TableCliente_ReportDeudaKeyReleased
-
-    private void CheckBoxCliente_ExtenderDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCliente_ExtenderDiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CheckBoxCliente_ExtenderDiaActionPerformed
 
     private void TextFieldConfig_InteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldConfig_InteresesActionPerformed
         // TODO add your handling code here:
@@ -3415,7 +4394,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE USUARIO"> 
     private void ButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarioActionPerformed
         // TODO add your handling code here:
-        TabbedPanePrincipal.setSelectedIndex(2);
+        TabbedPanePrincipal.setSelectedIndex(3);
 
         ArrayList<JLabel> label = new ArrayList();
         label.add(LabelUsuario_NoId);
@@ -3674,40 +4653,25 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         cliente.SearchClientes(TextField_BuscarUsuarios.getText());
     }//GEN-LAST:event_TextField_BuscarCliente1KeyReleased
 
-    private void TabbedPaneCliente3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente3StateChanged
-        // TODO add your handling code here:
-        switch (TabbedPaneCliente3.getSelectedIndex()) {
-            case 0:
-                RadioButtonCliente_Cuotas.setSelected(true);
-                RadioButtonCliente_Intereses.setSelected(true);
-
-                if (TabbedPaneCliente4.getSelectedIndex() == 2) {
-                    TabbedPaneCliente4.setSelectedIndex(1);
-                }
-                break;
-            case 1:
-                RadioButtonCliente_Cuotas.setSelected(false);
-                RadioButtonCliente_Intereses.setSelected(true);
-                TabbedPaneCliente4.setSelectedIndex(2);
-                break;
-        }
-    }//GEN-LAST:event_TabbedPaneCliente3StateChanged
-
     private void TabbedPaneCliente4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente4StateChanged
         // TODO add your handling code here:
         switch (TabbedPaneCliente4.getSelectedIndex()) {
             case 0:
                 if (cliente != null) {
                     cliente._seccion1 = 0;
+                    cliente.Registro_Paginas();
                 }
                 break;
             case 1:
                 TabbedPaneCliente3.setSelectedIndex(0);
                 cliente._seccion1 = 1;
+                cliente.Registro_Paginas();
+
                 break;
             case 2:
                 TabbedPaneCliente3.setSelectedIndex(1);
                 cliente._seccion1 = 2;
+                cliente.Registro_Paginas();
                 break;
         }
     }//GEN-LAST:event_TabbedPaneCliente4StateChanged
@@ -3746,11 +4710,519 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void TableCliente_PagosInteresesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_PagosInteresesKeyReleased
         // TODO add your handling code here:
+        if (TableCliente_PagosIntereses.getSelectedRows().length > 0) {
+            cliente.getHistorialIntereses();
+        }
     }//GEN-LAST:event_TableCliente_PagosInteresesKeyReleased
 
     private void TableCliente_PagosInteresesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_PagosInteresesMouseClicked
         // TODO add your handling code here:
+        if (TableCliente_PagosIntereses.getSelectedRows().length > 0) {
+            cliente.getHistorialIntereses();
+        }
     }//GEN-LAST:event_TableCliente_PagosInteresesMouseClicked
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE PROVEEDOR"> 
+    ProveedorVM proveedor;
+    private void ButtonProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedorActionPerformed
+        // TODO add your handling code here:
+        ArrayList<JLabel> label = new ArrayList();
+        label.add(LabelProveedor_Proveedor);
+        label.add(LabelProveedor_Email);
+        label.add(LabelProveedor_Telefono);
+        label.add(LabelProveedor_Direccion);
+        label.add(Label_ImagenProveedor);
+        label.add(LabelProveedor_Paginas);
+        //5
+
+        label.add(LabelProveedorReport_Nombre);
+        label.add(LabelProveedor_Deuda);
+        label.add(LabelProveedor_Pago);
+        label.add(LabelProveedor_Ticket);
+        label.add(LabelProveedor_FechaPago);
+        label.add(LabelProveedor_CuotasMes);
+        label.add(LabelProveedorReport_Pagos);
+
+        ArrayList<JTextField> textField = new ArrayList();
+        textField.add(TextFieldProveedor_Proveedor);
+        textField.add(TextFieldProveedor_Email);
+        textField.add(TextFieldProveedor_Telefono);
+        textField.add(TextFieldProveedor_Direccion);
+        textField.add(TextFieldProveedor_Pagos);
+
+        Object[] objects = {
+            Table_Proveedores,
+            SpinnerPaginas_Proveedores,
+            TableProveedores_Report,
+            dateChooserProveedor_Deuda1,
+            dateChooserProveedor_Deuda2,
+            TableProveedores_PagosCuotas
+        };
+
+        proveedor = new ProveedorVM(objects, label, textField);
+        TabbedPanePrincipal.setSelectedIndex(2);
+        EnabeledButton(ButtonProveedor);
+    }//GEN-LAST:event_ButtonProveedorActionPerformed
+
+    private void Label_ImagenProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ImagenProveedorMouseClicked
+        // TODO add your handling code here:
+        Objetos.uploadImage.cargarImagen(Label_ImagenProveedor);
+    }//GEN-LAST:event_Label_ImagenProveedorMouseClicked
+
+    private void TextFieldProveedor_ProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_ProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldProveedor_ProveedorActionPerformed
+
+    private void TextFieldProveedor_ProveedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_ProveedorKeyReleased
+        // TODO add your handling code here:
+        if (TextFieldProveedor_Proveedor.getText().equals("")) {
+            LabelProveedor_Proveedor.setForeground(Color.BLACK);
+        } else {
+            LabelProveedor_Proveedor.setText("Proveedor");
+            LabelProveedor_Proveedor.setForeground(Color.GREEN);
+        }
+    }//GEN-LAST:event_TextFieldProveedor_ProveedorKeyReleased
+
+    private void TextFieldProveedor_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_EmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldProveedor_EmailActionPerformed
+
+    private void TextFieldProveedor_EmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_EmailKeyReleased
+        // TODO add your handling code here:
+        if (TextFieldProveedor_Email.getText().equals("")) {
+            LabelProveedor_Email.setForeground(Color.BLACK);
+        } else {
+            LabelProveedor_Email.setText("Email");
+            LabelProveedor_Email.setForeground(Color.GREEN);
+        }
+    }//GEN-LAST:event_TextFieldProveedor_EmailKeyReleased
+
+    private void TextFieldProveedor_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_TelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldProveedor_TelefonoActionPerformed
+
+    private void TextFieldProveedor_TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_TelefonoKeyReleased
+        // TODO add your handling code here:
+        if (TextFieldProveedor_Telefono.getText().equals("")) {
+            LabelProveedor_Telefono.setForeground(Color.BLACK);
+        } else {
+            LabelProveedor_Telefono.setText("Telefono");
+            LabelProveedor_Telefono.setForeground(Color.GREEN);
+        }
+    }//GEN-LAST:event_TextFieldProveedor_TelefonoKeyReleased
+
+    private void TextFieldProveedor_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_TelefonoKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.numberKeyPress(evt);
+    }//GEN-LAST:event_TextFieldProveedor_TelefonoKeyTyped
+
+    private void TextFieldProveedor_DireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_DireccionActionPerformed
+        // TODO add your handling code here:
+        if (TextFieldProveedor_Direccion.getText().equals("")) {
+            LabelProveedor_Direccion.setForeground(Color.BLACK);
+        } else {
+            LabelProveedor_Direccion.setText("Dirección");
+            LabelProveedor_Direccion.setForeground(Color.GREEN);
+        }
+    }//GEN-LAST:event_TextFieldProveedor_DireccionActionPerformed
+
+    private void TextFieldProveedor_DireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_DireccionKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldProveedor_DireccionKeyReleased
+
+    private void TextFieldProveedor_PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_PagosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldProveedor_PagosActionPerformed
+
+    private void TextFieldProveedor_PagosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_PagosKeyReleased
+        // TODO add your handling code here:
+        proveedor.Pagos();
+    }//GEN-LAST:event_TextFieldProveedor_PagosKeyReleased
+
+    private void TextFieldProveedor_PagosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_PagosKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.numberDecimalKeyPress(evt, TextFieldProveedor_Pagos);
+    }//GEN-LAST:event_TextFieldProveedor_PagosKeyTyped
+
+    private void TabbedPaneProveedor1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor1StateChanged
+        // TODO add your handling code here:
+        switch (TabbedPaneProveedor1.getSelectedIndex()) {
+            case 0:
+                if (TabbedPaneProveedor2.getSelectedIndex() > 0) {
+                    TabbedPaneProveedor2.setSelectedIndex(0);
+                    proveedor._seccion = 0;
+                    proveedor.Registro_Paginas();
+                }
+                break;
+            case 1:
+                proveedor._seccion = 1;
+                TabbedPaneProveedor2.setSelectedIndex(1);
+                proveedor.Registro_Paginas();
+                break;
+        }
+    }//GEN-LAST:event_TabbedPaneProveedor1StateChanged
+
+    private void ButtonProveedor_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_AgregarActionPerformed
+        // TODO add your handling code here:
+        switch (TabbedPaneProveedor1.getSelectedIndex()) {
+            case 0:
+                proveedor.RegistrarProveedor();
+                break;
+            case 1: {
+                try {
+                    proveedor.EjecutarPago();
+                } catch (SQLException ex) {
+                }
+            }
+            break;
+
+        }
+        proveedor.RegistrarProveedor();
+    }//GEN-LAST:event_ButtonProveedor_AgregarActionPerformed
+
+    private void ButtonProveedor_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_CancelarActionPerformed
+        // TODO add your handling code here:
+        proveedor.Reset();
+    }//GEN-LAST:event_ButtonProveedor_CancelarActionPerformed
+
+    private void Table_ProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ProveedoresMouseClicked
+        // TODO add your handling code here:
+        if (Table_Proveedores.getSelectedRows().length > 0) {
+            proveedor.getProveedor();
+        }
+    }//GEN-LAST:event_Table_ProveedoresMouseClicked
+
+    private void Table_ProveedoresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_ProveedoresKeyReleased
+        // TODO add your handling code here:
+        if (Table_Proveedores.getSelectedRows().length > 0) {
+            proveedor.getProveedor();
+        }
+    }//GEN-LAST:event_Table_ProveedoresKeyReleased
+
+    private void TableProveedores_ReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableProveedores_ReportMouseClicked
+        // TODO add your handling code here:
+        if (TableProveedores_Report.getSelectedRows().length > 0) {
+            proveedor.getReportProveedor();
+        }
+    }//GEN-LAST:event_TableProveedores_ReportMouseClicked
+
+    private void TableProveedores_ReportKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableProveedores_ReportKeyReleased
+        // TODO add your handling code here:
+        if (TableProveedores_Report.getSelectedRows().length > 0) {
+            proveedor.getReportProveedor();
+        }
+    }//GEN-LAST:event_TableProveedores_ReportKeyReleased
+
+    private void TableProveedores_PagosCuotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableProveedores_PagosCuotasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TableProveedores_PagosCuotasMouseClicked
+
+    private void TableProveedores_PagosCuotasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableProveedores_PagosCuotasKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TableProveedores_PagosCuotasKeyReleased
+
+    private void TabbedPaneProveedor3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor3StateChanged
+        // TODO add your handling code here:
+        switch (TabbedPaneProveedor2.getSelectedIndex()) {
+            case 0:
+                if (proveedor != null) {
+                    proveedor.Registro_Paginas();
+                }
+                break;
+            case 1:
+                proveedor._seccion = 1;
+                proveedor.Registro_Paginas();
+                break;
+        }
+
+    }//GEN-LAST:event_TabbedPaneProveedor3StateChanged
+
+    private void ButtonProveedor_BuscarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_BuscarPagosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonProveedor_BuscarPagosActionPerformed
+
+    private void ButtonProveedor_TicketDeudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_TicketDeudaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonProveedor_TicketDeudaActionPerformed
+
+    private void TabbedPaneProveedor2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor2StateChanged
+        // TODO add your handling code here:
+        switch (TabbedPaneProveedor2.getSelectedIndex()) {
+            case 0:
+                if (TabbedPaneProveedor1.getSelectedIndex() > 0) {
+                    TabbedPaneProveedor1.setSelectedIndex(0);
+                    proveedor._seccion = 0;
+                    proveedor.Registro_Paginas();
+                }
+                break;
+            case 1:
+                proveedor._seccion = 1;
+                TabbedPaneProveedor1.setSelectedIndex(1);
+                proveedor.Registro_Paginas();
+                break;
+        }
+
+    }//GEN-LAST:event_TabbedPaneProveedor2StateChanged
+
+    private void SpinnerPaginas_ProveedoresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_ProveedoresStateChanged
+        // TODO add your handling code here:
+        proveedor.Registro_Paginas();
+    }//GEN-LAST:event_SpinnerPaginas_ProveedoresStateChanged
+
+    private void ButtonProveedor_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas1ActionPerformed
+        // TODO add your handling code here:
+        proveedor.Paginador("Primero");
+    }//GEN-LAST:event_ButtonProveedor_Paginas1ActionPerformed
+
+    private void ButtonProveedor_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas2ActionPerformed
+        // TODO add your handling code here:
+        proveedor.Paginador("Anterior");
+    }//GEN-LAST:event_ButtonProveedor_Paginas2ActionPerformed
+
+    private void ButtonProveedor_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas3ActionPerformed
+        // TODO add your handling code here:
+        proveedor.Paginador("Siguiente");
+    }//GEN-LAST:event_ButtonProveedor_Paginas3ActionPerformed
+
+    private void ButtonProveedor_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas4ActionPerformed
+        // TODO add your handling code here:
+        proveedor.Paginador("Ultimo");
+    }//GEN-LAST:event_ButtonProveedor_Paginas4ActionPerformed
+
+    private void TextField_BuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_BuscarProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_BuscarProveedorActionPerformed
+
+    private void TextField_BuscarProveedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_BuscarProveedorKeyReleased
+        // TODO add your handling code here:
+        proveedor.Paginador("primero");
+        switch (TabbedPaneProveedor1.getSelectedIndex()) {
+            case 0:
+                proveedor.SearchProveedores(TextField_BuscarProveedor.getText());
+                break;
+            case 1:
+
+                break;
+        }
+    }//GEN-LAST:event_TextField_BuscarProveedorKeyReleased
+
+    private void TabbedPaneCliente1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente1StateChanged
+        // TODO add your handling code here:
+        switch (TabbedPaneCliente1.getSelectedIndex()) {
+            case 0:
+                if (TabbedPaneCliente2.getSelectedIndex() > 0) {
+                    TabbedPaneCliente2.setSelectedIndex(0);
+                    cliente.seccion = 1;
+                    cliente.Registro_Paginas();
+                }
+                break;
+            case 1:
+                cliente.seccion = 2;
+                TabbedPaneCliente2.setSelectedIndex(1);
+                cliente.Registro_Paginas();
+                break;
+            case 2:
+                cliente.seccion = 3;
+                TabbedPaneCliente2.setSelectedIndex(2);
+                //cliente.Registro_Paginas();
+                break;
+        }
+    }//GEN-LAST:event_TabbedPaneCliente1StateChanged
+
+    private void TabbedPaneCliente3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente3StateChanged
+        // TODO add your handling code here:
+        switch (TabbedPaneCliente3.getSelectedIndex()) {
+            case 0:
+                RadioButtonCliente_Cuotas.setSelected(true);
+                RadioButtonCliente_Intereses.setSelected(true);
+
+                if (TabbedPaneCliente4.getSelectedIndex() == 2) {
+                    TabbedPaneCliente4.setSelectedIndex(1);
+                }
+                break;
+            case 1:
+                RadioButtonCliente_Cuotas.setSelected(false);
+                RadioButtonCliente_Intereses.setSelected(true);
+                TabbedPaneCliente4.setSelectedIndex(2);
+                break;
+        }
+    }//GEN-LAST:event_TabbedPaneCliente3StateChanged
+
+    private void TextFieldCliente_CuotasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_CuotasKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.numberKeyPress(evt);
+    }//GEN-LAST:event_TextFieldCliente_CuotasKeyTyped
+
+    private void TextFieldCliente_CuotasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_CuotasKeyReleased
+        // TODO add your handling code here:
+        cliente.CuotasIntereses();
+    }//GEN-LAST:event_TextFieldCliente_CuotasKeyReleased
+
+    private void TextFieldCliente_CuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_CuotasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCliente_CuotasActionPerformed
+
+    private void RadioButtonCliente_InteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonCliente_InteresesActionPerformed
+        // TODO add your handling code here:
+        TextFieldCliente_Cuotas.setEnabled(true);
+        cliente.CuotasIntereses();
+    }//GEN-LAST:event_RadioButtonCliente_InteresesActionPerformed
+
+    private void RadioButtonCliente_CuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonCliente_CuotasActionPerformed
+        // TODO add your handling code here:
+        TextFieldCliente_Cuotas.setEnabled(false);
+        cliente.CuotasIntereses();
+    }//GEN-LAST:event_RadioButtonCliente_CuotasActionPerformed
+
+    private void TextFieldCliente_PagosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_PagosKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.numberDecimalKeyPress(evt, TextFieldCliente_Pagos);
+    }//GEN-LAST:event_TextFieldCliente_PagosKeyTyped
+
+    private void TextFieldCliente_PagosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_PagosKeyReleased
+        // TODO add your handling code here:
+        cliente.CuotasIntereses();
+    }//GEN-LAST:event_TextFieldCliente_PagosKeyReleased
+
+    private void TextFieldCliente_PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_PagosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCliente_PagosActionPerformed
+
+    private void TextFieldCliente_DireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_DireccionKeyReleased
+        // TODO add your handling code here:
+        if (TextFieldCliente_Direccion.getText().equals("")) {
+            LabelCliente_Direccion.setForeground(new Color(102, 102, 102));
+        } else {
+            LabelCliente_Direccion.setText("Direccion");
+            LabelCliente_Direccion.setForeground(new Color(0, 153, 51));
+        }
+    }//GEN-LAST:event_TextFieldCliente_DireccionKeyReleased
+
+    private void TextFieldCliente_DireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_DireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCliente_DireccionActionPerformed
+
+    private void TextFieldCliente_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_TelefonoKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.numberKeyPress(evt);
+    }//GEN-LAST:event_TextFieldCliente_TelefonoKeyTyped
+
+    private void TextFieldCliente_TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_TelefonoKeyReleased
+        // TODO add your handling code here:
+        if (TextFieldCliente_Telefono.getText().equals("")) {
+            LabelCliente_Telefono.setForeground(new Color(102, 102, 102));
+        } else {
+            LabelCliente_Telefono.setText("Telefono");
+            LabelCliente_Telefono.setForeground(new Color(0, 153, 51));
+        }
+    }//GEN-LAST:event_TextFieldCliente_TelefonoKeyReleased
+
+    private void TextFieldCliente_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_TelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCliente_TelefonoActionPerformed
+
+    private void TextFieldCliente_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NombreKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.textKeyPress(evt);
+    }//GEN-LAST:event_TextFieldCliente_NombreKeyTyped
+
+    private void TextFieldCliente_NombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NombreKeyReleased
+        // TODO add your handling code here:
+        if (TextFieldCliente_Nombre.getText().equals("")) {
+            LabelCliente_Nombre.setForeground(new Color(102, 102, 102));
+        } else {
+            LabelCliente_Nombre.setText("Nombre");
+            LabelCliente_Nombre.setForeground(new Color(0, 153, 51));
+        }
+    }//GEN-LAST:event_TextFieldCliente_NombreKeyReleased
+
+    private void TextFieldCliente_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCliente_NombreActionPerformed
+
+    private void TextFieldCliente_ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_ApellidoKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.textKeyPress(evt);
+    }//GEN-LAST:event_TextFieldCliente_ApellidoKeyTyped
+
+    private void TextFieldCliente_ApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_ApellidoKeyReleased
+        // TODO add your handling code here:
+        if (TextFieldCliente_Apellido.getText().equals("")) {
+            LabelCliente_Apellido.setForeground(new Color(102, 102, 102));
+        } else {
+            LabelCliente_Apellido.setText("Apellido");
+            LabelCliente_Apellido.setForeground(new Color(0, 153, 51));
+        }
+    }//GEN-LAST:event_TextFieldCliente_ApellidoKeyReleased
+
+    private void TextFieldCliente_ApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_ApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCliente_ApellidoActionPerformed
+
+    private void TextFieldCliente_EmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_EmailKeyReleased
+        // TODO add your handling code here:
+        if (TextFieldCliente_Email.getText().equals("")) {
+            LabelCliente_Email.setForeground(new Color(102, 102, 102));
+        } else {
+            LabelCliente_Email.setText("Email");
+            LabelCliente_Email.setForeground(new Color(0, 153, 51));
+        }
+    }//GEN-LAST:event_TextFieldCliente_EmailKeyReleased
+
+    private void TextFieldCliente_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_EmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCliente_EmailActionPerformed
+
+    private void TextFieldCliente_NoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyTyped
+        // TODO add your handling code here:
+        Objetos.eventos.numberKeyPress(evt);
+    }//GEN-LAST:event_TextFieldCliente_NoIdKeyTyped
+
+    private void TextFieldCliente_NoIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyReleased
+        // TODO add your handling code here:
+        if (TextFieldCliente_NoId.getText().equals("")) {
+            LabelCliente_NoId.setForeground(new Color(102, 102, 102));
+        } else {
+            LabelCliente_NoId.setText("No. Id");
+            LabelCliente_NoId.setForeground(new Color(0, 153, 51));
+        }
+    }//GEN-LAST:event_TextFieldCliente_NoIdKeyReleased
+
+    private void TextFieldCliente_NoIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCliente_NoIdActionPerformed
+
+    private void Label_ImagenClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ImagenClienteMouseClicked
+        // TODO add your handling code here:
+        Objetos.uploadImage.cargarImagen(Label_ImagenCliente);
+    }//GEN-LAST:event_Label_ImagenClienteMouseClicked
+
+    private void TableCliente_ReportDeudaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_ReportDeudaKeyReleased
+        // TODO add your handling code here:
+        if (TableCliente_ReportDeuda.getSelectedRows().length > 0) {
+            var fila = TableCliente_ReportDeuda.getSelectedRow();
+            var modelo = (DefaultTableModel) TableCliente_ReportDeuda.getModel();
+            cliente.GetReporteDeuda(modelo, fila);
+        }
+    }//GEN-LAST:event_TableCliente_ReportDeudaKeyReleased
+
+    private void TableCliente_ReportDeudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_ReportDeudaMouseClicked
+        // TODO add your handling code here:
+        if (TableCliente_ReportDeuda.getSelectedRows().length > 0) {
+            var fila = TableCliente_ReportDeuda.getSelectedRow();
+            var modelo = (DefaultTableModel) TableCliente_ReportDeuda.getModel();
+            cliente.GetReporteDeuda(modelo, fila);
+        }
+    }//GEN-LAST:event_TableCliente_ReportDeudaMouseClicked
+
+    private void CheckBoxCliente_ExtenderDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCliente_ExtenderDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CheckBoxCliente_ExtenderDiaActionPerformed
+
+    private void TabbedPaneCliente6StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente6StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TabbedPaneCliente6StateChanged
     // </editor-fold>
 
     /**
@@ -3788,6 +5260,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         });
     }
 
+    // <editor-fold defaultstate="collapsed" desc="DECLARACIÓN DE VARIABLES(NO MOVER)"> 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCliente_Agregar;
     private javax.swing.JButton ButtonCliente_BuscarPagos;
@@ -3800,6 +5273,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonClientes;
     private javax.swing.JButton ButtonConfig_AddIntereses;
     private javax.swing.JButton ButtonConfiguracion;
+    private javax.swing.JButton ButtonProveedor;
+    private javax.swing.JButton ButtonProveedor_Agregar;
+    private javax.swing.JButton ButtonProveedor_BuscarPagos;
+    private javax.swing.JButton ButtonProveedor_Cancelar;
+    private javax.swing.JButton ButtonProveedor_Paginas1;
+    private javax.swing.JButton ButtonProveedor_Paginas2;
+    private javax.swing.JButton ButtonProveedor_Paginas3;
+    private javax.swing.JButton ButtonProveedor_Paginas4;
+    private javax.swing.JButton ButtonProveedor_TicketDeuda;
     private javax.swing.JButton ButtonUsuario;
     private javax.swing.JButton ButtonUsuarios_Agregar;
     private javax.swing.JButton ButtonUsuarios_Cancelar;
@@ -3858,11 +5340,25 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCliente_Nombre25;
     private javax.swing.JLabel LabelCliente_Nombre26;
     private javax.swing.JLabel LabelCliente_Nombre27;
+    private javax.swing.JLabel LabelCliente_Nombre28;
     private javax.swing.JLabel LabelCliente_Nombre29;
+    private javax.swing.JLabel LabelCliente_Nombre3;
     private javax.swing.JLabel LabelCliente_Nombre30;
+    private javax.swing.JLabel LabelCliente_Nombre31;
+    private javax.swing.JLabel LabelCliente_Nombre32;
+    private javax.swing.JLabel LabelCliente_Nombre33;
     private javax.swing.JLabel LabelCliente_Nombre4;
     private javax.swing.JLabel LabelCliente_Nombre40;
+    private javax.swing.JLabel LabelCliente_Nombre43;
+    private javax.swing.JLabel LabelCliente_Nombre44;
+    private javax.swing.JLabel LabelCliente_Nombre45;
+    private javax.swing.JLabel LabelCliente_Nombre46;
+    private javax.swing.JLabel LabelCliente_Nombre47;
+    private javax.swing.JLabel LabelCliente_Nombre48;
+    private javax.swing.JLabel LabelCliente_Nombre49;
     private javax.swing.JLabel LabelCliente_Nombre5;
+    private javax.swing.JLabel LabelCliente_Nombre55;
+    private javax.swing.JLabel LabelCliente_Nombre56;
     private javax.swing.JLabel LabelCliente_Nombre6;
     private javax.swing.JLabel LabelCliente_Nombre7;
     private javax.swing.JLabel LabelCliente_Nombre8;
@@ -3875,6 +5371,26 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelConfig_Intereses;
     private javax.swing.JLabel LabelConfig_MsjIntereses;
     private javax.swing.JLabel LabelNombre_Perfil;
+    private javax.swing.JLabel LabelProveedorReport_Nombre;
+    private javax.swing.JLabel LabelProveedorReport_Pagos;
+    private javax.swing.JLabel LabelProveedor_CuotasMes;
+    private javax.swing.JLabel LabelProveedor_Deuda;
+    private javax.swing.JLabel LabelProveedor_Deuda1;
+    private javax.swing.JLabel LabelProveedor_DeudaPago;
+    private javax.swing.JLabel LabelProveedor_Direccion;
+    private javax.swing.JLabel LabelProveedor_Email;
+    private javax.swing.JLabel LabelProveedor_FechaDeuda;
+    private javax.swing.JLabel LabelProveedor_FechaLimite;
+    private javax.swing.JLabel LabelProveedor_FechaPago;
+    private javax.swing.JLabel LabelProveedor_MesCuotas;
+    private javax.swing.JLabel LabelProveedor_Paginas;
+    private javax.swing.JLabel LabelProveedor_Pago;
+    private javax.swing.JLabel LabelProveedor_PagosFecha;
+    private javax.swing.JLabel LabelProveedor_Proveedor;
+    private javax.swing.JLabel LabelProveedor_Saldo;
+    private javax.swing.JLabel LabelProveedor_Telefono;
+    private javax.swing.JLabel LabelProveedor_Ticket;
+    private javax.swing.JLabel LabelProveedor_TicketDeuda;
     private javax.swing.JLabel LabelReport_Pagos;
     private javax.swing.JLabel LabelReporteDeuda_Nombre;
     private javax.swing.JLabel LabelReporte_Nombre;
@@ -3892,6 +5408,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelUsuario_Usuario;
     private javax.swing.JLabel LabelUsuarios_Paginas;
     private javax.swing.JLabel Label_ImagenCliente;
+    private javax.swing.JLabel Label_ImagenProveedor;
     private javax.swing.JLabel Label_ImagenUsuario;
     private javax.swing.JRadioButton RadioButtonCliente_Cuotas;
     private javax.swing.JRadioButton RadioButtonCliente_Intereses;
@@ -3899,19 +5416,27 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JRadioButton RadioButton_MXN;
     private javax.swing.JRadioButton RadioButton_USD;
     private javax.swing.JSpinner SpinnerPaginas_Clientes;
+    private javax.swing.JSpinner SpinnerPaginas_Proveedores;
     private javax.swing.JSpinner SpinnerPaginas_Usuarios;
     private javax.swing.JTabbedPane TabbedPaneCliente1;
     private javax.swing.JTabbedPane TabbedPaneCliente2;
     private javax.swing.JTabbedPane TabbedPaneCliente3;
     private javax.swing.JTabbedPane TabbedPaneCliente4;
+    private javax.swing.JTabbedPane TabbedPaneCliente6;
     private javax.swing.JTabbedPane TabbedPanePrincipal;
+    private javax.swing.JTabbedPane TabbedPaneProveedor1;
+    private javax.swing.JTabbedPane TabbedPaneProveedor2;
+    private javax.swing.JTabbedPane TabbedPaneProveedor3;
     private javax.swing.JTabbedPane TabbedPaneUsuario1;
     private javax.swing.JTabbedPane TabbedPaneUsuario2;
     private javax.swing.JTable TableCliente_PagosCuotas;
     private javax.swing.JTable TableCliente_PagosIntereses;
     private javax.swing.JTable TableCliente_Report;
     private javax.swing.JTable TableCliente_ReportDeuda;
+    private javax.swing.JTable TableProveedores_PagosCuotas;
+    private javax.swing.JTable TableProveedores_Report;
     private javax.swing.JTable Table_Clientes;
+    private javax.swing.JTable Table_Proveedores;
     private javax.swing.JTable Table_Usuarios;
     private javax.swing.JTextField TextFieldCliente_Apellido;
     private javax.swing.JTextField TextFieldCliente_Cuotas;
@@ -3922,6 +5447,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField TextFieldCliente_Pagos;
     private javax.swing.JTextField TextFieldCliente_Telefono;
     private javax.swing.JTextField TextFieldConfig_Intereses;
+    private javax.swing.JTextField TextFieldProveedor_Direccion;
+    private javax.swing.JTextField TextFieldProveedor_Email;
+    private javax.swing.JTextField TextFieldProveedor_Pagos;
+    private javax.swing.JTextField TextFieldProveedor_Proveedor;
+    private javax.swing.JTextField TextFieldProveedor_Telefono;
     private javax.swing.JTextField TextFieldUsuario_Apellido;
     private javax.swing.JTextField TextFieldUsuario_Direccion;
     private javax.swing.JTextField TextFieldUsuario_Email;
@@ -3931,20 +5461,26 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField TextFieldUsuario_Telefono;
     private javax.swing.JTextField TextFieldUsuario_Usuario;
     private javax.swing.JTextField TextField_BuscarCliente1;
+    private javax.swing.JTextField TextField_BuscarProveedor;
     private javax.swing.JTextField TextField_BuscarUsuarios;
     private javax.swing.ButtonGroup buttonGroup1;
     private datechooser.beans.DateChooserCombo dateChooserCliente_Deuda1;
     private datechooser.beans.DateChooserCombo dateChooserCliente_Deuda2;
     private datechooser.beans.DateChooserCombo dateChooserCliente_FechaLimite;
+    private datechooser.beans.DateChooserCombo dateChooserProveedor_Deuda1;
+    private datechooser.beans.DateChooserCombo dateChooserProveedor_Deuda2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -3980,8 +5516,22 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
+    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel40;
+    private javax.swing.JPanel jPanel41;
+    private javax.swing.JPanel jPanel42;
+    private javax.swing.JPanel jPanel43;
+    private javax.swing.JPanel jPanel44;
+    private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel50;
+    private javax.swing.JPanel jPanel51;
+    private javax.swing.JPanel jPanel52;
+    private javax.swing.JPanel jPanel53;
+    private javax.swing.JPanel jPanel54;
+    private javax.swing.JPanel jPanel58;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -3992,8 +5542,12 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
+    // </editor-fold>
 
     public void setExtendedState(int i, int i0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
