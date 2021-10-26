@@ -2,6 +2,7 @@ package Conexion;
 
 import Models.*;
 import Models.Cliente.*;
+import Models.Compras.TCompras_temporal;
 import Models.Ordenador.TOrdenadores;
 import Models.Proveedor.*;
 import Models.Usuario.TRoles;
@@ -215,5 +216,28 @@ public class Consult extends Conexion {
         }
 
         return reportes;
+    }
+    
+    public List<TPagos_proveedor> Pagos_proveedor(){
+         List<TPagos_proveedor> pagos = new ArrayList();
+        try {
+            pagos = (List<TPagos_proveedor>) QR.query(getConn(), "SELECT * FROM tpagos_proveedor",
+                    new BeanListHandler(TPagos_proveedor.class));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+
+        return pagos;
+    }
+    
+    List<TCompras_temporal> Compras_temporal(){
+      List<TCompras_temporal> productos = new ArrayList();  
+       try {
+            productos = (List<TCompras_temporal>) QR.query(getConn(), "SELECT * FROM tcompras_temporal",
+                    new BeanListHandler(TCompras_temporal.class));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+       return productos;
     }
 }

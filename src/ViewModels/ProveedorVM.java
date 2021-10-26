@@ -3,6 +3,7 @@ package ViewModels;
 import Conexion.Consult;
 import Library.*;
 import static Library.Objetos.*;
+import Models.Proveedor.TPagos_proveedor;
 import Models.Proveedor.TProveedor;
 import Models.Usuario.TUsuarios;
 import datechooser.beans.DateChooserCombo;
@@ -25,6 +26,7 @@ public class ProveedorVM extends Consult {
     private DefaultTableModel modelo1, modelo2, modelo3;
     private JSpinner _spinnerPaginas;
     private Paginador<TProveedor> _paginadorProveedor, _paginadorReportes;
+    private Paginador<TPagos_proveedor> _paginadorPagos; 
     private FormatDecimal _format;
     private Codigos _codigos;
     private int _reg_por_pagina = 10;
@@ -57,6 +59,7 @@ public class ProveedorVM extends Consult {
         _dateChooser2 = (DateChooserCombo) objects[4];
         _tablePagosCuotas = (JTable) objects[5];
         _money = ConfigurationVM.Money;
+        formateador = new SimpleDateFormat("dd/MM/yyyy");
         _format = new FormatDecimal();
         _codigos = new Codigos();
         Reset();
@@ -315,6 +318,7 @@ public class ProveedorVM extends Consult {
             }
             _label.get(11).setText(_money + _format.decimal((Double) proveedor.getMensual()));
             Pagos();
+            historialPagos(false);
         }
     }
 
@@ -459,6 +463,173 @@ public class ProveedorVM extends Consult {
         }
     }
 
+    private List<TPagos_proveedor> listPagos;
+
+    public void historialPagos(boolean filtrar) {
+        listPagos = new ArrayList<>();
+        try {
+            _dateChooser1.setFormat(3);
+            _dateChooser2.setFormat(3);
+            var cal = new Calendario();
+            String[] titulos = {"ID", "Deuda", "Saldo", "Pago", "Cambio", "Fecha", "Ticket", "Fecha Deuda", "Mensual"};
+            modelo3 = new DefaultTableModel(null, titulos);
+            var date1 = formateador.parse(_dateChooser1.getSelectedPeriodSet().toString());
+            var date2 = formateador.parse(_dateChooser2.getSelectedPeriodSet().toString());
+            if (filtrar) {
+                if (date2.after(date1) || date1.equals(date2)) {
+                    var listPagos1 = new ArrayList<TPagos_proveedor>();
+                    var pagos = Pagos_proveedor().stream().filter(u -> u.getIdProveedor() == _idProveedorReport).collect(Collectors.toList());
+                    formateador = new SimpleDateFormat("yyyy/MM/dd");
+                    _dateChooser1.setFormat(3);
+                    var date3 = _dateChooser1.getCurrent();
+                    var date4 = formateador.parse(cal.getFecha(date3));
+
+                    for (TPagos_proveedor pago : pagos) {
+                        var date5 = pago.getFecha();
+                        if (date4.equals(date5) || date4.before(date5)) {
+                            listPagos1.add(pago);
+                        }
+                    }
+
+                    _dateChooser2.setFormat(3);
+                    var date6 = _dateChooser2.getCurrent();
+                    var date7 = formateador.parse(cal.getFecha(date6));
+
+                    for (TPagos_proveedor pago : listPagos1) {
+                        var date8 = pago.getFecha();
+
+                        if (date7.equals(date8) || date7.after(date8)) {
+                            Object[] registros = {
+                                pago.getId(),
+                                _money + _format.decimal(pago.getDeuda()),
+                                _money + _format.decimal(pago.getSaldo()),
+                                _money + _format.decimal(pago.getPago()),
+                                _money + _format.decimal(pago.getCambio()),
+                                pago.getFecha(),
+                                pago.getTicket(),
+                                pago.getFechaDeuda(),
+                                _money + _format.decimal(pago.getMensual()),};
+                            modelo3.addRow(registros);
+                            listPagos.add(pago);
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "La fecha debe ser mayor a la fecha inicial");
+                }
+            } else {
+                int inicio = (_num_pagina - 1) * _reg_por_pagina;
+                var pagos = Pagos_proveedor().stream().filter(u -> u.getIdProveedor() == _idProveedorReport).collect(Collectors.toList());
+                listPagos = pagos;
+                var data = pagos.stream().skip(inicio).limit(_reg_por_pagina).collect(Collectors.toList());
+                Collections.reverse(listPagos);
+                Collections.reverse(data);
+
+                for (TPagos_proveedor pago : data) {
+                    Object[] registros = {
+                        pago.getId(),
+                        _money + _format.decimal(pago.getDeuda()),
+                        _money + _format.decimal(pago.getSaldo()),
+                        _money + _format.decimal(pago.getPago()),
+                        _money + _format.decimal(pago.getCambio()),
+                        pago.getFecha(),
+                        pago.getTicket(),
+                        pago.getFechaDeuda(),
+                        _money + _format.decimal(pago.getMensual()),};
+                    modelo3.addRow(registros);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        _tablePagosCuotas.setModel(modelo3);
+        _tablePagosCuotas.setRowHeight(30);
+        _tablePagosCuotas.getColumnModel().getColumn(0).setMaxWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(0).setMinWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(0).setPreferredWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(7).setMaxWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(7).setMinWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(7).setPreferredWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(8).setMaxWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(8).setMinWidth(0);
+        _tablePagosCuotas.getColumnModel().getColumn(8).setPreferredWidth(0);
+    }
+
+    private int _idHistorial = 0;
+
+    public void GetHistorialPago() {
+        formateador = new SimpleDateFormat("dd/MM/yyyy");
+        int filas = _tablePagosCuotas.getSelectedRow();
+        _idHistorial = (Integer) modelo3.getValueAt(filas, 0);
+
+        var deuda = (String) modelo3.getValueAt(filas, 1);
+        _label.get(13).setText(deuda);
+
+        var saldo = (String) modelo3.getValueAt(filas, 2);
+        _label.get(14).setText(saldo);
+
+        var fechaDeuda = (Date) modelo3.getValueAt(filas, 7);
+        if (fechaDeuda != null) {
+            _label.get(15).setText(fechaDeuda.toString());
+        }
+
+        var ticket = (String) modelo3.getValueAt(filas, 6);
+        _label.get(16).setText(ticket);
+
+        var pago = (String) modelo3.getValueAt(filas, 3);
+        _label.get(17).setText(pago);
+
+        var mensual = (String) modelo3.getValueAt(filas, 8);
+        _label.get(18).setText(mensual);
+
+        var fechaPago = (Date) modelo3.getValueAt(filas, 5);
+        if (fechaPago != null) {
+            _label.get(19).setText(fechaPago.toString());
+        }
+        
+        var cambio = (String) modelo3.getValueAt(filas, 4);
+        _label.get(20).setText(cambio);
+        var usuario = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
+        
+        Ticket1.TextoCentro("Sistema de Ventas");
+        Ticket1.TextoIzquierda("Dirección");
+        Ticket1.TextoIzquierda("Monterrey");
+        Ticket1.TextoIzquierda("Tel 5510122060");
+        Ticket1.LineasGuion();
+        Ticket1.TextoCentro("Factura");
+        Ticket1.LineasGuion();
+        Ticket1.TextoIzquierda("Factura: " + ticket);
+        Ticket1.TextoIzquierda("Proveedor: " + nameProveedor);
+        Ticket1.TextoIzquierda("Fecha: " + fechaPago);
+        Ticket1.TextoIzquierda("Usuario: " + usuario);
+        Ticket1.LineasGuion();
+        Ticket1.TextoCentro("Crédito: " + deuda);
+        Ticket1.TextoCentro("Cuotas mensuales: " + mensual);
+        Ticket1.TextoExtremo("Pago: ", pago);
+        Ticket1.TextoExtremo("Cambio: ", cambio);
+        Ticket1.TextoExtremo("Deuda Actual: ", saldo);
+        Ticket1.TextoCentro("TPOO");
+    }
+    
+    public void TicketDeuda(){
+        switch(_seccion){
+            case 1:
+                if (_idHistorial == 0) {
+                    JOptionPane.showMessageDialog(null, "Seleccione un historial de pago");
+                } else {
+                    Ticket1.print();
+                }
+                break;
+            case 2:
+                if (_idHistorial == 1) {
+                    JOptionPane.showMessageDialog(null, "Seleccione un historial de pago");
+
+                } else {
+                    Ticket1.print();
+                }
+                break;
+        }
+    }
+
     public final void ResetReport() {
         _idReport = 0;
         _deudaActual = 0.0;
@@ -495,7 +666,12 @@ public class ProveedorVM extends Consult {
                         switch (_seccion1) {
                             case 0:
                                 if (!reporteFilter.isEmpty()) {
-                                    _num_pagina = _paginadorProveedor.primero();
+                                    _num_pagina = _paginadorReportes.primero();
+                                }
+                                break;
+                            case 1:
+                                if (!listPagos.isEmpty()) {
+                                    _num_pagina = _paginadorPagos.primero();
                                 }
                                 break;
                         }
@@ -513,7 +689,12 @@ public class ProveedorVM extends Consult {
                         switch (_seccion1) {
                             case 0:
                                 if (!reporteFilter.isEmpty()) {
-                                    _num_pagina = _paginadorProveedor.anterior();
+                                    _num_pagina = _paginadorReportes.anterior();
+                                }
+                                break;
+                                case 1:
+                                if (!listPagos.isEmpty()) {
+                                    _num_pagina = _paginadorPagos.anterior();
                                 }
                                 break;
                         }
@@ -531,7 +712,12 @@ public class ProveedorVM extends Consult {
                         switch (_seccion1) {
                             case 0:
                                 if (!reporteFilter.isEmpty()) {
-                                    _num_pagina = _paginadorProveedor.siguiente();
+                                    _num_pagina = _paginadorReportes.siguiente();
+                                }
+                                break;
+                                case 1:
+                                if (!listPagos.isEmpty()) {
+                                    _num_pagina = _paginadorPagos.siguiente();
                                 }
                                 break;
                         }
@@ -549,7 +735,12 @@ public class ProveedorVM extends Consult {
                         switch (_seccion1) {
                             case 0:
                                 if (!reporteFilter.isEmpty()) {
-                                    _num_pagina = _paginadorProveedor.ultimo();
+                                    _num_pagina = _paginadorReportes.ultimo();
+                                }
+                                break;
+                                case 1:
+                                if (!listPagos.isEmpty()) {
+                                    _num_pagina = _paginadorPagos.ultimo();
                                 }
                                 break;
                         }
@@ -565,6 +756,9 @@ public class ProveedorVM extends Consult {
                 switch (_seccion1) {
                     case 0:
                         SearchReportes("");
+                        break;
+                    case 1:
+                        historialPagos(false);
                         break;
                 }
                 break;
@@ -587,6 +781,12 @@ public class ProveedorVM extends Consult {
                     case 0:
                         if (!reporteFilter.isEmpty()) {
                             _paginadorReportes = new Paginador<>(reporteFilter, _label.get(5), _reg_por_pagina);
+                        }
+                        SearchReportes("");
+                        break;
+                    case 1:
+                        if (!listPagos.isEmpty()) {
+                            _paginadorPagos = new Paginador<>(listPagos, _label.get(5), _reg_por_pagina);
                         }
                         SearchReportes("");
                         break;

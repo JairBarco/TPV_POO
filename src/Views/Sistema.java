@@ -53,6 +53,8 @@ public class Sistema extends javax.swing.JFrame {
         cliente = new ClientesVM(dataUsuario);
 
         proveedor = new ProveedorVM(dataUsuario);
+        
+        compras = new ComprasVM(dataUsuario);
 
         timer1.start();
     }
@@ -65,11 +67,12 @@ public class Sistema extends javax.swing.JFrame {
 
     });
 
-    private void EnabeledButton(JButton button) {
+    private void EnabledButton(JButton button) {
         ButtonClientes.setEnabled(true);
         ButtonConfiguracion.setEnabled(true);
         ButtonUsuario.setEnabled(true);
         ButtonProveedor.setEnabled(true);
+        ButtonCompras.setEnabled(true);
         button.setEnabled(false);
     }
 
@@ -260,7 +263,7 @@ public class Sistema extends javax.swing.JFrame {
         LabelProveedorReport_Nombre = new javax.swing.JLabel();
         LabelProveedorReport_Pagos = new javax.swing.JLabel();
         TextFieldProveedor_Pagos = new javax.swing.JTextField();
-        TabbedPaneCliente6 = new javax.swing.JTabbedPane();
+        TabbedPaneProveedor4 = new javax.swing.JTabbedPane();
         jPanel43 = new javax.swing.JPanel();
         jPanel44 = new javax.swing.JPanel();
         LabelCliente_Nombre28 = new javax.swing.JLabel();
@@ -302,7 +305,7 @@ public class Sistema extends javax.swing.JFrame {
         };
         jPanel54 = new javax.swing.JPanel();
         LabelCliente_Nombre43 = new javax.swing.JLabel();
-        LabelProveedor_Deuda1 = new javax.swing.JLabel();
+        LabelProveedor_Deudas = new javax.swing.JLabel();
         LabelCliente_Nombre44 = new javax.swing.JLabel();
         LabelCliente_Nombre45 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -316,7 +319,7 @@ public class Sistema extends javax.swing.JFrame {
         LabelProveedor_PagosFecha = new javax.swing.JLabel();
         LabelCliente_Nombre48 = new javax.swing.JLabel();
         LabelCliente_Nombre49 = new javax.swing.JLabel();
-        LabelProveedor_FechaLimite = new javax.swing.JLabel();
+        LabelProveedor_Cambio = new javax.swing.JLabel();
         LabelCliente_Nombre55 = new javax.swing.JLabel();
         LabelCliente_Nombre56 = new javax.swing.JLabel();
         dateChooserProveedor_Deuda1 = new datechooser.beans.DateChooserCombo();
@@ -334,6 +337,62 @@ public class Sistema extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         TextField_BuscarProveedor = new javax.swing.JTextField();
+        jPanel45 = new javax.swing.JPanel();
+        jPanel59 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        TextField_BuscarProveedor1 = new javax.swing.JTextField();
+        jPanel46 = new javax.swing.JPanel();
+        TabbedPaneProveedor5 = new javax.swing.JTabbedPane();
+        jPanel47 = new javax.swing.JPanel();
+        LabelCompra_Descripcion = new javax.swing.JLabel();
+        TextFieldCompra_Descripcion = new javax.swing.JTextField();
+        TextFieldCompra_BuscarProveedor = new javax.swing.JTextField();
+        LabelCompra_BuscarProveedor = new javax.swing.JLabel();
+        TextFieldCompra_Cantidad = new javax.swing.JTextField();
+        LabelCompra_Cantidad = new javax.swing.JLabel();
+        TextFieldCompra_Precio = new javax.swing.JTextField();
+        LabelCompra_Precio = new javax.swing.JLabel();
+        LabelProveedorReport_Nombre2 = new javax.swing.JLabel();
+        LabelCompra_Importes = new javax.swing.JLabel();
+        LabelCompra_Importe = new javax.swing.JLabel();
+        CheckBoxCompra_Credito = new javax.swing.JCheckBox();
+        ComboBoxCompra_Proveedor = new javax.swing.JComboBox<>();
+        jPanel55 = new javax.swing.JPanel();
+        LabelProveedorReport_Nombre1 = new javax.swing.JLabel();
+        LabelProveedorReport_Pagos1 = new javax.swing.JLabel();
+        TextFieldProveedor_Pagos1 = new javax.swing.JTextField();
+        TabbedPaneProveedor6 = new javax.swing.JTabbedPane();
+        jPanel56 = new javax.swing.JPanel();
+        jPanel57 = new javax.swing.JPanel();
+        LabelCliente_Nombre34 = new javax.swing.JLabel();
+        LabelProveedor_CuotasMes1 = new javax.swing.JLabel();
+        LabelCliente_Nombre35 = new javax.swing.JLabel();
+        LabelProveedor_Pago1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        LabelProveedor_Ticket1 = new javax.swing.JLabel();
+        LabelCliente_Nombre36 = new javax.swing.JLabel();
+        LabelProveedor_FechaPago1 = new javax.swing.JLabel();
+        LabelCliente_Nombre37 = new javax.swing.JLabel();
+        LabelProveedor_Deuda1 = new javax.swing.JLabel();
+        ButtonCompra_Agregar = new javax.swing.JButton();
+        ButtonCompra_Cancelar = new javax.swing.JButton();
+        jPanel60 = new javax.swing.JPanel();
+        TabbedPaneProveedor7 = new javax.swing.JTabbedPane();
+        jPanel61 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        Table_Compras = Table_Compras = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false; //Disallow the editing of any cell
+            }
+        };
+        LabelCliente_Nombre38 = new javax.swing.JLabel();
+        SpinnerPaginas_Proveedores1 = new javax.swing.JSpinner();
+        ButtonProveedor_Paginas5 = new javax.swing.JButton();
+        ButtonProveedor_Paginas6 = new javax.swing.JButton();
+        ButtonProveedor_Paginas7 = new javax.swing.JButton();
+        ButtonProveedor_Paginas8 = new javax.swing.JButton();
+        LabelProveedor_Paginas1 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -402,6 +461,7 @@ public class Sistema extends javax.swing.JFrame {
         ButtonConfiguracion = new javax.swing.JButton();
         ButtonUsuario = new javax.swing.JButton();
         ButtonProveedor = new javax.swing.JButton();
+        ButtonCompras = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -478,6 +538,11 @@ public class Sistema extends javax.swing.JFrame {
         TabbedPanePrincipal.setForeground(new java.awt.Color(0, 0, 0));
         TabbedPanePrincipal.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         TabbedPanePrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TabbedPanePrincipal.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TabbedPanePrincipalStateChanged(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2356,11 +2421,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         }
     });
 
-    TabbedPaneCliente6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    TabbedPaneCliente6.setForeground(new java.awt.Color(0, 0, 0));
-    TabbedPaneCliente6.addChangeListener(new javax.swing.event.ChangeListener() {
+    TabbedPaneProveedor4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    TabbedPaneProveedor4.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneProveedor4.addChangeListener(new javax.swing.event.ChangeListener() {
         public void stateChanged(javax.swing.event.ChangeEvent evt) {
-            TabbedPaneCliente6StateChanged(evt);
+            TabbedPaneProveedor4StateChanged(evt);
         }
     });
 
@@ -2481,7 +2546,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addContainerGap())
     );
 
-    TabbedPaneCliente6.addTab("Pagos de cuotas", jPanel43);
+    TabbedPaneProveedor4.addTab("Pagos de cuotas", jPanel43);
 
     javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
     jPanel42.setLayout(jPanel42Layout);
@@ -2490,7 +2555,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         .addGroup(jPanel42Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(TabbedPaneCliente6, javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(TabbedPaneProveedor4, javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(LabelProveedorReport_Nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel42Layout.createSequentialGroup()
                     .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2505,7 +2570,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addContainerGap()
             .addComponent(LabelProveedorReport_Nombre)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(TabbedPaneCliente6)
+            .addComponent(TabbedPaneProveedor4)
             .addGap(60, 60, 60)
             .addComponent(LabelProveedorReport_Pagos)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2704,9 +2769,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     LabelCliente_Nombre43.setForeground(new java.awt.Color(0, 0, 0));
     LabelCliente_Nombre43.setText("Deuda");
 
-    LabelProveedor_Deuda1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    LabelProveedor_Deuda1.setForeground(new java.awt.Color(70, 106, 124));
-    LabelProveedor_Deuda1.setText("0.00");
+    LabelProveedor_Deudas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Deudas.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Deudas.setText("0.00");
 
     LabelCliente_Nombre44.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
     LabelCliente_Nombre44.setForeground(new java.awt.Color(0, 0, 0));
@@ -2742,7 +2807,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     LabelCliente_Nombre47.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
     LabelCliente_Nombre47.setForeground(new java.awt.Color(0, 0, 0));
-    LabelCliente_Nombre47.setText("Cuotas");
+    LabelCliente_Nombre47.setText("Cuota mensual");
 
     LabelProveedor_MesCuotas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
     LabelProveedor_MesCuotas.setForeground(new java.awt.Color(70, 106, 124));
@@ -2758,11 +2823,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     LabelCliente_Nombre49.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
     LabelCliente_Nombre49.setForeground(new java.awt.Color(0, 0, 0));
-    LabelCliente_Nombre49.setText("Próximo pago");
+    LabelCliente_Nombre49.setText("Cambio");
 
-    LabelProveedor_FechaLimite.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    LabelProveedor_FechaLimite.setForeground(new java.awt.Color(70, 106, 124));
-    LabelProveedor_FechaLimite.setText("--/--/--");
+    LabelProveedor_Cambio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Cambio.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Cambio.setText("0.00");
 
     javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
     jPanel54.setLayout(jPanel54Layout);
@@ -2772,7 +2837,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addContainerGap()
             .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(LabelProveedor_FechaDeuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelProveedor_Deuda1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelProveedor_Deudas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LabelProveedor_DeudaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel54Layout.createSequentialGroup()
                     .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2799,7 +2864,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     .addContainerGap())
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel54Layout.createSequentialGroup()
                     .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(LabelProveedor_FechaLimite, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelProveedor_Cambio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LabelProveedor_MesCuotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap())))
     );
@@ -2812,7 +2877,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addComponent(LabelCliente_Nombre45))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(LabelProveedor_Deuda1)
+                .addComponent(LabelProveedor_Deudas)
                 .addComponent(LabelProveedor_Saldo))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2841,7 +2906,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addGroup(jPanel54Layout.createSequentialGroup()
                     .addComponent(LabelCliente_Nombre49)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(LabelProveedor_FechaLimite)))
+                    .addComponent(LabelProveedor_Cambio)))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
@@ -3223,6 +3288,648 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     );
 
     TabbedPanePrincipal.addTab("Proveedor", jPanel38);
+
+    jPanel45.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel45.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+    jPanel59.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel59.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+
+    jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+    jLabel21.setForeground(new java.awt.Color(70, 106, 124));
+    jLabel21.setText("Compras");
+
+    jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    jLabel22.setForeground(new java.awt.Color(70, 106, 124));
+    jLabel22.setText("Buscar");
+
+    TextField_BuscarProveedor1.setBackground(new java.awt.Color(255, 255, 255));
+    TextField_BuscarProveedor1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextField_BuscarProveedor1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextField_BuscarProveedor1ActionPerformed(evt);
+        }
+    });
+    TextField_BuscarProveedor1.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextField_BuscarProveedor1KeyReleased(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel59Layout = new javax.swing.GroupLayout(jPanel59);
+    jPanel59.setLayout(jPanel59Layout);
+    jPanel59Layout.setHorizontalGroup(
+        jPanel59Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel59Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jLabel21)
+            .addGap(150, 150, 150)
+            .addComponent(jLabel22)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TextField_BuscarProveedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    jPanel59Layout.setVerticalGroup(
+        jPanel59Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel59Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel59Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel22)
+                .addComponent(TextField_BuscarProveedor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap())
+    );
+
+    jPanel46.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
+    jPanel46.setForeground(new java.awt.Color(255, 255, 255));
+
+    TabbedPaneProveedor5.setBackground(new java.awt.Color(255, 102, 51));
+    TabbedPaneProveedor5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    TabbedPaneProveedor5.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneProveedor5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    TabbedPaneProveedor5.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            TabbedPaneProveedor5StateChanged(evt);
+        }
+    });
+
+    LabelCompra_Descripcion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_Descripcion.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Descripcion.setText("Descripción");
+
+    TextFieldCompra_Descripcion.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldCompra_Descripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldCompra_Descripcion.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldCompra_DescripcionActionPerformed(evt);
+        }
+    });
+    TextFieldCompra_Descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldCompra_DescripcionKeyReleased(evt);
+        }
+    });
+
+    TextFieldCompra_BuscarProveedor.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldCompra_BuscarProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldCompra_BuscarProveedor.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldCompra_BuscarProveedorActionPerformed(evt);
+        }
+    });
+    TextFieldCompra_BuscarProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldCompra_BuscarProveedorKeyReleased(evt);
+        }
+    });
+
+    LabelCompra_BuscarProveedor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_BuscarProveedor.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_BuscarProveedor.setText("Buscar proveedor");
+
+    TextFieldCompra_Cantidad.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldCompra_Cantidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldCompra_Cantidad.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldCompra_CantidadActionPerformed(evt);
+        }
+    });
+    TextFieldCompra_Cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldCompra_CantidadKeyReleased(evt);
+        }
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            TextFieldCompra_CantidadKeyTyped(evt);
+        }
+    });
+
+    LabelCompra_Cantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_Cantidad.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Cantidad.setText("Cantidad");
+
+    TextFieldCompra_Precio.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldCompra_Precio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldCompra_Precio.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldCompra_PrecioActionPerformed(evt);
+        }
+    });
+    TextFieldCompra_Precio.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldCompra_PrecioKeyReleased(evt);
+        }
+    });
+
+    LabelCompra_Precio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_Precio.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Precio.setText("Precio");
+
+    LabelProveedorReport_Nombre2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedorReport_Nombre2.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedorReport_Nombre2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    LabelProveedorReport_Nombre2.setText("Información del nuevo producto");
+
+    LabelCompra_Importes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_Importes.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Importes.setText("Importe");
+
+    LabelCompra_Importe.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelCompra_Importe.setForeground(new java.awt.Color(70, 106, 124));
+    LabelCompra_Importe.setText("0.00");
+
+    CheckBoxCompra_Credito.setText("Crédito");
+
+    javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
+    jPanel47.setLayout(jPanel47Layout);
+    jPanel47Layout.setHorizontalGroup(
+        jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel47Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(LabelProveedorReport_Nombre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel47Layout.createSequentialGroup()
+                    .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(LabelCompra_Cantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCompra_Descripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(TextFieldCompra_Descripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                    .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelCompra_BuscarProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TextFieldCompra_BuscarProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ComboBoxCompra_Proveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel47Layout.createSequentialGroup()
+                    .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(CheckBoxCompra_Credito)
+                        .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(LabelCompra_Importe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TextFieldCompra_Cantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(LabelCompra_Precio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(TextFieldCompra_Precio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(LabelCompra_Importes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+    jPanel47Layout.setVerticalGroup(
+        jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel47Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(LabelProveedorReport_Nombre2)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCompra_Descripcion)
+                .addComponent(LabelCompra_BuscarProveedor))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(TextFieldCompra_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextFieldCompra_BuscarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCompra_Cantidad)
+                .addComponent(ComboBoxCompra_Proveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TextFieldCompra_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelCompra_Precio)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TextFieldCompra_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelCompra_Importes)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelCompra_Importe)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(CheckBoxCompra_Credito)
+            .addContainerGap(140, Short.MAX_VALUE))
+    );
+
+    TabbedPaneProveedor5.addTab("Compras", jPanel47);
+
+    LabelProveedorReport_Nombre1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedorReport_Nombre1.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedorReport_Nombre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    LabelProveedorReport_Nombre1.setText("Nombre del Proveedor");
+
+    LabelProveedorReport_Pagos1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedorReport_Pagos1.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedorReport_Pagos1.setText("Ingrese el Pago");
+
+    TextFieldProveedor_Pagos1.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldProveedor_Pagos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldProveedor_Pagos1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldProveedor_Pagos1ActionPerformed(evt);
+        }
+    });
+    TextFieldProveedor_Pagos1.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_Pagos1KeyReleased(evt);
+        }
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_Pagos1KeyTyped(evt);
+        }
+    });
+
+    TabbedPaneProveedor6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    TabbedPaneProveedor6.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneProveedor6.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            TabbedPaneProveedor6StateChanged(evt);
+        }
+    });
+
+    jPanel56.setForeground(new java.awt.Color(0, 0, 0));
+
+    jPanel57.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+    LabelCliente_Nombre34.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre34.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre34.setText("Deuda");
+
+    LabelProveedor_CuotasMes1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_CuotasMes1.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_CuotasMes1.setText("0.00");
+
+    LabelCliente_Nombre35.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre35.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre35.setText("Pago");
+
+    LabelProveedor_Pago1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Pago1.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Pago1.setText("0.00");
+
+    jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+    jLabel16.setText("Ticket");
+
+    LabelProveedor_Ticket1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Ticket1.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Ticket1.setText("0000000000");
+
+    LabelCliente_Nombre36.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre36.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre36.setText("Fecha de Pago");
+
+    LabelProveedor_FechaPago1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_FechaPago1.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_FechaPago1.setText("--/--/--");
+
+    LabelCliente_Nombre37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre37.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre37.setText("Cuotas por mes");
+
+    LabelProveedor_Deuda1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_Deuda1.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_Deuda1.setText("0.00");
+
+    javax.swing.GroupLayout jPanel57Layout = new javax.swing.GroupLayout(jPanel57);
+    jPanel57.setLayout(jPanel57Layout);
+    jPanel57Layout.setHorizontalGroup(
+        jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel57Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel57Layout.createSequentialGroup()
+                    .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelProveedor_Deuda1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCliente_Nombre34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCliente_Nombre36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel57Layout.createSequentialGroup()
+                            .addComponent(LabelProveedor_FechaPago1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(90, 90, 90)
+                    .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelProveedor_CuotasMes1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel57Layout.createSequentialGroup()
+                            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(LabelCliente_Nombre37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LabelCliente_Nombre35, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LabelProveedor_Pago1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(14, 14, 14)))
+                    .addGap(14, 14, 14))
+                .addGroup(jPanel57Layout.createSequentialGroup()
+                    .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabelProveedor_Ticket1))
+                    .addGap(0, 0, Short.MAX_VALUE))))
+    );
+    jPanel57Layout.setVerticalGroup(
+        jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel57Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCliente_Nombre34)
+                .addComponent(LabelCliente_Nombre35))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelProveedor_Pago1)
+                .addComponent(LabelProveedor_Deuda1))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelCliente_Nombre36)
+                .addComponent(LabelCliente_Nombre37))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(LabelProveedor_FechaPago1)
+                .addComponent(LabelProveedor_CuotasMes1))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel16)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelProveedor_Ticket1)
+            .addContainerGap(46, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout jPanel56Layout = new javax.swing.GroupLayout(jPanel56);
+    jPanel56.setLayout(jPanel56Layout);
+    jPanel56Layout.setHorizontalGroup(
+        jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel56Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel57, javax.swing.GroupLayout.PREFERRED_SIZE, 361, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+    jPanel56Layout.setVerticalGroup(
+        jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel56Layout.createSequentialGroup()
+            .addComponent(jPanel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+
+    TabbedPaneProveedor6.addTab("Pagos de cuotas", jPanel56);
+
+    javax.swing.GroupLayout jPanel55Layout = new javax.swing.GroupLayout(jPanel55);
+    jPanel55.setLayout(jPanel55Layout);
+    jPanel55Layout.setHorizontalGroup(
+        jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel55Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(TabbedPaneProveedor6, javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(LabelProveedorReport_Nombre1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel55Layout.createSequentialGroup()
+                    .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelProveedorReport_Pagos1)
+                        .addComponent(TextFieldProveedor_Pagos1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+    jPanel55Layout.setVerticalGroup(
+        jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel55Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(LabelProveedorReport_Nombre1)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TabbedPaneProveedor6)
+            .addGap(60, 60, 60)
+            .addComponent(LabelProveedorReport_Pagos1)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TextFieldProveedor_Pagos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(12, 12, 12))
+    );
+
+    TabbedPaneProveedor5.addTab("Pagos", jPanel55);
+
+    ButtonCompra_Agregar.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonCompra_Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar.png"))); // NOI18N
+    ButtonCompra_Agregar.setToolTipText("");
+    ButtonCompra_Agregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonCompra_Agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonCompra_Agregar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonCompra_AgregarActionPerformed(evt);
+        }
+    });
+
+    ButtonCompra_Cancelar.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonCompra_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/eliminar.png"))); // NOI18N
+    ButtonCompra_Cancelar.setToolTipText("");
+    ButtonCompra_Cancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonCompra_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonCompra_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonCompra_CancelarActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
+    jPanel46.setLayout(jPanel46Layout);
+    jPanel46Layout.setHorizontalGroup(
+        jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel46Layout.createSequentialGroup()
+            .addGap(103, 103, 103)
+            .addComponent(ButtonCompra_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(ButtonCompra_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(jPanel46Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(TabbedPaneProveedor5)
+            .addContainerGap())
+    );
+    jPanel46Layout.setVerticalGroup(
+        jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel46Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(TabbedPaneProveedor5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(ButtonCompra_Agregar)
+                .addComponent(ButtonCompra_Cancelar))
+            .addContainerGap(35, Short.MAX_VALUE))
+    );
+
+    jPanel60.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel60.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+    TabbedPaneProveedor7.setBackground(new java.awt.Color(255, 102, 51));
+    TabbedPaneProveedor7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    TabbedPaneProveedor7.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneProveedor7.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            TabbedPaneProveedor7StateChanged(evt);
+        }
+    });
+
+    Table_Compras.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {},
+            {},
+            {},
+            {}
+        },
+        new String [] {
+
+        }
+    ));
+    Table_Compras.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            Table_ComprasMouseClicked(evt);
+        }
+    });
+    Table_Compras.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            Table_ComprasKeyReleased(evt);
+        }
+    });
+    jScrollPane10.setViewportView(Table_Compras);
+
+    javax.swing.GroupLayout jPanel61Layout = new javax.swing.GroupLayout(jPanel61);
+    jPanel61.setLayout(jPanel61Layout);
+    jPanel61Layout.setHorizontalGroup(
+        jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel61Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+    jPanel61Layout.setVerticalGroup(
+        jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel61Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(10, Short.MAX_VALUE))
+    );
+
+    TabbedPaneProveedor7.addTab("Lista de compras", jPanel61);
+
+    LabelCliente_Nombre38.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCliente_Nombre38.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCliente_Nombre38.setText("Registros por páginas");
+
+    SpinnerPaginas_Proveedores1.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            SpinnerPaginas_Proveedores1StateChanged(evt);
+        }
+    });
+
+    ButtonProveedor_Paginas5.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Paginas5.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonProveedor_Paginas5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso_rapido.png"))); // NOI18N
+    ButtonProveedor_Paginas5.setToolTipText("");
+    ButtonProveedor_Paginas5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Paginas5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Paginas5.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_Paginas5ActionPerformed(evt);
+        }
+    });
+
+    ButtonProveedor_Paginas6.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Paginas6.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonProveedor_Paginas6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso.png"))); // NOI18N
+    ButtonProveedor_Paginas6.setToolTipText("");
+    ButtonProveedor_Paginas6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Paginas6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Paginas6.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_Paginas6ActionPerformed(evt);
+        }
+    });
+
+    ButtonProveedor_Paginas7.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Paginas7.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonProveedor_Paginas7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance.png"))); // NOI18N
+    ButtonProveedor_Paginas7.setToolTipText("");
+    ButtonProveedor_Paginas7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Paginas7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Paginas7.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_Paginas7ActionPerformed(evt);
+        }
+    });
+
+    ButtonProveedor_Paginas8.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonProveedor_Paginas8.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonProveedor_Paginas8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance-rapido.png"))); // NOI18N
+    ButtonProveedor_Paginas8.setToolTipText("");
+    ButtonProveedor_Paginas8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonProveedor_Paginas8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonProveedor_Paginas8.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonProveedor_Paginas8ActionPerformed(evt);
+        }
+    });
+
+    LabelProveedor_Paginas1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_Paginas1.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_Paginas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    LabelProveedor_Paginas1.setText("Páginas");
+    LabelProveedor_Paginas1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+    javax.swing.GroupLayout jPanel60Layout = new javax.swing.GroupLayout(jPanel60);
+    jPanel60.setLayout(jPanel60Layout);
+    jPanel60Layout.setHorizontalGroup(
+        jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel60Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(TabbedPaneProveedor7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel60Layout.createSequentialGroup()
+                    .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelCliente_Nombre38)
+                        .addComponent(SpinnerPaginas_Proveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(188, 188, 188)
+                    .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel60Layout.createSequentialGroup()
+                            .addComponent(ButtonProveedor_Paginas5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonProveedor_Paginas6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonProveedor_Paginas7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ButtonProveedor_Paginas8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(LabelProveedor_Paginas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(308, 308, 308)))
+            .addContainerGap())
+    );
+    jPanel60Layout.setVerticalGroup(
+        jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel60Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(TabbedPaneProveedor7, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel60Layout.createSequentialGroup()
+                    .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabelCliente_Nombre38)
+                        .addComponent(LabelProveedor_Paginas1))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(SpinnerPaginas_Proveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ButtonProveedor_Paginas5, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(ButtonProveedor_Paginas6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(ButtonProveedor_Paginas7)))
+                .addComponent(ButtonProveedor_Paginas8))
+            .addContainerGap(40, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
+    jPanel45.setLayout(jPanel45Layout);
+    jPanel45Layout.setHorizontalGroup(
+        jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel45Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel59, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel45Layout.createSequentialGroup()
+                    .addComponent(jPanel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+    jPanel45Layout.setVerticalGroup(
+        jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel45Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap())
+    );
+
+    TabbedPanePrincipal.addTab("Compras", jPanel45);
 
     jPanel24.setBackground(new java.awt.Color(255, 255, 255));
     jPanel24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -4104,6 +4811,18 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         }
     });
 
+    ButtonCompras.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonCompras.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/carrito-de-compras.png"))); // NOI18N
+    ButtonCompras.setToolTipText("");
+    ButtonCompras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonCompras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonCompras.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonComprasActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -4120,6 +4839,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     .addComponent(ButtonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(ButtonProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(ButtonCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(ButtonUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -4138,7 +4859,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addComponent(ButtonVentas)
                 .addComponent(ButtonConfiguracion)
                 .addComponent(ButtonUsuario)
-                .addComponent(ButtonProveedor))
+                .addComponent(ButtonProveedor)
+                .addComponent(ButtonCompras))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(TabbedPanePrincipal)
             .addContainerGap())
@@ -4150,121 +4872,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE CLIENTE"> 
     private ClientesVM cliente;
 
-    private void ButtonCliente_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_AgregarActionPerformed
-        // TODO add your handling code here:
-        switch (TabbedPaneCliente1.getSelectedIndex()) {
-            case 0:
-                cliente.RegistrarCliente();
-                break;
-            case 1:  
-                 try {
-                cliente.EjecutarPago();
-            } catch (SQLException ex) {
-
-            }
-            break;
-            case 2:
-                if (_dataUsuario.getRole().equals("Admin")) {
-                    cliente.ExtenderDias();
-                } else {
-                    JOptionPane.showMessageDialog(null, "No tiene permiso de realizar la acción");
-                }
-                break;
-        }
-
-    }//GEN-LAST:event_ButtonCliente_AgregarActionPerformed
-
-    private void ButtonCliente_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_CancelarActionPerformed
-        // TODO add your handling code here:
-        cliente.restablecer();
-    }//GEN-LAST:event_ButtonCliente_CancelarActionPerformed
-
-    private void ButtonCliente_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas4ActionPerformed
-        // TODO add your handling code here:
-        cliente.Paginador("Ultimo");
-
-    }//GEN-LAST:event_ButtonCliente_Paginas4ActionPerformed
-
-    private void ButtonCliente_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas3ActionPerformed
-        // TODO add your handling code here:
-        cliente.Paginador("Siguiente");
-
-    }//GEN-LAST:event_ButtonCliente_Paginas3ActionPerformed
-
-    private void ButtonCliente_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas2ActionPerformed
-        // TODO add your handling code here:
-        cliente.Paginador("Anterior");
-
-    }//GEN-LAST:event_ButtonCliente_Paginas2ActionPerformed
-
-    private void ButtonCliente_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas1ActionPerformed
-        // TODO add your handling code here:
-        cliente.Paginador("Primero");
-    }//GEN-LAST:event_ButtonCliente_Paginas1ActionPerformed
-
-    private void SpinnerPaginas_ClientesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_ClientesStateChanged
-        // TODO add your handling code here:
-        cliente.Registro_Paginas();
-    }//GEN-LAST:event_SpinnerPaginas_ClientesStateChanged
-
-    private void Table_ClientesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_ClientesKeyReleased
-        // TODO add your handling code here:
-        if (Table_Clientes.getSelectedRows().length > 0) {
-            cliente.getCliente();
-        }
-    }//GEN-LAST:event_Table_ClientesKeyReleased
-
-    private void Table_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ClientesMouseClicked
-        // TODO add your handling code here:
-        if (Table_Clientes.getSelectedRows().length > 0) {
-            cliente.getCliente();
-        }
-    }//GEN-LAST:event_Table_ClientesMouseClicked
-
-    private void TabbedPaneCliente2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente2StateChanged
-        // TODO add your handling code here:
-        switch (TabbedPaneCliente2.getSelectedIndex()) {
-            case 0:
-                if (TabbedPaneCliente1.getSelectedIndex() > 0) {
-                    TabbedPaneCliente1.setSelectedIndex(0);
-                    cliente.seccion = 1;
-                    cliente.Registro_Paginas();
-                }
-                break;
-            case 1:
-                cliente.seccion = 2;
-                TabbedPaneCliente1.setSelectedIndex(1);
-                //cliente.Registro_Paginas();
-                break;
-            case 2:
-                cliente.seccion = 3;
-                TabbedPaneCliente1.setSelectedIndex(2);
-                cliente.Registro_Paginas();
-                break;
-        }
-    }//GEN-LAST:event_TabbedPaneCliente2StateChanged
-
-    private void TextField_BuscarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_BuscarCliente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_BuscarCliente1ActionPerformed
-
-    private void TableCliente_ReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_ReportMouseClicked
-        // TODO add your handling code here:
-        if (TableCliente_Report.getSelectedRows().length > 0) {
-            cliente.getReportCliente();
-        }
-    }//GEN-LAST:event_TableCliente_ReportMouseClicked
-
-    private void TableCliente_ReportKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_ReportKeyReleased
-        // TODO add your handling code here:
-        if (TableCliente_Report.getSelectedRows().length > 0) {
-            cliente.getReportCliente();
-            cliente.CuotasIntereses();
-        }
-    }//GEN-LAST:event_TableCliente_ReportKeyReleased
-
-    private void ButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonClientesActionPerformed
-        // TODO add your handling code here:
+    private void SeccionCliente() {
         ArrayList<JLabel> label = new ArrayList();
         label.add(LabelCliente_NoId);
         label.add(LabelCliente_Nombre);
@@ -4308,7 +4916,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         label.add(LabelClient_PagoIntereses);
         label.add(LabelClient_CuotasIntereses);
 //35        
-
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldCliente_NoId);
         textField.add(TextFieldCliente_Nombre);
@@ -4316,7 +4923,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         textField.add(TextFieldCliente_Email);
         textField.add(TextFieldCliente_Telefono);
         textField.add(TextFieldCliente_Direccion);
-
         textField.add(TextFieldCliente_Pagos);
         textField.add(TextFieldCliente_Cuotas);
 
@@ -4336,23 +4942,132 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             TableCliente_PagosIntereses,};
         cliente = new ClientesVM(objects, label, textField);
         TabbedPanePrincipal.setSelectedIndex(1);
-        EnabeledButton(ButtonClientes);
+        EnabledButton(ButtonClientes);
         RadioButtonCliente_Cuotas.setSelected(true);
         TextFieldCliente_Cuotas.setEnabled(false);
-    }//GEN-LAST:event_ButtonClientesActionPerformed
+    }
+    private void ButtonCliente_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_AgregarActionPerformed
+        switch (TabbedPaneCliente1.getSelectedIndex()) {
+            case 0:
+                cliente.RegistrarCliente();
+                break;
+            case 1:  
+                 try {
+                cliente.EjecutarPago();
+            } catch (SQLException ex) {
 
+            }
+            break;
+            case 2:
+                if (_dataUsuario.getRole().equals("Admin")) {
+                    cliente.ExtenderDias();
+                } else {
+                    JOptionPane.showMessageDialog(null, "No tiene permiso de realizar la acción");
+                }
+                break;
+        }
+
+    }//GEN-LAST:event_ButtonCliente_AgregarActionPerformed
+
+    private void ButtonCliente_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_CancelarActionPerformed
+        cliente.restablecer();
+    }//GEN-LAST:event_ButtonCliente_CancelarActionPerformed
+
+    private void ButtonCliente_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas4ActionPerformed
+        cliente.Paginador("Ultimo");
+
+    }//GEN-LAST:event_ButtonCliente_Paginas4ActionPerformed
+
+    private void ButtonCliente_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas3ActionPerformed
+        cliente.Paginador("Siguiente");
+
+    }//GEN-LAST:event_ButtonCliente_Paginas3ActionPerformed
+
+    private void ButtonCliente_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas2ActionPerformed
+        cliente.Paginador("Anterior");
+
+    }//GEN-LAST:event_ButtonCliente_Paginas2ActionPerformed
+
+    private void ButtonCliente_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas1ActionPerformed
+        cliente.Paginador("Primero");
+    }//GEN-LAST:event_ButtonCliente_Paginas1ActionPerformed
+
+    private void SpinnerPaginas_ClientesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_ClientesStateChanged
+        cliente.Registro_Paginas();
+    }//GEN-LAST:event_SpinnerPaginas_ClientesStateChanged
+
+    private void Table_ClientesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_ClientesKeyReleased
+        if (Table_Clientes.getSelectedRows().length > 0) {
+            cliente.getCliente();
+        }
+    }//GEN-LAST:event_Table_ClientesKeyReleased
+
+    private void Table_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ClientesMouseClicked
+        if (Table_Clientes.getSelectedRows().length > 0) {
+            cliente.getCliente();
+        }
+    }//GEN-LAST:event_Table_ClientesMouseClicked
+
+    private void TabbedPaneCliente2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente2StateChanged
+        switch (TabbedPaneCliente2.getSelectedIndex()) {
+            case 0:
+                if (TabbedPaneCliente1.getSelectedIndex() > 0) {
+                    TabbedPaneCliente1.setSelectedIndex(0);
+                    cliente.seccion = 1;
+                    cliente.Registro_Paginas();
+                }
+                break;
+            case 1:
+                cliente.seccion = 2;
+                TabbedPaneCliente1.setSelectedIndex(1);
+                cliente.Registro_Paginas();
+                break;
+            case 2:
+                cliente.seccion = 3;
+                TabbedPaneCliente1.setSelectedIndex(2);
+                cliente.Registro_Paginas();
+                break;
+        }
+    }//GEN-LAST:event_TabbedPaneCliente2StateChanged
+
+    private void TextField_BuscarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_BuscarCliente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_BuscarCliente1ActionPerformed
+
+    private void TableCliente_ReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_ReportMouseClicked
+        if (TableCliente_Report.getSelectedRows().length > 0) {
+            cliente.getReportCliente();
+        }
+    }//GEN-LAST:event_TableCliente_ReportMouseClicked
+
+    private void TableCliente_ReportKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_ReportKeyReleased
+        if (TableCliente_Report.getSelectedRows().length > 0) {
+            cliente.getReportCliente();
+            cliente.CuotasIntereses();
+        }
+    }//GEN-LAST:event_TableCliente_ReportKeyReleased
+
+    private void ButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonClientesActionPerformed
+        SeccionCliente();
+    }//GEN-LAST:event_ButtonClientesActionPerformed
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE CONFIGURACIÓN"> 
     ConfigurationVM config;
 
-    private void ButtonConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConfiguracionActionPerformed
-        // TODO add your handling code here:
-        TabbedPanePrincipal.setSelectedIndex(4);
-        EnabeledButton(ButtonConfiguracion);
+    private void SeccionConfiguracion() {
+        TabbedPanePrincipal.setSelectedIndex(5);
+        EnabledButton(ButtonConfiguracion);
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldConfig_Intereses);
         ArrayList<JLabel> label = new ArrayList();
         label.add(LabelConfig_MsjIntereses);
         label.add(LabelConfig_Intereses);
         config = new ConfigurationVM(_radio, textField, label);
+    }
+
+    private void ButtonConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConfiguracionActionPerformed
+        SeccionConfiguracion();
     }//GEN-LAST:event_ButtonConfiguracionActionPerformed
 
     private void TextFieldConfig_InteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldConfig_InteresesActionPerformed
@@ -4360,27 +5075,22 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldConfig_InteresesActionPerformed
 
     private void ButtonConfig_AddInteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConfig_AddInteresesActionPerformed
-        // TODO add your handling code here:
         config.RegistrarIntereses();
     }//GEN-LAST:event_ButtonConfig_AddInteresesActionPerformed
 
     private void TextFieldConfig_InteresesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldConfig_InteresesKeyTyped
-        // TODO add your handling code here:
         Objetos.eventos.numberDecimalKeyPress(evt, TextFieldConfig_Intereses);
     }//GEN-LAST:event_TextFieldConfig_InteresesKeyTyped
 
     private void TextFieldConfig_InteresesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldConfig_InteresesKeyReleased
-        // TODO add your handling code here:
         LabelConfig_MsjIntereses.setText("");
     }//GEN-LAST:event_TextFieldConfig_InteresesKeyReleased
 
     private void RadioButtonConfig_InteresesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonConfig_InteresesActionPerformed
-        // TODO add your handling code here:
         LabelConfig_MsjIntereses.setText("");
     }//GEN-LAST:event_RadioButtonConfig_InteresesActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
         if (JOptionPane.YES_NO_OPTION == JOptionPane.showConfirmDialog(null, "¿Desea salir del sistema?", "Cerrar sesión ", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)) {
             try {
                 login.Close();
@@ -4394,7 +5104,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE USUARIO"> 
     private void ButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarioActionPerformed
         // TODO add your handling code here:
-        TabbedPanePrincipal.setSelectedIndex(3);
+        TabbedPanePrincipal.setSelectedIndex(4);
 
         ArrayList<JLabel> label = new ArrayList();
         label.add(LabelUsuario_NoId);
@@ -4406,7 +5116,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         label.add(LabelUsuario_Usuario);
         label.add(LabelUsuario_Password);
 
-        //label.add(Label_ImagenUsuario);
         label.add(LabelUsuarios_Paginas);
 
         ArrayList<JTextField> textField = new ArrayList();
@@ -4428,7 +5137,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         };
 
         usuarios = new UsuariosVM(objects, textField, label);
-        EnabeledButton(ButtonUsuario);
+        EnabledButton(ButtonUsuario);
     }//GEN-LAST:event_ButtonUsuarioActionPerformed
 
     private void TextField_BuscarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_BuscarUsuariosActionPerformed
@@ -4436,12 +5145,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextField_BuscarUsuariosActionPerformed
 
     private void ButtonUsuarios_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_AgregarActionPerformed
-        // TODO add your handling code here:
         usuarios.RegistrarUsuario();
     }//GEN-LAST:event_ButtonUsuarios_AgregarActionPerformed
 
     private void ButtonUsuarios_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_CancelarActionPerformed
-        // TODO add your handling code here:
         usuarios.Reset();
     }//GEN-LAST:event_ButtonUsuarios_CancelarActionPerformed
 
@@ -4450,7 +5157,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TabbedPaneUsuario1StateChanged
 
     private void TextFieldUsuario_DireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_DireccionKeyReleased
-        // TODO add your handling code here:
         if (TextFieldUsuario_Direccion.getText().equals("")) {
             LabelUsuario_Direccion.setForeground(Color.BLACK);
         } else {
@@ -4464,12 +5170,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldUsuario_DireccionActionPerformed
 
     private void TextFieldUsuario_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_TelefonoKeyTyped
-        // TODO add your handling code here:
         Objetos.eventos.numberKeyPress(evt);
     }//GEN-LAST:event_TextFieldUsuario_TelefonoKeyTyped
 
     private void TextFieldUsuario_TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_TelefonoKeyReleased
-        // TODO add your handling code here:
         if (TextFieldUsuario_Telefono.getText().equals("")) {
             LabelUsuario_Telefono.setForeground(Color.BLACK);
         } else {
@@ -4483,12 +5187,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldUsuario_TelefonoActionPerformed
 
     private void TextFieldUsuario_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_NombreKeyTyped
-        // TODO add your handling code here:
         Objetos.eventos.textKeyPress(evt);
     }//GEN-LAST:event_TextFieldUsuario_NombreKeyTyped
 
     private void TextFieldUsuario_NombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_NombreKeyReleased
-        // TODO add your handling code here:
         if (TextFieldUsuario_Nombre.getText().equals("")) {
             LabelUsuario_Nombre.setForeground(Color.BLACK);
         } else {
@@ -4502,12 +5204,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldUsuario_NombreActionPerformed
 
     private void TextFieldUsuario_ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_ApellidoKeyTyped
-        // TODO add your handling code here:
         Objetos.eventos.textKeyPress(evt);
     }//GEN-LAST:event_TextFieldUsuario_ApellidoKeyTyped
 
     private void TextFieldUsuario_ApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_ApellidoKeyReleased
-        // TODO add your handling code here:
         if (TextFieldUsuario_Apellido.getText().equals("")) {
             LabelUsuario_Apellido.setForeground(Color.BLACK);
         } else {
@@ -4521,7 +5221,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldUsuario_ApellidoActionPerformed
 
     private void TextFieldUsuario_EmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_EmailKeyReleased
-        // TODO add your handling code here:
         if (TextFieldUsuario_Email.getText().equals("")) {
             LabelUsuario_Email.setForeground(Color.BLACK);
         } else {
@@ -4535,12 +5234,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldUsuario_EmailActionPerformed
 
     private void TextFieldUsuario_NoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_NoIdKeyTyped
-        // TODO add your handling code here:
         Objetos.eventos.numberKeyPress(evt);
     }//GEN-LAST:event_TextFieldUsuario_NoIdKeyTyped
 
     private void TextFieldUsuario_NoIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_NoIdKeyReleased
-        // TODO add your handling code here:
         if (TextFieldUsuario_NoId.getText().equals("")) {
             LabelUsuario_NoId.setForeground(Color.BLACK);
         } else {
@@ -4554,7 +5251,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldUsuario_NoIdActionPerformed
 
     private void Label_ImagenUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ImagenUsuarioMouseClicked
-        // TODO add your handling code here:
         Objetos.uploadImage.cargarImagen(Label_ImagenUsuario);
     }//GEN-LAST:event_Label_ImagenUsuarioMouseClicked
 
@@ -4563,7 +5259,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldUsuario_UsuarioActionPerformed
 
     private void TextFieldUsuario_UsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_UsuarioKeyReleased
-        // TODO add your handling code here:
         if (TextFieldUsuario_Usuario.getText().equals("")) {
             LabelUsuario_Usuario.setForeground(Color.BLACK);
         } else {
@@ -4581,7 +5276,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldUsuario_PasswordActionPerformed
 
     private void TextFieldUsuario_PasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldUsuario_PasswordKeyReleased
-        // TODO add your handling code here:
         if (TextFieldUsuario_Password.getText().equals("")) {
             LabelUsuario_Password.setForeground(Color.BLACK);
         } else {
@@ -4595,29 +5289,24 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_CheckBoxUsuario_StateActionPerformed
 
     private void SpinnerPaginas_UsuariosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_UsuariosStateChanged
-        // TODO add your handling code here:
         usuarios.Registro_Paginas();
     }//GEN-LAST:event_SpinnerPaginas_UsuariosStateChanged
 
     private void ButtonUsuarios_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_Paginas1ActionPerformed
-        // TODO add your handling code here:
         usuarios.Paginador("Primero");
 
     }//GEN-LAST:event_ButtonUsuarios_Paginas1ActionPerformed
 
     private void ButtonUsuarios_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_Paginas2ActionPerformed
-        // TODO add your handling code here:
         usuarios.Paginador("Anterior");
     }//GEN-LAST:event_ButtonUsuarios_Paginas2ActionPerformed
 
     private void ButtonUsuarios_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_Paginas3ActionPerformed
-        // TODO add your handling code here:
         usuarios.Paginador("Siguiente");
 
     }//GEN-LAST:event_ButtonUsuarios_Paginas3ActionPerformed
 
     private void ButtonUsuarios_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarios_Paginas4ActionPerformed
-        // TODO add your handling code here:
         usuarios.Paginador("Ultimo");
     }//GEN-LAST:event_ButtonUsuarios_Paginas4ActionPerformed
 
@@ -4626,21 +5315,18 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TabbedPaneUsuario2StateChanged
 
     private void Table_UsuariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_UsuariosKeyReleased
-        // TODO add your handling code here:
         if (Table_Usuarios.getSelectedRows().length > 0) {
             usuarios.GetUsuarios();
         }
     }//GEN-LAST:event_Table_UsuariosKeyReleased
 
     private void Table_UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_UsuariosMouseClicked
-        // TODO add your handling code here:
         if (Table_Usuarios.getSelectedRows().length > 0) {
             usuarios.GetUsuarios();
         }
     }//GEN-LAST:event_Table_UsuariosMouseClicked
 
     private void TextField_BuscarUsuariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_BuscarUsuariosKeyReleased
-        // TODO add your handling code here:
         usuarios.Paginador("Primero");
         usuarios.SearchUsuarios(TextField_BuscarUsuarios.getText());
     }//GEN-LAST:event_TextField_BuscarUsuariosKeyReleased
@@ -4724,9 +5410,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE PROVEEDOR"> 
-    ProveedorVM proveedor;
-    private void ButtonProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedorActionPerformed
-        // TODO add your handling code here:
+    private ProveedorVM proveedor;
+
+    private void SeccionProveedor() {
         ArrayList<JLabel> label = new ArrayList();
         label.add(LabelProveedor_Proveedor);
         label.add(LabelProveedor_Email);
@@ -4743,6 +5429,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         label.add(LabelProveedor_FechaPago);
         label.add(LabelProveedor_CuotasMes);
         label.add(LabelProveedorReport_Pagos);
+
+        label.add(LabelProveedor_Deudas);
+        label.add(LabelProveedor_Saldo);
+        label.add(LabelProveedor_FechaDeuda);
+        label.add(LabelProveedor_TicketDeuda);
+        label.add(LabelProveedor_DeudaPago);
+        label.add(LabelProveedor_MesCuotas);
+        label.add(LabelProveedor_PagosFecha);
+        label.add(LabelProveedor_Cambio);
 
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldProveedor_Proveedor);
@@ -4762,11 +5457,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
         proveedor = new ProveedorVM(objects, label, textField);
         TabbedPanePrincipal.setSelectedIndex(2);
-        EnabeledButton(ButtonProveedor);
+        EnabledButton(ButtonProveedor);
+    }
+
+    private void ButtonProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedorActionPerformed
+        SeccionProveedor();
     }//GEN-LAST:event_ButtonProveedorActionPerformed
 
     private void Label_ImagenProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ImagenProveedorMouseClicked
-        // TODO add your handling code here:
         Objetos.uploadImage.cargarImagen(Label_ImagenProveedor);
     }//GEN-LAST:event_Label_ImagenProveedorMouseClicked
 
@@ -4775,7 +5473,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldProveedor_ProveedorActionPerformed
 
     private void TextFieldProveedor_ProveedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_ProveedorKeyReleased
-        // TODO add your handling code here:
         if (TextFieldProveedor_Proveedor.getText().equals("")) {
             LabelProveedor_Proveedor.setForeground(Color.BLACK);
         } else {
@@ -4789,7 +5486,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldProveedor_EmailActionPerformed
 
     private void TextFieldProveedor_EmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_EmailKeyReleased
-        // TODO add your handling code here:
         if (TextFieldProveedor_Email.getText().equals("")) {
             LabelProveedor_Email.setForeground(Color.BLACK);
         } else {
@@ -4803,7 +5499,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldProveedor_TelefonoActionPerformed
 
     private void TextFieldProveedor_TelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_TelefonoKeyReleased
-        // TODO add your handling code here:
         if (TextFieldProveedor_Telefono.getText().equals("")) {
             LabelProveedor_Telefono.setForeground(Color.BLACK);
         } else {
@@ -4813,12 +5508,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldProveedor_TelefonoKeyReleased
 
     private void TextFieldProveedor_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_TelefonoKeyTyped
-        // TODO add your handling code here:
         Objetos.eventos.numberKeyPress(evt);
     }//GEN-LAST:event_TextFieldProveedor_TelefonoKeyTyped
 
     private void TextFieldProveedor_DireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_DireccionActionPerformed
-        // TODO add your handling code here:
         if (TextFieldProveedor_Direccion.getText().equals("")) {
             LabelProveedor_Direccion.setForeground(Color.BLACK);
         } else {
@@ -4836,17 +5529,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldProveedor_PagosActionPerformed
 
     private void TextFieldProveedor_PagosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_PagosKeyReleased
-        // TODO add your handling code here:
         proveedor.Pagos();
     }//GEN-LAST:event_TextFieldProveedor_PagosKeyReleased
 
     private void TextFieldProveedor_PagosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_PagosKeyTyped
-        // TODO add your handling code here:
         Objetos.eventos.numberDecimalKeyPress(evt, TextFieldProveedor_Pagos);
     }//GEN-LAST:event_TextFieldProveedor_PagosKeyTyped
 
     private void TabbedPaneProveedor1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor1StateChanged
-        // TODO add your handling code here:
         switch (TabbedPaneProveedor1.getSelectedIndex()) {
             case 0:
                 if (TabbedPaneProveedor2.getSelectedIndex() > 0) {
@@ -4864,7 +5554,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TabbedPaneProveedor1StateChanged
 
     private void ButtonProveedor_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_AgregarActionPerformed
-        // TODO add your handling code here:
         switch (TabbedPaneProveedor1.getSelectedIndex()) {
             case 0:
                 proveedor.RegistrarProveedor();
@@ -4882,48 +5571,46 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_ButtonProveedor_AgregarActionPerformed
 
     private void ButtonProveedor_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_CancelarActionPerformed
-        // TODO add your handling code here:
         proveedor.Reset();
     }//GEN-LAST:event_ButtonProveedor_CancelarActionPerformed
 
     private void Table_ProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ProveedoresMouseClicked
-        // TODO add your handling code here:
         if (Table_Proveedores.getSelectedRows().length > 0) {
             proveedor.getProveedor();
         }
     }//GEN-LAST:event_Table_ProveedoresMouseClicked
 
     private void Table_ProveedoresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_ProveedoresKeyReleased
-        // TODO add your handling code here:
         if (Table_Proveedores.getSelectedRows().length > 0) {
             proveedor.getProveedor();
         }
     }//GEN-LAST:event_Table_ProveedoresKeyReleased
 
     private void TableProveedores_ReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableProveedores_ReportMouseClicked
-        // TODO add your handling code here:
         if (TableProveedores_Report.getSelectedRows().length > 0) {
             proveedor.getReportProveedor();
         }
     }//GEN-LAST:event_TableProveedores_ReportMouseClicked
 
     private void TableProveedores_ReportKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableProveedores_ReportKeyReleased
-        // TODO add your handling code here:
         if (TableProveedores_Report.getSelectedRows().length > 0) {
             proveedor.getReportProveedor();
         }
     }//GEN-LAST:event_TableProveedores_ReportKeyReleased
 
     private void TableProveedores_PagosCuotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableProveedores_PagosCuotasMouseClicked
-        // TODO add your handling code here:
+        if (TableProveedores_PagosCuotas.getSelectedRows().length > 0) {
+            proveedor.GetHistorialPago();
+        }
     }//GEN-LAST:event_TableProveedores_PagosCuotasMouseClicked
 
     private void TableProveedores_PagosCuotasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableProveedores_PagosCuotasKeyReleased
-        // TODO add your handling code here:
+        if (TableProveedores_PagosCuotas.getSelectedRows().length > 0) {
+            proveedor.GetHistorialPago();
+        }
     }//GEN-LAST:event_TableProveedores_PagosCuotasKeyReleased
 
     private void TabbedPaneProveedor3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor3StateChanged
-        // TODO add your handling code here:
         switch (TabbedPaneProveedor2.getSelectedIndex()) {
             case 0:
                 if (proveedor != null) {
@@ -4939,15 +5626,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TabbedPaneProveedor3StateChanged
 
     private void ButtonProveedor_BuscarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_BuscarPagosActionPerformed
-        // TODO add your handling code here:
+        proveedor.historialPagos(true);
     }//GEN-LAST:event_ButtonProveedor_BuscarPagosActionPerformed
 
     private void ButtonProveedor_TicketDeudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_TicketDeudaActionPerformed
-        // TODO add your handling code here:
+        proveedor.TicketDeuda();
     }//GEN-LAST:event_ButtonProveedor_TicketDeudaActionPerformed
 
     private void TabbedPaneProveedor2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor2StateChanged
-        // TODO add your handling code here:
         switch (TabbedPaneProveedor2.getSelectedIndex()) {
             case 0:
                 if (TabbedPaneProveedor1.getSelectedIndex() > 0) {
@@ -4966,27 +5652,22 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TabbedPaneProveedor2StateChanged
 
     private void SpinnerPaginas_ProveedoresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_ProveedoresStateChanged
-        // TODO add your handling code here:
         proveedor.Registro_Paginas();
     }//GEN-LAST:event_SpinnerPaginas_ProveedoresStateChanged
 
     private void ButtonProveedor_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas1ActionPerformed
-        // TODO add your handling code here:
         proveedor.Paginador("Primero");
     }//GEN-LAST:event_ButtonProveedor_Paginas1ActionPerformed
 
     private void ButtonProveedor_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas2ActionPerformed
-        // TODO add your handling code here:
         proveedor.Paginador("Anterior");
     }//GEN-LAST:event_ButtonProveedor_Paginas2ActionPerformed
 
     private void ButtonProveedor_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas3ActionPerformed
-        // TODO add your handling code here:
         proveedor.Paginador("Siguiente");
     }//GEN-LAST:event_ButtonProveedor_Paginas3ActionPerformed
 
     private void ButtonProveedor_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas4ActionPerformed
-        // TODO add your handling code here:
         proveedor.Paginador("Ultimo");
     }//GEN-LAST:event_ButtonProveedor_Paginas4ActionPerformed
 
@@ -4995,7 +5676,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextField_BuscarProveedorActionPerformed
 
     private void TextField_BuscarProveedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_BuscarProveedorKeyReleased
-        // TODO add your handling code here:
         proveedor.Paginador("primero");
         switch (TabbedPaneProveedor1.getSelectedIndex()) {
             case 0:
@@ -5008,7 +5688,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextField_BuscarProveedorKeyReleased
 
     private void TabbedPaneCliente1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente1StateChanged
-        // TODO add your handling code here:
         switch (TabbedPaneCliente1.getSelectedIndex()) {
             case 0:
                 if (TabbedPaneCliente2.getSelectedIndex() > 0) {
@@ -5025,7 +5704,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             case 2:
                 cliente.seccion = 3;
                 TabbedPaneCliente2.setSelectedIndex(2);
-                //cliente.Registro_Paginas();
+                cliente.Registro_Paginas();
                 break;
         }
     }//GEN-LAST:event_TabbedPaneCliente1StateChanged
@@ -5175,12 +5854,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldCliente_EmailActionPerformed
 
     private void TextFieldCliente_NoIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyTyped
-        // TODO add your handling code here:
         Objetos.eventos.numberKeyPress(evt);
     }//GEN-LAST:event_TextFieldCliente_NoIdKeyTyped
 
     private void TextFieldCliente_NoIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCliente_NoIdKeyReleased
-        // TODO add your handling code here:
         if (TextFieldCliente_NoId.getText().equals("")) {
             LabelCliente_NoId.setForeground(new Color(102, 102, 102));
         } else {
@@ -5194,12 +5871,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldCliente_NoIdActionPerformed
 
     private void Label_ImagenClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_ImagenClienteMouseClicked
-        // TODO add your handling code here:
         Objetos.uploadImage.cargarImagen(Label_ImagenCliente);
     }//GEN-LAST:event_Label_ImagenClienteMouseClicked
 
     private void TableCliente_ReportDeudaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TableCliente_ReportDeudaKeyReleased
-        // TODO add your handling code here:
         if (TableCliente_ReportDeuda.getSelectedRows().length > 0) {
             var fila = TableCliente_ReportDeuda.getSelectedRow();
             var modelo = (DefaultTableModel) TableCliente_ReportDeuda.getModel();
@@ -5208,7 +5883,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TableCliente_ReportDeudaKeyReleased
 
     private void TableCliente_ReportDeudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCliente_ReportDeudaMouseClicked
-        // TODO add your handling code here:
         if (TableCliente_ReportDeuda.getSelectedRows().length > 0) {
             var fila = TableCliente_ReportDeuda.getSelectedRow();
             var modelo = (DefaultTableModel) TableCliente_ReportDeuda.getModel();
@@ -5220,11 +5894,190 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckBoxCliente_ExtenderDiaActionPerformed
 
-    private void TabbedPaneCliente6StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente6StateChanged
+    private void TabbedPaneProveedor4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor4StateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_TabbedPaneCliente6StateChanged
+    }//GEN-LAST:event_TabbedPaneProveedor4StateChanged
     // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE COMPRAS">
+    private ComprasVM compras;
+    
+    private void SeccionCompras() {
+        ArrayList<JLabel> label = new ArrayList();
+        label.add(LabelCompra_Descripcion);
+        label.add(LabelCompra_Cantidad);
+        label.add(LabelCompra_Precio);
+        label.add(LabelCompra_Importe);
+        label.add(LabelCompra_BuscarProveedor);
+        
+        ArrayList<JTextField> textField = new ArrayList();
+        textField.add(TextFieldCompra_Descripcion);
+        textField.add(TextFieldCompra_Cantidad);
+        textField.add(TextFieldCompra_Precio);
+        textField.add(TextFieldCompra_BuscarProveedor);
+        
+        Object[] objetos = {
+            CheckBoxCompra_Credito,
+            ComboBoxCompra_Proveedor,
+        };
+        
+        compras = new ComprasVM(objetos,textField,label);
+        
+        TabbedPanePrincipal.setSelectedIndex(3);
+        EnabledButton(ButtonCompras);
+    }
+
+    private void ButtonComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonComprasActionPerformed
+        SeccionCompras();
+    }//GEN-LAST:event_ButtonComprasActionPerformed
+
+    private void TabbedPanePrincipalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPanePrincipalStateChanged
+        switch (TabbedPanePrincipal.getSelectedIndex()) {
+            case 0:
+
+                break;
+            case 1:
+                SeccionCliente();
+                break;
+            case 2:
+                SeccionProveedor();
+                break;
+            case 3:
+                SeccionCompras();
+                break;
+            case 4:
+                SeccionConfiguracion();
+                break;
+        }
+    }//GEN-LAST:event_TabbedPanePrincipalStateChanged
+
+    private void TextField_BuscarProveedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_BuscarProveedor1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_BuscarProveedor1ActionPerformed
+
+    private void TextField_BuscarProveedor1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_BuscarProveedor1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_BuscarProveedor1KeyReleased
+
+    private void TextFieldProveedor_Pagos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_Pagos1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldProveedor_Pagos1ActionPerformed
+
+    private void TextFieldProveedor_Pagos1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_Pagos1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldProveedor_Pagos1KeyReleased
+
+    private void TextFieldProveedor_Pagos1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_Pagos1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldProveedor_Pagos1KeyTyped
+
+    private void TabbedPaneProveedor6StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor6StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TabbedPaneProveedor6StateChanged
+
+    private void TabbedPaneProveedor5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor5StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TabbedPaneProveedor5StateChanged
+
+    private void ButtonCompra_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompra_AgregarActionPerformed
+        compras.GuardarCompras();
+    }//GEN-LAST:event_ButtonCompra_AgregarActionPerformed
+
+    private void ButtonCompra_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompra_CancelarActionPerformed
+        compras.Reset();
+    }//GEN-LAST:event_ButtonCompra_CancelarActionPerformed
+
+    private void Table_ComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ComprasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Table_ComprasMouseClicked
+
+    private void Table_ComprasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_ComprasKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Table_ComprasKeyReleased
+
+    private void TabbedPaneProveedor7StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor7StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TabbedPaneProveedor7StateChanged
+
+    private void SpinnerPaginas_Proveedores1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_Proveedores1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SpinnerPaginas_Proveedores1StateChanged
+
+    private void ButtonProveedor_Paginas5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonProveedor_Paginas5ActionPerformed
+
+    private void ButtonProveedor_Paginas6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonProveedor_Paginas6ActionPerformed
+
+    private void ButtonProveedor_Paginas7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonProveedor_Paginas7ActionPerformed
+
+    private void ButtonProveedor_Paginas8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonProveedor_Paginas8ActionPerformed
+
+    private void TextFieldCompra_PrecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_PrecioKeyReleased
+       if(TextFieldCompra_Precio.getText().equals("")){
+            LabelCompra_Precio.setForeground(Color.BLACK);
+        } else {
+            LabelCompra_Precio.setText("Precio");
+            LabelCompra_Precio.setForeground(Color.GREEN);
+        }
+       compras.importes();
+    }//GEN-LAST:event_TextFieldCompra_PrecioKeyReleased
+
+    private void TextFieldCompra_PrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCompra_PrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCompra_PrecioActionPerformed
+
+    private void TextFieldCompra_CantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_CantidadKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCompra_CantidadKeyTyped
+
+    private void TextFieldCompra_CantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_CantidadKeyReleased
+        if(TextFieldCompra_Cantidad.getText().equals("")){
+            LabelCompra_Cantidad.setForeground(Color.BLACK);
+        } else {
+            LabelCompra_Cantidad.setText("Cantidad");
+            LabelCompra_Cantidad.setForeground(Color.GREEN);
+        }
+        compras.importes();
+    }//GEN-LAST:event_TextFieldCompra_CantidadKeyReleased
+
+    private void TextFieldCompra_CantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCompra_CantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCompra_CantidadActionPerformed
+
+    private void TextFieldCompra_BuscarProveedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_BuscarProveedorKeyReleased
+        if(TextFieldCompra_BuscarProveedor.getText().equals("")){
+            LabelCompra_BuscarProveedor.setForeground(Color.BLACK);
+        } else {
+            LabelCompra_BuscarProveedor.setText("Buscar proveedor");
+            LabelCompra_BuscarProveedor.setForeground(Color.GREEN);
+        }
+        compras.SearchProveedor(TextFieldCompra_BuscarProveedor.getText());
+    }//GEN-LAST:event_TextFieldCompra_BuscarProveedorKeyReleased
+
+    private void TextFieldCompra_BuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCompra_BuscarProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCompra_BuscarProveedorActionPerformed
+
+    private void TextFieldCompra_DescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_DescripcionKeyReleased
+        if(TextFieldCompra_Descripcion.getText().equals("")){
+            LabelCompra_Descripcion.setForeground(Color.BLACK);
+        } else {
+            LabelCompra_Descripcion.setText("Descripción");
+            LabelCompra_Descripcion.setForeground(Color.GREEN);
+        }
+    }//GEN-LAST:event_TextFieldCompra_DescripcionKeyReleased
+
+    private void TextFieldCompra_DescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCompra_DescripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldCompra_DescripcionActionPerformed
+    // </editor-fold>
     /**
      * @param args the command line arguments
      */
@@ -5271,6 +6124,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonCliente_Paginas4;
     private javax.swing.JButton ButtonCliente_TicketDeuda;
     private javax.swing.JButton ButtonClientes;
+    private javax.swing.JButton ButtonCompra_Agregar;
+    private javax.swing.JButton ButtonCompra_Cancelar;
+    private javax.swing.JButton ButtonCompras;
     private javax.swing.JButton ButtonConfig_AddIntereses;
     private javax.swing.JButton ButtonConfiguracion;
     private javax.swing.JButton ButtonProveedor;
@@ -5281,6 +6137,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonProveedor_Paginas2;
     private javax.swing.JButton ButtonProveedor_Paginas3;
     private javax.swing.JButton ButtonProveedor_Paginas4;
+    private javax.swing.JButton ButtonProveedor_Paginas5;
+    private javax.swing.JButton ButtonProveedor_Paginas6;
+    private javax.swing.JButton ButtonProveedor_Paginas7;
+    private javax.swing.JButton ButtonProveedor_Paginas8;
     private javax.swing.JButton ButtonProveedor_TicketDeuda;
     private javax.swing.JButton ButtonUsuario;
     private javax.swing.JButton ButtonUsuarios_Agregar;
@@ -5292,7 +6152,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonVentas;
     private javax.swing.JCheckBox CheckBoxCliente_Credito;
     private javax.swing.JCheckBox CheckBoxCliente_ExtenderDia;
+    private javax.swing.JCheckBox CheckBoxCompra_Credito;
     private javax.swing.JCheckBox CheckBoxUsuario_State;
+    private javax.swing.JComboBox<String> ComboBoxCompra_Proveedor;
     private javax.swing.JComboBox<String> ComboBoxUsuario_Rol;
     private javax.swing.JLabel LabelClient_CambioIntereses;
     private javax.swing.JLabel LabelClient_CuotasIntereses;
@@ -5347,6 +6209,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCliente_Nombre31;
     private javax.swing.JLabel LabelCliente_Nombre32;
     private javax.swing.JLabel LabelCliente_Nombre33;
+    private javax.swing.JLabel LabelCliente_Nombre34;
+    private javax.swing.JLabel LabelCliente_Nombre35;
+    private javax.swing.JLabel LabelCliente_Nombre36;
+    private javax.swing.JLabel LabelCliente_Nombre37;
+    private javax.swing.JLabel LabelCliente_Nombre38;
     private javax.swing.JLabel LabelCliente_Nombre4;
     private javax.swing.JLabel LabelCliente_Nombre40;
     private javax.swing.JLabel LabelCliente_Nombre43;
@@ -5368,28 +6235,43 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCliente_Telefono;
     private javax.swing.JLabel LabelCliente_Ticket;
     private javax.swing.JLabel LabelCliente_TicketIntereses;
+    private javax.swing.JLabel LabelCompra_BuscarProveedor;
+    private javax.swing.JLabel LabelCompra_Cantidad;
+    private javax.swing.JLabel LabelCompra_Descripcion;
+    private javax.swing.JLabel LabelCompra_Importe;
+    private javax.swing.JLabel LabelCompra_Importes;
+    private javax.swing.JLabel LabelCompra_Precio;
     private javax.swing.JLabel LabelConfig_Intereses;
     private javax.swing.JLabel LabelConfig_MsjIntereses;
     private javax.swing.JLabel LabelNombre_Perfil;
     private javax.swing.JLabel LabelProveedorReport_Nombre;
+    private javax.swing.JLabel LabelProveedorReport_Nombre1;
+    private javax.swing.JLabel LabelProveedorReport_Nombre2;
     private javax.swing.JLabel LabelProveedorReport_Pagos;
+    private javax.swing.JLabel LabelProveedorReport_Pagos1;
+    private javax.swing.JLabel LabelProveedor_Cambio;
     private javax.swing.JLabel LabelProveedor_CuotasMes;
+    private javax.swing.JLabel LabelProveedor_CuotasMes1;
     private javax.swing.JLabel LabelProveedor_Deuda;
     private javax.swing.JLabel LabelProveedor_Deuda1;
     private javax.swing.JLabel LabelProveedor_DeudaPago;
+    private javax.swing.JLabel LabelProveedor_Deudas;
     private javax.swing.JLabel LabelProveedor_Direccion;
     private javax.swing.JLabel LabelProveedor_Email;
     private javax.swing.JLabel LabelProveedor_FechaDeuda;
-    private javax.swing.JLabel LabelProveedor_FechaLimite;
     private javax.swing.JLabel LabelProveedor_FechaPago;
+    private javax.swing.JLabel LabelProveedor_FechaPago1;
     private javax.swing.JLabel LabelProveedor_MesCuotas;
     private javax.swing.JLabel LabelProveedor_Paginas;
+    private javax.swing.JLabel LabelProveedor_Paginas1;
     private javax.swing.JLabel LabelProveedor_Pago;
+    private javax.swing.JLabel LabelProveedor_Pago1;
     private javax.swing.JLabel LabelProveedor_PagosFecha;
     private javax.swing.JLabel LabelProveedor_Proveedor;
     private javax.swing.JLabel LabelProveedor_Saldo;
     private javax.swing.JLabel LabelProveedor_Telefono;
     private javax.swing.JLabel LabelProveedor_Ticket;
+    private javax.swing.JLabel LabelProveedor_Ticket1;
     private javax.swing.JLabel LabelProveedor_TicketDeuda;
     private javax.swing.JLabel LabelReport_Pagos;
     private javax.swing.JLabel LabelReporteDeuda_Nombre;
@@ -5417,16 +6299,20 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JRadioButton RadioButton_USD;
     private javax.swing.JSpinner SpinnerPaginas_Clientes;
     private javax.swing.JSpinner SpinnerPaginas_Proveedores;
+    private javax.swing.JSpinner SpinnerPaginas_Proveedores1;
     private javax.swing.JSpinner SpinnerPaginas_Usuarios;
     private javax.swing.JTabbedPane TabbedPaneCliente1;
     private javax.swing.JTabbedPane TabbedPaneCliente2;
     private javax.swing.JTabbedPane TabbedPaneCliente3;
     private javax.swing.JTabbedPane TabbedPaneCliente4;
-    private javax.swing.JTabbedPane TabbedPaneCliente6;
     private javax.swing.JTabbedPane TabbedPanePrincipal;
     private javax.swing.JTabbedPane TabbedPaneProveedor1;
     private javax.swing.JTabbedPane TabbedPaneProveedor2;
     private javax.swing.JTabbedPane TabbedPaneProveedor3;
+    private javax.swing.JTabbedPane TabbedPaneProveedor4;
+    private javax.swing.JTabbedPane TabbedPaneProveedor5;
+    private javax.swing.JTabbedPane TabbedPaneProveedor6;
+    private javax.swing.JTabbedPane TabbedPaneProveedor7;
     private javax.swing.JTabbedPane TabbedPaneUsuario1;
     private javax.swing.JTabbedPane TabbedPaneUsuario2;
     private javax.swing.JTable TableCliente_PagosCuotas;
@@ -5436,6 +6322,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTable TableProveedores_PagosCuotas;
     private javax.swing.JTable TableProveedores_Report;
     private javax.swing.JTable Table_Clientes;
+    private javax.swing.JTable Table_Compras;
     private javax.swing.JTable Table_Proveedores;
     private javax.swing.JTable Table_Usuarios;
     private javax.swing.JTextField TextFieldCliente_Apellido;
@@ -5446,10 +6333,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField TextFieldCliente_Nombre;
     private javax.swing.JTextField TextFieldCliente_Pagos;
     private javax.swing.JTextField TextFieldCliente_Telefono;
+    private javax.swing.JTextField TextFieldCompra_BuscarProveedor;
+    private javax.swing.JTextField TextFieldCompra_Cantidad;
+    private javax.swing.JTextField TextFieldCompra_Descripcion;
+    private javax.swing.JTextField TextFieldCompra_Precio;
     private javax.swing.JTextField TextFieldConfig_Intereses;
     private javax.swing.JTextField TextFieldProveedor_Direccion;
     private javax.swing.JTextField TextFieldProveedor_Email;
     private javax.swing.JTextField TextFieldProveedor_Pagos;
+    private javax.swing.JTextField TextFieldProveedor_Pagos1;
     private javax.swing.JTextField TextFieldProveedor_Proveedor;
     private javax.swing.JTextField TextFieldProveedor_Telefono;
     private javax.swing.JTextField TextFieldUsuario_Apellido;
@@ -5462,6 +6354,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField TextFieldUsuario_Usuario;
     private javax.swing.JTextField TextField_BuscarCliente1;
     private javax.swing.JTextField TextField_BuscarProveedor;
+    private javax.swing.JTextField TextField_BuscarProveedor1;
     private javax.swing.JTextField TextField_BuscarUsuarios;
     private javax.swing.ButtonGroup buttonGroup1;
     private datechooser.beans.DateChooserCombo dateChooserCliente_Deuda1;
@@ -5475,10 +6368,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -5524,6 +6420,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel44;
+    private javax.swing.JPanel jPanel45;
+    private javax.swing.JPanel jPanel46;
+    private javax.swing.JPanel jPanel47;
     private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel50;
@@ -5531,12 +6430,19 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel52;
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
+    private javax.swing.JPanel jPanel55;
+    private javax.swing.JPanel jPanel56;
+    private javax.swing.JPanel jPanel57;
     private javax.swing.JPanel jPanel58;
+    private javax.swing.JPanel jPanel59;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel60;
+    private javax.swing.JPanel jPanel61;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

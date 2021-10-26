@@ -69,4 +69,9 @@ public class TProveedor{
     public void setImagen(byte[] Imagen) {
         this.Imagen = Imagen;
     }
+
+    @Override
+    public String toString() {
+        return Proveedor;
+    }
 }
