@@ -230,7 +230,7 @@ public class Consult extends Conexion {
         return pagos;
     }
     
-    List<TCompras_temporal> Compras_temporal(){
+    public List<TCompras_temporal> Compras_temporal(){
       List<TCompras_temporal> productos = new ArrayList();  
        try {
             productos = (List<TCompras_temporal>) QR.query(getConn(), "SELECT * FROM tcompras_temporal",

@@ -53,7 +53,7 @@ public class Sistema extends javax.swing.JFrame {
         cliente = new ClientesVM(dataUsuario);
 
         proveedor = new ProveedorVM(dataUsuario);
-        
+
         compras = new ComprasVM(dataUsuario);
 
         timer1.start();
@@ -341,7 +341,7 @@ public class Sistema extends javax.swing.JFrame {
         jPanel59 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        TextField_BuscarProveedor1 = new javax.swing.JTextField();
+        TextField_Compras_Buscar = new javax.swing.JTextField();
         jPanel46 = new javax.swing.JPanel();
         TabbedPaneProveedor5 = new javax.swing.JTabbedPane();
         jPanel47 = new javax.swing.JPanel();
@@ -383,9 +383,18 @@ public class Sistema extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         Table_Compras = Table_Compras = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
-                return false; //Disallow the editing of any cell
+                if(colIndex == 6){
+                    return true;
+                } else {
+                    return false; //Disallow the editing of any cell
+                }
             }
         };
+        ;
+        CheckBoxCompra_Creditos = new javax.swing.JCheckBox();
+        CheckBoxCompra_Todos = new javax.swing.JCheckBox();
+        CheckBoxCompra_Eliminar = new javax.swing.JCheckBox();
+        ButtonCompra_Eliminar = new javax.swing.JButton();
         LabelCliente_Nombre38 = new javax.swing.JLabel();
         SpinnerPaginas_Proveedores1 = new javax.swing.JSpinner();
         ButtonProveedor_Paginas5 = new javax.swing.JButton();
@@ -1359,7 +1368,7 @@ public class Sistema extends javax.swing.JFrame {
     });
 
     ButtonCliente_Cancelar.setBackground(new java.awt.Color(255, 102, 51));
-    ButtonCliente_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/eliminar.png"))); // NOI18N
+    ButtonCliente_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/cancelar.png"))); // NOI18N
     ButtonCliente_Cancelar.setToolTipText("");
     ButtonCliente_Cancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     ButtonCliente_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -2592,7 +2601,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     });
 
     ButtonProveedor_Cancelar.setBackground(new java.awt.Color(255, 102, 51));
-    ButtonProveedor_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/eliminar.png"))); // NOI18N
+    ButtonProveedor_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/cancelar.png"))); // NOI18N
     ButtonProveedor_Cancelar.setToolTipText("");
     ButtonProveedor_Cancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     ButtonProveedor_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -3303,16 +3312,16 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     jLabel22.setForeground(new java.awt.Color(70, 106, 124));
     jLabel22.setText("Buscar");
 
-    TextField_BuscarProveedor1.setBackground(new java.awt.Color(255, 255, 255));
-    TextField_BuscarProveedor1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    TextField_BuscarProveedor1.addActionListener(new java.awt.event.ActionListener() {
+    TextField_Compras_Buscar.setBackground(new java.awt.Color(255, 255, 255));
+    TextField_Compras_Buscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextField_Compras_Buscar.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            TextField_BuscarProveedor1ActionPerformed(evt);
+            TextField_Compras_BuscarActionPerformed(evt);
         }
     });
-    TextField_BuscarProveedor1.addKeyListener(new java.awt.event.KeyAdapter() {
+    TextField_Compras_Buscar.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyReleased(java.awt.event.KeyEvent evt) {
-            TextField_BuscarProveedor1KeyReleased(evt);
+            TextField_Compras_BuscarKeyReleased(evt);
         }
     });
 
@@ -3326,7 +3335,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addGap(150, 150, 150)
             .addComponent(jLabel22)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(TextField_BuscarProveedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(TextField_Compras_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel59Layout.setVerticalGroup(
@@ -3336,7 +3345,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addGroup(jPanel59Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel22)
-                .addComponent(TextField_BuscarProveedor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TextField_Compras_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap())
     );
 
@@ -3699,7 +3708,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     });
 
     ButtonCompra_Cancelar.setBackground(new java.awt.Color(255, 102, 51));
-    ButtonCompra_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/eliminar.png"))); // NOI18N
+    ButtonCompra_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/cancelar.png"))); // NOI18N
     ButtonCompra_Cancelar.setToolTipText("");
     ButtonCompra_Cancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     ButtonCompra_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -3771,21 +3780,79 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     });
     jScrollPane10.setViewportView(Table_Compras);
 
+    CheckBoxCompra_Creditos.setText("Créditos");
+    CheckBoxCompra_Creditos.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            CheckBoxCompra_CreditosStateChanged(evt);
+        }
+    });
+    CheckBoxCompra_Creditos.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            CheckBoxCompra_CreditosActionPerformed(evt);
+        }
+    });
+
+    CheckBoxCompra_Todos.setText("Todos");
+    CheckBoxCompra_Todos.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            CheckBoxCompra_TodosStateChanged(evt);
+        }
+    });
+    CheckBoxCompra_Todos.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            CheckBoxCompra_TodosActionPerformed(evt);
+        }
+    });
+
+    CheckBoxCompra_Eliminar.setText("Eliminar");
+    CheckBoxCompra_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            CheckBoxCompra_EliminarActionPerformed(evt);
+        }
+    });
+
+    ButtonCompra_Eliminar.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonCompra_Eliminar.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonCompra_Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/eliminar.png"))); // NOI18N
+    ButtonCompra_Eliminar.setToolTipText("");
+    ButtonCompra_Eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonCompra_Eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonCompra_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ButtonCompra_EliminarActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout jPanel61Layout = new javax.swing.GroupLayout(jPanel61);
     jPanel61.setLayout(jPanel61Layout);
     jPanel61Layout.setHorizontalGroup(
         jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel61Layout.createSequentialGroup()
+        .addGroup(jPanel61Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+            .addGroup(jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+                .addGroup(jPanel61Layout.createSequentialGroup()
+                    .addComponent(CheckBoxCompra_Creditos)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(CheckBoxCompra_Todos)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CheckBoxCompra_Eliminar)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(ButtonCompra_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap())
     );
     jPanel61Layout.setVerticalGroup(
         jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel61Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(10, Short.MAX_VALUE))
+            .addGroup(jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(CheckBoxCompra_Creditos)
+                .addComponent(CheckBoxCompra_Todos)
+                .addComponent(CheckBoxCompra_Eliminar)
+                .addComponent(ButtonCompra_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(10, 10, 10))
     );
 
     TabbedPaneProveedor7.addTab("Lista de compras", jPanel61);
@@ -4311,7 +4378,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     });
 
     ButtonUsuarios_Cancelar.setBackground(new java.awt.Color(255, 102, 51));
-    ButtonUsuarios_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/eliminar.png"))); // NOI18N
+    ButtonUsuarios_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/cancelar.png"))); // NOI18N
     ButtonUsuarios_Cancelar.setToolTipText("");
     ButtonUsuarios_Cancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
     ButtonUsuarios_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -5901,7 +5968,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE COMPRAS">
     private ComprasVM compras;
-    
+
     private void SeccionCompras() {
         ArrayList<JLabel> label = new ArrayList();
         label.add(LabelCompra_Descripcion);
@@ -5909,20 +5976,24 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         label.add(LabelCompra_Precio);
         label.add(LabelCompra_Importe);
         label.add(LabelCompra_BuscarProveedor);
-        
+
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldCompra_Descripcion);
         textField.add(TextFieldCompra_Cantidad);
         textField.add(TextFieldCompra_Precio);
         textField.add(TextFieldCompra_BuscarProveedor);
-        
+        textField.add(TextField_Compras_Buscar);
+
         Object[] objetos = {
             CheckBoxCompra_Credito,
             ComboBoxCompra_Proveedor,
+            CheckBoxCompra_Creditos,
+            CheckBoxCompra_Todos,
+            Table_Compras,
         };
-        
-        compras = new ComprasVM(objetos,textField,label);
-        
+
+        compras = new ComprasVM(objetos, textField, label);
+
         TabbedPanePrincipal.setSelectedIndex(3);
         EnabledButton(ButtonCompras);
     }
@@ -5951,13 +6022,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         }
     }//GEN-LAST:event_TabbedPanePrincipalStateChanged
 
-    private void TextField_BuscarProveedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_BuscarProveedor1ActionPerformed
+    private void TextField_Compras_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_Compras_BuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_BuscarProveedor1ActionPerformed
+    }//GEN-LAST:event_TextField_Compras_BuscarActionPerformed
 
-    private void TextField_BuscarProveedor1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_BuscarProveedor1KeyReleased
+    private void TextField_Compras_BuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_Compras_BuscarKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField_BuscarProveedor1KeyReleased
+    }//GEN-LAST:event_TextField_Compras_BuscarKeyReleased
 
     private void TextFieldProveedor_Pagos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_Pagos1ActionPerformed
         // TODO add your handling code here:
@@ -5988,11 +6059,15 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_ButtonCompra_CancelarActionPerformed
 
     private void Table_ComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ComprasMouseClicked
-        // TODO add your handling code here:
+        if(Table_Compras.getSelectedRows().length > 0){
+            compras.getCompra();
+        }
     }//GEN-LAST:event_Table_ComprasMouseClicked
 
     private void Table_ComprasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_ComprasKeyReleased
-        // TODO add your handling code here:
+        if(Table_Compras.getSelectedRows().length > 0){
+            compras.getCompra();
+        }
     }//GEN-LAST:event_Table_ComprasKeyReleased
 
     private void TabbedPaneProveedor7StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor7StateChanged
@@ -6020,13 +6095,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_ButtonProveedor_Paginas8ActionPerformed
 
     private void TextFieldCompra_PrecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_PrecioKeyReleased
-       if(TextFieldCompra_Precio.getText().equals("")){
+        if (TextFieldCompra_Precio.getText().equals("")) {
             LabelCompra_Precio.setForeground(Color.BLACK);
         } else {
             LabelCompra_Precio.setText("Precio");
             LabelCompra_Precio.setForeground(Color.GREEN);
         }
-       compras.importes();
+        compras.importes();
     }//GEN-LAST:event_TextFieldCompra_PrecioKeyReleased
 
     private void TextFieldCompra_PrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCompra_PrecioActionPerformed
@@ -6038,7 +6113,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldCompra_CantidadKeyTyped
 
     private void TextFieldCompra_CantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_CantidadKeyReleased
-        if(TextFieldCompra_Cantidad.getText().equals("")){
+        if (TextFieldCompra_Cantidad.getText().equals("")) {
             LabelCompra_Cantidad.setForeground(Color.BLACK);
         } else {
             LabelCompra_Cantidad.setText("Cantidad");
@@ -6052,7 +6127,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldCompra_CantidadActionPerformed
 
     private void TextFieldCompra_BuscarProveedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_BuscarProveedorKeyReleased
-        if(TextFieldCompra_BuscarProveedor.getText().equals("")){
+        if (TextFieldCompra_BuscarProveedor.getText().equals("")) {
             LabelCompra_BuscarProveedor.setForeground(Color.BLACK);
         } else {
             LabelCompra_BuscarProveedor.setText("Buscar proveedor");
@@ -6066,7 +6141,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldCompra_BuscarProveedorActionPerformed
 
     private void TextFieldCompra_DescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_DescripcionKeyReleased
-        if(TextFieldCompra_Descripcion.getText().equals("")){
+        if (TextFieldCompra_Descripcion.getText().equals("")) {
             LabelCompra_Descripcion.setForeground(Color.BLACK);
         } else {
             LabelCompra_Descripcion.setText("Descripción");
@@ -6077,6 +6152,44 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void TextFieldCompra_DescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCompra_DescripcionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextFieldCompra_DescripcionActionPerformed
+
+    private void CheckBoxCompra_CreditosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_CheckBoxCompra_CreditosStateChanged
+        compras.SearchCompras(TextField_Compras_Buscar.getText(), CheckBoxCompra_Eliminar.isSelected());
+    }//GEN-LAST:event_CheckBoxCompra_CreditosStateChanged
+
+    private void CheckBoxCompra_TodosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_CheckBoxCompra_TodosStateChanged
+        compras.SearchCompras(TextField_Compras_Buscar.getText(), CheckBoxCompra_Eliminar.isSelected());
+    }//GEN-LAST:event_CheckBoxCompra_TodosStateChanged
+
+    private void CheckBoxCompra_CreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCompra_CreditosActionPerformed
+        CheckBoxCompra_Todos.setSelected(false);
+        CheckBoxCompra_Todos.setForeground(Color.BLACK);
+        if (CheckBoxCompra_Creditos.isSelected()) {
+            CheckBoxCompra_Creditos.setForeground(new Color(0, 153, 51));
+        } else {
+            CheckBoxCompra_Creditos.setForeground(Color.BLACK);
+        }
+        compras.importes();
+    }//GEN-LAST:event_CheckBoxCompra_CreditosActionPerformed
+
+    private void CheckBoxCompra_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCompra_TodosActionPerformed
+        CheckBoxCompra_Creditos.setSelected(false);
+        CheckBoxCompra_Creditos.setForeground(Color.BLACK);
+        if (CheckBoxCompra_Todos.isSelected()) {
+            CheckBoxCompra_Todos.setForeground(new Color(0, 153, 51));
+        } else {
+            CheckBoxCompra_Todos.setForeground(Color.BLACK);
+        }
+        compras.importes();
+    }//GEN-LAST:event_CheckBoxCompra_TodosActionPerformed
+
+    private void ButtonCompra_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompra_EliminarActionPerformed
+        compras.eliminar();
+    }//GEN-LAST:event_ButtonCompra_EliminarActionPerformed
+
+    private void CheckBoxCompra_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCompra_EliminarActionPerformed
+        compras.SearchCompras(TextField_Compras_Buscar.getText(), CheckBoxCompra_Eliminar.isSelected());
+    }//GEN-LAST:event_CheckBoxCompra_EliminarActionPerformed
     // </editor-fold>
     /**
      * @param args the command line arguments
@@ -6113,7 +6226,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         });
     }
 
-    // <editor-fold defaultstate="collapsed" desc="DECLARACIÓN DE VARIABLES(NO MOVER)"> 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCliente_Agregar;
     private javax.swing.JButton ButtonCliente_BuscarPagos;
@@ -6126,6 +6238,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonClientes;
     private javax.swing.JButton ButtonCompra_Agregar;
     private javax.swing.JButton ButtonCompra_Cancelar;
+    private javax.swing.JButton ButtonCompra_Eliminar;
     private javax.swing.JButton ButtonCompras;
     private javax.swing.JButton ButtonConfig_AddIntereses;
     private javax.swing.JButton ButtonConfiguracion;
@@ -6153,6 +6266,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JCheckBox CheckBoxCliente_Credito;
     private javax.swing.JCheckBox CheckBoxCliente_ExtenderDia;
     private javax.swing.JCheckBox CheckBoxCompra_Credito;
+    private javax.swing.JCheckBox CheckBoxCompra_Creditos;
+    private javax.swing.JCheckBox CheckBoxCompra_Eliminar;
+    private javax.swing.JCheckBox CheckBoxCompra_Todos;
     private javax.swing.JCheckBox CheckBoxUsuario_State;
     private javax.swing.JComboBox<String> ComboBoxCompra_Proveedor;
     private javax.swing.JComboBox<String> ComboBoxUsuario_Rol;
@@ -6354,8 +6470,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField TextFieldUsuario_Usuario;
     private javax.swing.JTextField TextField_BuscarCliente1;
     private javax.swing.JTextField TextField_BuscarProveedor;
-    private javax.swing.JTextField TextField_BuscarProveedor1;
     private javax.swing.JTextField TextField_BuscarUsuarios;
+    private javax.swing.JTextField TextField_Compras_Buscar;
     private javax.swing.ButtonGroup buttonGroup1;
     private datechooser.beans.DateChooserCombo dateChooserCliente_Deuda1;
     private datechooser.beans.DateChooserCombo dateChooserCliente_Deuda2;
@@ -6453,7 +6569,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-    // </editor-fold>
 
     public void setExtendedState(int i, int i0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

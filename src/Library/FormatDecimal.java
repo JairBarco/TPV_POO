@@ -10,7 +10,7 @@ import java.text.ParseException;
 public class FormatDecimal {
 
     Number numero;
-    DecimalFormat formateador = new DecimalFormat("###,###,##0.00");
+    DecimalFormat formateador = new DecimalFormat("###,##0.00");
 
     public String decimal(double formato) {
         return formateador.format(formato);
