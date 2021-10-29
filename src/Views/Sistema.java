@@ -343,7 +343,7 @@ public class Sistema extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         TextField_Compras_Buscar = new javax.swing.JTextField();
         jPanel46 = new javax.swing.JPanel();
-        TabbedPaneProveedor5 = new javax.swing.JTabbedPane();
+        TabbedPaneCompras1 = new javax.swing.JTabbedPane();
         jPanel47 = new javax.swing.JPanel();
         LabelCompra_Descripcion = new javax.swing.JLabel();
         TextFieldCompra_Descripcion = new javax.swing.JTextField();
@@ -359,27 +359,27 @@ public class Sistema extends javax.swing.JFrame {
         CheckBoxCompra_Credito = new javax.swing.JCheckBox();
         ComboBoxCompra_Proveedor = new javax.swing.JComboBox<>();
         jPanel55 = new javax.swing.JPanel();
-        LabelProveedorReport_Nombre1 = new javax.swing.JLabel();
-        LabelProveedorReport_Pagos1 = new javax.swing.JLabel();
-        TextFieldProveedor_Pagos1 = new javax.swing.JTextField();
-        TabbedPaneProveedor6 = new javax.swing.JTabbedPane();
-        jPanel56 = new javax.swing.JPanel();
-        jPanel57 = new javax.swing.JPanel();
-        LabelCliente_Nombre34 = new javax.swing.JLabel();
-        LabelProveedor_CuotasMes1 = new javax.swing.JLabel();
-        LabelCliente_Nombre35 = new javax.swing.JLabel();
-        LabelProveedor_Pago1 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        LabelProveedor_Ticket1 = new javax.swing.JLabel();
-        LabelCliente_Nombre36 = new javax.swing.JLabel();
-        LabelProveedor_FechaPago1 = new javax.swing.JLabel();
-        LabelCliente_Nombre37 = new javax.swing.JLabel();
-        LabelProveedor_Deuda1 = new javax.swing.JLabel();
+        LabelCompra_Pagos = new javax.swing.JLabel();
+        TextFieldCompra_Pagos = new javax.swing.JTextField();
+        LabelProveedorReport_Nombre3 = new javax.swing.JLabel();
+        LabelCompra_Monto = new javax.swing.JLabel();
+        LabelCompra_Montos = new javax.swing.JLabel();
+        CheckBoxCompra_Credito1 = new javax.swing.JCheckBox();
+        LabelCompra_Deuda = new javax.swing.JLabel();
+        LabelCompra_Deudas = new javax.swing.JLabel();
+        LabelCompra_Proveedores = new javax.swing.JLabel();
+        LabelCompra_Proveedor = new javax.swing.JLabel();
         ButtonCompra_Agregar = new javax.swing.JButton();
         ButtonCompra_Cancelar = new javax.swing.JButton();
         jPanel60 = new javax.swing.JPanel();
-        TabbedPaneProveedor7 = new javax.swing.JTabbedPane();
+        TabbedPaneCompras2 = new javax.swing.JTabbedPane();
         jPanel61 = new javax.swing.JPanel();
+        CheckBoxCompra_Creditos = new javax.swing.JCheckBox();
+        CheckBoxCompra_Todos = new javax.swing.JCheckBox();
+        CheckBoxCompra_Eliminar = new javax.swing.JCheckBox();
+        ButtonCompra_Eliminar = new javax.swing.JButton();
+        LabelCompra_Importes5 = new javax.swing.JLabel();
+        LabelCompra_ImporteTotal = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
         Table_Compras = Table_Compras = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -391,10 +391,6 @@ public class Sistema extends javax.swing.JFrame {
             }
         };
         ;
-        CheckBoxCompra_Creditos = new javax.swing.JCheckBox();
-        CheckBoxCompra_Todos = new javax.swing.JCheckBox();
-        CheckBoxCompra_Eliminar = new javax.swing.JCheckBox();
-        ButtonCompra_Eliminar = new javax.swing.JButton();
         LabelCliente_Nombre38 = new javax.swing.JLabel();
         SpinnerPaginas_Proveedores1 = new javax.swing.JSpinner();
         ButtonProveedor_Paginas5 = new javax.swing.JButton();
@@ -1383,14 +1379,13 @@ public class Sistema extends javax.swing.JFrame {
     jPanel6Layout.setHorizontalGroup(
         jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel6Layout.createSequentialGroup()
-            .addGap(103, 103, 103)
-            .addComponent(ButtonCliente_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(ButtonCliente_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGroup(jPanel6Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(TabbedPaneCliente1)
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addComponent(ButtonCliente_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonCliente_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TabbedPaneCliente1))
             .addContainerGap())
     );
     jPanel6Layout.setVerticalGroup(
@@ -2616,26 +2611,25 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     jPanel39Layout.setHorizontalGroup(
         jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel39Layout.createSequentialGroup()
-            .addGap(103, 103, 103)
-            .addComponent(ButtonProveedor_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(ButtonProveedor_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGroup(jPanel39Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(TabbedPaneProveedor1)
+            .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel39Layout.createSequentialGroup()
+                    .addComponent(ButtonProveedor_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonProveedor_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TabbedPaneProveedor1))
             .addContainerGap())
     );
     jPanel39Layout.setVerticalGroup(
         jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel39Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(TabbedPaneProveedor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(TabbedPaneProveedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(ButtonProveedor_Agregar)
                 .addComponent(ButtonProveedor_Cancelar))
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap(35, Short.MAX_VALUE))
     );
 
     jPanel49.setBackground(new java.awt.Color(255, 255, 255));
@@ -3352,13 +3346,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     jPanel46.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
     jPanel46.setForeground(new java.awt.Color(255, 255, 255));
 
-    TabbedPaneProveedor5.setBackground(new java.awt.Color(255, 102, 51));
-    TabbedPaneProveedor5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-    TabbedPaneProveedor5.setForeground(new java.awt.Color(0, 0, 0));
-    TabbedPaneProveedor5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    TabbedPaneProveedor5.addChangeListener(new javax.swing.event.ChangeListener() {
+    TabbedPaneCompras1.setBackground(new java.awt.Color(255, 102, 51));
+    TabbedPaneCompras1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    TabbedPaneCompras1.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneCompras1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    TabbedPaneCompras1.addChangeListener(new javax.swing.event.ChangeListener() {
         public void stateChanged(javax.swing.event.ChangeEvent evt) {
-            TabbedPaneProveedor5StateChanged(evt);
+            TabbedPaneCompras1StateChanged(evt);
         }
     });
 
@@ -3510,159 +3504,58 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addContainerGap(140, Short.MAX_VALUE))
     );
 
-    TabbedPaneProveedor5.addTab("Compras", jPanel47);
+    TabbedPaneCompras1.addTab("Compras", jPanel47);
 
-    LabelProveedorReport_Nombre1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-    LabelProveedorReport_Nombre1.setForeground(new java.awt.Color(0, 0, 0));
-    LabelProveedorReport_Nombre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    LabelProveedorReport_Nombre1.setText("Nombre del Proveedor");
+    LabelCompra_Pagos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_Pagos.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Pagos.setText("Ingrese el Pago");
 
-    LabelProveedorReport_Pagos1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    LabelProveedorReport_Pagos1.setForeground(new java.awt.Color(70, 106, 124));
-    LabelProveedorReport_Pagos1.setText("Ingrese el Pago");
-
-    TextFieldProveedor_Pagos1.setBackground(new java.awt.Color(255, 255, 255));
-    TextFieldProveedor_Pagos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    TextFieldProveedor_Pagos1.addActionListener(new java.awt.event.ActionListener() {
+    TextFieldCompra_Pagos.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldCompra_Pagos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldCompra_Pagos.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            TextFieldProveedor_Pagos1ActionPerformed(evt);
+            TextFieldCompra_PagosActionPerformed(evt);
         }
     });
-    TextFieldProveedor_Pagos1.addKeyListener(new java.awt.event.KeyAdapter() {
+    TextFieldCompra_Pagos.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyReleased(java.awt.event.KeyEvent evt) {
-            TextFieldProveedor_Pagos1KeyReleased(evt);
+            TextFieldCompra_PagosKeyReleased(evt);
         }
         public void keyTyped(java.awt.event.KeyEvent evt) {
-            TextFieldProveedor_Pagos1KeyTyped(evt);
+            TextFieldCompra_PagosKeyTyped(evt);
         }
     });
 
-    TabbedPaneProveedor6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    TabbedPaneProveedor6.setForeground(new java.awt.Color(0, 0, 0));
-    TabbedPaneProveedor6.addChangeListener(new javax.swing.event.ChangeListener() {
-        public void stateChanged(javax.swing.event.ChangeEvent evt) {
-            TabbedPaneProveedor6StateChanged(evt);
-        }
-    });
+    LabelProveedorReport_Nombre3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedorReport_Nombre3.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedorReport_Nombre3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    LabelProveedorReport_Nombre3.setText("Reportes de pagos");
 
-    jPanel56.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Monto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_Monto.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Monto.setText("Monto a pagar");
 
-    jPanel57.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    LabelCompra_Montos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelCompra_Montos.setForeground(new java.awt.Color(70, 106, 124));
+    LabelCompra_Montos.setText("0.00");
 
-    LabelCliente_Nombre34.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-    LabelCliente_Nombre34.setForeground(new java.awt.Color(0, 0, 0));
-    LabelCliente_Nombre34.setText("Deuda");
+    CheckBoxCompra_Credito1.setText("Crédito");
 
-    LabelProveedor_CuotasMes1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    LabelProveedor_CuotasMes1.setForeground(new java.awt.Color(70, 106, 124));
-    LabelProveedor_CuotasMes1.setText("0.00");
+    LabelCompra_Deuda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_Deuda.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Deuda.setText("Deuda");
 
-    LabelCliente_Nombre35.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-    LabelCliente_Nombre35.setForeground(new java.awt.Color(0, 0, 0));
-    LabelCliente_Nombre35.setText("Pago");
+    LabelCompra_Deudas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelCompra_Deudas.setForeground(new java.awt.Color(70, 106, 124));
+    LabelCompra_Deudas.setText("0.00");
 
-    LabelProveedor_Pago1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    LabelProveedor_Pago1.setForeground(new java.awt.Color(70, 106, 124));
-    LabelProveedor_Pago1.setText("0.00");
+    LabelCompra_Proveedores.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_Proveedores.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Proveedores.setText("Proveedor");
 
-    jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-    jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-    jLabel16.setText("Ticket");
-
-    LabelProveedor_Ticket1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    LabelProveedor_Ticket1.setForeground(new java.awt.Color(70, 106, 124));
-    LabelProveedor_Ticket1.setText("0000000000");
-
-    LabelCliente_Nombre36.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-    LabelCliente_Nombre36.setForeground(new java.awt.Color(0, 0, 0));
-    LabelCliente_Nombre36.setText("Fecha de Pago");
-
-    LabelProveedor_FechaPago1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    LabelProveedor_FechaPago1.setForeground(new java.awt.Color(70, 106, 124));
-    LabelProveedor_FechaPago1.setText("--/--/--");
-
-    LabelCliente_Nombre37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-    LabelCliente_Nombre37.setForeground(new java.awt.Color(0, 0, 0));
-    LabelCliente_Nombre37.setText("Cuotas por mes");
-
-    LabelProveedor_Deuda1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    LabelProveedor_Deuda1.setForeground(new java.awt.Color(70, 106, 124));
-    LabelProveedor_Deuda1.setText("0.00");
-
-    javax.swing.GroupLayout jPanel57Layout = new javax.swing.GroupLayout(jPanel57);
-    jPanel57.setLayout(jPanel57Layout);
-    jPanel57Layout.setHorizontalGroup(
-        jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel57Layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel57Layout.createSequentialGroup()
-                    .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(LabelProveedor_Deuda1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelCliente_Nombre34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelCliente_Nombre36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel57Layout.createSequentialGroup()
-                            .addComponent(LabelProveedor_FechaPago1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE)))
-                    .addGap(90, 90, 90)
-                    .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(LabelProveedor_CuotasMes1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel57Layout.createSequentialGroup()
-                            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(LabelCliente_Nombre37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LabelCliente_Nombre35, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LabelProveedor_Pago1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(14, 14, 14)))
-                    .addGap(14, 14, 14))
-                .addGroup(jPanel57Layout.createSequentialGroup()
-                    .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabelProveedor_Ticket1))
-                    .addGap(0, 0, Short.MAX_VALUE))))
-    );
-    jPanel57Layout.setVerticalGroup(
-        jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel57Layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(LabelCliente_Nombre34)
-                .addComponent(LabelCliente_Nombre35))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(LabelProveedor_Pago1)
-                .addComponent(LabelProveedor_Deuda1))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(LabelCliente_Nombre36)
-                .addComponent(LabelCliente_Nombre37))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(LabelProveedor_FechaPago1)
-                .addComponent(LabelProveedor_CuotasMes1))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel16)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(LabelProveedor_Ticket1)
-            .addContainerGap(46, Short.MAX_VALUE))
-    );
-
-    javax.swing.GroupLayout jPanel56Layout = new javax.swing.GroupLayout(jPanel56);
-    jPanel56.setLayout(jPanel56Layout);
-    jPanel56Layout.setHorizontalGroup(
-        jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel56Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jPanel57, javax.swing.GroupLayout.PREFERRED_SIZE, 361, Short.MAX_VALUE)
-            .addContainerGap())
-    );
-    jPanel56Layout.setVerticalGroup(
-        jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel56Layout.createSequentialGroup()
-            .addComponent(jPanel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addContainerGap())
-    );
-
-    TabbedPaneProveedor6.addTab("Pagos de cuotas", jPanel56);
+    LabelCompra_Proveedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelCompra_Proveedor.setForeground(new java.awt.Color(70, 106, 124));
+    LabelCompra_Proveedor.setText("----/----");
 
     javax.swing.GroupLayout jPanel55Layout = new javax.swing.GroupLayout(jPanel55);
     jPanel55.setLayout(jPanel55Layout);
@@ -3670,31 +3563,49 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel55Layout.createSequentialGroup()
             .addContainerGap()
-            .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(TabbedPaneProveedor6, javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(LabelProveedorReport_Nombre1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel55Layout.createSequentialGroup()
-                    .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(LabelProveedorReport_Pagos1)
-                        .addComponent(TextFieldProveedor_Pagos1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(LabelProveedorReport_Nombre3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                .addGroup(jPanel55Layout.createSequentialGroup()
+                    .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(LabelCompra_Proveedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCompra_Montos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCompra_Monto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(CheckBoxCompra_Credito1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelCompra_Deudas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LabelCompra_Deuda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(LabelCompra_Proveedores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(TextFieldCompra_Pagos, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(LabelCompra_Pagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addContainerGap())
     );
     jPanel55Layout.setVerticalGroup(
         jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel55Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(LabelProveedorReport_Nombre1)
+            .addComponent(LabelProveedorReport_Nombre3)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(TabbedPaneProveedor6)
-            .addGap(60, 60, 60)
-            .addComponent(LabelProveedorReport_Pagos1)
+            .addComponent(LabelCompra_Monto)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(TextFieldProveedor_Pagos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(12, 12, 12))
+            .addComponent(LabelCompra_Montos)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelCompra_Pagos)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TextFieldCompra_Pagos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(CheckBoxCompra_Credito1)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelCompra_Deuda)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelCompra_Deudas)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelCompra_Proveedores)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelCompra_Proveedor)
+            .addContainerGap(144, Short.MAX_VALUE))
     );
 
-    TabbedPaneProveedor5.addTab("Pagos", jPanel55);
+    TabbedPaneCompras1.addTab("Pagos", jPanel55);
 
     ButtonCompra_Agregar.setBackground(new java.awt.Color(255, 102, 51));
     ButtonCompra_Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar.png"))); // NOI18N
@@ -3723,21 +3634,20 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     jPanel46Layout.setHorizontalGroup(
         jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel46Layout.createSequentialGroup()
-            .addGap(103, 103, 103)
-            .addComponent(ButtonCompra_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(ButtonCompra_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGroup(jPanel46Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(TabbedPaneProveedor5)
+            .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(TabbedPaneCompras1)
+                .addGroup(jPanel46Layout.createSequentialGroup()
+                    .addComponent(ButtonCompra_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonCompra_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap())
     );
     jPanel46Layout.setVerticalGroup(
         jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel46Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(TabbedPaneProveedor5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(TabbedPaneCompras1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(ButtonCompra_Agregar)
@@ -3748,37 +3658,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     jPanel60.setBackground(new java.awt.Color(255, 255, 255));
     jPanel60.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-    TabbedPaneProveedor7.setBackground(new java.awt.Color(255, 102, 51));
-    TabbedPaneProveedor7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-    TabbedPaneProveedor7.setForeground(new java.awt.Color(0, 0, 0));
-    TabbedPaneProveedor7.addChangeListener(new javax.swing.event.ChangeListener() {
+    TabbedPaneCompras2.setBackground(new java.awt.Color(255, 102, 51));
+    TabbedPaneCompras2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+    TabbedPaneCompras2.setForeground(new java.awt.Color(0, 0, 0));
+    TabbedPaneCompras2.addChangeListener(new javax.swing.event.ChangeListener() {
         public void stateChanged(javax.swing.event.ChangeEvent evt) {
-            TabbedPaneProveedor7StateChanged(evt);
+            TabbedPaneCompras2StateChanged(evt);
         }
     });
-
-    Table_Compras.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {},
-            {},
-            {},
-            {}
-        },
-        new String [] {
-
-        }
-    ));
-    Table_Compras.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            Table_ComprasMouseClicked(evt);
-        }
-    });
-    Table_Compras.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyReleased(java.awt.event.KeyEvent evt) {
-            Table_ComprasKeyReleased(evt);
-        }
-    });
-    jScrollPane10.setViewportView(Table_Compras);
 
     CheckBoxCompra_Creditos.setText("Créditos");
     CheckBoxCompra_Creditos.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -3823,6 +3710,38 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         }
     });
 
+    LabelCompra_Importes5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompra_Importes5.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompra_Importes5.setText("Importe total:");
+
+    LabelCompra_ImporteTotal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelCompra_ImporteTotal.setForeground(new java.awt.Color(70, 106, 124));
+    LabelCompra_ImporteTotal.setText("0.00");
+    LabelCompra_ImporteTotal.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+    Table_Compras.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {},
+            {},
+            {},
+            {}
+        },
+        new String [] {
+
+        }
+    ));
+    Table_Compras.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            Table_ComprasMouseClicked(evt);
+        }
+    });
+    Table_Compras.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            Table_ComprasKeyReleased(evt);
+        }
+    });
+    jScrollPane10.setViewportView(Table_Compras);
+
     javax.swing.GroupLayout jPanel61Layout = new javax.swing.GroupLayout(jPanel61);
     jPanel61.setLayout(jPanel61Layout);
     jPanel61Layout.setHorizontalGroup(
@@ -3830,12 +3749,16 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         .addGroup(jPanel61Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+                .addComponent(jScrollPane10)
                 .addGroup(jPanel61Layout.createSequentialGroup()
                     .addComponent(CheckBoxCompra_Creditos)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(CheckBoxCompra_Todos)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(108, 108, 108)
+                    .addComponent(LabelCompra_Importes5)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(LabelCompra_ImporteTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
                     .addComponent(CheckBoxCompra_Eliminar)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(ButtonCompra_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -3845,17 +3768,20 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel61Layout.createSequentialGroup()
             .addContainerGap()
-            .addGroup(jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(CheckBoxCompra_Creditos)
-                .addComponent(CheckBoxCompra_Todos)
-                .addComponent(CheckBoxCompra_Eliminar)
-                .addComponent(ButtonCompra_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(LabelCompra_ImporteTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CheckBoxCompra_Creditos)
+                    .addComponent(CheckBoxCompra_Todos)
+                    .addComponent(CheckBoxCompra_Eliminar)
+                    .addComponent(ButtonCompra_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                    .addComponent(LabelCompra_Importes5)))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(10, 10, 10))
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
     );
 
-    TabbedPaneProveedor7.addTab("Lista de compras", jPanel61);
+    TabbedPaneCompras2.addTab("Lista de compras", jPanel61);
 
     LabelCliente_Nombre38.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
     LabelCliente_Nombre38.setForeground(new java.awt.Color(0, 0, 0));
@@ -3928,7 +3854,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         .addGroup(jPanel60Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(TabbedPaneProveedor7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(TabbedPaneCompras2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGroup(jPanel60Layout.createSequentialGroup()
                     .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(LabelCliente_Nombre38)
@@ -3951,7 +3877,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel60Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(TabbedPaneProveedor7, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(TabbedPaneCompras2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(jPanel60Layout.createSequentialGroup()
@@ -3967,7 +3893,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                             .addComponent(ButtonProveedor_Paginas6, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addComponent(ButtonProveedor_Paginas7)))
                 .addComponent(ButtonProveedor_Paginas8))
-            .addContainerGap(40, Short.MAX_VALUE))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
@@ -4393,16 +4319,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     jPanel26Layout.setHorizontalGroup(
         jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel26Layout.createSequentialGroup()
+            .addContainerGap()
             .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(TabbedPaneUsuario1)
                 .addGroup(jPanel26Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(TabbedPaneUsuario1))
-                .addGroup(jPanel26Layout.createSequentialGroup()
-                    .addGap(103, 103, 103)
                     .addComponent(ButtonUsuarios_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(ButtonUsuarios_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonUsuarios_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap())
     );
     jPanel26Layout.setVerticalGroup(
@@ -5169,8 +5092,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE USUARIO"> 
-    private void ButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarioActionPerformed
-        // TODO add your handling code here:
+    private void SeccionUsuario() {
         TabbedPanePrincipal.setSelectedIndex(4);
 
         ArrayList<JLabel> label = new ArrayList();
@@ -5205,6 +5127,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
         usuarios = new UsuariosVM(objects, textField, label);
         EnabledButton(ButtonUsuario);
+    }
+    private void ButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUsuarioActionPerformed
+        SeccionUsuario();
     }//GEN-LAST:event_ButtonUsuarioActionPerformed
 
     private void TextField_BuscarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_BuscarUsuariosActionPerformed
@@ -5976,6 +5901,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         label.add(LabelCompra_Precio);
         label.add(LabelCompra_Importe);
         label.add(LabelCompra_BuscarProveedor);
+        //5
+        label.add(LabelCompra_Montos);
+        label.add(LabelCompra_Pagos);
+        label.add(LabelCompra_Deuda);
+        label.add(LabelCompra_Deudas);
+        label.add(LabelCompra_Proveedor);
+        label.add(LabelCompra_ImporteTotal);
 
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldCompra_Descripcion);
@@ -5983,6 +5915,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         textField.add(TextFieldCompra_Precio);
         textField.add(TextFieldCompra_BuscarProveedor);
         textField.add(TextField_Compras_Buscar);
+        textField.add(TextFieldCompra_Pagos);
 
         Object[] objetos = {
             CheckBoxCompra_Credito,
@@ -5990,7 +5923,8 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             CheckBoxCompra_Creditos,
             CheckBoxCompra_Todos,
             Table_Compras,
-        };
+            CheckBoxCompra_Eliminar,
+            CheckBoxCompra_Credito1,};
 
         compras = new ComprasVM(objetos, textField, label);
 
@@ -6017,6 +5951,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeccionCompras();
                 break;
             case 4:
+                SeccionUsuario();
+                break;
+            case 5:
                 SeccionConfiguracion();
                 break;
         }
@@ -6030,28 +5967,47 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField_Compras_BuscarKeyReleased
 
-    private void TextFieldProveedor_Pagos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_Pagos1ActionPerformed
+    private void TextFieldCompra_PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCompra_PagosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldProveedor_Pagos1ActionPerformed
+    }//GEN-LAST:event_TextFieldCompra_PagosActionPerformed
 
-    private void TextFieldProveedor_Pagos1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_Pagos1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldProveedor_Pagos1KeyReleased
+    private void TextFieldCompra_PagosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_PagosKeyReleased
+        if (TextFieldCompra_Pagos.getText().equals("")) {
+            LabelCompra_Pagos.setForeground(new Color(102, 102, 102));
+        } else {
+            LabelCompra_Pagos.setText("Ingrese el pago");
+            LabelCompra_Pagos.setForeground(new Color(102, 102, 102));
+        }
+        compras.importes();
+    }//GEN-LAST:event_TextFieldCompra_PagosKeyReleased
 
-    private void TextFieldProveedor_Pagos1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_Pagos1KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldProveedor_Pagos1KeyTyped
+    private void TextFieldCompra_PagosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_PagosKeyTyped
+        Objetos.eventos.numberDecimalKeyPress(evt, TextFieldCompra_Pagos);
+    }//GEN-LAST:event_TextFieldCompra_PagosKeyTyped
 
-    private void TabbedPaneProveedor6StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor6StateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TabbedPaneProveedor6StateChanged
-
-    private void TabbedPaneProveedor5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor5StateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TabbedPaneProveedor5StateChanged
+    private void TabbedPaneCompras1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCompras1StateChanged
+        switch (TabbedPaneCompras1.getSelectedIndex()) {
+            case 0:
+                if (compras != null) {
+                    compras._seccion1 = 0;
+                }
+                break;
+            case 1:
+                compras._seccion1 = 1;
+                compras.ResetPagos();
+                break;
+        }
+    }//GEN-LAST:event_TabbedPaneCompras1StateChanged
 
     private void ButtonCompra_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompra_AgregarActionPerformed
-        compras.GuardarCompras();
+        switch (TabbedPaneCompras1.getSelectedIndex()) {
+            case 0:
+                compras.GuardarCompras();
+                break;
+            case 1:
+                compras.efectuarCompras();
+                break;
+        }
     }//GEN-LAST:event_ButtonCompra_AgregarActionPerformed
 
     private void ButtonCompra_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompra_CancelarActionPerformed
@@ -6059,20 +6015,20 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_ButtonCompra_CancelarActionPerformed
 
     private void Table_ComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_ComprasMouseClicked
-        if(Table_Compras.getSelectedRows().length > 0){
+        if (Table_Compras.getSelectedRows().length > 0) {
             compras.getCompra();
         }
     }//GEN-LAST:event_Table_ComprasMouseClicked
 
     private void Table_ComprasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_ComprasKeyReleased
-        if(Table_Compras.getSelectedRows().length > 0){
+        if (Table_Compras.getSelectedRows().length > 0) {
             compras.getCompra();
         }
     }//GEN-LAST:event_Table_ComprasKeyReleased
 
-    private void TabbedPaneProveedor7StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneProveedor7StateChanged
+    private void TabbedPaneCompras2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCompras2StateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_TabbedPaneProveedor7StateChanged
+    }//GEN-LAST:event_TabbedPaneCompras2StateChanged
 
     private void SpinnerPaginas_Proveedores1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_Proveedores1StateChanged
         // TODO add your handling code here:
@@ -6170,6 +6126,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             CheckBoxCompra_Creditos.setForeground(Color.BLACK);
         }
         compras.importes();
+        compras.getImporteTotal();
     }//GEN-LAST:event_CheckBoxCompra_CreditosActionPerformed
 
     private void CheckBoxCompra_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCompra_TodosActionPerformed
@@ -6181,6 +6138,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             CheckBoxCompra_Todos.setForeground(Color.BLACK);
         }
         compras.importes();
+        compras.getImporteTotal();
     }//GEN-LAST:event_CheckBoxCompra_TodosActionPerformed
 
     private void ButtonCompra_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompra_EliminarActionPerformed
@@ -6266,6 +6224,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JCheckBox CheckBoxCliente_Credito;
     private javax.swing.JCheckBox CheckBoxCliente_ExtenderDia;
     private javax.swing.JCheckBox CheckBoxCompra_Credito;
+    private javax.swing.JCheckBox CheckBoxCompra_Credito1;
     private javax.swing.JCheckBox CheckBoxCompra_Creditos;
     private javax.swing.JCheckBox CheckBoxCompra_Eliminar;
     private javax.swing.JCheckBox CheckBoxCompra_Todos;
@@ -6325,10 +6284,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCliente_Nombre31;
     private javax.swing.JLabel LabelCliente_Nombre32;
     private javax.swing.JLabel LabelCliente_Nombre33;
-    private javax.swing.JLabel LabelCliente_Nombre34;
-    private javax.swing.JLabel LabelCliente_Nombre35;
-    private javax.swing.JLabel LabelCliente_Nombre36;
-    private javax.swing.JLabel LabelCliente_Nombre37;
     private javax.swing.JLabel LabelCliente_Nombre38;
     private javax.swing.JLabel LabelCliente_Nombre4;
     private javax.swing.JLabel LabelCliente_Nombre40;
@@ -6354,40 +6309,43 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCompra_BuscarProveedor;
     private javax.swing.JLabel LabelCompra_Cantidad;
     private javax.swing.JLabel LabelCompra_Descripcion;
+    private javax.swing.JLabel LabelCompra_Deuda;
+    private javax.swing.JLabel LabelCompra_Deudas;
     private javax.swing.JLabel LabelCompra_Importe;
+    private javax.swing.JLabel LabelCompra_ImporteTotal;
     private javax.swing.JLabel LabelCompra_Importes;
+    private javax.swing.JLabel LabelCompra_Importes5;
+    private javax.swing.JLabel LabelCompra_Monto;
+    private javax.swing.JLabel LabelCompra_Montos;
+    private javax.swing.JLabel LabelCompra_Pagos;
     private javax.swing.JLabel LabelCompra_Precio;
+    private javax.swing.JLabel LabelCompra_Proveedor;
+    private javax.swing.JLabel LabelCompra_Proveedores;
     private javax.swing.JLabel LabelConfig_Intereses;
     private javax.swing.JLabel LabelConfig_MsjIntereses;
     private javax.swing.JLabel LabelNombre_Perfil;
     private javax.swing.JLabel LabelProveedorReport_Nombre;
-    private javax.swing.JLabel LabelProveedorReport_Nombre1;
     private javax.swing.JLabel LabelProveedorReport_Nombre2;
+    private javax.swing.JLabel LabelProveedorReport_Nombre3;
     private javax.swing.JLabel LabelProveedorReport_Pagos;
-    private javax.swing.JLabel LabelProveedorReport_Pagos1;
     private javax.swing.JLabel LabelProveedor_Cambio;
     private javax.swing.JLabel LabelProveedor_CuotasMes;
-    private javax.swing.JLabel LabelProveedor_CuotasMes1;
     private javax.swing.JLabel LabelProveedor_Deuda;
-    private javax.swing.JLabel LabelProveedor_Deuda1;
     private javax.swing.JLabel LabelProveedor_DeudaPago;
     private javax.swing.JLabel LabelProveedor_Deudas;
     private javax.swing.JLabel LabelProveedor_Direccion;
     private javax.swing.JLabel LabelProveedor_Email;
     private javax.swing.JLabel LabelProveedor_FechaDeuda;
     private javax.swing.JLabel LabelProveedor_FechaPago;
-    private javax.swing.JLabel LabelProveedor_FechaPago1;
     private javax.swing.JLabel LabelProveedor_MesCuotas;
     private javax.swing.JLabel LabelProveedor_Paginas;
     private javax.swing.JLabel LabelProveedor_Paginas1;
     private javax.swing.JLabel LabelProveedor_Pago;
-    private javax.swing.JLabel LabelProveedor_Pago1;
     private javax.swing.JLabel LabelProveedor_PagosFecha;
     private javax.swing.JLabel LabelProveedor_Proveedor;
     private javax.swing.JLabel LabelProveedor_Saldo;
     private javax.swing.JLabel LabelProveedor_Telefono;
     private javax.swing.JLabel LabelProveedor_Ticket;
-    private javax.swing.JLabel LabelProveedor_Ticket1;
     private javax.swing.JLabel LabelProveedor_TicketDeuda;
     private javax.swing.JLabel LabelReport_Pagos;
     private javax.swing.JLabel LabelReporteDeuda_Nombre;
@@ -6421,14 +6379,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTabbedPane TabbedPaneCliente2;
     private javax.swing.JTabbedPane TabbedPaneCliente3;
     private javax.swing.JTabbedPane TabbedPaneCliente4;
+    private javax.swing.JTabbedPane TabbedPaneCompras1;
+    private javax.swing.JTabbedPane TabbedPaneCompras2;
     private javax.swing.JTabbedPane TabbedPanePrincipal;
     private javax.swing.JTabbedPane TabbedPaneProveedor1;
     private javax.swing.JTabbedPane TabbedPaneProveedor2;
     private javax.swing.JTabbedPane TabbedPaneProveedor3;
     private javax.swing.JTabbedPane TabbedPaneProveedor4;
-    private javax.swing.JTabbedPane TabbedPaneProveedor5;
-    private javax.swing.JTabbedPane TabbedPaneProveedor6;
-    private javax.swing.JTabbedPane TabbedPaneProveedor7;
     private javax.swing.JTabbedPane TabbedPaneUsuario1;
     private javax.swing.JTabbedPane TabbedPaneUsuario2;
     private javax.swing.JTable TableCliente_PagosCuotas;
@@ -6452,12 +6409,12 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField TextFieldCompra_BuscarProveedor;
     private javax.swing.JTextField TextFieldCompra_Cantidad;
     private javax.swing.JTextField TextFieldCompra_Descripcion;
+    private javax.swing.JTextField TextFieldCompra_Pagos;
     private javax.swing.JTextField TextFieldCompra_Precio;
     private javax.swing.JTextField TextFieldConfig_Intereses;
     private javax.swing.JTextField TextFieldProveedor_Direccion;
     private javax.swing.JTextField TextFieldProveedor_Email;
     private javax.swing.JTextField TextFieldProveedor_Pagos;
-    private javax.swing.JTextField TextFieldProveedor_Pagos1;
     private javax.swing.JTextField TextFieldProveedor_Proveedor;
     private javax.swing.JTextField TextFieldProveedor_Telefono;
     private javax.swing.JTextField TextFieldUsuario_Apellido;
@@ -6484,7 +6441,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -6547,8 +6503,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
     private javax.swing.JPanel jPanel55;
-    private javax.swing.JPanel jPanel56;
-    private javax.swing.JPanel jPanel57;
     private javax.swing.JPanel jPanel58;
     private javax.swing.JPanel jPanel59;
     private javax.swing.JPanel jPanel6;

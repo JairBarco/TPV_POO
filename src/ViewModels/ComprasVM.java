@@ -27,7 +27,7 @@ public class ComprasVM extends Consult {
     private List<JTextField> _textField;
     private List<JLabel> _label;
     private JComboBox _comboBoxProveedor;
-    private JCheckBox _checkBoxCredito;
+    private JCheckBox _checkBoxCredito, _checkBoxCredito1;
     private JCheckBox _checkBoxCreditos;
     private JCheckBox _checkBoxTodos;
     private JCheckBox _checkBoxEliminar;
@@ -37,7 +37,9 @@ public class ComprasVM extends Consult {
 
     private DefaultTableModel modelo1, modelo2, modelo3;
     private JTable _tableComprasTemporal;
-    private int _reg_por_pagina = 10, _num_pagina = 1;
+    public int _reg_por_pagina = 10;
+    public int _num_pagina = 1;
+    public int _seccion1, _seccion = 0;
 
     public ComprasVM(TUsuarios dataUsuario) {
         _dataUsuario = dataUsuario;
@@ -51,19 +53,51 @@ public class ComprasVM extends Consult {
         _checkBoxCreditos = (JCheckBox) objetos[2];
         _checkBoxTodos = (JCheckBox) objetos[3];
         _tableComprasTemporal = (JTable) objetos[4];
+        _checkBoxEliminar = (JCheckBox) objetos[5];
+        _checkBoxCredito1 = (JCheckBox) objetos[6];
         _format = new FormatDecimal();
         _money = ConfigurationVM.Money;
         Reset();
+        ResetPagos();
     }
 
-    private Double _importe, _precio;
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE COMPRAS">
+    private Double _importe, _precio, _pago, _deuda, _cambio;
     private int _cantidad, _idProveedor;
 
     public void importes() {
-        _cantidad = _textField.get(1).getText().equals("") ? 0 : Integer.valueOf(_textField.get(1).getText());
-        _precio = _textField.get(2).getText().equals("") ? 0 : _format.reconstruir(_textField.get(2).getText());
-        _importe = _precio * _cantidad;
-        _label.get(3).setText(_money + _format.decimal(_importe));
+        switch (_seccion1) {
+            case 0:
+                _cantidad = _textField.get(1).getText().equals("") ? 0 : Integer.valueOf(_textField.get(1).getText());
+                _precio = _textField.get(2).getText().equals("") ? 0 : _format.reconstruir(_textField.get(2).getText());
+                _importe = _precio * _cantidad;
+                _label.get(3).setText(_money + _format.decimal(_importe));
+                break;
+            case 1:
+                if (_checkBoxCreditos.isSelected() || _checkBoxTodos.isSelected()) {
+                    _label.get(6).setText("Deseleccione las casillas en la lista de productos");
+                    _label.get(6).setForeground(Color.RED);
+                } else {
+                    _label.get(6).setText("Ingrese el pago");
+                    _label.get(6).setForeground(new Color(0, 153, 51));
+                    _pago = _textField.get(5).getText().equals("") ? 0.0 : _format.reconstruir(_textField.get(5).getText());
+                    _deuda = _importeDeuda - _pago;
+                    if (_importeDeuda < _pago) {
+                        _label.get(7).setText("Se ha sobrepasado del pago");
+                        _label.get(7).setForeground(Color.RED);
+                        _cambio = Math.abs(_deuda);
+                        _label.get(8).setForeground(Color.RED);
+                        _label.get(8).setText(_money + _format.decimal(_cambio));
+                    } else {
+                        _cambio = 0.0;
+                        _label.get(7).setText("Deuda");
+                        _label.get(7).setForeground(new Color(102, 102, 102));
+                        _label.get(8).setForeground(new Color(102, 102, 102));
+                        _label.get(8).setText(_money + _format.decimal(_deuda));
+                    }
+                }
+                break;
+        }
     }
 
     public void GuardarCompras() {
@@ -235,7 +269,7 @@ public class ComprasVM extends Consult {
         _textField.get(0).setText((String) modelo1.getValueAt(filas, 1));
         var cantidad = (Integer) modelo1.getValueAt(filas, 2);
         _textField.get(1).setText(cantidad.toString());
-        var precio =  modelo1.getValueAt(filas, 3);
+        var precio = modelo1.getValueAt(filas, 3);
         _textField.get(2).setText(precio.toString());
         _checkBoxCredito.setSelected((Boolean) modelo1.getValueAt(filas, 5));
         var idProveedor = (Integer) modelo1.getValueAt(filas, 7);
@@ -247,23 +281,23 @@ public class ComprasVM extends Consult {
         }
         importes();
     }
-    
-    public void eliminar(){
+
+    public void eliminar() {
         final QueryRunner qr = new QueryRunner(true);
         var listEliminar = new ArrayList<Integer>();
         var data = _tableComprasTemporal.getModel();
         int cols = data.getColumnCount();
         int fils = data.getRowCount();
-        if(0 < fils){
-            for(int i = 0; i < fils; i++){
-                if((boolean) data.getValueAt(i,6)){
-                    listEliminar.add((Integer) data.getValueAt(i,0));
+        if (0 < fils) {
+            for (int i = 0; i < fils; i++) {
+                if ((boolean) data.getValueAt(i, 6)) {
+                    listEliminar.add((Integer) data.getValueAt(i, 0));
                 }
             }
-            if(0 < listEliminar.size()){
-                if(JOptionPane.YES_NO_OPTION == JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar " + listEliminar.size() + " registro/s?", "Eliminar compras",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)){
-                    
+            if (0 < listEliminar.size()) {
+                if (JOptionPane.YES_NO_OPTION == JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar " + listEliminar.size() + " registro/s?", "Eliminar compras",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)) {
+
                 }
             }
         }
@@ -296,6 +330,78 @@ public class ComprasVM extends Consult {
         _checkBoxCredito.setSelected(false);
         _checkBoxCredito.setForeground(new Color(0, 0, 0));
         SearchProveedor("");
-        SearchCompras("", false);
+        SearchCompras(_textField.get(4).getText(), _checkBoxEliminar.isSelected());
     }
+
+    private Double _importeDeuda;
+    private TProveedor dataProveedor;
+
+    public void getImporteTotal() {
+        _importeDeuda = 0.0;
+        List<TCompras_temporal> list;
+        if (_checkBoxTodos.isSelected()) {
+            list = Compras_temporal().stream().filter(p -> p.getIdUsuario() == _dataUsuario.getIdUsuario()).collect(Collectors.toList());
+        } else {
+            list = Compras_temporal().stream().filter(p -> p.getCredito().equals(_checkBoxCreditos.isSelected()) && p.getIdUsuario() == _dataUsuario.getIdUsuario()).collect(Collectors.toList());
+        }
+        if (0 < list.size()) {
+            list.forEach(item -> {
+                _importeDeuda += item.getImporte();
+            });
+            switch (_seccion1) {
+                case 0:
+                    _label.get(10).setText(_money + _format.decimal(_importeDeuda));
+                    break;
+                case 1:
+                    _label.get(5).setText(_money + _format.decimal(_importeDeuda));
+                    _label.get(8).setText(_money + _format.decimal(_importeDeuda));
+                    dataProveedor = proveedores().stream().filter(p -> p.getID() == list.get(0).getIdProveedor()).collect(Collectors.toList()).get(0);
+                    _label.get(9).setText(dataProveedor.getProveedor());
+                    break;
+            }
+        }
+    }
+
+    //</editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="CODIGO DE PAGOS">
+    public void efectuarCompras() {
+        var list = Compras_temporal().stream().filter(p -> p.getIdUsuario() == _dataUsuario.getIdUsuario()).collect(Collectors.toList());
+        if (list.size() > 0) {
+            if (_textField.get(5).getText().equals("")) {
+                _label.get(6).setText("Ingrese el pago");
+                _label.get(6).setForeground(Color.RED);
+                _textField.get(5).requestFocus();
+            } else {
+                try {
+                    if (_importeDeuda > _pago) {
+                        _label.get(6).setText("Complete el pago o solicite crédito");
+                        _label.get(6).setForeground(Color.RED);
+                        if(_checkBoxCredito1.isSelected()){
+                            guardar();
+                        }
+                    } else {
+                        guardar();
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Escoja los productos", "Producto", JOptionPane.QUESTION_MESSAGE);
+        }
+    }
+    
+    public void guardar() throws SQLException {
+        
+    }
+
+    public void ResetPagos() {
+        _textField.get(5).setText("");
+        _checkBoxCredito1.setSelected(false);
+        SearchCompras(_textField.get(4).getText(), _checkBoxEliminar.isSelected());
+        getImporteTotal();
+    }
+
+    // </editor-fold>
 }
