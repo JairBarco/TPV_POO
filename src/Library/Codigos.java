@@ -9,7 +9,7 @@ public class Codigos {
     private String tickets = null;
 
     public String codesTickets(String ticket) {
-        if (ticket.equals("9999999999")) {
+        if (ticket == null || ticket.equals("9999999999")) {
             tickets = "0000000001";
         } else {
             int num = Integer.valueOf(ticket);

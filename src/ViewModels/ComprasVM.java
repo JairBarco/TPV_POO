@@ -1,9 +1,8 @@
 package ViewModels;
 
 import Conexion.Consult;
-import Library.FormatDecimal;
-import Library.Objetos;
-import Library.UploadImage;
+import Library.*;
+import Models.Compras.TCompras;
 import Models.Compras.TCompras_temporal;
 import Models.Proveedor.TProveedor;
 import Models.Usuario.TUsuarios;
@@ -40,6 +39,8 @@ public class ComprasVM extends Consult {
     public int _reg_por_pagina = 10;
     public int _num_pagina = 1;
     public int _seccion1, _seccion = 0;
+    private Calendario cal;
+    private Codigos _codigos;
 
     public ComprasVM(TUsuarios dataUsuario) {
         _dataUsuario = dataUsuario;
@@ -57,6 +58,7 @@ public class ComprasVM extends Consult {
         _checkBoxCredito1 = (JCheckBox) objetos[6];
         _format = new FormatDecimal();
         _money = ConfigurationVM.Money;
+        _codigos = new Codigos();
         Reset();
         ResetPagos();
     }
@@ -83,11 +85,12 @@ public class ComprasVM extends Consult {
                     _pago = _textField.get(5).getText().equals("") ? 0.0 : _format.reconstruir(_textField.get(5).getText());
                     _deuda = _importeDeuda - _pago;
                     if (_importeDeuda < _pago) {
-                        _label.get(7).setText("Se ha sobrepasado del pago");
+                        _label.get(7).setText("Cambio del proveedor al sistema");
                         _label.get(7).setForeground(Color.RED);
                         _cambio = Math.abs(_deuda);
                         _label.get(8).setForeground(Color.RED);
                         _label.get(8).setText(_money + _format.decimal(_cambio));
+                        _deuda = 0.0;
                     } else {
                         _cambio = 0.0;
                         _label.get(7).setText("Deuda");
@@ -376,11 +379,11 @@ public class ComprasVM extends Consult {
                     if (_importeDeuda > _pago) {
                         _label.get(6).setText("Complete el pago o solicite crédito");
                         _label.get(6).setForeground(Color.RED);
-                        if(_checkBoxCredito1.isSelected()){
-                            guardar();
+                        if (_checkBoxCredito1.isSelected()) {
+                            guardar(list);
                         }
                     } else {
-                        guardar();
+                        guardar(list);
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -391,9 +394,136 @@ public class ComprasVM extends Consult {
             JOptionPane.showMessageDialog(null, "Escoja los productos", "Producto", JOptionPane.QUESTION_MESSAGE);
         }
     }
-    
-    public void guardar() throws SQLException {
-        
+
+    private Double credito = 0.0, efectivo = 0.0;
+    private int cantidad = 0;
+
+    public void guardar(List<TCompras_temporal> list) throws SQLException {
+        try {
+            cal = new Calendario();
+            final QueryRunner qr = new QueryRunner(true);
+            var dateNow = new Date();
+
+            var dataReport = ReporteProveedor().stream().filter(p -> p.getIdProveedor() == dataProveedor.getID()).reduce((first, second) -> second).get();
+            var nameUser = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
+            var codes = Compras().stream().filter(p -> p.getIdProveedor() == dataProveedor.getID() && cal.getYear(p.getFecha()) == cal.getYear(dateNow)).reduce((first, second) -> second).orElse(new TCompras());
+            var code = codes != null ? codes.getTicket() : null;
+            var ticket = _codigos.codesTickets(code);
+            list.forEach(item -> {
+                try {
+                    var sqlCompra = "INSERT INTO tcompras(Descripcion,Cantidad, Precio,Importe,IdProveedor,IdUsuario,Credito,Fecha,Ticket) VALUES (?,?,?,?,?,?,?,?,?)";
+                    Object[] dataCompra = {
+                        item.getDescripcion(),
+                        item.getCantidad(),
+                        item.getPrecio(),
+                        item.getImporte(),
+                        item.getIdProveedor(),
+                        item.getIdUsuario(),
+                        item.getCredito(),
+                        dateNow,
+                        ticket
+                    };
+                    qr.insert(getConn(), sqlCompra, new ColumnListHandler(), dataCompra);
+                    var data = Compras().stream().filter(p -> p.getIdProveedor() == dataProveedor.getID() && cal.getYear(p.getFecha()) == cal.getYear(dateNow)).reduce((first, second) -> second).orElse(new TCompras());
+                    String sqlProducto = "INSERT INTO ttemporal_productos (IdProducto,IdUsuario) VALUES(?,?)";
+                    Object[] dataProducto = {
+                        data.getIdCompra(),
+                        item.getIdUsuario()
+                    };
+
+                    qr.insert(getConn(), sqlProducto, new ColumnListHandler(), dataProducto);
+                    cantidad += item.getCantidad();
+                    if (item.getCredito()) {
+                        credito += item.getImporte();
+                    } else {
+                        efectivo += item.getImporte();
+                    }
+                } catch (Exception e) {
+
+                }
+            });
+            var deuda = dataReport.getDeudaActual() + _deuda + credito;
+            var reportesCompra = "INSERT INTO treportes_compras (Ticket,Productos,Efectivo,Credito,Pago,Deuda,Cambio,Fecha,IdProveedor) VALUES (?,?,?,?,?,?,?,?,?)";
+            Object[] dataCompra = {
+                ticket,
+                cantidad,
+                efectivo,
+                credito,
+                _pago,
+                deuda,
+                _cambio,
+                dateNow,
+                dataProveedor.getID()
+            };
+            qr.insert(getConn(), reportesCompra, new ColumnListHandler(), dataCompra);
+
+            var reporte = "INSERT INTO treportes_proveedor SET DeudaActual = ?, Deuda = ?,FechaDeuda = ?,Ticket = ? WHERE IdReporte =" + dataReport.getIdReporte();
+            Object[] data = {
+                deuda,
+                deuda,
+                dateNow,
+                ticket
+            };
+            qr.update(getConn(), reporte, data);
+
+            Ticket Ticket1 = new Ticket();
+            Ticket1.TextoCentro("Sistema de ventas");
+            Ticket1.TextoIzquierda("Dirección");
+            Ticket1.TextoIzquierda("Monterrey, Nuevo León");
+            Ticket1.TextoIzquierda("Tel. 5522001025");
+            Ticket1.LineasGuion();
+            Ticket1.TextoCentro("Factura");
+            Ticket1.LineasGuion();
+            Ticket1.TextoIzquierda("Factura: " + ticket);
+            Ticket1.TextoIzquierda("Cliente: " + dataProveedor.getProveedor());
+            Ticket1.TextoIzquierda("Fecha: " + dateNow);
+            Ticket1.TextoIzquierda("Usuario: " + nameUser);
+            if (!efectivo.equals(0)) {
+                Ticket1.LineasGuion();
+                Ticket1.TextoCentro("Productos de contado");
+                Ticket1.AgregarArticulo("Producto", "Cantidad", "Importe");
+                list.stream().filter(p -> p.getCredito().equals(false)).collect(Collectors.toList()).forEach(item -> {
+                    var Amount = _format.decimal(item.getImporte());
+                    Ticket1.AgregarArticulo(item.getDescripcion(), String.valueOf(item.getCantidad()), _money + Amount);
+                });
+                var formatPago = _format.decimal(_pago);
+                Ticket1.LineasGuion();
+                Ticket1.TextoCentro("Deuda y pago generado");
+                Ticket1.AgregarTotales("Total a pagar", efectivo, _money);
+                Ticket1.TextoExtremo("Pago: ", _money + formatPago);
+                if (_checkBoxCredito1.isSelected()) {
+                    Ticket1.TextoExtremo("Importe faltante", _money + _format.decimal(_deuda));
+                } else {
+                    if (_pago >= efectivo) {
+                        Ticket1.TextoExtremo("Cambio: ", _money + _format.decimal(_cambio));
+                    }
+                }
+            }
+            if (!credito.equals(0)) {
+                Ticket1.LineasGuion();
+                Ticket1.TextoCentro("Productos a crédito");
+                Ticket1.AgregarArticulo("Producto", "Cantidad", "Importe");
+                list.stream().filter(p -> p.getCredito().equals(true)).collect(Collectors.toList()).forEach(item -> {
+                    var Amount = _format.decimal(item.getImporte());
+                    Ticket1.AgregarArticulo(item.getDescripcion(), String.valueOf(item.getCantidad()), _money + Amount);
+                });
+                Ticket1.LineasGuion();
+                Ticket1.TextoCentro("Deuda generada");
+                Ticket1.AgregarTotales("Total a pagar", credito, _money);
+            }
+            if(!_deuda.equals(0) || !credito.equals(0)){
+                Ticket1.LineasGuion();
+                Ticket1.TextoCentro("Productos a crédito");
+                Ticket1.AgregarArticulo("Producto", "Cantidad", "Importe");
+            }
+            Ticket1.TextoCentro("TALLER POO");
+            Ticket1.print();
+            getConn().commit();
+            ResetPagos();
+        } catch (Exception e) {
+            getConn().rollback();
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     public void ResetPagos() {

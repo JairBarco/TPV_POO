@@ -69,19 +69,28 @@ public class Calendario {
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(c.getTime());
     }
-    
-    public String addDay(Date date, int day){
+
+    public String addDay(Date date, int day) {
         c.setTime(date);
         c.add(Calendar.DAY_OF_WEEK, day);
         dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(c.getTime());
     }
-    
-    public String getFecha(Calendar date){
+
+    public String getFecha(Calendar date) {
         var dia = date.get(Calendar.DAY_OF_MONTH);
         var mes = 1 + date.get(Calendar.MONTH);
         var year = date.get(Calendar.YEAR);
         var value = String.valueOf(year + "/" + mes + "/" + dia);
         return value;
+    }
+
+    public int getYear(Date date) {
+        if (date == null) {
+            return 0;
+        } else {
+            c.setTime(date);
+            return c.get(Calendar.YEAR);
+        }
     }
 }

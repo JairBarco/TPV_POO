@@ -2,11 +2,10 @@ package Conexion;
 
 import Models.*;
 import Models.Cliente.*;
-import Models.Compras.TCompras_temporal;
+import Models.Compras.*;
 import Models.Ordenador.TOrdenadores;
 import Models.Proveedor.*;
-import Models.Usuario.TRoles;
-import Models.Usuario.TUsuarios;
+import Models.Usuario.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -240,4 +239,17 @@ public class Consult extends Conexion {
         }
        return productos;
     }
+    
+    public List<TCompras> Compras(){
+      List<TCompras> compras = new ArrayList();  
+       try {
+            compras = (List<TCompras>) QR.query(getConn(), "SELECT * FROM tcompras",
+                    new BeanListHandler(TCompras.class));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+       return compras;
+    }
+    
+    
 }
