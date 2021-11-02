@@ -26,7 +26,7 @@ public class ProveedorVM extends Consult {
     private DefaultTableModel modelo1, modelo2, modelo3;
     private JSpinner _spinnerPaginas;
     private Paginador<TProveedor> _paginadorProveedor, _paginadorReportes;
-    private Paginador<TPagos_proveedor> _paginadorPagos; 
+    private Paginador<TPagos_proveedor> _paginadorPagos;
     private FormatDecimal _format;
     private Codigos _codigos;
     private int _reg_por_pagina = 10;
@@ -44,6 +44,8 @@ public class ProveedorVM extends Consult {
     private DateChooserCombo _dateChooser1, _dateChooser2;
     private Ticket Ticket1 = new Ticket();
 
+    private JRadioButton _radioButton1, _radioButton2;
+
     public ProveedorVM(TUsuarios dataUsuario) {
         _dataUsuario = dataUsuario;
         formateador = new SimpleDateFormat("dd/MM/yyyy");
@@ -58,12 +60,15 @@ public class ProveedorVM extends Consult {
         _dateChooser1 = (DateChooserCombo) objects[3];
         _dateChooser2 = (DateChooserCombo) objects[4];
         _tablePagosCuotas = (JTable) objects[5];
+        _radioButton1 = (JRadioButton) objects[6];
+        _radioButton2 = (JRadioButton) objects[7];
         _money = ConfigurationVM.Money;
         formateador = new SimpleDateFormat("dd/MM/yyyy");
         _format = new FormatDecimal();
         _codigos = new Codigos();
         Reset();
         ResetReport();
+        ResetFormaPago();
     }
 
     //<editor-fold defaultstate="collapsed" desc="CÓDIGO DE REGISTRAR PROVEEDOR">
@@ -265,6 +270,7 @@ public class ProveedorVM extends Consult {
 
     //<editor-fold defaultstate="collapsed" desc="CÓDIGO DE PAGOS Y REPORTES">
     List<TProveedor> reporteFilter;
+    private String _formaPago;
 
     public void SearchReportes(String valor) {
         String[] titulos = {"Id", "Proveedor", "Email", "Dirección", "Telefono"};
@@ -319,6 +325,18 @@ public class ProveedorVM extends Consult {
             _label.get(11).setText(_money + _format.decimal((Double) proveedor.getMensual()));
             Pagos();
             historialPagos(false);
+
+            //FORMA DE PAGO
+            _formaPago = proveedor.getFormaPago();
+            _mensual = proveedor.getMensual();
+            
+            if(_formaPago == null || _mensual.equals(0.0)){
+                _label.get(24).setText("Establezca una forma de pago");
+            } else {
+                
+            }
+            _label.get(21).setText(_money + _format.decimal(_deudaActual));
+            getCuotas();
         }
     }
 
@@ -585,11 +603,11 @@ public class ProveedorVM extends Consult {
         if (fechaPago != null) {
             _label.get(19).setText(fechaPago.toString());
         }
-        
+
         var cambio = (String) modelo3.getValueAt(filas, 4);
         _label.get(20).setText(cambio);
         var usuario = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
-        
+
         Ticket1.TextoCentro("Sistema de Ventas");
         Ticket1.TextoIzquierda("Dirección");
         Ticket1.TextoIzquierda("Monterrey");
@@ -609,9 +627,9 @@ public class ProveedorVM extends Consult {
         Ticket1.TextoExtremo("Deuda Actual: ", saldo);
         Ticket1.TextoCentro("TPOO");
     }
-    
-    public void TicketDeuda(){
-        switch(_seccion){
+
+    public void TicketDeuda() {
+        switch (_seccion) {
             case 1:
                 if (_idHistorial == 0) {
                     JOptionPane.showMessageDialog(null, "Seleccione un historial de pago");
@@ -649,6 +667,64 @@ public class ProveedorVM extends Consult {
         if (!reporteFilter.isEmpty()) {
             _paginadorReportes = new Paginador<>(reporteFilter, _label.get(5), _reg_por_pagina);
         }
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="CÓDIGO FORMA DE PAGO">
+    private double cuota;
+    private boolean ejecutar;
+    
+    public void getCuotas() {
+        if (_idReport == 0) {
+            _label.get(22).setText("Seleccione un proveedor");
+            _label.get(22).setForeground(Color.RED);
+            ejecutar = false;
+        } else {
+            if (_deudaActual > 0) {
+                var cuotas = 0;
+                if (!_textField.get(5).getText().equals("")) {
+                    cuota = _format.reconstruir(_textField.get(5).getText());
+                    var valor1 = Math.ceil(_deudaActual / cuota);
+                    cuotas = (int) Math.ceil(valor1);
+                    _label.get(23).setText(String.valueOf(cuotas));
+                    ejecutar = true;
+                } else {
+                    _label.get(23).setText("0");
+                    ejecutar = false;
+                }
+                _label.get(22).setText("Cuotas");
+            } else {
+                _label.get(22).setText("No tiene deuda");
+                ejecutar = false;
+            }
+        }
+    }
+    
+    public void setCuotas(){
+        if(ejecutar){
+            try{
+                var qr = new QueryRunner(true);
+                var forma = _radioButton2.isSelected() ? "M" : "Q";
+                String query = "UPDATE treportes_proveedor SET Mensual = ?, FormaPago = ? WHERE IdReporte = " + _idReport;
+                Object[] data = {
+                    cuota,
+                    forma
+                };
+                qr.update(getConn(), query, data);
+            } catch(Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+            ResetFormaPago();
+        } else {
+            
+        }
+    }
+
+    public void ResetFormaPago() {
+        _radioButton1.setSelected(true);
+        _radioButton2.setSelected(false);
+        _textField.get(5).setText("");
+        getCuotas();
     }
     //</editor-fold>
 
@@ -692,7 +768,7 @@ public class ProveedorVM extends Consult {
                                     _num_pagina = _paginadorReportes.anterior();
                                 }
                                 break;
-                                case 1:
+                            case 1:
                                 if (!listPagos.isEmpty()) {
                                     _num_pagina = _paginadorPagos.anterior();
                                 }
@@ -715,7 +791,7 @@ public class ProveedorVM extends Consult {
                                     _num_pagina = _paginadorReportes.siguiente();
                                 }
                                 break;
-                                case 1:
+                            case 1:
                                 if (!listPagos.isEmpty()) {
                                     _num_pagina = _paginadorPagos.siguiente();
                                 }
@@ -738,7 +814,7 @@ public class ProveedorVM extends Consult {
                                     _num_pagina = _paginadorReportes.ultimo();
                                 }
                                 break;
-                                case 1:
+                            case 1:
                                 if (!listPagos.isEmpty()) {
                                     _num_pagina = _paginadorPagos.ultimo();
                                 }

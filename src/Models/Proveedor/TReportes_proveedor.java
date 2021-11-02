@@ -13,6 +13,7 @@ public class TReportes_proveedor extends TProveedor{
     private Date FechaPago;
     private String Ticket;
     private int IdProveedor;
+    private String FormaPago;
 
     public TReportes_proveedor() {
     }
@@ -95,5 +96,13 @@ public class TReportes_proveedor extends TProveedor{
 
     public void setIdProveedor(int IdProveedor) {
         this.IdProveedor = IdProveedor;
+    }
+
+    public String getFormaPago() {
+        return FormaPago;
+    }
+
+    public void setFormaPago(String FormaPago) {
+        this.FormaPago = FormaPago;
     }
 }

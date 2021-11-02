@@ -5,6 +5,7 @@ import Library.*;
 import Models.Compras.TCompras;
 import Models.Compras.TCompras_temporal;
 import Models.Proveedor.TProveedor;
+import Models.Proveedor.TReportes_proveedor;
 import Models.Usuario.TUsuarios;
 import java.awt.Color;
 import java.util.List;
@@ -41,6 +42,7 @@ public class ComprasVM extends Consult {
     public int _seccion1, _seccion = 0;
     private Calendario cal;
     private Codigos _codigos;
+    private JSpinner _spinnerPaginas;
 
     public ComprasVM(TUsuarios dataUsuario) {
         _dataUsuario = dataUsuario;
@@ -56,6 +58,7 @@ public class ComprasVM extends Consult {
         _tableComprasTemporal = (JTable) objetos[4];
         _checkBoxEliminar = (JCheckBox) objetos[5];
         _checkBoxCredito1 = (JCheckBox) objetos[6];
+        _spinnerPaginas = (JSpinner) objetos[7];
         _format = new FormatDecimal();
         _money = ConfigurationVM.Money;
         _codigos = new Codigos();
@@ -76,28 +79,23 @@ public class ComprasVM extends Consult {
                 _label.get(3).setText(_money + _format.decimal(_importe));
                 break;
             case 1:
-                if (_checkBoxCreditos.isSelected() || _checkBoxTodos.isSelected()) {
-                    _label.get(6).setText("Deseleccione las casillas en la lista de productos");
-                    _label.get(6).setForeground(Color.RED);
+                _label.get(6).setText("Ingrese el pago");
+                _label.get(6).setForeground(new Color(0, 153, 51));
+                _pago = _textField.get(5).getText().equals("") ? 0.0 : _format.reconstruir(_textField.get(5).getText());
+                _deuda = _importeDeuda - _pago;
+                if (_importeDeuda < _pago) {
+                    _label.get(7).setText("Cambio del proveedor al sistema");
+                    _label.get(7).setForeground(Color.RED);
+                    _cambio = Math.abs(_deuda);
+                    _label.get(8).setForeground(Color.RED);
+                    _label.get(8).setText(_money + _format.decimal(_cambio));
+                    _deuda = 0.0;
                 } else {
-                    _label.get(6).setText("Ingrese el pago");
-                    _label.get(6).setForeground(new Color(0, 153, 51));
-                    _pago = _textField.get(5).getText().equals("") ? 0.0 : _format.reconstruir(_textField.get(5).getText());
-                    _deuda = _importeDeuda - _pago;
-                    if (_importeDeuda < _pago) {
-                        _label.get(7).setText("Cambio del proveedor al sistema");
-                        _label.get(7).setForeground(Color.RED);
-                        _cambio = Math.abs(_deuda);
-                        _label.get(8).setForeground(Color.RED);
-                        _label.get(8).setText(_money + _format.decimal(_cambio));
-                        _deuda = 0.0;
-                    } else {
-                        _cambio = 0.0;
-                        _label.get(7).setText("Deuda");
-                        _label.get(7).setForeground(new Color(102, 102, 102));
-                        _label.get(8).setForeground(new Color(102, 102, 102));
-                        _label.get(8).setText(_money + _format.decimal(_deuda));
-                    }
+                    _cambio = 0.0;
+                    _label.get(7).setText("Deuda");
+                    _label.get(7).setForeground(new Color(102, 102, 102));
+                    _label.get(8).setForeground(new Color(102, 102, 102));
+                    _label.get(8).setText(_money + _format.decimal(_deuda));
                 }
                 break;
         }
@@ -207,9 +205,11 @@ public class ComprasVM extends Consult {
         _comboBoxProveedor.setModel(model);
     }
 
+    private Integer cantEfectivo = 0;
     public List<TCompras_temporal> listTemporalCompras;
 
     public void SearchCompras(String campo, boolean eliminar) {
+        cantEfectivo = 0;
         String[] titulos = {"IdCompra", "Descripción", "Cantidad", "Precio", "Importe", "Crédito", "Eliminar", "IdProveedor"};
         modelo1 = new DefaultTableModel(null, titulos) {
             public Class<?> getColumnClass(int column) {
@@ -251,7 +251,24 @@ public class ComprasVM extends Consult {
                     item.getIdProveedor()
                 };
                 modelo1.addRow(registros);
+                if (!item.getCredito()) {
+                    cantEfectivo += 1;
+                }
             });
+            if (cantEfectivo.equals(0)) {
+                _textField.get(5).setEnabled(false);
+                _textField.get(5).setText("0.0");
+                _checkBoxCredito1.setEnabled(true);
+                _checkBoxCredito1.setEnabled(false);
+            } else {
+                _textField.get(5).setEnabled(true);
+                _checkBoxCredito1.setEnabled(false);
+                _checkBoxCredito1.setEnabled(true);
+            }
+        } else {
+            _textField.get(5).setEnabled(false);
+            _checkBoxCredito1.setEnabled(false);
+            _checkBoxCredito1.setEnabled(false);
         }
         _tableComprasTemporal.setModel(modelo1);
         _tableComprasTemporal.setRowHeight(30);
@@ -300,7 +317,15 @@ public class ComprasVM extends Consult {
             if (0 < listEliminar.size()) {
                 if (JOptionPane.YES_NO_OPTION == JOptionPane.showConfirmDialog(null, "¿Estás seguro de eliminar " + listEliminar.size() + " registro/s?", "Eliminar compras",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)) {
+                    var sql = "DELETE FROM tcompras_temporal WHERE IdCompra LIKE ?";
+                    listEliminar.forEach(item -> {
+                        try {
+                            qr.update(getConn(), sql, "%" + item + "%");
+                        } catch (Exception e) {
 
+                        }
+                    });
+                    Reset();
                 }
             }
         }
@@ -334,6 +359,24 @@ public class ComprasVM extends Consult {
         _checkBoxCredito.setForeground(new Color(0, 0, 0));
         SearchProveedor("");
         SearchCompras(_textField.get(4).getText(), _checkBoxEliminar.isSelected());
+        if (0 < listTemporalCompras.size()) {
+            _paginadorCompras = new Paginador<TCompras_temporal>(listTemporalCompras, _label.get(11), _reg_por_pagina);
+        }
+        var model = new SpinnerNumberModel(
+                10.0,
+                1.0,
+                100.0,
+                1.0
+        );
+        _spinnerPaginas.setModel(model);
+
+        getImporteTotal();
+        _checkBoxCreditos.setSelected(false);
+        _checkBoxCreditos.setForeground(new Color(102, 102, 102));
+        _checkBoxTodos.setSelected(false);
+        _checkBoxTodos.setForeground(new Color(102, 102, 102));
+        _checkBoxEliminar.setSelected(false);
+        _checkBoxEliminar.setForeground(new Color(102, 102, 102));
     }
 
     private Double _importeDeuda;
@@ -364,8 +407,8 @@ public class ComprasVM extends Consult {
             }
         }
     }
-
     //</editor-fold>
+
     // <editor-fold defaultstate="collapsed" desc="CODIGO DE PAGOS">
     public void efectuarCompras() {
         var list = Compras_temporal().stream().filter(p -> p.getIdUsuario() == _dataUsuario.getIdUsuario()).collect(Collectors.toList());
@@ -404,7 +447,7 @@ public class ComprasVM extends Consult {
             final QueryRunner qr = new QueryRunner(true);
             var dateNow = new Date();
 
-            var dataReport = ReporteProveedor().stream().filter(p -> p.getIdProveedor() == dataProveedor.getID()).reduce((first, second) -> second).get();
+            var dataReport = ReporteProveedor().stream().filter(p -> p.getIdProveedor() == dataProveedor.getID()).reduce((first, second) -> second).orElse(new TReportes_proveedor());
             var nameUser = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
             var codes = Compras().stream().filter(p -> p.getIdProveedor() == dataProveedor.getID() && cal.getYear(p.getFecha()) == cal.getYear(dateNow)).reduce((first, second) -> second).orElse(new TCompras());
             var code = codes != null ? codes.getTicket() : null;
@@ -478,7 +521,7 @@ public class ComprasVM extends Consult {
             Ticket1.TextoIzquierda("Cliente: " + dataProveedor.getProveedor());
             Ticket1.TextoIzquierda("Fecha: " + dateNow);
             Ticket1.TextoIzquierda("Usuario: " + nameUser);
-            if (!efectivo.equals(0)) {
+            if (!efectivo.equals(0.0)) {
                 Ticket1.LineasGuion();
                 Ticket1.TextoCentro("Productos de contado");
                 Ticket1.AgregarArticulo("Producto", "Cantidad", "Importe");
@@ -499,7 +542,7 @@ public class ComprasVM extends Consult {
                     }
                 }
             }
-            if (!credito.equals(0)) {
+            if (!credito.equals(0.0)) {
                 Ticket1.LineasGuion();
                 Ticket1.TextoCentro("Productos a crédito");
                 Ticket1.AgregarArticulo("Producto", "Cantidad", "Importe");
@@ -511,13 +554,24 @@ public class ComprasVM extends Consult {
                 Ticket1.TextoCentro("Deuda generada");
                 Ticket1.AgregarTotales("Total a pagar", credito, _money);
             }
-            if(!_deuda.equals(0) || !credito.equals(0)){
+            if (!_deuda.equals(0.0) || !credito.equals(0.0)) {
                 Ticket1.LineasGuion();
-                Ticket1.TextoCentro("Productos a crédito");
-                Ticket1.AgregarArticulo("Producto", "Cantidad", "Importe");
+                Ticket1.TextoCentro("Deuda total generada");
+                if (!efectivo.equals(0.0)) {
+                    Ticket1.AgregarTotales("Total a pagar", credito + _deuda, _money);
+                } else {
+                    Ticket1.AgregarTotales("Total a pagar", credito, _money);
+                }
             }
             Ticket1.TextoCentro("TALLER POO");
             Ticket1.print();
+            var sql = "DELETE FROM tcompras_temporal WHERE IdCompra LIKE ?";
+            list.forEach(item -> {
+                try {
+                    qr.update(getConn(), sql, "%" + item.getIdCompra() + "%");
+                } catch (Exception e) {
+                }
+            });
             getConn().commit();
             ResetPagos();
         } catch (Exception e) {
@@ -527,11 +581,83 @@ public class ComprasVM extends Consult {
     }
 
     public void ResetPagos() {
+        credito = 0.0;
+        efectivo = 0.0;
+        cantidad = 0;
         _textField.get(5).setText("");
         _checkBoxCredito1.setSelected(false);
         SearchCompras(_textField.get(4).getText(), _checkBoxEliminar.isSelected());
         getImporteTotal();
+        _checkBoxCreditos.setSelected(false);
+        _checkBoxCreditos.setForeground(new Color(102, 102, 102));
+        _checkBoxTodos.setSelected(false);
+        _checkBoxTodos.setForeground(new Color(102, 102, 102));
+        _checkBoxEliminar.setSelected(false);
+        _checkBoxEliminar.setForeground(new Color(102, 102, 102));
     }
 
     // </editor-fold>
+    private Paginador<TCompras_temporal> _paginadorCompras;
+
+    //<editor-fold defaultstate="collapsed" desc="PAGINADOR">
+    public void Paginador(String metodo) {
+        switch (metodo) {
+            case "Primero":
+                switch (_seccion) {
+                    case 0:
+                        if (0 < listTemporalCompras.size()) {
+                            _num_pagina = _paginadorCompras.primero();
+                        }
+                        break;
+                }
+                break;
+            case "Anterior":
+                switch (_seccion) {
+                    case 0:
+                        if (0 < listTemporalCompras.size()) {
+                            _num_pagina = _paginadorCompras.anterior();
+                        }
+                        break;
+                }
+                break;
+            case "Siguiente":
+                switch (_seccion) {
+                    case 0:
+                        if (0 < listTemporalCompras.size()) {
+                            _num_pagina = _paginadorCompras.siguiente();
+                        }
+                        break;
+                }
+                break;
+            case "Ultimo":
+                switch (_seccion) {
+                    case 0:
+                        if (0 < listTemporalCompras.size()) {
+                            _num_pagina = _paginadorCompras.ultimo();
+                        }
+                        break;
+                }
+                break;
+        }
+        switch (_seccion) {
+            case 0:
+                SearchCompras(_textField.get(4).getText(), _checkBoxEliminar.isSelected());
+                break;
+        }
+    }
+
+    public void Registro_Paginas() {
+        _num_pagina = 1;
+        Number value = (Number) _spinnerPaginas.getValue();
+        _reg_por_pagina = value.intValue();
+        switch (_seccion) {
+            case 0:
+                if (0 < listTemporalCompras.size()) {
+                    _paginadorCompras = new Paginador<>(listTemporalCompras, _label.get(11), _reg_por_pagina);
+                }
+                SearchCompras(_textField.get(4).getText(), _checkBoxEliminar.isSelected());
+                break;
+        }
+    }
+    //</editor-fold>
 }

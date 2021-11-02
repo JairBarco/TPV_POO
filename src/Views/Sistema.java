@@ -274,8 +274,19 @@ public class Sistema extends javax.swing.JFrame {
         LabelProveedor_Ticket = new javax.swing.JLabel();
         LabelCliente_Nombre32 = new javax.swing.JLabel();
         LabelProveedor_FechaPago = new javax.swing.JLabel();
-        LabelCliente_Nombre33 = new javax.swing.JLabel();
+        LabelProveedor_FormaPago = new javax.swing.JLabel();
         LabelProveedor_Deuda = new javax.swing.JLabel();
+        jPanel57 = new javax.swing.JPanel();
+        jPanel62 = new javax.swing.JPanel();
+        LabelProveedor_Deuda4 = new javax.swing.JLabel();
+        LabelProveedor_DeudaTotal = new javax.swing.JLabel();
+        LabelProveedor_Deuda5 = new javax.swing.JLabel();
+        RadioButtonProveedor_Q = new javax.swing.JRadioButton();
+        RadioButtonProveedor_M = new javax.swing.JRadioButton();
+        LabelProveedor_PagoCuotas = new javax.swing.JLabel();
+        TextFieldProveedor_CuotasQM = new javax.swing.JTextField();
+        LabelProveedor_Deuda6 = new javax.swing.JLabel();
+        LabelProveedor_QM = new javax.swing.JLabel();
         ButtonProveedor_Agregar = new javax.swing.JButton();
         ButtonProveedor_Cancelar = new javax.swing.JButton();
         jPanel49 = new javax.swing.JPanel();
@@ -392,12 +403,12 @@ public class Sistema extends javax.swing.JFrame {
         };
         ;
         LabelCliente_Nombre38 = new javax.swing.JLabel();
-        SpinnerPaginas_Proveedores1 = new javax.swing.JSpinner();
-        ButtonProveedor_Paginas5 = new javax.swing.JButton();
-        ButtonProveedor_Paginas6 = new javax.swing.JButton();
-        ButtonProveedor_Paginas7 = new javax.swing.JButton();
-        ButtonProveedor_Paginas8 = new javax.swing.JButton();
-        LabelProveedor_Paginas1 = new javax.swing.JLabel();
+        SpinnerPaginas_Compras = new javax.swing.JSpinner();
+        ButtonCompras_Paginas1 = new javax.swing.JButton();
+        ButtonCompras_Paginas2 = new javax.swing.JButton();
+        ButtonCompras_Paginas3 = new javax.swing.JButton();
+        ButtonCompras_Paginas4 = new javax.swing.JButton();
+        LabelCompras_Paginas = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -2349,7 +2360,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                     .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel40Layout.createSequentialGroup()
                             .addComponent(TextFieldProveedor_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE))
                         .addGroup(jPanel40Layout.createSequentialGroup()
                             .addComponent(LabelProveedor_Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGap(77, 77, 77)))
@@ -2469,9 +2480,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     LabelProveedor_FechaPago.setForeground(new java.awt.Color(70, 106, 124));
     LabelProveedor_FechaPago.setText("--/--/--");
 
-    LabelCliente_Nombre33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-    LabelCliente_Nombre33.setForeground(new java.awt.Color(0, 0, 0));
-    LabelCliente_Nombre33.setText("Cuotas por mes");
+    LabelProveedor_FormaPago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_FormaPago.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_FormaPago.setText("Cuotas por mes");
 
     LabelProveedor_Deuda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
     LabelProveedor_Deuda.setForeground(new java.awt.Color(70, 106, 124));
@@ -2497,7 +2508,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                         .addComponent(LabelProveedor_CuotasMes, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel44Layout.createSequentialGroup()
                             .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(LabelCliente_Nombre33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LabelProveedor_FormaPago, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(LabelCliente_Nombre31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(LabelProveedor_Pago, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(14, 14, 14)))
@@ -2522,7 +2533,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(LabelCliente_Nombre32)
-                .addComponent(LabelCliente_Nombre33))
+                .addComponent(LabelProveedor_FormaPago))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(LabelProveedor_FechaPago)
@@ -2540,7 +2551,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel43Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, 361, Short.MAX_VALUE)
+            .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, 363, Short.MAX_VALUE)
             .addContainerGap())
     );
     jPanel43Layout.setVerticalGroup(
@@ -2583,6 +2594,117 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     );
 
     TabbedPaneProveedor1.addTab("Pagos", jPanel42);
+
+    jPanel62.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+    LabelProveedor_Deuda4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_Deuda4.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_Deuda4.setText("Deuda");
+
+    LabelProveedor_DeudaTotal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_DeudaTotal.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_DeudaTotal.setText("0.00");
+
+    LabelProveedor_Deuda5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_Deuda5.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_Deuda5.setText("Forma de pago");
+
+    buttonGroup1.add(RadioButtonProveedor_Q);
+    RadioButtonProveedor_Q.setText("Quincenal");
+
+    buttonGroup1.add(RadioButtonProveedor_M);
+    RadioButtonProveedor_M.setText("Mensual");
+
+    LabelProveedor_PagoCuotas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_PagoCuotas.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_PagoCuotas.setText("Cuotas");
+
+    TextFieldProveedor_CuotasQM.setBackground(new java.awt.Color(255, 255, 255));
+    TextFieldProveedor_CuotasQM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+    TextFieldProveedor_CuotasQM.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            TextFieldProveedor_CuotasQMActionPerformed(evt);
+        }
+    });
+    TextFieldProveedor_CuotasQM.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_CuotasQMKeyReleased(evt);
+        }
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            TextFieldProveedor_CuotasQMKeyTyped(evt);
+        }
+    });
+
+    LabelProveedor_Deuda6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelProveedor_Deuda6.setForeground(new java.awt.Color(0, 0, 0));
+    LabelProveedor_Deuda6.setText("Cantidad de cuotas");
+
+    LabelProveedor_QM.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+    LabelProveedor_QM.setForeground(new java.awt.Color(70, 106, 124));
+    LabelProveedor_QM.setText("0.00");
+
+    javax.swing.GroupLayout jPanel62Layout = new javax.swing.GroupLayout(jPanel62);
+    jPanel62.setLayout(jPanel62Layout);
+    jPanel62Layout.setHorizontalGroup(
+        jPanel62Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel62Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel62Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(LabelProveedor_Deuda5, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                .addComponent(LabelProveedor_DeudaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LabelProveedor_Deuda4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel62Layout.createSequentialGroup()
+                    .addComponent(RadioButtonProveedor_Q)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(RadioButtonProveedor_M))
+                .addComponent(TextFieldProveedor_CuotasQM, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                .addComponent(LabelProveedor_QM, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LabelProveedor_Deuda6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LabelProveedor_PagoCuotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap(149, Short.MAX_VALUE))
+    );
+    jPanel62Layout.setVerticalGroup(
+        jPanel62Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel62Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(LabelProveedor_Deuda4)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelProveedor_DeudaTotal)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelProveedor_Deuda5)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel62Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(RadioButtonProveedor_Q)
+                .addComponent(RadioButtonProveedor_M))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelProveedor_PagoCuotas)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(TextFieldProveedor_CuotasQM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelProveedor_Deuda6)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LabelProveedor_QM)
+            .addContainerGap(128, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout jPanel57Layout = new javax.swing.GroupLayout(jPanel57);
+    jPanel57.setLayout(jPanel57Layout);
+    jPanel57Layout.setHorizontalGroup(
+        jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel57Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+    jPanel57Layout.setVerticalGroup(
+        jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel57Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(63, Short.MAX_VALUE))
+    );
+
+    TabbedPaneProveedor1.addTab("Forma de pago", jPanel57);
 
     ButtonProveedor_Agregar.setBackground(new java.awt.Color(255, 102, 51));
     ButtonProveedor_Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar.png"))); // NOI18N
@@ -2673,7 +2795,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel50Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 901, Short.MAX_VALUE)
             .addContainerGap())
     );
     jPanel50Layout.setVerticalGroup(
@@ -2726,7 +2848,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel52Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
             .addContainerGap())
     );
     jPanel52Layout.setVerticalGroup(
@@ -2919,7 +3041,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel53Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
@@ -3787,65 +3909,65 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     LabelCliente_Nombre38.setForeground(new java.awt.Color(0, 0, 0));
     LabelCliente_Nombre38.setText("Registros por páginas");
 
-    SpinnerPaginas_Proveedores1.addChangeListener(new javax.swing.event.ChangeListener() {
+    SpinnerPaginas_Compras.addChangeListener(new javax.swing.event.ChangeListener() {
         public void stateChanged(javax.swing.event.ChangeEvent evt) {
-            SpinnerPaginas_Proveedores1StateChanged(evt);
+            SpinnerPaginas_ComprasStateChanged(evt);
         }
     });
 
-    ButtonProveedor_Paginas5.setBackground(new java.awt.Color(255, 102, 51));
-    ButtonProveedor_Paginas5.setForeground(new java.awt.Color(255, 102, 0));
-    ButtonProveedor_Paginas5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso_rapido.png"))); // NOI18N
-    ButtonProveedor_Paginas5.setToolTipText("");
-    ButtonProveedor_Paginas5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    ButtonProveedor_Paginas5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    ButtonProveedor_Paginas5.addActionListener(new java.awt.event.ActionListener() {
+    ButtonCompras_Paginas1.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonCompras_Paginas1.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonCompras_Paginas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso_rapido.png"))); // NOI18N
+    ButtonCompras_Paginas1.setToolTipText("");
+    ButtonCompras_Paginas1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonCompras_Paginas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonCompras_Paginas1.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            ButtonProveedor_Paginas5ActionPerformed(evt);
+            ButtonCompras_Paginas1ActionPerformed(evt);
         }
     });
 
-    ButtonProveedor_Paginas6.setBackground(new java.awt.Color(255, 102, 51));
-    ButtonProveedor_Paginas6.setForeground(new java.awt.Color(255, 102, 0));
-    ButtonProveedor_Paginas6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso.png"))); // NOI18N
-    ButtonProveedor_Paginas6.setToolTipText("");
-    ButtonProveedor_Paginas6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    ButtonProveedor_Paginas6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    ButtonProveedor_Paginas6.addActionListener(new java.awt.event.ActionListener() {
+    ButtonCompras_Paginas2.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonCompras_Paginas2.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonCompras_Paginas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso.png"))); // NOI18N
+    ButtonCompras_Paginas2.setToolTipText("");
+    ButtonCompras_Paginas2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonCompras_Paginas2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonCompras_Paginas2.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            ButtonProveedor_Paginas6ActionPerformed(evt);
+            ButtonCompras_Paginas2ActionPerformed(evt);
         }
     });
 
-    ButtonProveedor_Paginas7.setBackground(new java.awt.Color(255, 102, 51));
-    ButtonProveedor_Paginas7.setForeground(new java.awt.Color(255, 102, 0));
-    ButtonProveedor_Paginas7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance.png"))); // NOI18N
-    ButtonProveedor_Paginas7.setToolTipText("");
-    ButtonProveedor_Paginas7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    ButtonProveedor_Paginas7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    ButtonProveedor_Paginas7.addActionListener(new java.awt.event.ActionListener() {
+    ButtonCompras_Paginas3.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonCompras_Paginas3.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonCompras_Paginas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance.png"))); // NOI18N
+    ButtonCompras_Paginas3.setToolTipText("");
+    ButtonCompras_Paginas3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonCompras_Paginas3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonCompras_Paginas3.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            ButtonProveedor_Paginas7ActionPerformed(evt);
+            ButtonCompras_Paginas3ActionPerformed(evt);
         }
     });
 
-    ButtonProveedor_Paginas8.setBackground(new java.awt.Color(255, 102, 51));
-    ButtonProveedor_Paginas8.setForeground(new java.awt.Color(255, 102, 0));
-    ButtonProveedor_Paginas8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance-rapido.png"))); // NOI18N
-    ButtonProveedor_Paginas8.setToolTipText("");
-    ButtonProveedor_Paginas8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-    ButtonProveedor_Paginas8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    ButtonProveedor_Paginas8.addActionListener(new java.awt.event.ActionListener() {
+    ButtonCompras_Paginas4.setBackground(new java.awt.Color(255, 102, 51));
+    ButtonCompras_Paginas4.setForeground(new java.awt.Color(255, 102, 0));
+    ButtonCompras_Paginas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance-rapido.png"))); // NOI18N
+    ButtonCompras_Paginas4.setToolTipText("");
+    ButtonCompras_Paginas4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    ButtonCompras_Paginas4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    ButtonCompras_Paginas4.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            ButtonProveedor_Paginas8ActionPerformed(evt);
+            ButtonCompras_Paginas4ActionPerformed(evt);
         }
     });
 
-    LabelProveedor_Paginas1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-    LabelProveedor_Paginas1.setForeground(new java.awt.Color(0, 0, 0));
-    LabelProveedor_Paginas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    LabelProveedor_Paginas1.setText("Páginas");
-    LabelProveedor_Paginas1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    LabelCompras_Paginas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+    LabelCompras_Paginas.setForeground(new java.awt.Color(0, 0, 0));
+    LabelCompras_Paginas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    LabelCompras_Paginas.setText("Páginas");
+    LabelCompras_Paginas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
     javax.swing.GroupLayout jPanel60Layout = new javax.swing.GroupLayout(jPanel60);
     jPanel60.setLayout(jPanel60Layout);
@@ -3858,18 +3980,18 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addGroup(jPanel60Layout.createSequentialGroup()
                     .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(LabelCliente_Nombre38)
-                        .addComponent(SpinnerPaginas_Proveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SpinnerPaginas_Compras, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(188, 188, 188)
                     .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel60Layout.createSequentialGroup()
-                            .addComponent(ButtonProveedor_Paginas5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonCompras_Paginas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ButtonProveedor_Paginas6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonCompras_Paginas2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ButtonProveedor_Paginas7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonCompras_Paginas3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ButtonProveedor_Paginas8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(LabelProveedor_Paginas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(ButtonCompras_Paginas4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(LabelCompras_Paginas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGap(308, 308, 308)))
             .addContainerGap())
     );
@@ -3883,16 +4005,16 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 .addGroup(jPanel60Layout.createSequentialGroup()
                     .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(LabelCliente_Nombre38)
-                        .addComponent(LabelProveedor_Paginas1))
+                        .addComponent(LabelCompras_Paginas))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(SpinnerPaginas_Proveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ButtonProveedor_Paginas5, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(ButtonProveedor_Paginas6, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addComponent(ButtonProveedor_Paginas7)))
-                .addComponent(ButtonProveedor_Paginas8))
+                                .addComponent(SpinnerPaginas_Compras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ButtonCompras_Paginas1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(ButtonCompras_Paginas2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(ButtonCompras_Paginas3)))
+                .addComponent(ButtonCompras_Paginas4))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
@@ -5431,6 +5553,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         label.add(LabelProveedor_PagosFecha);
         label.add(LabelProveedor_Cambio);
 
+        label.add(LabelProveedor_DeudaTotal);
+        label.add(LabelProveedor_PagoCuotas);
+        label.add(LabelProveedor_QM);
+        labell.add(LabelProveedor_FormaPago);
+
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldProveedor_Proveedor);
         textField.add(TextFieldProveedor_Email);
@@ -5438,14 +5565,17 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         textField.add(TextFieldProveedor_Direccion);
         textField.add(TextFieldProveedor_Pagos);
 
+        textField.add(TextFieldProveedor_CuotasQM);
+
         Object[] objects = {
             Table_Proveedores,
             SpinnerPaginas_Proveedores,
             TableProveedores_Report,
             dateChooserProveedor_Deuda1,
             dateChooserProveedor_Deuda2,
-            TableProveedores_PagosCuotas
-        };
+            TableProveedores_PagosCuotas,
+            RadioButtonProveedor_Q,
+            RadioButtonProveedor_M,};
 
         proveedor = new ProveedorVM(objects, label, textField);
         TabbedPanePrincipal.setSelectedIndex(2);
@@ -5542,6 +5672,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TabbedPaneProveedor2.setSelectedIndex(1);
                 proveedor.Registro_Paginas();
                 break;
+            case 2:
+                proveedor._seccion = 2;
+                TabbedPaneProveedor2.setSelectedIndex(1);
+                proveedor.Registro_Paginas();
+                break;
         }
     }//GEN-LAST:event_TabbedPaneProveedor1StateChanged
 
@@ -5557,7 +5692,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 }
             }
             break;
-
+            case 2:
+                proveedor.setCuotas();
+                break;
         }
         proveedor.RegistrarProveedor();
     }//GEN-LAST:event_ButtonProveedor_AgregarActionPerformed
@@ -5636,7 +5773,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
                 break;
             case 1:
                 proveedor._seccion = 1;
-                TabbedPaneProveedor1.setSelectedIndex(1);
+                //TabbedPaneProveedor1.setSelectedIndex(1);
                 proveedor.Registro_Paginas();
                 break;
         }
@@ -5908,6 +6045,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         label.add(LabelCompra_Deudas);
         label.add(LabelCompra_Proveedor);
         label.add(LabelCompra_ImporteTotal);
+        label.add(LabelCompras_Paginas);
 
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldCompra_Descripcion);
@@ -5924,7 +6062,9 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             CheckBoxCompra_Todos,
             Table_Compras,
             CheckBoxCompra_Eliminar,
-            CheckBoxCompra_Credito1,};
+            CheckBoxCompra_Credito1,
+            SpinnerPaginas_Compras
+        };
 
         compras = new ComprasVM(objetos, textField, label);
 
@@ -6030,25 +6170,25 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }//GEN-LAST:event_TabbedPaneCompras2StateChanged
 
-    private void SpinnerPaginas_Proveedores1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_Proveedores1StateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SpinnerPaginas_Proveedores1StateChanged
+    private void SpinnerPaginas_ComprasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_ComprasStateChanged
+        compras.Registro_Paginas();
+    }//GEN-LAST:event_SpinnerPaginas_ComprasStateChanged
 
-    private void ButtonProveedor_Paginas5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonProveedor_Paginas5ActionPerformed
+    private void ButtonCompras_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompras_Paginas1ActionPerformed
+        compras.Paginador("Primero");
+    }//GEN-LAST:event_ButtonCompras_Paginas1ActionPerformed
 
-    private void ButtonProveedor_Paginas6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonProveedor_Paginas6ActionPerformed
+    private void ButtonCompras_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompras_Paginas2ActionPerformed
+        compras.Paginador("Anterior");
+    }//GEN-LAST:event_ButtonCompras_Paginas2ActionPerformed
 
-    private void ButtonProveedor_Paginas7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonProveedor_Paginas7ActionPerformed
+    private void ButtonCompras_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompras_Paginas3ActionPerformed
+        compras.Paginador("Siguiente");
+    }//GEN-LAST:event_ButtonCompras_Paginas3ActionPerformed
 
-    private void ButtonProveedor_Paginas8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonProveedor_Paginas8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonProveedor_Paginas8ActionPerformed
+    private void ButtonCompras_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompras_Paginas4ActionPerformed
+        compras.Paginador("Ultimo");
+    }//GEN-LAST:event_ButtonCompras_Paginas4ActionPerformed
 
     private void TextFieldCompra_PrecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCompra_PrecioKeyReleased
         if (TextFieldCompra_Precio.getText().equals("")) {
@@ -6127,6 +6267,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         }
         compras.importes();
         compras.getImporteTotal();
+        compras.Registro_Paginas();
     }//GEN-LAST:event_CheckBoxCompra_CreditosActionPerformed
 
     private void CheckBoxCompra_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCompra_TodosActionPerformed
@@ -6139,6 +6280,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         }
         compras.importes();
         compras.getImporteTotal();
+        compras.Registro_Paginas();
     }//GEN-LAST:event_CheckBoxCompra_TodosActionPerformed
 
     private void ButtonCompra_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompra_EliminarActionPerformed
@@ -6148,6 +6290,26 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void CheckBoxCompra_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCompra_EliminarActionPerformed
         compras.SearchCompras(TextField_Compras_Buscar.getText(), CheckBoxCompra_Eliminar.isSelected());
     }//GEN-LAST:event_CheckBoxCompra_EliminarActionPerformed
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="CÓDIGO FORMA DE PAGO">
+    private void TextFieldProveedor_CuotasQMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_CuotasQMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldProveedor_CuotasQMActionPerformed
+
+    private void TextFieldProveedor_CuotasQMKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_CuotasQMKeyReleased
+        if(TextFieldProveedor_CuotasQM.getText().equals("")){
+            LabelProveedor_PagoCuotas.setForeground(new Color(102,102,102));
+        } else {
+            LabelProveedor_PagoCuotas.setText("Cuotas");
+            LabelProveedor_PagoCuotas.setForeground(new Color(0,153,51));
+        }
+        proveedor.getCuotas();
+    }//GEN-LAST:event_TextFieldProveedor_CuotasQMKeyReleased
+
+    private void TextFieldProveedor_CuotasQMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_CuotasQMKeyTyped
+        Objetos.eventos.numberDecimalKeyPress(evt, TextFieldProveedor_CuotasQM);
+    }//GEN-LAST:event_TextFieldProveedor_CuotasQMKeyTyped
     // </editor-fold>
     /**
      * @param args the command line arguments
@@ -6198,6 +6360,10 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonCompra_Cancelar;
     private javax.swing.JButton ButtonCompra_Eliminar;
     private javax.swing.JButton ButtonCompras;
+    private javax.swing.JButton ButtonCompras_Paginas1;
+    private javax.swing.JButton ButtonCompras_Paginas2;
+    private javax.swing.JButton ButtonCompras_Paginas3;
+    private javax.swing.JButton ButtonCompras_Paginas4;
     private javax.swing.JButton ButtonConfig_AddIntereses;
     private javax.swing.JButton ButtonConfiguracion;
     private javax.swing.JButton ButtonProveedor;
@@ -6208,10 +6374,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonProveedor_Paginas2;
     private javax.swing.JButton ButtonProveedor_Paginas3;
     private javax.swing.JButton ButtonProveedor_Paginas4;
-    private javax.swing.JButton ButtonProveedor_Paginas5;
-    private javax.swing.JButton ButtonProveedor_Paginas6;
-    private javax.swing.JButton ButtonProveedor_Paginas7;
-    private javax.swing.JButton ButtonProveedor_Paginas8;
     private javax.swing.JButton ButtonProveedor_TicketDeuda;
     private javax.swing.JButton ButtonUsuario;
     private javax.swing.JButton ButtonUsuarios_Agregar;
@@ -6283,7 +6445,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCliente_Nombre30;
     private javax.swing.JLabel LabelCliente_Nombre31;
     private javax.swing.JLabel LabelCliente_Nombre32;
-    private javax.swing.JLabel LabelCliente_Nombre33;
     private javax.swing.JLabel LabelCliente_Nombre38;
     private javax.swing.JLabel LabelCliente_Nombre4;
     private javax.swing.JLabel LabelCliente_Nombre40;
@@ -6321,6 +6482,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCompra_Precio;
     private javax.swing.JLabel LabelCompra_Proveedor;
     private javax.swing.JLabel LabelCompra_Proveedores;
+    private javax.swing.JLabel LabelCompras_Paginas;
     private javax.swing.JLabel LabelConfig_Intereses;
     private javax.swing.JLabel LabelConfig_MsjIntereses;
     private javax.swing.JLabel LabelNombre_Perfil;
@@ -6331,18 +6493,24 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelProveedor_Cambio;
     private javax.swing.JLabel LabelProveedor_CuotasMes;
     private javax.swing.JLabel LabelProveedor_Deuda;
+    private javax.swing.JLabel LabelProveedor_Deuda4;
+    private javax.swing.JLabel LabelProveedor_Deuda5;
+    private javax.swing.JLabel LabelProveedor_Deuda6;
     private javax.swing.JLabel LabelProveedor_DeudaPago;
+    private javax.swing.JLabel LabelProveedor_DeudaTotal;
     private javax.swing.JLabel LabelProveedor_Deudas;
     private javax.swing.JLabel LabelProveedor_Direccion;
     private javax.swing.JLabel LabelProveedor_Email;
     private javax.swing.JLabel LabelProveedor_FechaDeuda;
     private javax.swing.JLabel LabelProveedor_FechaPago;
+    private javax.swing.JLabel LabelProveedor_FormaPago;
     private javax.swing.JLabel LabelProveedor_MesCuotas;
     private javax.swing.JLabel LabelProveedor_Paginas;
-    private javax.swing.JLabel LabelProveedor_Paginas1;
     private javax.swing.JLabel LabelProveedor_Pago;
+    private javax.swing.JLabel LabelProveedor_PagoCuotas;
     private javax.swing.JLabel LabelProveedor_PagosFecha;
     private javax.swing.JLabel LabelProveedor_Proveedor;
+    private javax.swing.JLabel LabelProveedor_QM;
     private javax.swing.JLabel LabelProveedor_Saldo;
     private javax.swing.JLabel LabelProveedor_Telefono;
     private javax.swing.JLabel LabelProveedor_Ticket;
@@ -6369,11 +6537,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JRadioButton RadioButtonCliente_Cuotas;
     private javax.swing.JRadioButton RadioButtonCliente_Intereses;
     private javax.swing.JRadioButton RadioButtonConfig_Intereses;
+    private javax.swing.JRadioButton RadioButtonProveedor_M;
+    private javax.swing.JRadioButton RadioButtonProveedor_Q;
     private javax.swing.JRadioButton RadioButton_MXN;
     private javax.swing.JRadioButton RadioButton_USD;
     private javax.swing.JSpinner SpinnerPaginas_Clientes;
+    private javax.swing.JSpinner SpinnerPaginas_Compras;
     private javax.swing.JSpinner SpinnerPaginas_Proveedores;
-    private javax.swing.JSpinner SpinnerPaginas_Proveedores1;
     private javax.swing.JSpinner SpinnerPaginas_Usuarios;
     private javax.swing.JTabbedPane TabbedPaneCliente1;
     private javax.swing.JTabbedPane TabbedPaneCliente2;
@@ -6412,6 +6582,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField TextFieldCompra_Pagos;
     private javax.swing.JTextField TextFieldCompra_Precio;
     private javax.swing.JTextField TextFieldConfig_Intereses;
+    private javax.swing.JTextField TextFieldProveedor_CuotasQM;
     private javax.swing.JTextField TextFieldProveedor_Direccion;
     private javax.swing.JTextField TextFieldProveedor_Email;
     private javax.swing.JTextField TextFieldProveedor_Pagos;
@@ -6503,11 +6674,13 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
     private javax.swing.JPanel jPanel55;
+    private javax.swing.JPanel jPanel57;
     private javax.swing.JPanel jPanel58;
     private javax.swing.JPanel jPanel59;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel60;
     private javax.swing.JPanel jPanel61;
+    private javax.swing.JPanel jPanel62;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
