@@ -24,7 +24,7 @@ public class ProveedorVM extends Consult {
     private ArrayList<JTextField> _textField;
     private JTable _tableProveedor, _tableReporte, _tablePagosCuotas;
     private DefaultTableModel modelo1, modelo2, modelo3;
-    private JSpinner _spinnerPaginas;
+    private JSpinner _spinnerPaginas, _spinnerCuotas;
     private Paginador<TProveedor> _paginadorProveedor, _paginadorReportes;
     private Paginador<TPagos_proveedor> _paginadorPagos;
     private FormatDecimal _format;
@@ -62,6 +62,7 @@ public class ProveedorVM extends Consult {
         _tablePagosCuotas = (JTable) objects[5];
         _radioButton1 = (JRadioButton) objects[6];
         _radioButton2 = (JRadioButton) objects[7];
+        _spinnerCuotas = (JSpinner) objects[8];
         _money = ConfigurationVM.Money;
         formateador = new SimpleDateFormat("dd/MM/yyyy");
         _format = new FormatDecimal();
@@ -329,59 +330,78 @@ public class ProveedorVM extends Consult {
             //FORMA DE PAGO
             _formaPago = proveedor.getFormaPago();
             _mensual = proveedor.getMensual();
-            
-            if(_formaPago == null || _mensual.equals(0.0)){
+
+            if (_formaPago == null || _mensual.equals(0.0)) {
                 _label.get(24).setText("Establezca una forma de pago");
+                _label.get(24).setForeground(Color.RED);
             } else {
-                
+                var forma = _formaPago.equals("Q") ? "Cuotas quincenales " : "Cuotas por mes ";
+                _label.get(24).setText(forma);
+                _label.get(24).setForeground(new Color(102, 102, 102));
             }
             _label.get(21).setText(_money + _format.decimal(_deudaActual));
             getCuotas();
+            Pagos();
         }
     }
 
+    private int cuotas1;
+    private Double pagosCuotas = 0.0;
+
     public void Pagos() {
-        if (!_textField.get(4).getText().isEmpty()) {
-            _label.get(12).setText("Ingrese el pago");
+        var value = (Number) _spinnerCuotas.getValue();
+        cuotas1 = value.intValue();
+        if (cuotas1 == 0) {
+            _label.get(12).setText("Ingrese las cuotas a pagar");
             _label.get(12).setForeground(Color.RED);
-            if (_idReport == 0) {
-                _label.get(12).setText("Seleccione un proveedor");
+        } else {
+            if (!_textField.get(4).getText().isEmpty()) {
+                _label.get(12).setText("Ingrese el pago");
                 _label.get(12).setForeground(Color.RED);
-            } else {
-                if (!_textField.get(4).getText().isEmpty()) {
-                    _pago = _format.reconstruir(_textField.get(4).getText());
-                    var dataReport = ReporteProveedor().stream()
-                            .filter(u -> u.getIdReporte() == _idReport).collect(Collectors.toList()).get(0);
-                    _mensual = dataReport.getMensual();
-                    if (_pago >= _mensual) {
-                        if (Objects.equals(_pago, _deudaActual) || _pago > _deudaActual) {
-                            _cambio = _pago - _deudaActual;
-                            _label.get(12).setText("Cambio: " + _money + _format.decimal(_cambio));
-                            _label.get(12).setForeground(Color.RED);
-                            _textField.get(7).setText(_money + "0.00");
-                            _deudaActual = 0.0;
-                            _deudaActualProveedor = 0.0;
+                if (_idReport == 0) {
+                    _label.get(12).setText("Seleccione un proveedor");
+                    _label.get(12).setForeground(Color.RED);
+                } else {
+                    if (_formaPago == null || _mensual.equals(0.0)) {
+                        JOptionPane.showConfirmDialog(null, "Establezca una forma de pago", "Forma de pago", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        if (_deudaActual > 0) {
+                            var valor1 = Math.ceil((Double) _deudaActual / (Double) _mensual);
+                            var cuotas2 = (int) Math.ceil(valor1);
+                            if (cuotas2 >= cuotas1) {
+                                if (!_textField.get(4).getText().isEmpty()) {
+                                    _pago = _format.reconstruir(_textField.get(4).getText());
+                                    pagosCuotas = _mensual * cuotas1;
+                                    if (_pago >= pagosCuotas) {
+                                        if (_pago >= pagosCuotas) {
+                                            _cambio = _pago - pagosCuotas;
+                                            _label.get(12).setText("Cambio: " + _money + _format.decimal(_cambio));
+                                            _label.get(12).setForeground(Color.RED);
+                                        } else {
+                                            _cambio = 0.0;
+                                        }
+                                        _deudaActualProveedor = _deudaActual - pagosCuotas;
+                                    } else {
+                                        _cambio = 0.0;
+                                        var deuda = pagosCuotas - _pago;
+                                        _label.get(12).setText("Importe faltante: " + _money + _format.decimal(deuda));
+                                        _label.get(12).setForeground(Color.RED);
+                                    }
+                                }
+                            } else {
+                                _label.get(12).setText("Sobrepasó las cuotas");
+                                _label.get(12).setForeground(Color.RED);
+                            }
                         } else {
-                            _cambio = _pago - _mensual;
-                            _label.get(12).setText("Cambio: " + _money + _format.decimal(_cambio));
+                            _label.get(12).setText("No hay deuda");
                             _label.get(12).setForeground(Color.RED);
-                            _deudaActualProveedor = _deudaActual - _mensual;
-                            _label.get(7).setText(_money + _format.decimal(_deudaActualProveedor));
                         }
                     }
-                } else if (Objects.equals(_pago, _mensual)) {
-                    _deudaActualProveedor = _deudaActual - _mensual;
-                    _label.get(7).setText(_money + _format.decimal(_deudaActualProveedor));
-                } else {
-                    _cambio = 0.0;
-                    var deuda = _mensual - _pago;
-                    _label.get(12).setText("Importe faltante: " + _money + _format.decimal(deuda));
-                    _label.get(12).setForeground(Color.RED);
                 }
+            } else {
+                _label.get(12).setText("Ingrese el pago");
+                _label.get(7).setText(_money + _format.decimal(_deudaActual));
             }
-        } else {
-            _label.get(12).setText("Ingrese el pago");
-            _label.get(7).setText(_money + _format.decimal(_deudaActual));
         }
     }
 
@@ -390,92 +410,101 @@ public class ProveedorVM extends Consult {
         if (Objects.equals(_idReport, 0)) {
             _label.get(12).setText("Seleccione un proveedor");
         } else {
-            if (_textField.get(4).getText().isEmpty()) {
-                _label.get(12).setText("Ingrese el pago");
-                _textField.get(4).requestFocus();
+            if (_formaPago == null || _mensual.equals(0.0)) {
+                JOptionPane.showConfirmDialog(null, "Establezca una forma de pago", "Forma de pago", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             } else {
-                String fecha = new Calendario().getFecha();
-                var usuario = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
-                if (!_deuda.equals(0) || _deuda.equals(0.0)) {
-                    if (_pago >= _mensual) {
-                        try {
-                            getConn().setAutoCommit(false);
-                            String ticket = _codigos.codesTickets(_ticketCuota);
-                            String query1 = "INSERT INTO tpagos_proveedor(Deuda,Saldo, Pago,Cambio,Fecha,Ticket,IdUsuario,Usuario,IdProveedor,FechaDeuda,Mensual)"
-                                    + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-                            var dataReport = ReporteProveedor().stream().filter(u -> u.getIdReporte() == _idProveedorReport)
-                                    .collect(Collectors.toList()).get(0);
-                            Object[] data1 = {
-                                _deuda,
-                                _deudaActualProveedor,
-                                _pago,
-                                _cambio,
-                                new Date(),
-                                ticket,
-                                _dataUsuario.getIdUsuario(),
-                                usuario,
-                                _idProveedorReport,
-                                dataReport.getFechaDeuda(),
-                                dataReport.getMensual()
-                            };
-                            qr.insert(getConn(), query1, new ColumnListHandler(), data1);
-                            if (_deudaActualProveedor.equals(0.0)) {
-                                String query2 = "UPDATE treportes_proveedor SET Deuda = ?,"
-                                        + "Mensual = ?,FechaDeuda = ?,DeudaActual = ?,"
-                                        + "UltimoPago = ?,Cambio = ?,FechaPago = ?, Ticket = ?"
-                                        + "WHERE IdReporte =" + _idReport;
-                                Object[] data2 = {
-                                    0.0,
-                                    0.0,
-                                    null,
-                                    0.0,
-                                    0.0,
-                                    0.0,
-                                    null,
-                                    "0000000000"
-                                };
-                                qr.update(getConn(), query2, data2);
-                            } else {
-                                String query2 = "UPDATE treportes_proveedor SET DeudaActual = ?,UltimoPago = ?,Cambio = ?,"
-                                        + "FechaPago = ?, Ticket = ? WHERE IdReporte = " + _idReport;
-                                Object[] data2 = {
+                if (_textField.get(4).getText().isEmpty()) {
+                    _label.get(12).setText("Ingrese el pago");
+                    _textField.get(4).requestFocus();
+                } else {
+                    String fecha = new Calendario().getFecha();
+                    var usuario = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
+                    if (!_deuda.equals(0) || _deuda.equals(0.0)) {
+                        if (_pago >= pagosCuotas) {
+                            try {
+                                getConn().setAutoCommit(false);
+                                String ticket = _codigos.codesTickets(_ticketCuota);
+                                String query1 = "INSERT INTO tpagos_proveedor(Deuda,Saldo, Pago,Cambio,Fecha,Ticket,IdUsuario,Usuario,IdProveedor,FechaDeuda,Mensual,FormaPago)"
+                                        + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                                var dataReport = ReporteProveedor().stream().filter(u -> u.getIdProveedor() == _idProveedorReport)
+                                        .collect(Collectors.toList()).get(0);
+                                Object[] data1 = {
+                                    _deuda,
                                     _deudaActualProveedor,
                                     _pago,
                                     _cambio,
                                     new Date(),
-                                    ticket
+                                    ticket,
+                                    _dataUsuario.getIdUsuario(),
+                                    usuario,
+                                    _idProveedorReport,
+                                    dataReport.getFechaDeuda(),
+                                    dataReport.getMensual(),
+                                    dataReport.getFormaPago()
                                 };
-                                qr.update(getConn(), query2, data2);
+                                qr.insert(getConn(), query1, new ColumnListHandler(), data1);
+                                if (_deudaActualProveedor.equals(0.0)) {
+                                    String query2 = "UPDATE treportes_proveedor SET Deuda = ?,"
+                                            + "Mensual = ?,FechaDeuda = ?,DeudaActual = ?,"
+                                            + "UltimoPago = ?,Cambio = ?,FechaPago = ?, Ticket = ?"
+                                            + "WHERE IdReporte =" + _idReport;
+                                    Object[] data2 = {
+                                        0.0,
+                                        0.0,
+                                        null,
+                                        0.0,
+                                        0.0,
+                                        0.0,
+                                        null,
+                                        "0000000000"
+                                    };
+                                    qr.update(getConn(), query2, data2);
+                                } else {
+                                    String query2 = "UPDATE treportes_proveedor SET DeudaActual = ?,UltimoPago = ?,Cambio = ?,"
+                                            + "FechaPago = ?, Ticket = ? WHERE IdReporte = " + _idReport;
+                                    Object[] data2 = {
+                                        _deudaActualProveedor,
+                                        _pago,
+                                        _cambio,
+                                        new Date(),
+                                        ticket
+                                    };
+                                    qr.update(getConn(), query2, data2);
+                                }
+                                Ticket1.TextoCentro("Sistema de ventas");
+                                Ticket1.TextoIzquierda("Dirección");
+                                Ticket1.TextoIzquierda("Monterrey, Nuevo León");
+                                Ticket1.TextoIzquierda("Tel. 5522001025");
+                                Ticket1.LineasGuion();
+                                Ticket1.TextoCentro("Factura");
+                                Ticket1.LineasGuion();
+                                Ticket1.TextoIzquierda("Factura: " + ticket);
+                                Ticket1.TextoIzquierda("Cliente: " + nameProveedor);
+                                Ticket1.TextoIzquierda("Fecha: " + fecha);
+                                Ticket1.TextoIzquierda("Usuario: " + usuario);
+                                Ticket1.LineasGuion();
+                                Ticket1.TextoCentro("Deuda: " + _money + _format.decimal(_deuda));
+                                Ticket1.LineasGuion();
+                                var agreement = _formaPago.equals("Q") ? "Cuotas quincenales " : "Cuotas por mes ";
+                                Ticket1.TextoExtremo(agreement, _money + _format.decimal(_mensual));
+                                Ticket1.TextoExtremo("Cantidad de cuotas pagadas: ", String.valueOf(cuotas1));
+                                Ticket1.TextoExtremo("Pago de cuotas: ", _money + _format.decimal(pagosCuotas));
+                                Ticket1.TextoExtremo("Deuda anteror", _money + _format.decimal(_deudaActual));
+                                Ticket1.TextoExtremo("Pago:", _money + _format.decimal(_pago));
+                                Ticket1.TextoExtremo("Cambio:", _money + _format.decimal(_cambio));
+                                Ticket1.TextoExtremo("Deuda Actual:", _money + _format.decimal(_deudaActualProveedor));
+                                Ticket1.TextoCentro("TPOO");
+                                Ticket1.print();
+                                getConn().commit();
+                                ResetReport();
+                            } catch (Exception e) {
+                                getConn().rollback();
+                                JOptionPane.showMessageDialog(null, e);
                             }
-                            Ticket1.TextoCentro("Sistema de ventas");
-                            Ticket1.TextoIzquierda("Dirección");
-                            Ticket1.TextoIzquierda("Monterrey, Nuevo León");
-                            Ticket1.TextoIzquierda("Tel. 5522001025");
-                            Ticket1.LineasGuion();
-                            Ticket1.TextoCentro("Factura");
-                            Ticket1.LineasGuion();
-                            Ticket1.TextoIzquierda("Factura: " + ticket);
-                            Ticket1.TextoIzquierda("Cliente: " + nameProveedor);
-                            Ticket1.TextoIzquierda("Fecha: " + fecha);
-                            Ticket1.TextoIzquierda("Usuario: " + usuario);
-                            Ticket1.LineasGuion();
-                            Ticket1.TextoCentro("Su credito: " + _money + _format.decimal(_deuda));
-                            Ticket1.TextoExtremo("Cuotas por mes: ", _money + _format.decimal(_mensual));
-                            Ticket1.TextoExtremo("Deuda anteror", _money + _format.decimal(_deudaActual));
-                            Ticket1.TextoExtremo("Pago:", _money + _format.decimal(_pago));
-                            Ticket1.TextoExtremo("Cambio:", _money + _format.decimal(_cambio));
-                            Ticket1.TextoExtremo("Deuda Actual:", _money + _format.decimal(_deudaActualProveedor));
-                            Ticket1.TextoCentro("TPOO");
-                            Ticket1.print();
-                            getConn().commit();
-                            ResetReport();
-                        } catch (Exception e) {
-                            getConn().rollback();
-                            JOptionPane.showMessageDialog(null, e);
                         }
+                    } else {
+                        _label.get(12).setText("El cliente no tiene deuda");
                     }
-                } else {
-                    _label.get(12).setText("El cliente no tiene deuda");
                 }
             }
         }
@@ -489,7 +518,7 @@ public class ProveedorVM extends Consult {
             _dateChooser1.setFormat(3);
             _dateChooser2.setFormat(3);
             var cal = new Calendario();
-            String[] titulos = {"ID", "Deuda", "Saldo", "Pago", "Cambio", "Fecha", "Ticket", "Fecha Deuda", "Mensual"};
+            String[] titulos = {"ID", "Deuda", "Saldo", "Pago", "Cambio", "Fecha", "Ticket", "Fecha Deuda", "Mensual", "Forma de Pago"};
             modelo3 = new DefaultTableModel(null, titulos);
             var date1 = formateador.parse(_dateChooser1.getSelectedPeriodSet().toString());
             var date2 = formateador.parse(_dateChooser2.getSelectedPeriodSet().toString());
@@ -526,7 +555,8 @@ public class ProveedorVM extends Consult {
                                 pago.getFecha(),
                                 pago.getTicket(),
                                 pago.getFechaDeuda(),
-                                _money + _format.decimal(pago.getMensual()),};
+                                _money + _format.decimal(pago.getMensual()),
+                                pago.getFormaPago()};
                             modelo3.addRow(registros);
                             listPagos.add(pago);
                         }
@@ -552,7 +582,8 @@ public class ProveedorVM extends Consult {
                         pago.getFecha(),
                         pago.getTicket(),
                         pago.getFechaDeuda(),
-                        _money + _format.decimal(pago.getMensual()),};
+                        _money + _format.decimal(pago.getMensual()),
+                        pago.getFormaPago()};
                     modelo3.addRow(registros);
                 }
             }
@@ -608,6 +639,16 @@ public class ProveedorVM extends Consult {
         _label.get(20).setText(cambio);
         var usuario = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
 
+        var forma = (String) modelo3.getValueAt(filas, 9);
+        var agreement = forma.equals("Q") ? "Cuotas quincenales " : "Cuotas por mes ";
+        _label.get(25).setText(agreement);
+
+        var pagosCuotas = _format.reconstruir(pago.replace(_money, "")) - _format.reconstruir(cambio.replace(_money, ""));
+        var deuda1 = _format.reconstruir(deuda.replace(_money, ""));
+        var saldo1 = _format.reconstruir(saldo.replace(_money, ""));
+        var deudaAnterior = (deuda1 - (deuda1 - saldo1) - pagosCuotas);
+        var cuotas = pagosCuotas / _format.reconstruir(mensual.replace(_money, ""));
+
         Ticket1.TextoCentro("Sistema de Ventas");
         Ticket1.TextoIzquierda("Dirección");
         Ticket1.TextoIzquierda("Monterrey");
@@ -620,8 +661,12 @@ public class ProveedorVM extends Consult {
         Ticket1.TextoIzquierda("Fecha: " + fechaPago);
         Ticket1.TextoIzquierda("Usuario: " + usuario);
         Ticket1.LineasGuion();
-        Ticket1.TextoCentro("Crédito: " + deuda);
-        Ticket1.TextoCentro("Cuotas mensuales: " + mensual);
+        Ticket1.TextoCentro("Deuda: " + deuda);
+        Ticket1.LineasGuion();
+        Ticket1.TextoExtremo(agreement, mensual);
+        Ticket1.TextoExtremo("Cuotas pagadas: ", String.valueOf(cuotas));
+        Ticket1.TextoExtremo("Pago de cuotas: ", _money + _format.decimal(pagosCuotas));
+        Ticket1.TextoExtremo("Deuda anterior: ", _money + _format.decimal(deudaAnterior));
         Ticket1.TextoExtremo("Pago: ", pago);
         Ticket1.TextoExtremo("Cambio: ", cambio);
         Ticket1.TextoExtremo("Deuda Actual: ", saldo);
@@ -667,13 +712,15 @@ public class ProveedorVM extends Consult {
         if (!reporteFilter.isEmpty()) {
             _paginadorReportes = new Paginador<>(reporteFilter, _label.get(5), _reg_por_pagina);
         }
+        var model = new SpinnerNumberModel(1.0, 1.0, 100.0, 1.0);
+        _spinnerCuotas.setModel(model);
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="CÓDIGO FORMA DE PAGO">
     private double cuota;
     private boolean ejecutar;
-    
+
     public void getCuotas() {
         if (_idReport == 0) {
             _label.get(22).setText("Seleccione un proveedor");
@@ -689,20 +736,21 @@ public class ProveedorVM extends Consult {
                     _label.get(23).setText(String.valueOf(cuotas));
                     ejecutar = true;
                 } else {
-                    _label.get(23).setText("0");
                     ejecutar = false;
+                    _label.get(23).setText("0");
                 }
                 _label.get(22).setText("Cuotas");
             } else {
-                _label.get(22).setText("No tiene deuda");
                 ejecutar = false;
+                _label.get(22).setText("No tiene deuda");
             }
         }
     }
     
-    public void setCuotas(){
-        if(ejecutar){
-            try{
+
+    public void setCuotas() {
+        if (ejecutar) {
+            try {
                 var qr = new QueryRunner(true);
                 var forma = _radioButton2.isSelected() ? "M" : "Q";
                 String query = "UPDATE treportes_proveedor SET Mensual = ?, FormaPago = ? WHERE IdReporte = " + _idReport;
@@ -711,12 +759,12 @@ public class ProveedorVM extends Consult {
                     forma
                 };
                 qr.update(getConn(), query, data);
-            } catch(Exception e) {
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
             ResetFormaPago();
         } else {
-            
+
         }
     }
 

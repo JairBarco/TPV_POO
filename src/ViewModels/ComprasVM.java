@@ -266,6 +266,8 @@ public class ComprasVM extends Consult {
                 _checkBoxCredito1.setEnabled(true);
             }
         } else {
+            _label.get(3).setText(_money + "0.00");
+            _label.get(8).setText(_money + "0.00");
             _textField.get(5).setEnabled(false);
             _checkBoxCredito1.setEnabled(false);
             _checkBoxCredito1.setEnabled(false);
@@ -405,6 +407,10 @@ public class ComprasVM extends Consult {
                     _label.get(9).setText(dataProveedor.getProveedor());
                     break;
             }
+        } else {
+            _label.get(6).setText(_money + "0.00");
+            _label.get(8).setText(_money + "0.00");
+            _label.get(10).setText(_money + "0.00");
         }
     }
     //</editor-fold>
@@ -420,8 +426,10 @@ public class ComprasVM extends Consult {
             } else {
                 try {
                     if (_importeDeuda > _pago) {
-                        _label.get(6).setText("Complete el pago o solicite crédito");
+                        if(_checkBoxCredito1.isEnabled()){
+                            _label.get(6).setText("Complete el pago o solicite crédito");
                         _label.get(6).setForeground(Color.RED);
+                        }
                         if (_checkBoxCredito1.isSelected()) {
                             guardar(list);
                         }
@@ -446,6 +454,7 @@ public class ComprasVM extends Consult {
             cal = new Calendario();
             final QueryRunner qr = new QueryRunner(true);
             var dateNow = new Date();
+            getConn().setAutoCommit(false);
 
             var dataReport = ReporteProveedor().stream().filter(p -> p.getIdProveedor() == dataProveedor.getID()).reduce((first, second) -> second).orElse(new TReportes_proveedor());
             var nameUser = _dataUsuario.getNombre() + " " + _dataUsuario.getApellido();
@@ -485,7 +494,7 @@ public class ComprasVM extends Consult {
 
                 }
             });
-            var deuda = dataReport.getDeudaActual() + _deuda + credito;
+            var deuda = _checkBoxCredito1.isEnabled() ? dataReport.getDeudaActual() + _deuda + credito : dataReport.getDeudaActual() + credito;
             var reportesCompra = "INSERT INTO treportes_compras (Ticket,Productos,Efectivo,Credito,Pago,Deuda,Cambio,Fecha,IdProveedor) VALUES (?,?,?,?,?,?,?,?,?)";
             Object[] dataCompra = {
                 ticket,
@@ -500,7 +509,7 @@ public class ComprasVM extends Consult {
             };
             qr.insert(getConn(), reportesCompra, new ColumnListHandler(), dataCompra);
 
-            var reporte = "INSERT INTO treportes_proveedor SET DeudaActual = ?, Deuda = ?,FechaDeuda = ?,Ticket = ? WHERE IdReporte =" + dataReport.getIdReporte();
+            var reporte = "UPDATE treportes_proveedor SET DeudaActual = ?,Deuda = ?,FechaDeuda = ?,Ticket = ? WHERE IdReporte =" + dataReport.getIdReporte();
             Object[] data = {
                 deuda,
                 deuda,

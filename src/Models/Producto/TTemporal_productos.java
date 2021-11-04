@@ -1,10 +1,12 @@
 package Models.Producto;
 
+import Models.Compras.TCompras;
+
 /**
  *
  * @author jair_
  */
-public class TTemporal_productos {
+public class TTemporal_productos extends TCompras{
 
     public int Id;
     public int IdProducto;

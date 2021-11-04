@@ -4,6 +4,8 @@ import Models.*;
 import Models.Cliente.*;
 import Models.Compras.*;
 import Models.Ordenador.TOrdenadores;
+import Models.Producto.ProductosModel;
+import Models.Producto.TProductos;
 import Models.Proveedor.*;
 import Models.Usuario.*;
 import java.sql.SQLException;
@@ -199,12 +201,7 @@ public class Consult extends Conexion {
         List<TReportes_proveedor> reportes = new ArrayList();
         String condicion1 = " tproveedor.ID = treportes_proveedor.IdProveedor ";
         
-        String campos = " tproveedor.ID,tproveedor.Proveedor,"
-                + "treportes_proveedor.IdReporte,treportes_proveedor.Deuda,"
-                + "treportes_proveedor.Mensual,treportes_proveedor.Cambio,"
-                + "treportes_proveedor.UltimoPago,treportes_proveedor.FechaPago,"
-                + "treportes_proveedor.DeudaActual, treportes_proveedor.FechaDeuda,"
-                + "treportes_proveedor.Ticket";
+        String campos = " *";
         try {
             reportes = (List<TReportes_proveedor>) QR.query(getConn(),
                     "SELECT" + campos + " FROM tproveedor Inner Join treportes_proveedor ON"
@@ -251,5 +248,28 @@ public class Consult extends Conexion {
        return compras;
     }
     
+    public List<ProductosModel> Temporal_Productos(int IdUsuario){
+       var where = " WHERE ttemporal_productos.IdUsuario =" + IdUsuario;
+       List<ProductosModel> compras = new ArrayList();  
+       String condicion1 = " tcompras.IdCompra = ttemporal_productos.IdProducto ";
+       var campos = " * ";
+       try {
+            compras = (List<ProductosModel>) QR.query(getConn(), "SELECT" + campos + " FROM tcompras Inner Join ttemporal_productos ON" + condicion1 + where,
+                    new BeanListHandler(ProductosModel.class));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+       return compras;
+    }
     
+    public List<TProductos> Productos(){
+      List<TProductos> producto = new ArrayList();  
+       try {
+            producto = (List<TProductos>) QR.query(getConn(), "SELECT * FROM tproductos",
+                    new BeanListHandler(TProductos.class));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+       return producto;
+    }
 }

@@ -19,6 +19,7 @@ public class TPagos_proveedor {
     private String Usuario;
     private Date FechaDeuda;
     private Double Mensual;
+    private String FormaPago;
 
     public TPagos_proveedor() {
     }
@@ -117,5 +118,13 @@ public class TPagos_proveedor {
 
     public void setMensual(Double Mensual) {
         this.Mensual = Mensual;
+    }
+
+    public String getFormaPago() {
+        return FormaPago;
+    }
+
+    public void setFormaPago(String FormaPago) {
+        this.FormaPago = FormaPago;
     }
 }
