@@ -2,6 +2,7 @@ package Library;
 
 import Conexion.Consult;
 import Models.Producto.TProductos;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -77,8 +78,9 @@ public class Codigos extends Objetos{
             try{
                 Barcode barcode = BarcodeFactory.createCode39(Codigo, true);
                 barcode.setDrawingText(true);
-                barcode.setBarWidth(2);
-                BufferedImage image = new BufferedImage(344, 80, BufferedImage.TYPE_INT_ARGB);
+                barcode.setBarWidth(1);
+                Font font = new Font("SansSerif", Font.BOLD,15);
+                BufferedImage image = new BufferedImage(180, 80, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D g = (Graphics2D) image.getGraphics(); 
                 barcode.draw(g,5,20);
                 ImageIcon icon = new ImageIcon(image);

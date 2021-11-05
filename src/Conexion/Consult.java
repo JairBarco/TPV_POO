@@ -5,6 +5,7 @@ import Models.Cliente.*;
 import Models.Compras.*;
 import Models.Ordenador.TOrdenadores;
 import Models.Producto.ProductosModel;
+import Models.Producto.TBodega;
 import Models.Producto.TProductos;
 import Models.Proveedor.*;
 import Models.Usuario.*;
@@ -271,5 +272,16 @@ public class Consult extends Conexion {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
        return producto;
+    }
+    
+    public List<TBodega> Bodega(){
+      List<TBodega> bodega = new ArrayList();  
+       try {
+            bodega = (List<TBodega>) QR.query(getConn(), "SELECT * FROM tbodega",
+                    new BeanListHandler(TBodega.class));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+       return bodega;
     }
 }

@@ -16,6 +16,7 @@ public class TProductos {
     public String Categoria;
     public Date Fecha;
     public int IdCompra;
+    public byte[] Imagen;
 
     public TProductos() {
     }
@@ -90,5 +91,13 @@ public class TProductos {
 
     public void setIdCompra(int IdCompra) {
         this.IdCompra = IdCompra;
+    }
+
+    public byte[] getImagen() {
+        return Imagen;
+    }
+
+    public void setImagen(byte[] Imagen) {
+        this.Imagen = Imagen;
     }
 }
