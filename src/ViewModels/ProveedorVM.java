@@ -424,7 +424,7 @@ public class ProveedorVM extends Consult {
                             try {
                                 getConn().setAutoCommit(false);
                                 String ticket = _codigos.codesTickets(_ticketCuota);
-                                String query1 = "INSERT INTO tpagos_proveedor(Deuda,Saldo, Pago,Cambio,Fecha,Ticket,IdUsuario,Usuario,IdProveedor,FechaDeuda,Mensual,FormaPago)"
+                                String query1 = "INSERT INTO tpagos_proveedor(Deuda,Saldo, Pago,Cambio,Fecha,Ticket,IdUsuario,Usuario,IdProveedor,FechaDeuda,Cuota,FormaPago)"
                                         + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
                                 var dataReport = ReporteProveedor().stream().filter(u -> u.getIdProveedor() == _idProveedorReport)
                                         .collect(Collectors.toList()).get(0);
@@ -518,7 +518,7 @@ public class ProveedorVM extends Consult {
             _dateChooser1.setFormat(3);
             _dateChooser2.setFormat(3);
             var cal = new Calendario();
-            String[] titulos = {"ID", "Deuda", "Saldo", "Pago", "Cambio", "Fecha", "Ticket", "Fecha Deuda", "Mensual", "Forma de Pago"};
+            String[] titulos = {"ID", "Deuda", "Saldo", "Pago", "Cambio", "Fecha", "Ticket", "Fecha Deuda", "Cuota", "Forma de Pago"};
             modelo3 = new DefaultTableModel(null, titulos);
             var date1 = formateador.parse(_dateChooser1.getSelectedPeriodSet().toString());
             var date2 = formateador.parse(_dateChooser2.getSelectedPeriodSet().toString());
@@ -555,7 +555,7 @@ public class ProveedorVM extends Consult {
                                 pago.getFecha(),
                                 pago.getTicket(),
                                 pago.getFechaDeuda(),
-                                _money + _format.decimal(pago.getMensual()),
+                                _money + _format.decimal(pago.getCuota()),
                                 pago.getFormaPago()};
                             modelo3.addRow(registros);
                             listPagos.add(pago);
@@ -582,7 +582,7 @@ public class ProveedorVM extends Consult {
                         pago.getFecha(),
                         pago.getTicket(),
                         pago.getFechaDeuda(),
-                        _money + _format.decimal(pago.getMensual()),
+                        _money + _format.decimal(pago.getCuota()),
                         pago.getFormaPago()};
                     modelo3.addRow(registros);
                 }
@@ -598,9 +598,9 @@ public class ProveedorVM extends Consult {
         _tablePagosCuotas.getColumnModel().getColumn(7).setMaxWidth(0);
         _tablePagosCuotas.getColumnModel().getColumn(7).setMinWidth(0);
         _tablePagosCuotas.getColumnModel().getColumn(7).setPreferredWidth(0);
-        _tablePagosCuotas.getColumnModel().getColumn(8).setMaxWidth(0);
-        _tablePagosCuotas.getColumnModel().getColumn(8).setMinWidth(0);
-        _tablePagosCuotas.getColumnModel().getColumn(8).setPreferredWidth(0);
+//        _tablePagosCuotas.getColumnModel().getColumn(8).setMaxWidth(0);
+//        _tablePagosCuotas.getColumnModel().getColumn(8).setMinWidth(0);
+//        _tablePagosCuotas.getColumnModel().getColumn(8).setPreferredWidth(0);
     }
 
     private int _idHistorial = 0;

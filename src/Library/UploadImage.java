@@ -51,6 +51,7 @@ public class UploadImage extends javax.swing.JFrame {
     }
 
     public byte[] getTransFoto(JLabel label) {
+        byte[] data = null;
         ByteArrayOutputStream baos = null;
 
         try {
@@ -61,10 +62,12 @@ public class UploadImage extends javax.swing.JFrame {
 
             baos = new ByteArrayOutputStream();
             ImageIO.write(bufferedImage, "png", baos);
+            data = baos.toByteArray();
+            baos.close();
         } catch (IOException e) {
 
         }
-        return baos.toByteArray();
+        return data;
     }
 
     public void byteImage(JLabel label, byte[] imgFoto) {

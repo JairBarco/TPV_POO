@@ -2,6 +2,7 @@ package ViewModels;
 
 import Conexion.Consult;
 import Library.*;
+import static Library.Objetos.uploadImage;
 import Models.Usuario.*;
 import Models.Compras.*;
 import Models.Producto.ProductosModel;
@@ -35,6 +36,7 @@ public class ProductosVM extends Consult {
     private JCheckBox _checkBoxCodigo;
     private JSpinner _spinnerPaginas;
     private JLabel labelImage;
+    private JTabbedPane _tabbedPane;
 
     public ProductosVM(TUsuarios dataUsuario) {
         _dataUsuario = dataUsuario;
@@ -48,6 +50,7 @@ public class ProductosVM extends Consult {
         _spinnerPaginas = (JSpinner) objetos[3];
         _tableProductos = (JTable) objetos[4];
         labelImage = (JLabel) objetos[5];
+        _tabbedPane = (JTabbedPane) objetos[6];
         _format = new FormatDecimal();
         _money = ConfigurationVM.Money;
         codigos = new Codigos();
@@ -105,10 +108,11 @@ public class ProductosVM extends Consult {
     private String producto;
 
     public void dataCompra() {
-        var filas = _tableComprasTemporal.getSelectedRow();
+
         switch (_seccion) {
             case 0:
                 _accion = "insert";
+                var filas = _tableComprasTemporal.getSelectedRow();
                 _idCompra = (Integer) modelo1.getValueAt(filas, 0);
                 producto = (String) modelo1.getValueAt(filas, 1);
                 cantidad = (Integer) modelo1.getValueAt(filas, 2);
@@ -140,6 +144,7 @@ public class ProductosVM extends Consult {
                 for (int i = 2; i < _label.size(); i++) {
                     _label.get(i).setForeground(new Color(0, 153, 51));
                 }
+                uploadImage.byteImage(labelImage, (byte[]) modelo2.getValueAt(filas1, 9));
                 break;
         }
         codigos.codigoBarra(_label.get(2), _textField.get(0).getText(), producto, _textField.get(2).getText());
@@ -231,7 +236,7 @@ public class ProductosVM extends Consult {
                         listProducto = new ArrayList<TProductos>();
                     }
                     byte[] image = UploadImage.getImageByte();
-                    if(image == null){
+                    if (image == null) {
                         image = Objetos.uploadImage.getTransFoto(labelImage);
                     }
                     switch (_accion) {
@@ -335,8 +340,7 @@ public class ProductosVM extends Consult {
                     item.getCategoria(),
                     item.getFecha(),
                     item.getIdCompra(),
-                    item.getImagen(),
-                };
+                    item.getImagen(),};
                 modelo2.addRow(registros);
             });
         }
@@ -354,7 +358,7 @@ public class ProductosVM extends Consult {
     }
 
     public void Reset() {
-        _seccion = 0;
+        _seccion = _tabbedPane.getSelectedIndex();
         _accion = "insert";
 
         _textField.forEach(item -> {
@@ -381,7 +385,7 @@ public class ProductosVM extends Consult {
         _checkBoxCodigo.setForeground(Color.BLACK);
         _label.get(0).setText("Descripción");
         _label.get(1).setText(_money + "0.00");
-
+        _textField.get(6).setEnabled(_seccion == 0 ? false : true);
         SearchCompras(_textField.get(5).getText());
         codigos.codigoBarra(_label.get(2), "0000000000", _textField.get(1).getText(), _textField.get(2).getText());
 
@@ -391,6 +395,8 @@ public class ProductosVM extends Consult {
                 100.0,
                 1.0);
         _spinnerPaginas.setModel(model);
+
+        labelImage.setIcon(new ImageIcon(getClass().getClassLoader().getResource("Resources/agregar_imagen.png")));
         if (!listTemporalCompras.isEmpty()) {
             _paginadorCompras = new Paginador<>(listTemporalCompras, _label.get(8), _reg_por_pagina);
         }
@@ -411,6 +417,11 @@ public class ProductosVM extends Consult {
                             _num_pagina = _paginadorCompras.primero();
                         }
                         break;
+                    case 1:
+                        if (!_listProductos.isEmpty()) {
+                            _num_pagina = _paginadorProductos.primero();
+                        }
+                        break;
                 }
                 break;
             case "Anterior":
@@ -418,6 +429,11 @@ public class ProductosVM extends Consult {
                     case 0:
                         if (!listTemporalCompras.isEmpty()) {
                             _num_pagina = _paginadorCompras.anterior();
+                        }
+                        break;
+                    case 1:
+                        if (!_listProductos.isEmpty()) {
+                            _num_pagina = _paginadorProductos.anterior();
                         }
                         break;
                 }
@@ -429,6 +445,11 @@ public class ProductosVM extends Consult {
                             _num_pagina = _paginadorCompras.siguiente();
                         }
                         break;
+                    case 1:
+                        if (!_listProductos.isEmpty()) {
+                            _num_pagina = _paginadorProductos.siguiente();
+                        }
+                        break;
                 }
                 break;
             case "Ultimo":
@@ -438,12 +459,20 @@ public class ProductosVM extends Consult {
                             _num_pagina = _paginadorCompras.ultimo();
                         }
                         break;
+                    case 1:
+                        if (!_listProductos.isEmpty()) {
+                            _num_pagina = _paginadorProductos.ultimo();
+                        }
+                        break;
                 }
                 break;
         }
         switch (_seccion) {
             case 0:
                 SearchCompras(_textField.get(5).getText());
+                break;
+            case 1:
+                SearchProducto(_textField.get(5).getText());
                 break;
         }
     }
@@ -452,12 +481,19 @@ public class ProductosVM extends Consult {
         _num_pagina = 1;
         Number value = (Number) _spinnerPaginas.getValue();
         _reg_por_pagina = value.intValue();
+        _textField.get(6).setEnabled(_seccion == 0 ? false : true);
         switch (_seccion) {
             case 0:
                 if (!listTemporalCompras.isEmpty()) {
                     _paginadorCompras = new Paginador<>(listTemporalCompras, _label.get(8), _reg_por_pagina);
+                    SearchCompras(_textField.get(5).getText());
                 }
-                SearchCompras(_textField.get(5).getText());
+                break;
+            case 1:
+                if(!_listProductos.isEmpty()){
+                    _paginadorProductos = new Paginador<>(_listProductos, _label.get(8), _reg_por_pagina);
+                    SearchProducto(_textField.get(5).getText());
+                }
                 break;
         }
     }
