@@ -1,5 +1,6 @@
 package proyectotpoo;
 
+import Models.Cajas.TCajas;
 import Models.Usuario.TUsuarios;
 import ViewModels.LoginVM;
 import Views.*;
@@ -23,9 +24,10 @@ public class ProyectoTPOO {
         var login = new LoginVM();
         Object[] objects = login.Verificar();
         var listUsuario = (List<TUsuarios>) objects[0];
-
-        if (!listUsuario.isEmpty()) {
-            Sistema sys = new Sistema(listUsuario.get(0));
+        var caja = (TCajas) objects[1];
+        
+        if (!listUsuario.isEmpty() && caja !=null) {
+            Sistema sys = new Sistema(listUsuario.get(0), caja);
             sys.setVisible(true);
             sys.setExtendedState(MAXIMIZED_BOTH);
         } else {

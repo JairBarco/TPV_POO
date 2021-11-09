@@ -4,20 +4,20 @@ import java.util.Date;
 
 public class TUsuarios {
 
-    public int IdUsuario;
-    public String NoId;
-    public String Nombre;
-    public String Apellido;
-    public String Telefono;
-    public String Direccion;
-    public String Email;
-    public String Usuario;
-    public String Password;
-    public String Role;
-    public byte[] Imagen;
-    public boolean Is_active;
-    public boolean State;
-    public Date Fecha;
+    private int IdUsuario;
+    private String NoId;
+    private String Nombre;
+    private String Apellido;
+    private String Telefono;
+    private String Direccion;
+    private String Email;
+    private String Usuario;
+    private String Password;
+    private String Role;
+    private byte[] Imagen;
+    private boolean Is_active;
+    private boolean State;
+    private Date Fecha;
 
     public TUsuarios() {
     }

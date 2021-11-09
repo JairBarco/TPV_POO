@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Models.Cajas.TCajas;
 import Models.Usuario.TUsuarios;
 import ViewModels.LoginVM;
 import java.awt.Color;
@@ -199,8 +200,10 @@ public class Login extends javax.swing.JFrame {
             login = new LoginVM(label, textField);
             Object[] objects = login.Login();
             var listUsuario = (List<TUsuarios>) objects[0];
-            if (!listUsuario.isEmpty()) {
-                Sistema sys = new Sistema(listUsuario.get(0));
+            var caja = (TCajas) objects[1];
+            
+            if (!listUsuario.isEmpty() && caja !=null) {
+                Sistema sys = new Sistema(listUsuario.get(0), caja);
                 sys.setVisible(true);
                 sys.setExtendedState(MAXIMIZED_BOTH);
                 this.setVisible(false);

@@ -93,4 +93,9 @@ public class Calendario {
             return c.get(Calendar.YEAR);
         }
     }
+    
+    public String getFecha(Date date){
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(date);
+    }
 }

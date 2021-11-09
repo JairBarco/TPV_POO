@@ -6,7 +6,7 @@ import java.util.Date;
  *
  * @author jair_
  */
-public class TProductos {
+public class TProductos extends TBodega{
     public int IdProducto;
     public String Codigo;
     public String Producto;

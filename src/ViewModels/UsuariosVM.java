@@ -2,6 +2,7 @@ package ViewModels;
 
 import Conexion.Consult;
 import Library.*;
+import Models.Cajas.TCajas;
 import Models.Usuario.*;
 import java.awt.Color;
 import java.util.List;
@@ -22,6 +23,7 @@ public class UsuariosVM extends Consult {
     private static TUsuarios _dataUsuario;
     private static JLabel _nombrePerfil;
     private static JLabel _picturePerfil;
+    private JLabel _labelCaja_Numero;
     private JLabel _imagePicture;
     private List<JTextField> _textField;
     private List<JLabel> _label;
@@ -36,12 +38,15 @@ public class UsuariosVM extends Consult {
     private int _reg_por_pagina = 10;
     private int _num_pagina = 1;
     private int _seccion = 1;
+    private static TCajas _cajaData;
     private Paginador<TUsuarios> _paginadorUsuarios;
 
-    public UsuariosVM(TUsuarios dataUsuario, Object[] perfil) {
+    public UsuariosVM(TUsuarios dataUsuario, Object[] perfil, TCajas cajaData) {
+        _cajaData = cajaData;
         _dataUsuario = dataUsuario;
         _nombrePerfil = (JLabel) perfil[0];
         _picturePerfil = (JLabel) perfil[1];
+        _labelCaja_Numero = (JLabel) perfil[2];
         Perfil();
     }
 
@@ -57,6 +62,7 @@ public class UsuariosVM extends Consult {
     }
 
     private void Perfil() {
+        _labelCaja_Numero.setText("#" + _cajaData.getCaja());
         _nombrePerfil.setText(_dataUsuario.getNombre());
         if (null != _dataUsuario.getImagen()) {
             _uploadImage.byteImage(_picturePerfil, _dataUsuario.getImagen());
