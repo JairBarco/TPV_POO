@@ -320,7 +320,7 @@ public class UsuariosVM extends Consult {
         _checkBoxState.setSelected((Boolean) modelo1.getValueAt(filas, 9));
         byte[] image = (byte[]) modelo1.getValueAt(filas, 10);
         if (image != null) {
-            Objetos.uploadImage.byteImage(_imagePicture, image);
+            Objetos.uploadImage.byteImageBig(_imagePicture, image);
         }
     }
 

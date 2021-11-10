@@ -360,7 +360,7 @@ public class ClientesVM extends Consult {
         _textField.get(4).setText((String) modelo1.getValueAt(filas, 5));
         _textField.get(5).setText((String) modelo1.getValueAt(filas, 6));
         _checkBoxCredito.setSelected((Boolean) modelo1.getValueAt(filas, 7));
-        Objetos.uploadImage.byteImage(_label.get(6), (byte[]) modelo1.getValueAt(filas, 8));
+        Objetos.uploadImage.byteImageBig(_label.get(6), (byte[]) modelo1.getValueAt(filas, 8));
     }
 
     public final void restablecer() {

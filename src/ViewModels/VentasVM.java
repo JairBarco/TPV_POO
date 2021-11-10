@@ -31,11 +31,13 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ColumnListHandler;
+
 /**
  *
  * @author jair_
  */
-public class VentasVM extends Objetos{
+public class VentasVM extends Objetos {
+
     private List<JTextField> _textField;
     private List<JLabel> _label;
     private JSpinner _spinnerPaginas, _spinnerCantidad;
@@ -48,22 +50,22 @@ public class VentasVM extends Objetos{
     private JCheckBox _checkBoxEliminar, _checkBoxCredito;
     private Calendario _cal;
     private int _reg_por_pagina = 10, _num_pagina = 1;
-    
-    private int _idProducto, _cantidad, filas; 
+
+    private int _idProducto, _cantidad, filas;
     private double importe = 0;
     private List<TVentas_temporal> ventaTempo;
-    
+
     private double ingresosTotales = 0;
     private List<TCajas_ingresos> ingresosIniciales;
     private List<TCajas_reportes> ingresosVentas;
-    
+
     private double _cambio;
     private boolean _verificar = false, _suCambio = false;
-    
+
     private Double _ingresos, _pagos, _ingresoInicial;
     private Double _deuda = 0.0, _deudaActual = 0.0;
     private int _idCliente = 0;
-    
+
     private Double _ingresoVenta = 0.0;
 
     public VentasVM(TUsuarios dataUsuario, TCajas cajaData) {
@@ -84,7 +86,8 @@ public class VentasVM extends Objetos{
         _cal = new Calendario();
         Reset();
     }
-    
+
+    //<editor-fold defaultstate="collapsed" desc="CÓDIGO DE VENTAS">
     public boolean saveVentasTempo() {
         if (_textField != null) {
             if (_textField.get(0).getText().equals("")) {
@@ -125,13 +128,13 @@ public class VentasVM extends Objetos{
                                     data2 = producto.get(0).getExistencia() - data1;
                                 } else {
                                     JOptionPane.showConfirmDialog(null,
-                                            "Se sobrepaso de la cantidad de existencia del producto", "Ventas",JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                                            "Se sobrepaso de la cantidad de existencia del producto", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
                                     Reset();
                                     return false;
                                 }
                             } else {
                                 JOptionPane.showConfirmDialog(null,
-                                        "Productos sin existencia", "Ventas",JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                                        "Productos sin existencia", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
                                 Reset();
                                 return false;
                             }
@@ -150,7 +153,7 @@ public class VentasVM extends Objetos{
                                 data2 = producto.get(0).getExistencia() - cant;
                             } else {
                                 JOptionPane.showConfirmDialog(null,
-                                        "Se sobrepaso de la cantidad de existencia del producto", "Ventas",JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                                        "Se sobrepaso de la cantidad de existencia del producto", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
                                 Reset();
                                 return false;
                             }
@@ -216,14 +219,14 @@ public class VentasVM extends Objetos{
                     } catch (Exception e) {
                     }
                 } else {
-                    JOptionPane.showConfirmDialog(null, "Productos sin existencia", "Ventas",JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showConfirmDialog(null, "Productos sin existencia", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }
         return true;
     }
     private List<TVentas_temporal> listTemporary;
-    
+
     public void searchVentasTempo(String search, boolean eliminar) {
         if (_dataUsuario != null) {
             String[] titulos = {"IdProducto", "Codigo", "Producto",
@@ -238,7 +241,7 @@ public class VentasVM extends Objetos{
                 }
             };
             listTemporary = search.equals("") ? Ventas_temporal(_dataUsuario.getIdUsuario(), _cajaData.getCaja()) : Ventas_temporal(_dataUsuario.getIdUsuario(), _cajaData.getCaja()).stream()
-                            .filter(p -> p.getDescripcion().startsWith(search)|| p.getCodigo().startsWith(search)).collect(Collectors.toList());
+                    .filter(p -> p.getDescripcion().startsWith(search) || p.getCodigo().startsWith(search)).collect(Collectors.toList());
             int inicio = (_num_pagina - 1) * _reg_por_pagina;
             var data = listTemporary;
             var list = data.stream()
@@ -267,7 +270,7 @@ public class VentasVM extends Objetos{
             _tableVentasTemporal.getColumnModel().getColumn(0).setPreferredWidth(0);
         }
     }
-    
+
     public void getProductVentas() {
         _accion = "update";
         filas = _tableVentasTemporal.getSelectedRow();
@@ -287,7 +290,7 @@ public class VentasVM extends Objetos{
         );
         _spinnerCantidad.setModel(model);
     }
-    
+
     private void importes() {
         if (_dataUsuario != null) {
             importe = 0;
@@ -306,16 +309,16 @@ public class VentasVM extends Objetos{
             }
         }
     }
-    
+
     public void eliminar() throws SQLException {
         var qr = new QueryRunner(true);
         try {
             getConn().setAutoCommit(false);
             var listEliminar = new ArrayList<TVentas_temporal>();
             var data = _tableVentasTemporal.getModel();
-            int fils = data.getRowCount();
-            if (0 < fils) {
-                for (int i = 0; i < fils; i++) {
+            int filas = data.getRowCount();
+            if (0 < filas) {
+                for (int i = 0; i < filas; i++) {
                     var tempo = new TVentas_temporal();
                     if ((boolean) data.getValueAt(i, 7)) {
                         tempo.setIdTempo((Integer) data.getValueAt(i, 0));
@@ -326,8 +329,8 @@ public class VentasVM extends Objetos{
                 }
                 if (!listEliminar.isEmpty()) {
                     if (JOptionPane.YES_NO_OPTION == JOptionPane.showConfirmDialog(null,
-                            "Estas seguro de eliminar los " + listEliminar.size()
-                            + " registro ? ", "Eliminar compras",
+                            "¿Estás seguro de eliminar los " + listEliminar.size()
+                            + " registro/s ? ", "Eliminar compras",
                             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)) {
                         var sql = "DELETE FROM tventas_temporal WHERE IdTempo LIKE ?";
                         listEliminar.forEach(item -> {
@@ -365,7 +368,7 @@ public class VentasVM extends Objetos{
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+
     public void ingresosCajas() {
         ingresosTotales = 0;
         ingresosIniciales = CajasIngreso().stream()
@@ -375,7 +378,7 @@ public class VentasVM extends Objetos{
         if (!ingresosIniciales.isEmpty()) {
             ingresosTotales = ingresosIniciales.get(0).getIngreso();
             _label.get(3).setText(_money + _format.decimal(ingresosTotales));
-            _label.get(3).setForeground(new Color(102, 102, 102));
+            _label.get(3).setForeground(Color.BLACK);
         } else {
             _label.get(3).setText(_money + "0.00");
             _label.get(3).setForeground(Color.RED);
@@ -389,14 +392,14 @@ public class VentasVM extends Objetos{
         if (!ingresosVentas.isEmpty()) {
             var data = ingresosVentas.get(0).getIngreso();
             _label.get(4).setText(_money + _format.decimal(data));
-            _label.get(4).setForeground(new Color(102, 102, 102));
+            _label.get(4).setForeground(Color.BLACK);
             ingresosTotales += data;
         } else {
             _label.get(4).setText(_money + "0.00");
             _label.get(4).setForeground(Color.RED);
         }
         _label.get(5).setText(_money + _format.decimal(ingresosTotales));
-        _label.get(5).setForeground(new Color(102, 102, 102));
+        _label.get(5).setForeground(Color.BLACK);
     }
 
     public void pagosCliente() {
@@ -434,7 +437,7 @@ public class VentasVM extends Objetos{
                 _label.get(7).setForeground(Color.RED);
             } else if (pago == pagar) {
                 _label.get(7).setText("Importe");
-                _label.get(7).setForeground(new Color(102, 102, 102));
+                _label.get(7).setForeground(Color.BLACK);
                 _suCambio = false;
                 _verificar = true;
                 _cambio = 0.0;
@@ -442,9 +445,9 @@ public class VentasVM extends Objetos{
             _label.get(8).setText(_money + _format.decimal(_cambio));
         } else {
             _label.get(6).setText("Pago");
-            _label.get(6).setForeground(new Color(102, 102, 102));
+            _label.get(6).setForeground(Color.BLACK);
             _label.get(7).setText("Importe");
-            _label.get(7).setForeground(new Color(102, 102, 102));
+            _label.get(7).setForeground(Color.BLACK);
             _label.get(8).setText(_money + "0.00");
         }
     }
@@ -554,7 +557,7 @@ public class VentasVM extends Objetos{
         } catch (Exception e) {
         }
     }
-    
+
     public void Reset() {
         _pagos = 0.0;
         _ingresoInicial = 0.0;
@@ -579,7 +582,7 @@ public class VentasVM extends Objetos{
                         for (int i = 0; i < filas; i++) {
                             var numeric = String.valueOf(data.getValueAt(i, 5));
                             if (!numeric.matches("[0-9]*")) {
-                                JOptionPane.showConfirmDialog(null, "Ingrese un valor valido", "Ventas",JOptionPane.OK_OPTION, JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showConfirmDialog(null, "Ingrese un valor valido", "Ventas", JOptionPane.OK_OPTION, JOptionPane.WARNING_MESSAGE);
                                 ejecutar = false;
                                 break;
                             }
@@ -600,11 +603,12 @@ public class VentasVM extends Objetos{
             );
             _spinnerPaginas.setModel(model1);
             if (listTemporary != null && !listTemporary.isEmpty()) {
-                _paginadorCompras = new Paginador<TVentas_temporal>(listTemporary,_label.get(0), _reg_por_pagina);
+                _paginadorCompras = new Paginador<TVentas_temporal>(listTemporary, _label.get(0), _reg_por_pagina);
             }
         }
     }
-    
+    //</editor-fold>
+
     //<editor-fold defaultstate="collapsed" desc="PAGINADOR">
     public int _seccion = 0;
     private Paginador<TVentas_temporal> _paginadorCompras;

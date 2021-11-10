@@ -348,7 +348,7 @@ public class Consult extends Conexion {
         var campos = " * ";
         try {
             venta = (List<TVentas_temporal>) QR.query(getConn(), "SELECT" + campos + "FROM tventas_temporal" + where,
-                    new BeanListHandler(TProductos.class));
+                    new BeanListHandler(TVentas_temporal.class));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }

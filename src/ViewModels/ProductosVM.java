@@ -144,7 +144,7 @@ public class ProductosVM extends Consult {
                 for (int i = 2; i < _label.size(); i++) {
                     _label.get(i).setForeground(new Color(0, 153, 51));
                 }
-                uploadImage.byteImage(labelImage, (byte[]) modelo2.getValueAt(filas1, 9));
+                uploadImage.byteImageBig(labelImage, (byte[]) modelo2.getValueAt(filas1, 9));
                 break;
         }
         codigos.codigoBarra(_label.get(2), _textField.get(0).getText(), producto, _textField.get(2).getText());

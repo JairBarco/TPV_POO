@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class UploadImage extends javax.swing.JFrame {
 
-    private File archivo;
+private File archivo;
     private JFileChooser abrirArchivo;
     private static String urlOrigen = null;
     private static byte[] imageByte = null;
@@ -30,13 +30,13 @@ public class UploadImage extends javax.swing.JFrame {
         abrirArchivo = new JFileChooser();
         abrirArchivo.setFileFilter(new FileNameExtensionFilter("Archivos de Imagen", "jpg", "png", "gif"));
         int respuesta = abrirArchivo.showOpenDialog(this);
-
         if (respuesta == JFileChooser.APPROVE_OPTION) {
             archivo = abrirArchivo.getSelectedFile();
             urlOrigen = archivo.getAbsolutePath();
             Image image = getToolkit().getImage(urlOrigen);
             ImageIcon foto = new ImageIcon(image);
-            Icon icono = new ImageIcon(foto.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
+            Icon icono = new ImageIcon(foto.getImage().getScaledInstance(label.getWidth(),
+                    label.getHeight(), Image.SCALE_DEFAULT));
             label.setIcon(icono);
             try {
                 BufferedImage bImage = ImageIO.read(archivo);
@@ -47,19 +47,16 @@ public class UploadImage extends javax.swing.JFrame {
 
             }
         }
-
     }
 
     public byte[] getTransFoto(JLabel label) {
         byte[] data = null;
         ByteArrayOutputStream baos = null;
-
         try {
             Icon ico = label.getIcon();
-            //Create buffered image
+            // Create a buffered image
             BufferedImage bufferedImage = new BufferedImage(ico.getIconWidth(), ico.getIconHeight(),
                     BufferedImage.TYPE_INT_RGB);
-
             baos = new ByteArrayOutputStream();
             ImageIO.write(bufferedImage, "png", baos);
             data = baos.toByteArray();
@@ -77,10 +74,25 @@ public class UploadImage extends javax.swing.JFrame {
             ByteArrayInputStream bis = new ByteArrayInputStream(imgFoto);
             image = ImageIO.read(bis);
             foto = new ImageIcon(image);
-            Icon icono = new ImageIcon(foto.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
+            Icon icono = new ImageIcon(foto.getImage().getScaledInstance(label.getWidth(),
+                    label.getHeight(), Image.SCALE_DEFAULT));
             label.setIcon(icono);
         } catch (IOException ex) {
-            Logger.getLogger(UploadImage.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void byteImageBig(JLabel label, byte[] imgFoto) {
+        try{
+            Image foto;
+            BufferedImage image;
+            ByteArrayInputStream bis = new ByteArrayInputStream(imgFoto);
+            image = ImageIO.read(bis);
+            foto = new ImageIcon(image).getImage();
+            foto = foto.getScaledInstance(140, 140, 1);
+            label.setIcon(new ImageIcon(foto));
+        }catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 }

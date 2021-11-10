@@ -237,7 +237,7 @@ public class ProveedorVM extends Consult {
         _textField.get(1).setText((String) modelo1.getValueAt(filas, 2));
         _textField.get(2).setText((String) modelo1.getValueAt(filas, 3));
         _textField.get(3).setText((String) modelo1.getValueAt(filas, 4));
-        uploadImage.byteImage(_label.get(4), (byte[]) modelo1.getValueAt(filas, 5));
+        uploadImage.byteImageBig(_label.get(4), (byte[]) modelo1.getValueAt(filas, 5));
     }
 
     public void Reset() {

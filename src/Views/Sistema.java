@@ -68,9 +68,14 @@ public class Sistema extends javax.swing.JFrame {
         timer1.start();
     }
 
-    Timer timer1 = new Timer(1000, new ActionListener() {
+    Timer timer1 = new Timer(5000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            switch(TabbedPanePrincipal.getSelectedIndex()){
+                case 0:
+                    venta.ingresosCajas(); 
+                    break;
+            }
             cliente.GetReportesDeudas("");
         }
 
@@ -111,32 +116,40 @@ public class Sistema extends javax.swing.JFrame {
         TabbedPaneCliente5 = new javax.swing.JTabbedPane();
         jPanel78 = new javax.swing.JPanel();
         LabelVentas_Pago = new javax.swing.JLabel();
-        TextFieldVentas_Pagos = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        TextFieldVentas_Pago = new javax.swing.JTextField();
+        CheckBoxVenta_Credito = new javax.swing.JCheckBox();
         LabelVentas_Pago1 = new javax.swing.JLabel();
-        LabelVentas_Pago2 = new javax.swing.JLabel();
-        LabelVentas_Pago3 = new javax.swing.JLabel();
-        LabelVentas_Pago4 = new javax.swing.JLabel();
+        LabelVentas_Importes = new javax.swing.JLabel();
+        LabelVentas_Cambio = new javax.swing.JLabel();
+        LabelVentas_Cambios = new javax.swing.JLabel();
         LabelVentas_Pago5 = new javax.swing.JLabel();
         LabelVentas_Pago6 = new javax.swing.JLabel();
-        ButtonCliente_Agregar1 = new javax.swing.JButton();
+        jPanel79 = new javax.swing.JPanel();
+        LabelVentas_Pago2 = new javax.swing.JLabel();
+        LabelVentas_IngresoIni = new javax.swing.JLabel();
+        LabelVentas_Pago7 = new javax.swing.JLabel();
+        LabelVentas_IngresoVt = new javax.swing.JLabel();
+        LabelVentas_IngresoTotal = new javax.swing.JLabel();
+        LabelVentas_Pago10 = new javax.swing.JLabel();
+        ButtonVenta_Cobrar = new javax.swing.JButton();
         ButtonCliente_Cancelar1 = new javax.swing.JButton();
         jPanel87 = new javax.swing.JPanel();
         TabbedPaneCliente7 = new javax.swing.JTabbedPane();
         jPanel88 = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
         Table_Ventas = new javax.swing.JTable();
-        LabelCompra_ImporteTotal1 = new javax.swing.JLabel();
+        LabelVentas_Importe = new javax.swing.JLabel();
         LabelCompra_Importes6 = new javax.swing.JLabel();
-        ButtonCompra_Eliminar1 = new javax.swing.JButton();
+        ButtonVentas_Eliminar = new javax.swing.JButton();
         CheckBoxVenta_Eliminar = new javax.swing.JCheckBox();
         jPanel89 = new javax.swing.JPanel();
         LabelCliente_Nombre70 = new javax.swing.JLabel();
-        ButtonCliente_Paginas5 = new javax.swing.JButton();
-        ButtonCliente_Paginas6 = new javax.swing.JButton();
-        ButtonCliente_Paginas7 = new javax.swing.JButton();
-        ButtonCliente_Paginas8 = new javax.swing.JButton();
-        LabelCliente_Paginas1 = new javax.swing.JLabel();
+        ButtonVentas_Paginas1 = new javax.swing.JButton();
+        ButtonVentas_Paginas2 = new javax.swing.JButton();
+        ButtonVentas_Paginas3 = new javax.swing.JButton();
+        ButtonVentas_Paginas4 = new javax.swing.JButton();
+        LabelVenta_Paginas = new javax.swing.JLabel();
+        SpinnerPaginas_Ventas = new javax.swing.JSpinner();
         jPanel96 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -731,40 +744,40 @@ public class Sistema extends javax.swing.JFrame {
         LabelVentas_Pago.setForeground(new java.awt.Color(0, 0, 0));
         LabelVentas_Pago.setText("Pago");
 
-        TextFieldVentas_Pagos.setBackground(new java.awt.Color(255, 255, 255));
-        TextFieldVentas_Pagos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        TextFieldVentas_Pagos.addActionListener(new java.awt.event.ActionListener() {
+        TextFieldVentas_Pago.setBackground(new java.awt.Color(255, 255, 255));
+        TextFieldVentas_Pago.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TextFieldVentas_Pago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldVentas_PagosActionPerformed(evt);
+                TextFieldVentas_PagoActionPerformed(evt);
             }
         });
-        TextFieldVentas_Pagos.addKeyListener(new java.awt.event.KeyAdapter() {
+        TextFieldVentas_Pago.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                TextFieldVentas_PagosKeyReleased(evt);
+                TextFieldVentas_PagoKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                TextFieldVentas_PagosKeyTyped(evt);
+                TextFieldVentas_PagoKeyTyped(evt);
             }
         });
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox1.setText("Crédito");
+        CheckBoxVenta_Credito.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CheckBoxVenta_Credito.setText("Crédito");
 
         LabelVentas_Pago1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LabelVentas_Pago1.setForeground(new java.awt.Color(0, 0, 0));
         LabelVentas_Pago1.setText("Monto a pagar");
 
-        LabelVentas_Pago2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelVentas_Pago2.setForeground(new java.awt.Color(0, 0, 0));
-        LabelVentas_Pago2.setText("0.00");
+        LabelVentas_Importes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_Importes.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVentas_Importes.setText("0.00");
 
-        LabelVentas_Pago3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelVentas_Pago3.setForeground(new java.awt.Color(0, 0, 0));
-        LabelVentas_Pago3.setText("0.00");
+        LabelVentas_Cambio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_Cambio.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVentas_Cambio.setText("0.00");
 
-        LabelVentas_Pago4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelVentas_Pago4.setForeground(new java.awt.Color(0, 0, 0));
-        LabelVentas_Pago4.setText("Cambio");
+        LabelVentas_Cambios.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_Cambios.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVentas_Cambios.setText("Cambio");
 
         LabelVentas_Pago5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LabelVentas_Pago5.setForeground(new java.awt.Color(0, 0, 0));
@@ -781,35 +794,38 @@ public class Sistema extends javax.swing.JFrame {
             .addGroup(jPanel78Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel78Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
-                    .addGroup(jPanel78Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(TextFieldVentas_Pagos)
-                        .addComponent(LabelVentas_Pago, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(LabelVentas_Pago1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelVentas_Pago2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelVentas_Pago4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelVentas_Pago3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelVentas_Pago6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelVentas_Pago5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 233, Short.MAX_VALUE))
+                    .addGroup(jPanel78Layout.createSequentialGroup()
+                        .addComponent(LabelVentas_Pago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel78Layout.createSequentialGroup()
+                        .addGroup(jPanel78Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CheckBoxVenta_Credito)
+                            .addComponent(TextFieldVentas_Pago, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelVentas_Pago1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelVentas_Importes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelVentas_Cambios, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelVentas_Cambio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelVentas_Pago6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelVentas_Pago5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 233, Short.MAX_VALUE))))
         );
         jPanel78Layout.setVerticalGroup(
             jPanel78Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel78Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCheckBox1)
+                .addComponent(CheckBoxVenta_Credito)
                 .addGap(13, 13, 13)
                 .addComponent(LabelVentas_Pago)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextFieldVentas_Pagos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextFieldVentas_Pago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LabelVentas_Pago1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LabelVentas_Pago2)
+                .addComponent(LabelVentas_Importes)
                 .addGap(18, 18, 18)
-                .addComponent(LabelVentas_Pago4)
+                .addComponent(LabelVentas_Cambios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LabelVentas_Pago3)
+                .addComponent(LabelVentas_Cambio)
                 .addGap(18, 18, 18)
                 .addComponent(LabelVentas_Pago6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -819,14 +835,73 @@ public class Sistema extends javax.swing.JFrame {
 
         TabbedPaneCliente5.addTab("Venta de productos", jPanel78);
 
-        ButtonCliente_Agregar1.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonCliente_Agregar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar.png"))); // NOI18N
-        ButtonCliente_Agregar1.setToolTipText("");
-        ButtonCliente_Agregar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonCliente_Agregar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCliente_Agregar1.addActionListener(new java.awt.event.ActionListener() {
+        LabelVentas_Pago2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_Pago2.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVentas_Pago2.setText("Ingresos Iniciales");
+
+        LabelVentas_IngresoIni.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_IngresoIni.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVentas_IngresoIni.setText("0.00");
+
+        LabelVentas_Pago7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_Pago7.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVentas_Pago7.setText("Ingreso de ventas");
+
+        LabelVentas_IngresoVt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_IngresoVt.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVentas_IngresoVt.setText("0.00");
+
+        LabelVentas_IngresoTotal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_IngresoTotal.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVentas_IngresoTotal.setText("0.00");
+
+        LabelVentas_Pago10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_Pago10.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVentas_Pago10.setText("Ingreso total");
+
+        javax.swing.GroupLayout jPanel79Layout = new javax.swing.GroupLayout(jPanel79);
+        jPanel79.setLayout(jPanel79Layout);
+        jPanel79Layout.setHorizontalGroup(
+            jPanel79Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel79Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel79Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelVentas_Pago2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVentas_IngresoIni, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVentas_IngresoVt, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVentas_Pago10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVentas_IngresoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVentas_Pago7))
+                .addContainerGap(232, Short.MAX_VALUE))
+        );
+        jPanel79Layout.setVerticalGroup(
+            jPanel79Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel79Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LabelVentas_Pago2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelVentas_IngresoIni)
+                .addGap(18, 18, 18)
+                .addComponent(LabelVentas_Pago7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelVentas_IngresoVt)
+                .addGap(18, 18, 18)
+                .addComponent(LabelVentas_Pago10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelVentas_IngresoTotal)
+                .addContainerGap(215, Short.MAX_VALUE))
+        );
+
+        TabbedPaneCliente5.addTab("Ingresos", jPanel79);
+
+        ButtonVenta_Cobrar.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonVenta_Cobrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregar.png"))); // NOI18N
+        ButtonVenta_Cobrar.setToolTipText("");
+        ButtonVenta_Cobrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonVenta_Cobrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonVenta_Cobrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCliente_Agregar1ActionPerformed(evt);
+                ButtonVenta_CobrarActionPerformed(evt);
             }
         });
 
@@ -849,7 +924,7 @@ public class Sistema extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel76Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel76Layout.createSequentialGroup()
-                        .addComponent(ButtonCliente_Agregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ButtonVenta_Cobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ButtonCliente_Cancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(TabbedPaneCliente5))
@@ -862,7 +937,7 @@ public class Sistema extends javax.swing.JFrame {
                 .addComponent(TabbedPaneCliente5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel76Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonCliente_Agregar1)
+                    .addComponent(ButtonVenta_Cobrar)
                     .addComponent(ButtonCliente_Cancelar1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -902,24 +977,24 @@ public class Sistema extends javax.swing.JFrame {
         });
         jScrollPane15.setViewportView(Table_Ventas);
 
-        LabelCompra_ImporteTotal1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelCompra_ImporteTotal1.setForeground(new java.awt.Color(70, 106, 124));
-        LabelCompra_ImporteTotal1.setText("0.00");
-        LabelCompra_ImporteTotal1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        LabelVentas_Importe.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelVentas_Importe.setForeground(new java.awt.Color(70, 106, 124));
+        LabelVentas_Importe.setText("0.00");
+        LabelVentas_Importe.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         LabelCompra_Importes6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LabelCompra_Importes6.setForeground(new java.awt.Color(0, 0, 0));
         LabelCompra_Importes6.setText("Importe total:");
 
-        ButtonCompra_Eliminar1.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonCompra_Eliminar1.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonCompra_Eliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/eliminar.png"))); // NOI18N
-        ButtonCompra_Eliminar1.setToolTipText("");
-        ButtonCompra_Eliminar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonCompra_Eliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCompra_Eliminar1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonVentas_Eliminar.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonVentas_Eliminar.setForeground(new java.awt.Color(255, 102, 0));
+        ButtonVentas_Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/eliminar.png"))); // NOI18N
+        ButtonVentas_Eliminar.setToolTipText("");
+        ButtonVentas_Eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonVentas_Eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonVentas_Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCompra_Eliminar1ActionPerformed(evt);
+                ButtonVentas_EliminarActionPerformed(evt);
             }
         });
 
@@ -941,11 +1016,11 @@ public class Sistema extends javax.swing.JFrame {
                     .addGroup(jPanel88Layout.createSequentialGroup()
                         .addComponent(LabelCompra_Importes6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelCompra_ImporteTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabelVentas_Importe, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(CheckBoxVenta_Eliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonCompra_Eliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ButtonVentas_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel88Layout.setVerticalGroup(
@@ -953,11 +1028,11 @@ public class Sistema extends javax.swing.JFrame {
             .addGroup(jPanel88Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel88Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelCompra_ImporteTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(LabelVentas_Importe, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(LabelCompra_Importes6)
                     .addGroup(jPanel88Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(CheckBoxVenta_Eliminar)
-                        .addComponent(ButtonCompra_Eliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(ButtonVentas_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -982,59 +1057,65 @@ public class Sistema extends javax.swing.JFrame {
         LabelCliente_Nombre70.setForeground(new java.awt.Color(0, 0, 0));
         LabelCliente_Nombre70.setText("Registros por páginas");
 
-        ButtonCliente_Paginas5.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonCliente_Paginas5.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonCliente_Paginas5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso_rapido.png"))); // NOI18N
-        ButtonCliente_Paginas5.setToolTipText("");
-        ButtonCliente_Paginas5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonCliente_Paginas5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCliente_Paginas5.addActionListener(new java.awt.event.ActionListener() {
+        ButtonVentas_Paginas1.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonVentas_Paginas1.setForeground(new java.awt.Color(255, 102, 0));
+        ButtonVentas_Paginas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso_rapido.png"))); // NOI18N
+        ButtonVentas_Paginas1.setToolTipText("");
+        ButtonVentas_Paginas1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonVentas_Paginas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonVentas_Paginas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCliente_Paginas5ActionPerformed(evt);
+                ButtonVentas_Paginas1ActionPerformed(evt);
             }
         });
 
-        ButtonCliente_Paginas6.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonCliente_Paginas6.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonCliente_Paginas6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso.png"))); // NOI18N
-        ButtonCliente_Paginas6.setToolTipText("");
-        ButtonCliente_Paginas6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonCliente_Paginas6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCliente_Paginas6.addActionListener(new java.awt.event.ActionListener() {
+        ButtonVentas_Paginas2.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonVentas_Paginas2.setForeground(new java.awt.Color(255, 102, 0));
+        ButtonVentas_Paginas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/retroceso.png"))); // NOI18N
+        ButtonVentas_Paginas2.setToolTipText("");
+        ButtonVentas_Paginas2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonVentas_Paginas2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonVentas_Paginas2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCliente_Paginas6ActionPerformed(evt);
+                ButtonVentas_Paginas2ActionPerformed(evt);
             }
         });
 
-        ButtonCliente_Paginas7.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonCliente_Paginas7.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonCliente_Paginas7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance.png"))); // NOI18N
-        ButtonCliente_Paginas7.setToolTipText("");
-        ButtonCliente_Paginas7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonCliente_Paginas7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCliente_Paginas7.addActionListener(new java.awt.event.ActionListener() {
+        ButtonVentas_Paginas3.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonVentas_Paginas3.setForeground(new java.awt.Color(255, 102, 0));
+        ButtonVentas_Paginas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance.png"))); // NOI18N
+        ButtonVentas_Paginas3.setToolTipText("");
+        ButtonVentas_Paginas3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonVentas_Paginas3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonVentas_Paginas3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCliente_Paginas7ActionPerformed(evt);
+                ButtonVentas_Paginas3ActionPerformed(evt);
             }
         });
 
-        ButtonCliente_Paginas8.setBackground(new java.awt.Color(255, 102, 51));
-        ButtonCliente_Paginas8.setForeground(new java.awt.Color(255, 102, 0));
-        ButtonCliente_Paginas8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance-rapido.png"))); // NOI18N
-        ButtonCliente_Paginas8.setToolTipText("");
-        ButtonCliente_Paginas8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ButtonCliente_Paginas8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ButtonCliente_Paginas8.addActionListener(new java.awt.event.ActionListener() {
+        ButtonVentas_Paginas4.setBackground(new java.awt.Color(255, 102, 51));
+        ButtonVentas_Paginas4.setForeground(new java.awt.Color(255, 102, 0));
+        ButtonVentas_Paginas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/avance-rapido.png"))); // NOI18N
+        ButtonVentas_Paginas4.setToolTipText("");
+        ButtonVentas_Paginas4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonVentas_Paginas4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonVentas_Paginas4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCliente_Paginas8ActionPerformed(evt);
+                ButtonVentas_Paginas4ActionPerformed(evt);
             }
         });
 
-        LabelCliente_Paginas1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        LabelCliente_Paginas1.setForeground(new java.awt.Color(0, 0, 0));
-        LabelCliente_Paginas1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LabelCliente_Paginas1.setText("Paginas");
-        LabelCliente_Paginas1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        LabelVenta_Paginas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LabelVenta_Paginas.setForeground(new java.awt.Color(0, 0, 0));
+        LabelVenta_Paginas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelVenta_Paginas.setText("Página");
+        LabelVenta_Paginas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        SpinnerPaginas_Ventas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                SpinnerPaginas_VentasStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel87Layout = new javax.swing.GroupLayout(jPanel87);
         jPanel87.setLayout(jPanel87Layout);
@@ -1045,18 +1126,20 @@ public class Sistema extends javax.swing.JFrame {
                 .addGroup(jPanel87Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TabbedPaneCliente7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel87Layout.createSequentialGroup()
-                        .addComponent(LabelCliente_Nombre70)
+                        .addGroup(jPanel87Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelCliente_Nombre70)
+                            .addComponent(SpinnerPaginas_Ventas, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(188, 188, 188)
                         .addGroup(jPanel87Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel87Layout.createSequentialGroup()
-                                .addComponent(ButtonCliente_Paginas5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ButtonVentas_Paginas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonCliente_Paginas6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ButtonVentas_Paginas2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonCliente_Paginas7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ButtonVentas_Paginas3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonCliente_Paginas8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(LabelCliente_Paginas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(ButtonVentas_Paginas4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(LabelVenta_Paginas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(308, 308, 308)))
                 .addContainerGap())
         );
@@ -1070,17 +1153,19 @@ public class Sistema extends javax.swing.JFrame {
                     .addGroup(jPanel87Layout.createSequentialGroup()
                         .addGroup(jPanel87Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelCliente_Nombre70)
-                            .addComponent(LabelCliente_Paginas1))
+                            .addComponent(LabelVenta_Paginas))
                         .addGroup(jPanel87Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel87Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel87Layout.createSequentialGroup()
                                     .addGap(8, 8, 8)
-                                    .addComponent(ButtonCliente_Paginas5))
-                                .addComponent(ButtonCliente_Paginas6, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(ButtonVentas_Paginas1))
+                                .addComponent(ButtonVentas_Paginas2, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel87Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonCliente_Paginas7))))
-                    .addComponent(ButtonCliente_Paginas8))
+                                .addGroup(jPanel87Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ButtonVentas_Paginas3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(SpinnerPaginas_Ventas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(ButtonVentas_Paginas4))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -1103,6 +1188,9 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
         TextFieldVentas_BuscarCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TextFieldVentas_BuscarCodigoKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 TextFieldVentas_BuscarCodigoKeyReleased(evt);
             }
@@ -2766,7 +2854,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     LabelCliente_Paginas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
     LabelCliente_Paginas.setForeground(new java.awt.Color(0, 0, 0));
     LabelCliente_Paginas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    LabelCliente_Paginas.setText("Paginas");
+    LabelCliente_Paginas.setText("Página");
     LabelCliente_Paginas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
     javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -3921,7 +4009,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     LabelProveedor_Paginas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
     LabelProveedor_Paginas.setForeground(new java.awt.Color(0, 0, 0));
     LabelProveedor_Paginas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    LabelProveedor_Paginas.setText("Páginas");
+    LabelProveedor_Paginas.setText("Página");
     LabelProveedor_Paginas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
     javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
@@ -4601,7 +4689,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     LabelCompras_Paginas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
     LabelCompras_Paginas.setForeground(new java.awt.Color(0, 0, 0));
     LabelCompras_Paginas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    LabelCompras_Paginas.setText("Páginas");
+    LabelCompras_Paginas.setText("Página");
     LabelCompras_Paginas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
     javax.swing.GroupLayout jPanel60Layout = new javax.swing.GroupLayout(jPanel60);
@@ -4841,7 +4929,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     LabelProductos_Paginas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
     LabelProductos_Paginas.setForeground(new java.awt.Color(0, 0, 0));
     LabelProductos_Paginas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    LabelProductos_Paginas.setText("Paginas");
+    LabelProductos_Paginas.setText("Página");
     LabelProductos_Paginas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
     javax.swing.GroupLayout jPanel56Layout = new javax.swing.GroupLayout(jPanel56);
@@ -6340,7 +6428,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     LabelUsuarios_Paginas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
     LabelUsuarios_Paginas.setForeground(new java.awt.Color(0, 0, 0));
     LabelUsuarios_Paginas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    LabelUsuarios_Paginas.setText("Paginas");
+    LabelUsuarios_Paginas.setText("Página");
     LabelUsuarios_Paginas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
     javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
@@ -8613,20 +8701,33 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     
     //<editor-fold defaultstate="collapsed" desc="CÓDIGO VENTAS">
     private VentasVM venta;
+    private boolean valueVenta = false;
     
     private void SeccionVentas(){
         TabbedPanePrincipal.setSelectedIndex(0);
         EnabledButton(ButtonVentas);
         
         ArrayList<JLabel> label = new ArrayList();
+        label.add(LabelVenta_Paginas);
+        label.add(LabelVentas_Importe);
+        label.add(LabelVentas_Importes);
+        label.add(LabelVentas_IngresoIni);
+        label.add(LabelVentas_IngresoVt);
+        label.add(LabelVentas_IngresoTotal);
+        label.add(LabelVentas_Pago);
+        label.add(LabelVentas_Cambios);
+        label.add(LabelVentas_Cambio);
         
         ArrayList<JTextField> textField = new ArrayList();
         textField.add(TextFieldVentas_BuscarCodigo);
+        textField.add(TextFieldVentas_Pago);
         
         Object[] objetos = {
             SpinnerVentas_Cantidad,
             Table_Ventas,
-            CheckBoxVenta_Eliminar
+            CheckBoxVenta_Eliminar,
+            SpinnerPaginas_Ventas,
+            CheckBoxVenta_Credito
         };
         venta = new VentasVM(objetos, textField, label);
     }
@@ -8635,25 +8736,31 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         SeccionVentas();
     }//GEN-LAST:event_ButtonVentasActionPerformed
 
-    private void TextFieldVentas_PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldVentas_PagosActionPerformed
+    private void TextFieldVentas_PagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldVentas_PagoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldVentas_PagosActionPerformed
+    }//GEN-LAST:event_TextFieldVentas_PagoActionPerformed
 
-    private void TextFieldVentas_PagosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldVentas_PagosKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldVentas_PagosKeyReleased
+    private void TextFieldVentas_PagoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldVentas_PagoKeyReleased
+        if(TextFieldVentas_Pago.getText().equals("")){
+            LabelVentas_Pago.setForeground(Color.BLACK);
+        } else {
+            LabelVentas_Pago.setText("Pago");
+            LabelVentas_Pago.setForeground(new Color(0,153,51));
+        }
+        venta.pagosCliente();
+    }//GEN-LAST:event_TextFieldVentas_PagoKeyReleased
 
-    private void TextFieldVentas_PagosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldVentas_PagosKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldVentas_PagosKeyTyped
+    private void TextFieldVentas_PagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldVentas_PagoKeyTyped
+        venta.eventos.numberDecimalKeyPress(evt, TextFieldVentas_Pago);
+    }//GEN-LAST:event_TextFieldVentas_PagoKeyTyped
 
     private void TabbedPaneCliente5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCliente5StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_TabbedPaneCliente5StateChanged
 
-    private void ButtonCliente_Agregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Agregar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCliente_Agregar1ActionPerformed
+    private void ButtonVenta_CobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVenta_CobrarActionPerformed
+        venta.cobrar();
+    }//GEN-LAST:event_ButtonVenta_CobrarActionPerformed
 
     private void ButtonCliente_Cancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Cancelar1ActionPerformed
         // TODO add your handling code here:
@@ -8661,12 +8768,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
 
     private void Table_VentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table_VentasMouseClicked
         if(Table_Ventas.getSelectedRows().length > 0){
+            valueVenta = false;
             venta.getProductVentas();
         }
     }//GEN-LAST:event_Table_VentasMouseClicked
 
     private void Table_VentasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Table_VentasKeyReleased
         if(Table_Ventas.getSelectedRows().length > 0){
+            valueVenta = false;
             venta.getProductVentas();
         }
     }//GEN-LAST:event_Table_VentasKeyReleased
@@ -8679,28 +8788,30 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }//GEN-LAST:event_SpinnerVentas_CantidadStateChanged
 
-    private void ButtonCliente_Paginas5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCliente_Paginas5ActionPerformed
+    private void ButtonVentas_Paginas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVentas_Paginas1ActionPerformed
+        venta.Paginador("Primero");
+    }//GEN-LAST:event_ButtonVentas_Paginas1ActionPerformed
 
-    private void ButtonCliente_Paginas6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCliente_Paginas6ActionPerformed
+    private void ButtonVentas_Paginas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVentas_Paginas2ActionPerformed
+        venta.Paginador("Anterior");
+    }//GEN-LAST:event_ButtonVentas_Paginas2ActionPerformed
 
-    private void ButtonCliente_Paginas7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCliente_Paginas7ActionPerformed
+    private void ButtonVentas_Paginas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVentas_Paginas3ActionPerformed
+        venta.Paginador("Siguiente");
+    }//GEN-LAST:event_ButtonVentas_Paginas3ActionPerformed
 
-    private void ButtonCliente_Paginas8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCliente_Paginas8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCliente_Paginas8ActionPerformed
+    private void ButtonVentas_Paginas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVentas_Paginas4ActionPerformed
+        venta.Paginador("Ultimo");
+    }//GEN-LAST:event_ButtonVentas_Paginas4ActionPerformed
 
     private void TextFieldVentas_BuscarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldVentas_BuscarCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextFieldVentas_BuscarCodigoActionPerformed
 
     private void TextFieldVentas_BuscarCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldVentas_BuscarCodigoKeyReleased
-        // TODO add your handling code here:
+        if(valueVenta){
+            venta.searchVentasTempo(TextFieldVentas_BuscarCodigo.getText(), CheckBoxVenta_Eliminar.isSelected());
+        }
     }//GEN-LAST:event_TextFieldVentas_BuscarCodigoKeyReleased
 
     private void ButtonVentas_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVentas_BuscarActionPerformed
@@ -8709,12 +8820,23 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_ButtonVentas_BuscarActionPerformed
 
     private void CheckBoxVenta_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxVenta_EliminarActionPerformed
-        // TODO add your handling code here:
+        venta.searchVentasTempo(TextFieldVentas_BuscarCodigo.getText(), CheckBoxVenta_Eliminar.isSelected());
     }//GEN-LAST:event_CheckBoxVenta_EliminarActionPerformed
 
-    private void ButtonCompra_Eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCompra_Eliminar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCompra_Eliminar1ActionPerformed
+    private void ButtonVentas_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVentas_EliminarActionPerformed
+        try {
+            venta.eliminar();
+        } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_ButtonVentas_EliminarActionPerformed
+
+    private void TextFieldVentas_BuscarCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldVentas_BuscarCodigoKeyPressed
+        valueVenta = true;
+    }//GEN-LAST:event_TextFieldVentas_BuscarCodigoKeyPressed
+
+    private void SpinnerPaginas_VentasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SpinnerPaginas_VentasStateChanged
+        venta.Registro_Paginas();
+    }//GEN-LAST:event_SpinnerPaginas_VentasStateChanged
     // </editor-fold> 
 
     /**
@@ -8757,7 +8879,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonCaja_Cancelar;
     private javax.swing.JButton ButtonCajas;
     private javax.swing.JButton ButtonCliente_Agregar;
-    private javax.swing.JButton ButtonCliente_Agregar1;
     private javax.swing.JButton ButtonCliente_BuscarPagos;
     private javax.swing.JButton ButtonCliente_Cancelar;
     private javax.swing.JButton ButtonCliente_Cancelar1;
@@ -8765,16 +8886,11 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonCliente_Paginas2;
     private javax.swing.JButton ButtonCliente_Paginas3;
     private javax.swing.JButton ButtonCliente_Paginas4;
-    private javax.swing.JButton ButtonCliente_Paginas5;
-    private javax.swing.JButton ButtonCliente_Paginas6;
-    private javax.swing.JButton ButtonCliente_Paginas7;
-    private javax.swing.JButton ButtonCliente_Paginas8;
     private javax.swing.JButton ButtonCliente_TicketDeuda;
     private javax.swing.JButton ButtonClientes;
     private javax.swing.JButton ButtonCompra_Agregar;
     private javax.swing.JButton ButtonCompra_Cancelar;
     private javax.swing.JButton ButtonCompra_Eliminar;
-    private javax.swing.JButton ButtonCompra_Eliminar1;
     private javax.swing.JButton ButtonCompras;
     private javax.swing.JButton ButtonCompras_Paginas1;
     private javax.swing.JButton ButtonCompras_Paginas2;
@@ -8805,8 +8921,14 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JButton ButtonUsuarios_Paginas2;
     private javax.swing.JButton ButtonUsuarios_Paginas3;
     private javax.swing.JButton ButtonUsuarios_Paginas4;
+    private javax.swing.JButton ButtonVenta_Cobrar;
     private javax.swing.JButton ButtonVentas;
     private javax.swing.JButton ButtonVentas_Buscar;
+    private javax.swing.JButton ButtonVentas_Eliminar;
+    private javax.swing.JButton ButtonVentas_Paginas1;
+    private javax.swing.JButton ButtonVentas_Paginas2;
+    private javax.swing.JButton ButtonVentas_Paginas3;
+    private javax.swing.JButton ButtonVentas_Paginas4;
     private javax.swing.JCheckBox CheckBoxCaja_Estado;
     private javax.swing.JCheckBox CheckBoxCaja_Ingresos;
     private javax.swing.JCheckBox CheckBoxCliente_Credito;
@@ -8819,6 +8941,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JCheckBox CheckBoxProducto_Codigo;
     private javax.swing.JCheckBox CheckBoxProducto_Codigo1;
     private javax.swing.JCheckBox CheckBoxUsuario_State;
+    private javax.swing.JCheckBox CheckBoxVenta_Credito;
     private javax.swing.JCheckBox CheckBoxVenta_Eliminar;
     private javax.swing.JComboBox<String> ComboBoxCompra_Proveedor;
     private javax.swing.JComboBox<String> ComboBoxUsuario_Rol;
@@ -8898,7 +9021,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCliente_Nombre8;
     private javax.swing.JLabel LabelCliente_Nombre9;
     private javax.swing.JLabel LabelCliente_Paginas;
-    private javax.swing.JLabel LabelCliente_Paginas1;
     private javax.swing.JLabel LabelCliente_Pago;
     private javax.swing.JLabel LabelCliente_Telefono;
     private javax.swing.JLabel LabelCliente_Ticket;
@@ -8910,7 +9032,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelCompra_Deudas;
     private javax.swing.JLabel LabelCompra_Importe;
     private javax.swing.JLabel LabelCompra_ImporteTotal;
-    private javax.swing.JLabel LabelCompra_ImporteTotal1;
     private javax.swing.JLabel LabelCompra_Importes;
     private javax.swing.JLabel LabelCompra_Importes5;
     private javax.swing.JLabel LabelCompra_Importes6;
@@ -8986,13 +9107,21 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel LabelUsuario_Telefono;
     private javax.swing.JLabel LabelUsuario_Usuario;
     private javax.swing.JLabel LabelUsuarios_Paginas;
+    private javax.swing.JLabel LabelVenta_Paginas;
+    private javax.swing.JLabel LabelVentas_Cambio;
+    private javax.swing.JLabel LabelVentas_Cambios;
+    private javax.swing.JLabel LabelVentas_Importe;
+    private javax.swing.JLabel LabelVentas_Importes;
+    private javax.swing.JLabel LabelVentas_IngresoIni;
+    private javax.swing.JLabel LabelVentas_IngresoTotal;
+    private javax.swing.JLabel LabelVentas_IngresoVt;
     private javax.swing.JLabel LabelVentas_Pago;
     private javax.swing.JLabel LabelVentas_Pago1;
+    private javax.swing.JLabel LabelVentas_Pago10;
     private javax.swing.JLabel LabelVentas_Pago2;
-    private javax.swing.JLabel LabelVentas_Pago3;
-    private javax.swing.JLabel LabelVentas_Pago4;
     private javax.swing.JLabel LabelVentas_Pago5;
     private javax.swing.JLabel LabelVentas_Pago6;
+    private javax.swing.JLabel LabelVentas_Pago7;
     private javax.swing.JLabel Label_ImagenCliente;
     private javax.swing.JLabel Label_ImagenProducto;
     private javax.swing.JLabel Label_ImagenProveedor;
@@ -9012,6 +9141,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JSpinner SpinnerPaginas_Productos;
     private javax.swing.JSpinner SpinnerPaginas_Proveedores;
     private javax.swing.JSpinner SpinnerPaginas_Usuarios;
+    private javax.swing.JSpinner SpinnerPaginas_Ventas;
     private javax.swing.JSpinner SpinnerVentas_Cantidad;
     private javax.swing.JTabbedPane TabbedPaneCaja1;
     private javax.swing.JTabbedPane TabbedPaneCaja2;
@@ -9087,7 +9217,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField TextFieldUsuario_Telefono;
     private javax.swing.JTextField TextFieldUsuario_Usuario;
     private javax.swing.JTextField TextFieldVentas_BuscarCodigo;
-    private javax.swing.JTextField TextFieldVentas_Pagos;
+    private javax.swing.JTextField TextFieldVentas_Pago;
     private javax.swing.JTextField TextField_BuscarCajas;
     private javax.swing.JTextField TextField_BuscarCliente1;
     private javax.swing.JTextField TextField_BuscarProductos;
@@ -9100,7 +9230,6 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private datechooser.beans.DateChooserCombo dateChooserCliente_FechaLimite;
     private datechooser.beans.DateChooserCombo dateChooserProveedor_Deuda1;
     private datechooser.beans.DateChooserCombo dateChooserProveedor_Deuda2;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -9202,6 +9331,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel76;
     private javax.swing.JPanel jPanel77;
     private javax.swing.JPanel jPanel78;
+    private javax.swing.JPanel jPanel79;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel87;
     private javax.swing.JPanel jPanel88;

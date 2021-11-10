@@ -27,19 +27,19 @@ public class Paginador<T> {
         if ((maxReg % _reg_por_pagina) > 0) {
             pageCount += 1;
         }
-        _label.setText("Paginas 1/" + pageCount);
+        _label.setText("Página 1/" + pageCount);
     }
 
     public int primero() {
         numPagi = 1;
-        _label.setText("Paginas" + numPagi + "/" + pageCount);
+        _label.setText("Página" + numPagi + "/" + pageCount);
         return numPagi;
     }
 
     public int anterior() {
         if (numPagi > 1) {
             numPagi -= 1;
-            _label.setText("Paginas" + numPagi + "/" + pageCount);
+            _label.setText("Página" + numPagi + "/" + pageCount);
         }
         return numPagi;
     }
@@ -50,14 +50,14 @@ public class Paginador<T> {
         }
         if (numPagi < pageCount) {
             numPagi += 1;
-            _label.setText("Paginas" + numPagi + "/" + pageCount);
+            _label.setText("Página" + numPagi + "/" + pageCount);
         }
         return numPagi;
     }
 
     public int ultimo() {
         numPagi = pageCount;
-        _label.setText("Paginas" + numPagi + "/" + pageCount);
+        _label.setText("Página" + numPagi + "/" + pageCount);
         return numPagi;
     }
 }
