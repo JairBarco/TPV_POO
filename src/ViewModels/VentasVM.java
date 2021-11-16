@@ -128,7 +128,7 @@ public class VentasVM extends Objetos {
                                     data2 = producto.get(0).getExistencia() - data1;
                                 } else {
                                     JOptionPane.showConfirmDialog(null,
-                                            "Se sobrepaso de la cantidad de existencia del producto", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                                            "Se sobrepasó de la cantidad de existencia del producto", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
                                     Reset();
                                     return false;
                                 }
@@ -153,13 +153,13 @@ public class VentasVM extends Objetos {
                                 data2 = producto.get(0).getExistencia() - cant;
                             } else {
                                 JOptionPane.showConfirmDialog(null,
-                                        "Se sobrepaso de la cantidad de existencia del producto", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                                        "Se sobrepasó de la cantidad de existencia del producto", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
                                 Reset();
                                 return false;
                             }
                         } else {
                             JOptionPane.showConfirmDialog(null,
-                                    "Productos sin existencia", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                                    "Producto sin existencia", "Ventas", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE);
                             Reset();
                             return false;
                         }

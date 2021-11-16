@@ -7499,7 +7499,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             LabelProveedor_Proveedor.setForeground(Color.BLACK);
         } else {
             LabelProveedor_Proveedor.setText("Proveedor");
-            LabelProveedor_Proveedor.setForeground(Color.GREEN);
+            LabelProveedor_Proveedor.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldProveedor_ProveedorKeyReleased
 
@@ -7512,7 +7512,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             LabelProveedor_Email.setForeground(Color.BLACK);
         } else {
             LabelProveedor_Email.setText("Email");
-            LabelProveedor_Email.setForeground(Color.GREEN);
+            LabelProveedor_Email.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldProveedor_EmailKeyReleased
 
@@ -7525,7 +7525,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             LabelProveedor_Telefono.setForeground(Color.BLACK);
         } else {
             LabelProveedor_Telefono.setText("Telefono");
-            LabelProveedor_Telefono.setForeground(Color.GREEN);
+            LabelProveedor_Telefono.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldProveedor_TelefonoKeyReleased
 
@@ -7534,16 +7534,16 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_TextFieldProveedor_TelefonoKeyTyped
 
     private void TextFieldProveedor_DireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_DireccionActionPerformed
+        
+    }//GEN-LAST:event_TextFieldProveedor_DireccionActionPerformed
+
+    private void TextFieldProveedor_DireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_DireccionKeyReleased
         if (TextFieldProveedor_Direccion.getText().equals("")) {
             LabelProveedor_Direccion.setForeground(Color.BLACK);
         } else {
             LabelProveedor_Direccion.setText("Dirección");
-            LabelProveedor_Direccion.setForeground(Color.GREEN);
+            LabelProveedor_Direccion.setForeground(new Color(0, 153, 51));
         }
-    }//GEN-LAST:event_TextFieldProveedor_DireccionActionPerformed
-
-    private void TextFieldProveedor_DireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldProveedor_DireccionKeyReleased
-        // TODO add your handling code here:
     }//GEN-LAST:event_TextFieldProveedor_DireccionKeyReleased
 
     private void TextFieldProveedor_PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldProveedor_PagosActionPerformed
@@ -8101,7 +8101,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             LabelCompra_Precio.setForeground(Color.BLACK);
         } else {
             LabelCompra_Precio.setText("Precio");
-            LabelCompra_Precio.setForeground(Color.GREEN);
+            LabelCompra_Precio.setForeground(new Color(0, 153, 51));
         }
         compras.importes();
     }//GEN-LAST:event_TextFieldCompra_PrecioKeyReleased
@@ -8119,7 +8119,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             LabelCompra_Cantidad.setForeground(Color.BLACK);
         } else {
             LabelCompra_Cantidad.setText("Cantidad");
-            LabelCompra_Cantidad.setForeground(Color.GREEN);
+            LabelCompra_Cantidad.setForeground(new Color(0, 153, 51));
         }
         compras.importes();
     }//GEN-LAST:event_TextFieldCompra_CantidadKeyReleased
@@ -8133,7 +8133,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             LabelCompra_BuscarProveedor.setForeground(Color.BLACK);
         } else {
             LabelCompra_BuscarProveedor.setText("Buscar proveedor");
-            LabelCompra_BuscarProveedor.setForeground(Color.GREEN);
+            LabelCompra_BuscarProveedor.setForeground(new Color(0, 153, 51));
         }
         compras.SearchProveedor(TextFieldCompra_BuscarProveedor.getText());
     }//GEN-LAST:event_TextFieldCompra_BuscarProveedorKeyReleased
@@ -8147,7 +8147,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
             LabelCompra_Descripcion.setForeground(Color.BLACK);
         } else {
             LabelCompra_Descripcion.setText("Descripción");
-            LabelCompra_Descripcion.setForeground(Color.GREEN);
+            LabelCompra_Descripcion.setForeground(new Color(0, 153, 51));
         }
     }//GEN-LAST:event_TextFieldCompra_DescripcionKeyReleased
 
@@ -8542,7 +8542,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
         switch (TabbedPaneCaja2.getSelectedIndex()) {
             case 0:
                 if (TabbedPaneCaja1.getSelectedIndex() > 0) {
-                    TabbedPaneCaja1.setSelectedIndex(0);
+                    TabbedPaneCaja1.setSelectedIndex(1);
                 }
                 break;
             case 1:
@@ -8597,7 +8597,7 @@ public void actionPerformed(java.awt.event.ActionEvent evt) {
     private void TabbedPaneCaja1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabbedPaneCaja1StateChanged
         switch (TabbedPaneCaja1.getSelectedIndex()) {
             case 0:
-                TabbedPaneCaja2.setSelectedIndex(0);
+                TabbedPaneCaja2.setSelectedIndex(1);
                 break;
             case 1:
                 TabbedPaneCaja2.setSelectedIndex(1);
